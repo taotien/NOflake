@@ -18,7 +18,8 @@
       nixosConfigurations = {
         NOcomputer = nixosSystem [
           nixos-hw.common-cpu-amd
-          nixos-hw.common-gpu-nvidia
+          nixos-hw.common-gpu-nvidia-nonprime
+          ./systems/BASED.nix
           ./systems/NOcomputer.nix
           ./uwuraid.nix
           ./gaming.nix
@@ -26,6 +27,7 @@
         ];
         NOlaptop = nixosSystem [
           # inputs.nixos-hardware.nixosModules.framework
+          ./systems/BASED.nix
           ./systems/NOlaptop.nix
           ./uwuraid.nix
           ./gaming.nix
