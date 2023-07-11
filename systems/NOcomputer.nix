@@ -1,14 +1,43 @@
-{ pkgs, ... }: {
+{ lib, pkgs, modulesPath, ... }: {
   environment.systemPackages = with pkgs; [
     openrgb
     gwe
   ];
 
-  fileSystems."/" = { options = [ "noatime" "compress-force=zstd:3" ]; };
-  fileSystems."/var" = { options = [ "noatime" "compress-force=zstd:3" ]; };
-  fileSystems."/tmp" = { options = [ "noatime" ]; };
-  fileSystems."/home" = { options = [ "noatime" "compress-force=zstd:3" ]; };
-  fileSystems."/home/tao/Games" = { options = [ "nosuid" "nodev" "noatime" "compress-force=zstd:3" "users" "rw" "exec" ]; };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
+    fsType = "btrfs";
+    options = [ "subvol=home_snaps/0/snapshot" "noatime" "compress-force=zstd:3" ];
+  };
+  fileSystems."/home/tao/Games" = {
+    device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
+    fsType = "btrfs";
+    options = [ "subvol=games" "nosuid" "nodev" "noatime" "compress-force=zstd:3" "users" "rw" "exec" ];
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/2B28-151D";
+    fsType = "vfat";
+  };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
+    fsType = "btrfs";
+    options = [ "subvol=nixos" "noatime" "compress-force=zstd:3" ];
+  };
+  fileSystems."/var" = {
+    device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
+    fsType = "btrfs";
+    options = [ "subvol=nixos/var" "noatime" "compress-force=zstd:3" ];
+  };
+  fileSystems."/tmp" = {
+    device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
+    fsType = "btrfs";
+    options = [ "subvol=nixos/tmp" ];
+  };
+
+  swapDevices =
+    [{ device = "/dev/disk/by-uuid/ca0ed3d7-8758-4ac7-b016-8b4cd9608ded"; }];
+
 
   services.udev.packages = [ pkgs.openrgb ];
   services.udev.extraRules = ''
@@ -16,7 +45,6 @@
     SUBSYSTEM=="tty", GROUP="dialout", ATTRS{interface}=="Black Magic UART Port", SYMLINK+="ttyBmpTarg"
   '';
 
-  boot.kernelModules = [ "i2c-dev" ];
 
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
@@ -24,6 +52,13 @@
     noto-fonts-emoji
   ];
 
-  nixpkgs.hostPlatform = "x86_64-linux";
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  networking.useDHCP = lib.mkDefault true;
+
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.kernelModules = [ "i2c-dev" "kvm-amd" ];
+
   networking.hostName = "NOcomputer";
 }

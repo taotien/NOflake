@@ -33,7 +33,6 @@
     VISUAL = "hx";
   };
 
-  imports = [ ./hardware-configuration.nix ];
   hardware.enableAllFirmware = true;
   hardware.bluetooth.enable = true;
 
