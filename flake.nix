@@ -12,13 +12,11 @@
       #   config.allowUnfree = true;
       # };
       nixosSystem = (systemModules: inputs.nixpkgs.lib.nixosSystem { modules = systemModules; });
-      base = ./systems/BASED.nix;
       nixos-hw = inputs.nixos-hardware.nixosModules;
     in
     {
       nixosConfigurations = {
         NOcomputer = nixosSystem [
-          base
           nixos-hw.common-cpu-amd
           nixos-hw.common-gpu-nvidia
           ./systems/NOcomputer.nix
@@ -28,7 +26,6 @@
         ];
         NOlaptop = nixosSystem [
           # inputs.nixos-hardware.nixosModules.framework
-          base
           ./systems/NOlaptop.nix
           ./uwuraid.nix
           ./gaming.nix
