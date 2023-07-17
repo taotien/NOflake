@@ -26,6 +26,7 @@
           ./users/tao.nix
         ];
         NOlaptop = nixosSystem [
+          nixos-hw.common-cpu-intel
           # inputs.nixos-hardware.nixosModules.framework
           ./systems/BASED.nix
           ./systems/NOlaptop.nix

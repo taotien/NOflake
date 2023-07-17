@@ -36,30 +36,31 @@
     options = [ "subvol=nixos/tmp" ];
   };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/ca0ed3d7-8758-4ac7-b016-8b4cd9608ded"; }];
+  swapDevices = [{ device = "/dev/disk/by-uuid/ca0ed3d7-8758-4ac7-b016-8b4cd9608ded"; }];
 
+  systemd.user.services.fans = {
+    script = ''
+      liquidctl -m nzxt set sync speed 100
+    '';
+    wantedBy = [ "graphical-session.target" ];
+    partOf = [ "graphical-session.target" ];
+  };
 
   services.udev.packages = [ pkgs.openrgb ];
   services.udev.extraRules = ''
-    SUBSYSTEM=="tty", GROUP="dialout", ATTRS{interface}=="Black Magic GDB Server", SYMLINK+="ttyBmpGdb"
-    SUBSYSTEM=="tty", GROUP="dialout", ATTRS{interface}=="Black Magic UART Port", SYMLINK+="ttyBmpTarg"
+    SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic GDB Server", SYMLINK+="ttyBmpGdb"
+    SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic UART Port",  SYMLINK+="ttyBmpTarg"
   '';
-
-
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
-    noto-fonts-cjk
-    noto-fonts-emoji
-  ];
 
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  networking.useDHCP = lib.mkDefault true;
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.kernelModules = [ "i2c-dev" "kvm-amd" ];
 
+  networking.useDHCP = lib.mkDefault true;
   networking.hostName = "NOcomputer";
 }
+
+

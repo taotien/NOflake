@@ -13,8 +13,7 @@ in
     keepassxc
     libsForQt5.kdeconnect-kde
     lldb
-    nix-prefetch-scripts
-    openrgb
+    # nix-prefetch-scripts
     starship
     tio
     unstable.nushell
@@ -37,6 +36,12 @@ in
       };
     };
   };
+
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    noto-fonts-cjk
+    noto-fonts-emoji
+  ];
 
   users.users.tao = {
     isNormalUser = true;
