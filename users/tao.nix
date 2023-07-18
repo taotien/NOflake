@@ -4,11 +4,13 @@ let
 in
 {
   users.users.tao.packages = with pkgs; [
+    darktable
     deluge
     discord
     elf2uf2-rs
     # fractal
     gcc
+    gh
     gdb
     keepassxc
     libsForQt5.kdeconnect-kde

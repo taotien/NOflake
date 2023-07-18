@@ -54,12 +54,15 @@
 
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.kernelModules = [ "i2c-dev" "kvm-amd" ];
 
-  networking.useDHCP = lib.mkDefault true;
+  hardware.nvidia = {
+    modesetting.enable = true;
+  };
+
   networking.hostName = "NOcomputer";
 }
 

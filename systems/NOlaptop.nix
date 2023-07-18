@@ -1,6 +1,5 @@
 { lib, modulesPath, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-
   ];
 
   fileSystems."/home" = {
@@ -21,9 +20,12 @@
 
   swapDevices = [{ device = "/dev/disk/by-uuid/ca55d0ea-c0db-44c5-af3a-e38eec803929"; }];
 
+  services.fprintd.enable = true;
+  services.fwupd.enable = true;
+
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -37,8 +39,9 @@
     "nvme.noacpi=1"
   ];
   boot.kernelModules = [ "kvm-intel" ];
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.cpuFreqGovernor = "powersave";
 
-  networking.useDHCP = lib.mkDefault true;
+  hardware.sensor.iio.enable = true;
+
   networking.hostName = "NOlaptop";
 }
