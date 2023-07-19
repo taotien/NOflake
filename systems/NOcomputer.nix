@@ -1,5 +1,6 @@
-{ lib, pkgs, modulesPath, ... }: {
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+    # mesa
     openrgb
     gwe
     liquidctl
@@ -42,8 +43,8 @@
     script = ''
       liquidctl -m nzxt set sync speed 100
     '';
-    wantedBy = [ "graphical-session.target" ];
-    partOf = [ "graphical-session.target" ];
+    wantedBy = [ "default.target" ];
+    # partOf = [ "graphical-session.target" ];
   };
 
   services.udev.packages = [ pkgs.openrgb ];
@@ -52,13 +53,14 @@
     SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic UART Port",  SYMLINK+="ttyBmpTarg"
   '';
 
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
-
-  nixpkgs.hostPlatform = "x86_64-linux";
-
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.kernelModules = [ "i2c-dev" "kvm-amd" ];
 
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
   hardware.nvidia = {
     modesetting.enable = true;
   };

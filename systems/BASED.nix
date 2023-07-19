@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ lib, pkgs, modulesPath, ... }: {
   environment.systemPackages = with pkgs; [
     appimage-run
     bat
@@ -23,10 +23,10 @@
     zstd
   ];
 
-  services.tailscale.enable = true;
-  services.openssh.enable = true;
-  services.flatpak.enable = true;
-  services.printing.enable = true;
+  services.tailscale.enable = lib.mkDefault true;
+  services.openssh.enable = lib.mkDefault true;
+  services.flatpak.enable = lib.mkDefault true;
+  services.printing.enable = lib.mkDefault true;
 
   environment.variables = {
     EDITOR = "hx";
@@ -34,7 +34,7 @@
   };
 
   hardware.enableAllFirmware = true;
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth.enable = lib.mkDefault true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -43,10 +43,10 @@
   networking.firewall.enable = false;
 
   services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
   services.xserver.layout = "us";
   systemd.services.display-manager.restartIfChanged = false;
+  services.xserver.displayManager.sddm.enable = lib.mkDefault true;
+  services.xserver.desktopManager.plasma5.enable = lib.mkDefault true;
   environment.plasma5.excludePackages = with pkgs.libsForQt5; [
     elisa
     konsole
@@ -65,8 +65,15 @@
   };
   nixpkgs.config = { allowUnfree = true; };
 
+  systemd.extraConfig = ''
+    DefaultTimeoutStopSec=15s
+  '';
+
   time.timeZone = "US/Pacific";
   i18n.defaultLocale = "en_US.UTF-8";
 
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   system.stateVersion = "23.05";
 }

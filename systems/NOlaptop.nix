@@ -1,4 +1,4 @@
-{ lib, modulesPath, pkgs, ... }: {
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
   ];
 
@@ -22,10 +22,6 @@
 
   services.fprintd.enable = true;
   services.fwupd.enable = true;
-
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
-
-  nixpkgs.hostPlatform = "x86_64-linux";
 
   boot.initrd.availableKernelModules = [
     "nvme"

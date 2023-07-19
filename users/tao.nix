@@ -12,6 +12,10 @@ in
     gcc
     gh
     gdb
+    # gnumake
+    # pkg-config
+    # libftdi
+    # libusb
     keepassxc
     libsForQt5.kdeconnect-kde
     lldb
