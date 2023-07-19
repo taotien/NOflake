@@ -33,6 +33,11 @@
     VISUAL = "hx";
   };
 
+  environment.sessionVariables = {
+    EDITOR = "hx";
+    VISUAL = "hx";
+  };
+
   hardware.enableAllFirmware = true;
   hardware.bluetooth.enable = lib.mkDefault true;
 
