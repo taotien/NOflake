@@ -40,8 +40,10 @@
   swapDevices = [{ device = "/dev/disk/by-uuid/ca0ed3d7-8758-4ac7-b016-8b4cd9608ded"; }];
 
   systemd.user.services.fans = {
+    description = "NZXT fans to 100% using liquidctl";
+    # serviceConfig.User = "tao";
     script = ''
-      liquidctl -m nzxt set sync speed 100
+      ${pkgs.liquidctl}/bin/liquidctl -m nzxt set sync speed 100
     '';
     wantedBy = [ "default.target" ];
     # partOf = [ "graphical-session.target" ];
