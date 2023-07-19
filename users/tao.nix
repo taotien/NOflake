@@ -1,7 +1,4 @@
-{ pkgs, config, ... }:
-let
-  unstableTarball = fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
-in
+{ pkgs, ... }:
 {
   users.users.tao.packages = with pkgs; [
     darktable
@@ -24,6 +21,7 @@ in
     tio
     unstable.nushell
     unstable.prusa-slicer
+    unstable.wezterm
     virt-manager
     zoxide
   ];
@@ -33,14 +31,6 @@ in
     user = "tao";
     dataDir = "/home/tao/Sync";
     configDir = "/home/tao/.config/syncthing";
-  };
-
-  nixpkgs.config = {
-    packageOverrides = pkgs: {
-      unstable = import unstableTarball {
-        config = config.nixpkgs.config;
-      };
-    };
   };
 
   fonts.fonts = with pkgs; [

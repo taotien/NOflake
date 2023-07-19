@@ -1,10 +1,12 @@
-{ pkgs, ... }: {
-  environment.systemPackages = with pkgs; [
-    # mesa
-    openrgb
-    gwe
-    liquidctl
-  ];
+{ pkgs, config, ... }:
+{
+  environment.systemPackages = with pkgs;
+    [
+      # mesa
+      openrgb
+      gwe
+      liquidctl
+    ];
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
@@ -41,12 +43,10 @@
 
   systemd.user.services.fans = {
     description = "NZXT fans to 100% using liquidctl";
-    # serviceConfig.User = "tao";
     script = ''
       ${pkgs.liquidctl}/bin/liquidctl -m nzxt set sync speed 100
     '';
     wantedBy = [ "default.target" ];
-    # partOf = [ "graphical-session.target" ];
   };
 
   services.udev.packages = [ pkgs.openrgb ];
@@ -55,6 +55,7 @@
     SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic UART Port",  SYMLINK+="ttyBmpTarg"
   '';
 
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.kernelModules = [ "i2c-dev" "kvm-amd" ];
 
@@ -65,9 +66,8 @@
   };
   hardware.nvidia = {
     modesetting.enable = true;
+    # package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
   };
 
   networking.hostName = "NOcomputer";
 }
-
-

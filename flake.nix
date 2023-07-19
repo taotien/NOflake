@@ -2,21 +2,30 @@
   description = "we say NO to shitty OSes";
 
   inputs = {
-    nixpkgs.url = "github:Nixos/nixpkgs/nixos-23.05";
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
+    # nixpkgs.url = "github:Nixos/nixpkgs/nixos-23.05";
+    # nixpkgs-unstable.url = "github:Nixos/nixpkgs/nixos-unstable";
+    # nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixpkgs.url = "nixpkgs/nixos-23.05";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    nixos-hardware.url = "nixos-hardware";
   };
 
-  outputs = { nixpkgs, ... }@inputs:
+  # outputs = { nixpkgs, ... }@inputs:
+  outputs = { nixpkgs, nixos-hardware, nixpkgs-unstable, ... }:
     let
       # pkgs = import nixpkgs {
       #   config.allowUnfree = true;
       # };
-      nixosSystem = (systemModules: inputs.nixpkgs.lib.nixosSystem { modules = systemModules; });
-      nixos-hw = inputs.nixos-hardware.nixosModules;
+      overlay-unstable = final: prev: {
+        unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
+      };
+      nixosSystem = (systemModules: nixpkgs.lib.nixosSystem { modules = systemModules; });
+      nixos-hw = nixos-hardware.nixosModules;
     in
     {
       nixosConfigurations = {
         NOcomputer = nixosSystem [
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           nixos-hw.common-cpu-amd
           nixos-hw.common-gpu-nvidia-nonprime
           ./systems/BASED.nix
@@ -26,6 +35,7 @@
           ./users/tao.nix
         ];
         NOlaptop = nixosSystem [
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           nixos-hw.common-cpu-intel
           # inputs.nixos-hardware.nixosModules.framework
           ./systems/BASED.nix
