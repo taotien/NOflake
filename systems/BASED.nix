@@ -1,5 +1,6 @@
 { lib, pkgs, modulesPath, ... }: {
   environment.systemPackages = with pkgs; [
+    exfatprogs
     appimage-run
     bat
     bottom
