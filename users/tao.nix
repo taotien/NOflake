@@ -19,6 +19,7 @@
     # nix-prefetch-scripts
     starship
     tio
+    partitionmanager
     unstable.nushell
     unstable.prusa-slicer
     unstable.wezterm
