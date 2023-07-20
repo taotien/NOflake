@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   users.users.tao.packages = with pkgs; [
-    bottles
     darktable
     deluge
     discord
@@ -27,6 +26,9 @@
     virt-manager
     zoxide
   ];
+  
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
 
   services.syncthing = {
     enable = true;
