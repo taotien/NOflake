@@ -6,6 +6,7 @@
       openrgb
       gwe
       liquidctl
+      egl-wayland
     ];
 
   fileSystems."/home" = {
@@ -66,7 +67,7 @@
   };
   hardware.nvidia = {
     modesetting.enable = true;
-    # package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   networking.hostName = "NOcomputer";
