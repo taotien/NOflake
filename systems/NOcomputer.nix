@@ -68,6 +68,9 @@
   hardware.nvidia = {
     modesetting.enable = true;
     package = config.boot.kernelPackages.nvidiaPackages.beta;
+    # package = (config.boot.kernelPackages.callPackage
+    #   "${pkgs.unstable.path}/pkgs/os-specific/linux/nvidia-x11/default.nix"
+    #   { });
   };
 
   networking.hostName = "NOcomputer";
