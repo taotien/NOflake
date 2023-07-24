@@ -9,8 +9,13 @@
 
   outputs = { nixpkgs, nixos-hardware, nixpkgs-unstable, ... }:
     let
+      system = "x86_64-linux";
       overlay-unstable = final: prev: {
-        unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
+        # unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
+        unstable = import nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
       };
       nixosSystem = (systemModules: nixpkgs.lib.nixosSystem { modules = systemModules; });
       nixos-hw = nixos-hardware.nixosModules;

@@ -6,8 +6,14 @@
       openrgb
       gwe
       liquidctl
-      egl-wayland
+      # egl-wayland
+      # nvidia-vaapi-driver
     ];
+
+  # environment.sessionVariables = {
+  #   # wayland chromium workaround
+  #   NIXOS_OZONE_WL = "1";
+  # };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
@@ -67,10 +73,8 @@
   };
   hardware.nvidia = {
     modesetting.enable = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
-    # package = (config.boot.kernelPackages.callPackage
-    #   "${pkgs.unstable.path}/pkgs/os-specific/linux/nvidia-x11/default.nix"
-    #   { });
+    # package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = pkgs.unstable.linuxPackages_latest.nvidiaPackages.production;
   };
 
   networking.hostName = "NOcomputer";
