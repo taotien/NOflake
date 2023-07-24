@@ -10,10 +10,10 @@
       # nvidia-vaapi-driver
     ];
 
-  # environment.sessionVariables = {
-  #   # wayland chromium workaround
-  #   NIXOS_OZONE_WL = "1";
-  # };
+  environment.sessionVariables = {
+    # wayland chromium workaround
+    NIXOS_OZONE_WL = "1";
+  };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
