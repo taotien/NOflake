@@ -29,9 +29,9 @@
           ./systems/BASED.nix
           ./systems/NOcomputer.nix
           ./users/tao.nix
-          ./uwuraid.nix
-          ./dev.nix
-          ./gaming.nix
+          ./extras/uwuraid.nix
+          ./extras/dev.nix
+          ./extras/gaming.nix
         ];
         NOlaptop = nixosSystem [
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
@@ -40,9 +40,9 @@
           ./systems/BASED.nix
           ./systems/NOlaptop.nix
           ./users/tao.nix
-          ./uwuraid.nix
-          ./dev.nix
-          ./gaming.nix
+          ./extras/uwuraid.nix
+          ./extras/dev.nix
+          ./extras/gaming.nix
         ];
       };
 
