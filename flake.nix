@@ -28,9 +28,10 @@
           nixos-hw.common-gpu-nvidia-nonprime
           ./systems/BASED.nix
           ./systems/NOcomputer.nix
-          ./uwuraid.nix
-          ./gaming.nix
           ./users/tao.nix
+          ./uwuraid.nix
+          ./dev.nix
+          ./gaming.nix
         ];
         NOlaptop = nixosSystem [
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
@@ -38,9 +39,10 @@
           # inputs.nixos-hardware.nixosModules.framework
           ./systems/BASED.nix
           ./systems/NOlaptop.nix
-          ./uwuraid.nix
-          ./gaming.nix
           ./users/tao.nix
+          ./uwuraid.nix
+          ./dev.nix
+          ./gaming.nix
         ];
       };
 

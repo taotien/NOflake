@@ -1,6 +1,6 @@
 { lib, pkgs, modulesPath, ... }: {
   environment.systemPackages = with pkgs; [
-    exfatprogs
+    # exfatprogs
     appimage-run
     bat
     bottom
@@ -16,7 +16,7 @@
     onlyoffice-bin
     ouch
     ripgrep-all
-    rustup
+    # rustup
     skim
     tree
     wezterm

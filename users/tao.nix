@@ -4,18 +4,14 @@
     darktable
     deluge
     discord
-    elf2uf2-rs
     # fractal
-    gcc
     gh
-    gdb
     # gnumake
     # pkg-config
     # libftdi
     # libusb
     keepassxc
     libsForQt5.kdeconnect-kde
-    lldb
     # nix-prefetch-scripts
     starship
     tio
@@ -26,7 +22,7 @@
     virt-manager
     zoxide
   ];
-  
+
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
 
