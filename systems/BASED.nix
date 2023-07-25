@@ -39,6 +39,13 @@
     VISUAL = "hx";
   };
 
+  # xdg.portal = {
+  #   enable = true;
+  #   extraPortals = with pkgs; [
+  #     xdg-desktop-portal-wlr
+  #   ];
+  # };
+
   hardware.enableAllFirmware = true;
   hardware.bluetooth.enable = lib.mkDefault true;
 
