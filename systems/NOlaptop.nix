@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     intel-gpu-tools
-    powertop
   ];
 
   fileSystems."/home" = {
@@ -25,6 +24,7 @@
   services.fprintd.enable = true;
   services.fwupd.enable = true;
   powerManagement.powertop.enable = true;
+  hardware.sensor.iio.enable = true;
 
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -39,8 +39,7 @@
   ];
   boot.kernelModules = [ "kvm-intel" ];
   powerManagement.cpuFreqGovernor = "powersave";
-
-  hardware.sensor.iio.enable = true;
+  systemd.sleep.extraConfig = "HibernateDelaySec=60m";
 
   networking.hostName = "NOlaptop";
 }
