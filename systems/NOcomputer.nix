@@ -48,13 +48,13 @@
 
   swapDevices = [{ device = "/dev/disk/by-uuid/ca0ed3d7-8758-4ac7-b016-8b4cd9608ded"; }];
 
-  systemd.user.services.fans = {
-    description = "NZXT fans to 100% using liquidctl";
-    script = ''
-      ${pkgs.liquidctl}/bin/liquidctl -m nzxt set sync speed 100
-    '';
-    wantedBy = [ "default.target" ];
-  };
+  # systemd.user.services.fans = {
+  #   description = "NZXT fans to 69% using liquidctl";
+  #   script = ''
+  #     ${pkgs.liquidctl}/bin/liquidctl -m nzxt set sync speed 69
+  #   '';
+  #   wantedBy = [ "default.target" ];
+  # };
 
   services.udev.packages = [ pkgs.openrgb ];
   services.udev.extraRules = ''
