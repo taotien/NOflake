@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   environment.systemPackages = with pkgs;
     [
@@ -75,6 +75,15 @@
     modesetting.enable = true;
     # package = config.boot.kernelPackages.nvidiaPackages.beta;
     package = pkgs.unstable.linuxPackages_latest.nvidiaPackages.production;
+  };
+  # enable core and mem freq sliders for nvidia
+  services.xserver.deviceSection = ''
+    Option "Coolbits" "8"
+  '';
+  systemd.services.nvpl = {
+    description = "Increase GPU power limit to 400w";
+    script = "/run/current-system/sw/bin/nvidia-smi -pl=400";
+    wantedBy = [ "multi-user.target" ];
   };
 
   networking.hostName = "NOcomputer";
