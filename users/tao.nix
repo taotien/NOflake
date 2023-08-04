@@ -4,7 +4,7 @@
     darktable
     deluge
     discord
-    expressvpn
+    # expressvpn
     # fractal
     gh
     # gnumake
@@ -24,7 +24,7 @@
     zoxide
   ];
 
-  services.expressvpn.enable = true;
+  # services.expressvpn.enable = true;
 
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
