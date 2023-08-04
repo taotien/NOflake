@@ -4,6 +4,7 @@
     darktable
     deluge
     discord
+    expressvpn
     # fractal
     gh
     # gnumake
