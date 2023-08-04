@@ -23,6 +23,7 @@
     wget
     zstd
   ];
+  programs.partition-manager.enable = true;
 
   services.tailscale.enable = lib.mkDefault true;
   services.openssh.enable = lib.mkDefault true;

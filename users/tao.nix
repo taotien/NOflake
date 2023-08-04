@@ -13,7 +13,7 @@
     keepassxc
     libsForQt5.kdeconnect-kde
     # nix-prefetch-scripts
-    starship
+    unstable.starship
     tio
     partition-manager
     unstable.nushell
