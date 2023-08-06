@@ -52,6 +52,8 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.timeout = 0;
+  boot.supportedFilesystems = [ "ntfs" ];
 
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
