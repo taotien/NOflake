@@ -5,5 +5,17 @@
     gdb
     lldb
     rustup
+    unstable.cargo-edit
+    bacon
+    cargo-feature
+    # cmake
+    # clang
+    # pkg-config
+    # libclang
   ];
+
+  # environment.variables = {
+  #   LIBCLANG_PATH = pkgs.lib.makeLibraryPath [ pkgs.libclang.lib ];
+  # };
+
 }

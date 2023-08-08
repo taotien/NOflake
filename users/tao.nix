@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   users.users.tao.packages = with pkgs; [
+    bottles
     darktable
     deluge
     discord
