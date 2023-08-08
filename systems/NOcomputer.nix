@@ -58,8 +58,7 @@
 
   services.udev.packages = [ pkgs.openrgb ];
   services.udev.extraRules = ''
-    SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic GDB Server", SYMLINK+="ttyBmpGdb"
-    SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic UART Port",  SYMLINK+="ttyBmpTarg"
+    KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a3c5", MODE="0666"
   '';
 
   boot.kernelPackages = pkgs.linuxPackages_latest;

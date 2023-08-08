@@ -11,6 +11,7 @@
     # cmake
     # clang
     # pkg-config
+    # udev
     # libclang
   ];
 
@@ -18,4 +19,8 @@
   #   LIBCLANG_PATH = pkgs.lib.makeLibraryPath [ pkgs.libclang.lib ];
   # };
 
+  services.udev.extraRules = ''
+    SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic GDB Server", SYMLINK+="ttyBmpGdb"
+    SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic UART Port",  SYMLINK+="ttyBmpTarg"
+  '';
 }
