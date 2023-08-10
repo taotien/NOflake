@@ -26,6 +26,11 @@
   powerManagement.powertop.enable = true;
   hardware.sensor.iio.enable = true;
 
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ pkgs.epkowa ];
+  };
+
   boot.initrd.availableKernelModules = [
     "nvme"
     "sd_mod"

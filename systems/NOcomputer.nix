@@ -56,11 +56,6 @@
   #   wantedBy = [ "default.target" ];
   # };
 
-  services.udev.packages = [ pkgs.openrgb ];
-  services.udev.extraRules = ''
-    KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a3c5", MODE="0666"
-  '';
-
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.kernelModules = [ "i2c-dev" "kvm-amd" ];
@@ -84,6 +79,11 @@
     script = "/run/current-system/sw/bin/nvidia-smi -pl=400";
     wantedBy = [ "multi-user.target" ];
   };
+
+  services.udev.packages = [ pkgs.openrgb ];
+  services.udev.extraRules = ''
+    KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a3c5", MODE="0666"
+  '';
 
   networking.hostName = "NOcomputer";
 }

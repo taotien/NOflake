@@ -45,6 +45,6 @@
 
   users.users.tao = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "dialout" ];
+    extraGroups = [ "wheel" "libvirtd" "dialout" "scanner" "lp" ];
   };
 }
