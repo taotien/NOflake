@@ -16,6 +16,7 @@
     libsForQt5.kdeconnect-kde
     # nix-prefetch-scripts
     unstable.starship
+    rustdesk
     tio
     partition-manager
     unstable.nushell
