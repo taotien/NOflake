@@ -68,7 +68,7 @@
   hardware.nvidia = {
     modesetting.enable = true;
     # package = config.boot.kernelPackages.nvidiaPackages.beta;
-    package = pkgs.unstable.linuxPackages_latest.nvidiaPackages.production;
+    # package = pkgs.unstable.linuxPackages_latest.nvidiaPackages.production;
   };
   # enable core and mem freq sliders for nvidia
   services.xserver.deviceSection = ''
