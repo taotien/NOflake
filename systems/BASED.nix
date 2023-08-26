@@ -22,6 +22,8 @@
     wezterm
     wget
     zstd
+    yt-dlp
+    ffmpeg
   ];
   programs.partition-manager.enable = true;
 
