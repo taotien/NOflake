@@ -11,7 +11,6 @@
     let
       system = "x86_64-linux";
       overlay-unstable = final: prev: {
-        # unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
         unstable = import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
@@ -43,6 +42,12 @@
           ./extras/uwuraid.nix
           ./extras/dev.nix
           ./extras/gaming.nix
+        ];
+        NObangers = nixosSystem [
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+          ./systems/BASED.nix
+          ./systems/NObangers.nix
+          ./extras/uwuraid.nix
         ];
       };
 

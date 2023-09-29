@@ -1,23 +1,37 @@
 { ... }: {
   services.rpcbind.enable = true;
-  systemd.mounts = let commonMountOptions = { type = "nfs"; mountConfig = { Options = "noatime"; }; }; in
+  systemd.mounts =
+    let
+      opts = {
+        type = "cifs";
+        mountConfig = { Options = "credentials=/etc/nixos/smb-secrets,noatime,uid=1000,gid=100"; };
+      };
+    in
     [
-      (commonMountOptions // { what = "100.86.160.104:/mnt/user/anime"; where = "/mnt/uwuraid/anime"; })
-      (commonMountOptions // { what = "100.86.160.104:/mnt/user/backup"; where = "/mnt/uwuraid/backup"; })
-      (commonMountOptions // { what = "100.86.160.104:/mnt/user/everything"; where = "/mnt/uwuraid/everything"; })
-      (commonMountOptions // { what = "100.86.160.104:/mnt/user/movies"; where = "/mnt/uwuraid/movies"; })
-      (commonMountOptions // { what = "100.86.160.104:/mnt/user/photos"; where = "/mnt/uwuraid/photos"; })
-      (commonMountOptions // { what = "100.86.160.104:/mnt/user/syncthing"; where = "/mnt/uwuraid/syncthing"; })
-      (commonMountOptions // { what = "100.86.160.104:/mnt/user/television"; where = "/mnt/uwuraid/television"; })
+      (opts // { what = "//100.86.160.104/anime"; where = "/mnt/uwuraid/anime"; })
+      (opts // { what = "//100.86.160.104/backup"; where = "/mnt/uwuraid/backup"; })
+      (opts // { what = "//100.86.160.104/everything"; where = "/mnt/uwuraid/everything"; })
+      (opts // { what = "//100.86.160.104/movies"; where = "/mnt/uwuraid/movies"; })
+      (opts // { what = "//100.86.160.104/music"; where = "/mnt/uwuraid/music"; })
+      (opts // { what = "//100.86.160.104/photos"; where = "/mnt/uwuraid/photos"; })
+      (opts // { what = "//100.86.160.104/syncthing"; where = "/mnt/uwuraid/syncthing"; })
+      (opts // { what = "//100.86.160.104/television"; where = "/mnt/uwuraid/television"; })
     ];
-  systemd.automounts = let commonAutoMountOptions = { wantedBy = [ "multi-user.target" ]; automountConfig = { TimeoutIdleSec = "60"; }; }; in
+  systemd.automounts =
+    let
+      opts = {
+        wantedBy = [ "multi-user.target" ];
+        automountConfig = { TimeoutIdleSec = "60"; };
+      };
+    in
     [
-      (commonAutoMountOptions // { where = "/mnt/uwuraid/anime"; })
-      (commonAutoMountOptions // { where = "/mnt/uwuraid/backup"; })
-      (commonAutoMountOptions // { where = "/mnt/uwuraid/everything"; })
-      (commonAutoMountOptions // { where = "/mnt/uwuraid/movies"; })
-      (commonAutoMountOptions // { where = "/mnt/uwuraid/photos"; })
-      (commonAutoMountOptions // { where = "/mnt/uwuraid/syncthing"; })
-      (commonAutoMountOptions // { where = "/mnt/uwuraid/television"; })
+      (opts // { where = "/mnt/uwuraid/anime"; })
+      (opts // { where = "/mnt/uwuraid/backup"; })
+      (opts // { where = "/mnt/uwuraid/everything"; })
+      (opts // { where = "/mnt/uwuraid/movies"; })
+      (opts // { where = "/mnt/uwuraid/music"; })
+      (opts // { where = "/mnt/uwuraid/photos"; })
+      (opts // { where = "/mnt/uwuraid/syncthing"; })
+      (opts // { where = "/mnt/uwuraid/television"; })
     ];
 }

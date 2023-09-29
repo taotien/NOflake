@@ -1,6 +1,8 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     intel-gpu-tools
+    # libsForQt5.skanpage
+    powertop
   ];
 
   fileSystems."/home" = {
@@ -26,10 +28,10 @@
   powerManagement.powertop.enable = true;
   hardware.sensor.iio.enable = true;
 
-  hardware.sane = {
-    enable = true;
-    extraBackends = [ pkgs.epkowa ];
-  };
+  # hardware.sane = {
+  #   enable = true;
+  #   extraBackends = [ pkgs.epkowa ];
+  # };
 
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -41,10 +43,28 @@
   boot.kernelParams = [
     "mem_sleep_default=deep"
     "nvme.noacpi=1"
+    "i915.eanble_psr=1"
   ];
   boot.kernelModules = [ "kvm-intel" ];
   powerManagement.cpuFreqGovernor = "powersave";
   systemd.sleep.extraConfig = "HibernateDelaySec=60m";
+
+  services.pipewire.wireplumber.enable = true;
+  environment.etc = {
+    "wireplumber/main.lua.d/51-fix-static.lua".text = ''
+      rule = {
+        matches = {
+          {
+            { "node.name", "equals", "alsa_output.pci-0000_00_1f.3.analog-stereo.3" },
+          },
+        },
+        apply_properties = {
+          [ "audio.format" ] = "S24LE" ,
+        },
+      }
+      table.insert(alsa_monitor.rules, rule)
+    '';
+  };
 
   networking.hostName = "NOlaptop";
 }

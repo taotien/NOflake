@@ -1,9 +1,11 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    lutris
-    mangohud
-    prismlauncher
+    unstable.lutris
+    unstable.mangohud
+    unstable.prismlauncher
     wine
+    unstable.heroic
+    # unstable.parsec-bin
   ];
 
   programs.steam.enable = true;

@@ -1,14 +1,17 @@
 { lib, pkgs, modulesPath, ... }: {
   environment.systemPackages = with pkgs; [
     # exfatprogs
+    # rustup
     appimage-run
     bat
     bottom
     cifs-utils
     du-dust
+    ffmpeg
     firefox
     git
     helix
+    mesa
     mpv
     nfs-utils
     nil
@@ -16,14 +19,17 @@
     onlyoffice-bin
     ouch
     ripgrep-all
-    # rustup
     skim
+    snapper
     tree
+    unstable.yazi
+    unstable.joshuto
+    unstable.oculante
     wezterm
     wget
-    zstd
     yt-dlp
-    ffmpeg
+    zathura
+    zstd
   ];
   programs.partition-manager.enable = true;
 
@@ -31,6 +37,7 @@
   services.openssh.enable = lib.mkDefault true;
   services.flatpak.enable = lib.mkDefault true;
   services.printing.enable = lib.mkDefault true;
+  services.btrfs.autoScrub.enable = true;
 
   environment.variables = {
     EDITOR = "hx";
@@ -57,7 +64,23 @@
   boot.loader.timeout = 0;
   boot.supportedFilesystems = [ "ntfs" ];
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    # dispatcherScripts = [{
+    #   source = pkgs.writeText "upHook" ''
+    #     logger "event $2"
+    #     if [ "$2" == "vpn-up" ]; then
+    #       iptables -A OUTPUT -o tun0 -j ACCEPT
+    #       iptables -A OUTPUT ! -o tun0 -j DROP
+    #     fi
+    #     if [ "$2" == "vpn-down" ]; then
+    #       iptables -D OUTPUT -o tun0 -j ACCEPT
+    #       iptables -D OUTPUT ! -o tun0 -j DROP
+    #     fi
+    #   '';
+    #   type = "basic";
+    # }];
+  };
   networking.firewall.enable = false;
 
   services.xserver.enable = true;
@@ -68,6 +91,7 @@
   environment.plasma5.excludePackages = with pkgs.libsForQt5; [
     elisa
     konsole
+    gwenview
   ];
 
   services.pipewire = {
@@ -89,6 +113,7 @@
 
   time.timeZone = "US/Pacific";
   i18n.defaultLocale = "en_US.UTF-8";
+  i18n.supportedLocales = [ "all" ];
 
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 

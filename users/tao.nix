@@ -1,30 +1,48 @@
 { pkgs, ... }:
 {
   users.users.tao.packages = with pkgs; [
+    # expressvpn
+    # fractal
+    # gnumake
+    # libftdi
+    # libusb
+    # nix-prefetch-scripts
+    # pkg-config
+    aspell
+    aspellDicts.en
+    # enchant
+    # nuspell
+    # hunspellDicts.en-us-large
+    rustdesk
     bottles
+    cider
     darktable
     deluge
     discord
-    # expressvpn
-    # fractal
     gh
-    # gnumake
-    # pkg-config
-    # libftdi
-    # libusb
     keepassxc
+    libsForQt5.kcharselect
     libsForQt5.kdeconnect-kde
-    # nix-prefetch-scripts
-    unstable.starship
-    rustdesk
-    tio
+    mdbook
     partition-manager
+    slack
+    tectonic
+    texlab
+    tio
+    unstable.typst
+    ocs-url
+    typst-lsp
     unstable.nushell
     unstable.prusa-slicer
+    unstable.starship
     unstable.wezterm
     virt-manager
+    zoom-us
     zoxide
+    obs-studio
   ];
+  # programs.nushell.enable = true;
+  environment.shells = with pkgs; [ unstable.nushell ];
 
   # services.expressvpn.enable = true;
 
@@ -47,5 +65,11 @@
   users.users.tao = {
     isNormalUser = true;
     extraGroups = [ "wheel" "libvirtd" "dialout" "scanner" "lp" ];
+    shell = pkgs.unstable.nushell;
   };
+
+  # i18n.inputMethod = {
+  #   enabled = "fcitx5";
+  #   fcitx5.addons = with pkgs; [ fcitx5-mozc fcitx5-chewing fcitx5-chinese-addons fcitx5-rime ];
+  # };
 }
