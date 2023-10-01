@@ -11,7 +11,7 @@
   services.btrfs.autoScrub.enable = false;
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" ];
-  boot.loader.grub.enable = true;
+  boot.loader.grub.enable = false;
   boot.loader.generic-extlinux-compatible.enable = true;
   console.enable = false;
   powerManagement.cpuFreqGovernor = "ondemand";
@@ -19,8 +19,8 @@
   hardware = {
     raspberry-pi."4" = {
       apply-overlays-dtmerge.enable = true;
-      # audio.enable = true;
-      # fkms-3d.enable = true;
+      audio.enable = true;
+      fkms-3d.enable = true;
     };
     deviceTree = {
       enable = true;

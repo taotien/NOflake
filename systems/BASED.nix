@@ -16,7 +16,7 @@
     nfs-utils
     nil
     nixpkgs-fmt
-    onlyoffice-bin
+    # onlyoffice-bin
     ouch
     ripgrep-all
     skim

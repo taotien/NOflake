@@ -13,7 +13,7 @@
     # enchant
     # nuspell
     # hunspellDicts.en-us-large
-    rustdesk
+    # rustdesk
     bottles
     cider
     darktable

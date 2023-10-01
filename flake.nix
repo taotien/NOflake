@@ -9,10 +9,17 @@
 
   outputs = { nixpkgs, nixos-hardware, nixpkgs-unstable, ... }:
     let
-      system = "x86_64-linux";
+      system-x86 = "x86_64-linux";
       overlay-unstable = final: prev: {
         unstable = import nixpkgs-unstable {
-          inherit system;
+          inherit system-x86;
+          config.allowUnfree = true;
+        };
+      };
+      system-arm64 = "aarch64-linux";
+      overlay-unstable-arm = final: prev: {
+        unstable = import nixpkgs-unstable {
+          inherit system-arm64;
           config.allowUnfree = true;
         };
       };
@@ -44,7 +51,7 @@
           ./extras/gaming.nix
         ];
         NObangers = nixosSystem [
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable-arm ]; })
           nixos-hw.raspberry-pi-4
           ./systems/BASED.nix
           ./systems/NObangers.nix
