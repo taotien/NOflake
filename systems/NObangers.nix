@@ -35,17 +35,17 @@
     kernelPackages = pkgs.linuxPackages_rpi4;
   };
 
-  powerManagement.cpuFreqGovernor = "ondemand";
+  # powerManagement.cpuFreqGovernor = "ondemand";
 
   hardware = {
     raspberry-pi."4" = {
       apply-overlays-dtmerge.enable = true;
-      audio.enable = true;
+      # audio.enable = true;
       fkms-3d.enable = true;
     };
     deviceTree = {
       enable = true;
-      filter = "*rpi-4-*.dtb";
+      # filter = "bcm2711-rpi-4-*.dtb";
     };
   };
 
