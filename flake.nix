@@ -19,6 +19,7 @@
         unstable = import nixpkgs-unstable {
           system = "aarch64-linux";
           config.allowUnfree = true;
+          config.allowUnsupportedSystem = true;
         };
       };
       nixosSystem = (systemModules: nixpkgs.lib.nixosSystem { modules = systemModules; });

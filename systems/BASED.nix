@@ -118,5 +118,5 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  system.stateVersion = "23.05";
+  system.stateVersion = lib.mkDefault "23.05";
 }

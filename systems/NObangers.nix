@@ -31,5 +31,6 @@
   };
 
   nixpkgs.hostPlatform = "aarch64-linux";
+  system.stateVersion = "23.11";
   networking.hostName = "NObangers";
 }
