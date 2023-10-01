@@ -42,6 +42,7 @@
     zathura
     zoom-us
     zoxide
+    onefetch
   ];
   environment.shells = with pkgs; [ unstable.nushell ];
 

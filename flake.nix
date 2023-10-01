@@ -5,9 +5,11 @@
     nixpkgs.url = "nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nixos-hardware.url = "nixos-hardware";
+    nixos-raspberrypi.url = "github:ramblurr/nixos-raspberrypi";
+    # nixos-raspberrypi.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, nixos-hardware, nixpkgs-unstable, ... }:
+  outputs = { nixpkgs, nixos-hardware, nixpkgs-unstable, nixos-raspberrypi, ... }:
     let
       overlay-unstable = final: prev: {
         unstable = import nixpkgs-unstable {
@@ -24,6 +26,7 @@
       };
       nixosSystem = (systemModules: nixpkgs.lib.nixosSystem { modules = systemModules; });
       nixos-hw = nixos-hardware.nixosModules;
+      nixos-rpi = nixos-raspberrypi.nixosModules;
     in
     {
       nixosConfigurations = {
@@ -52,6 +55,7 @@
         NObangers = nixosSystem [
           # ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable-arm ]; })
           nixos-hw.raspberry-pi-4
+          nixos-rpi.hardware
           ./systems/BASED.nix
           ./systems/NObangers.nix
           ./users/pi.nix
