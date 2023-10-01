@@ -1,53 +1,12 @@
 { pkgs, ... }:
 {
   users.users.tao.packages = with pkgs; [
-    # expressvpn
-    # fractal
-    # gnumake
-    # libftdi
-    # libusb
-    # nix-prefetch-scripts
-    # pkg-config
-    # aspell
-    # aspellDicts.en
-    # enchant
-    # nuspell
-    # hunspellDicts.en-us-large
-    # rustdesk
-    # bottles
-    # cider
-    # darktable
-    # deluge
-    # discord
-    # gh
-    # keepassxc
-    # libsForQt5.kcharselect
     libsForQt5.kdeconnect-kde
-    # mdbook
-    # partition-manager
-    # slack
-    # tectonic
-    # texlab
-    # tio
-    # unstable.typst
-    # ocs-url
-    # typst-lsp
-    # unstable.nushell
-    # unstable.prusa-slicer
-    # unstable.starship
-    # unstable.wezterm
-    # virt-manager
-    # zoom-us
-    # zoxide
-    # obs-studio
   ];
   # programs.nushell.enable = true;
   # environment.shells = with pkgs; [ unstable.nushell ];
 
   # services.expressvpn.enable = true;
-
-  # virtualisation.libvirtd.enable = true;
-  # programs.dconf.enable = true;
 
   # services.syncthing = {
   #   enable = true;
@@ -64,7 +23,7 @@
 
   users.users.tao = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "dialout" "scanner" "lp" ];
+    extraGroups = [ "wheel" "dialout" ];
     # shell = pkgs.unstable.nushell;
   };
 

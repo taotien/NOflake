@@ -1,6 +1,12 @@
 { pkgs, ... }:
 {
   users.users.tao.packages = with pkgs; [
+    appimage-run
+    nixpkgs-fmt
+    onlyoffice-bin
+    ripgrep-all
+    snapper
+    unstable.oculante
     # expressvpn
     # fractal
     # gnumake
@@ -13,12 +19,12 @@
     # enchant
     # nuspell
     # hunspellDicts.en-us-large
-    # rustdesk
-    # bottles
-    # cider
+    rustdesk
+    bottles
+    cider
     darktable
     deluge
-    # discord
+    discord
     gh
     keepassxc
     libsForQt5.kcharselect
@@ -29,20 +35,20 @@
     tectonic
     texlab
     tio
-    # unstable.typst
+    unstable.typst
     ocs-url
     typst-lsp
-    # unstable.nushell
-    # unstable.prusa-slicer
-    # unstable.starship
-    # unstable.wezterm
+    unstable.nushell
+    unstable.prusa-slicer
+    unstable.starship
+    unstable.wezterm
     virt-manager
-    # zoom-us
+    zoom-us
     zoxide
     obs-studio
   ];
-  # programs.nushell.enable = true;
-  # environment.shells = with pkgs; [ unstable.nushell ];
+  programs.nushell.enable = true;
+  environment.shells = with pkgs; [ unstable.nushell ];
 
   # services.expressvpn.enable = true;
 
@@ -65,7 +71,7 @@
   users.users.tao = {
     isNormalUser = true;
     extraGroups = [ "wheel" "libvirtd" "dialout" "scanner" "lp" ];
-    # shell = pkgs.unstable.nushell;
+    shell = pkgs.unstable.nushell;
   };
 
   # i18n.inputMethod = {

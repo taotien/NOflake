@@ -33,6 +33,8 @@
   #   extraBackends = [ pkgs.epkowa ];
   # };
 
+  services.xserver.displayManager.defaultSession = "plasmawayland";
+
   boot.initrd.availableKernelModules = [
     "nvme"
     "sd_mod"
