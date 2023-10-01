@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   users.users.tao.packages = with pkgs; [
     appimage-run
     nixpkgs-fmt
@@ -47,7 +46,6 @@
     zoxide
     obs-studio
   ];
-  programs.nushell.enable = true;
   environment.shells = with pkgs; [ unstable.nushell ];
 
   # services.expressvpn.enable = true;
