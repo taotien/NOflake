@@ -1,34 +1,22 @@
 { lib, pkgs, modulesPath, ... }: {
   environment.systemPackages = with pkgs; [
-    # exfatprogs
-    # rustup
-    # appimage-run
     bat
     bottom
-    cifs-utils
     du-dust
+    exfatprogs
     ffmpeg
     firefox
     git
     helix
     mesa
     mpv
-    # nfs-utils
-    nil
-    # nixpkgs-fmt
-    # onlyoffice-bin
     ouch
-    # ripgrep-all
+    ripgrep
     skim
-    # snapper
     tree
-    # unstable.yazi
-    # unstable.joshuto
-    # xunstable.oculante
     wezterm
     wget
     yt-dlp
-    zathura
     zstd
   ];
   programs.partition-manager.enable = lib.mkDefault true;
@@ -49,13 +37,6 @@
     VISUAL = "hx";
   };
 
-  # xdg.portal = {
-  #   enable = true;
-  #   extraPortals = with pkgs; [
-  #     xdg-desktop-portal-wlr
-  #   ];
-  # };
-
   hardware.enableAllFirmware = true;
   hardware.bluetooth.enable = lib.mkDefault true;
 
@@ -66,20 +47,6 @@
 
   networking.networkmanager = {
     enable = true;
-    # dispatcherScripts = [{
-    #   source = pkgs.writeText "upHook" ''
-    #     logger "event $2"
-    #     if [ "$2" == "vpn-up" ]; then
-    #       iptables -A OUTPUT -o tun0 -j ACCEPT
-    #       iptables -A OUTPUT ! -o tun0 -j DROP
-    #     fi
-    #     if [ "$2" == "vpn-down" ]; then
-    #       iptables -D OUTPUT -o tun0 -j ACCEPT
-    #       iptables -D OUTPUT ! -o tun0 -j DROP
-    #     fi
-    #   '';
-    #   type = "basic";
-    # }];
   };
   networking.firewall.enable = false;
 

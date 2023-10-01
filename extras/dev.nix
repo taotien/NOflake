@@ -12,6 +12,8 @@
     # pkgconfig
     # rustup
     # udev
+    nixpkgs-fmt
+    nil
     expat
     fontconfig
     freetype

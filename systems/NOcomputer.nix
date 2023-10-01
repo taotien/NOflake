@@ -4,13 +4,13 @@
     autoLogin.user = "tao";
   };
 
-
   environment.systemPackages = with pkgs;
     [
       # mesa
       openrgb
       gwe
       liquidctl
+      snapper
       # egl-wayland
       # nvidia-vaapi-driver
     ];
@@ -20,7 +20,6 @@
     # wayland chromium workaround
     NIXOS_OZONE_WL = "1";
   };
-
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
@@ -37,7 +36,6 @@
     fsType = "btrfs";
     options = [ "subvol=games" "nosuid" "nodev" "noatime" "compress-force=zstd:3" "users" "rw" "exec" ];
   };
-
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/2B28-151D";
     fsType = "vfat";
@@ -59,7 +57,6 @@
   };
   swapDevices = [{ device = "/dev/disk/by-uuid/ca0ed3d7-8758-4ac7-b016-8b4cd9608ded"; }];
 
-
   services.snapper.configs =
     {
       home = {
@@ -73,7 +70,6 @@
     };
   services.snapper.snapshotInterval = "*:0/5";
 
-
   # systemd.user.services.fans = {
   #   description = "NZXT fans to 69% using liquidctl";
   #   script = ''
@@ -82,12 +78,10 @@
   #   wantedBy = [ "default.target" ];
   # };
 
-
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.kernelModules = [ "i2c-dev" "kvm-amd" ];
-
 
   hardware.opengl = {
     enable = true;
@@ -110,12 +104,10 @@
     wantedBy = [ "multi-user.target" ];
   };
 
-
   services.udev.packages = [ pkgs.openrgb ];
   services.udev.extraRules = ''
     KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a3c5", MODE="0666"
   '';
-
 
   time.hardwareClockInLocalTime = true;
   networking.hostName = "NOcomputer";

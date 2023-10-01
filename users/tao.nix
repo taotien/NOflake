@@ -1,24 +1,18 @@
 { pkgs, ... }: {
   users.users.tao.packages = with pkgs; [
-    appimage-run
-    nixpkgs-fmt
-    onlyoffice-bin
-    ripgrep-all
-    snapper
-    unstable.oculante
+    # enchant
     # expressvpn
     # fractal
-    # gnumake
     # libftdi
     # libusb
-    # nix-prefetch-scripts
+    # mdbook
+    # nuspell
+    # partition-manager
     # pkg-config
+    # slack
+    appimage-run
     aspell
     aspellDicts.en
-    # enchant
-    # nuspell
-    # hunspellDicts.en-us-large
-    rustdesk
     bottles
     cider
     darktable
@@ -28,23 +22,26 @@
     keepassxc
     libsForQt5.kcharselect
     libsForQt5.kdeconnect-kde
-    # mdbook
-    # partition-manager
-    # slack
+    obs-studio
+    ocs-url
+    onlyoffice-bin
+    ripgrep-all
+    rustdesk
+    snapper
     tectonic
     texlab
     tio
-    unstable.typst
-    ocs-url
     typst-lsp
     unstable.nushell
+    unstable.oculante
     unstable.prusa-slicer
     unstable.starship
+    unstable.typst
     unstable.wezterm
     virt-manager
+    zathura
     zoom-us
     zoxide
-    obs-studio
   ];
   environment.shells = with pkgs; [ unstable.nushell ];
 
