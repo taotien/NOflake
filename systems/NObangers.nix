@@ -8,6 +8,12 @@
     device = "/dev/disk/by-uuid/44444444-4444-4444-8888-888888888888";
     fsType = "ext4";
   };
+  programs.partition-manager.enable = false;
+
+  services.tailscale.enable = true;
+  services.openssh.enable = true;
+  services.flatpak.enable = false;
+  services.printing.enable = false;
   services.btrfs.autoScrub.enable = false;
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" ];
