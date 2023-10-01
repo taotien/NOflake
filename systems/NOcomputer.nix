@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: {
+{ pkgs, ... }: {
   services.xserver.displayManager = {
     autoLogin.enable = true;
     autoLogin.user = "tao";

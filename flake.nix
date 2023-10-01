@@ -9,10 +9,10 @@
 
   outputs = { nixpkgs, nixos-hardware, nixpkgs-unstable, ... }:
     let
-      system-x86 = "x86_64-linux";
+      system = "x86_64-linux";
       overlay-unstable = final: prev: {
         unstable = import nixpkgs-unstable {
-          inherit system-x86;
+          inherit system;
           config.allowUnfree = true;
         };
       };
