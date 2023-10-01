@@ -31,13 +31,13 @@
     zathura
     zstd
   ];
-  programs.partition-manager.enable = true;
+  programs.partition-manager.enable = lib.mkDefault true;
 
-  services.tailscale.enable = lib.mkDefault true;
-  services.openssh.enable = lib.mkDefault true;
+  services.tailscale.enable = true;
+  services.openssh.enable = true;
   services.flatpak.enable = lib.mkDefault true;
   services.printing.enable = lib.mkDefault true;
-  services.btrfs.autoScrub.enable = true;
+  services.btrfs.autoScrub.enable = lib.mkDefault true;
 
   environment.variables = {
     EDITOR = "hx";
@@ -59,8 +59,8 @@
   hardware.enableAllFirmware = true;
   hardware.bluetooth.enable = lib.mkDefault true;
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = lib.mkDefault true;
+  boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
   boot.loader.timeout = 0;
   boot.supportedFilesystems = [ "ntfs" ];
 

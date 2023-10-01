@@ -1,0 +1,32 @@
+{ pkgs, ... }: {
+  environment.systemPackages = with pkgs; [
+    libraspberrypi
+    raspberrypi-eeprom
+  ];
+
+  filesystems."/" = {
+    device = "/dev/disk/by-uuid/44444444-4444-4444-8888-888888888888";
+    fsType = "ext4";
+  };
+
+  boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" ];
+  boot.loader.grub.enable = true;
+  boot.loader.generic-extlinux-compatible.enable = true;
+  console.enable = false;
+  powerManagement.cpuFreqGovernor = "ondemand";
+
+  hardware = {
+    raspberry-pi."4" = {
+      apply-overlays-dtmerge.enable = true;
+      audio.enable = true;
+      fkms-3d.enable = true;
+    };
+    deviceTree = {
+      enable = true;
+      filter = "*rpi-4-*.dtb";
+    };
+  };
+
+  nixpkgs.hostPlatform = "aarch64-linux";
+  networking.hostName = "NObangers";
+}
