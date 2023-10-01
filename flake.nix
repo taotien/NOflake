@@ -45,12 +45,12 @@
         ];
         NObangers = nixosSystem [
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+          nixos-hw.raspberry-pi-4
           ./systems/BASED.nix
           ./systems/NObangers.nix
+          ./users/tao.nix
           ./extras/uwuraid.nix
         ];
       };
-
-
     };
 }
