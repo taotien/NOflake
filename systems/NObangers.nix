@@ -12,6 +12,8 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" ];
   boot.loader.grub.enable = false;
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.efi.canTouchEfiVariables = false;
   boot.loader.generic-extlinux-compatible.enable = true;
   console.enable = false;
   powerManagement.cpuFreqGovernor = "ondemand";
