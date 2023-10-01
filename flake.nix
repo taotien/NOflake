@@ -19,7 +19,7 @@
         unstable = import nixpkgs-unstable {
           system = "aarch64-linux";
           config.allowUnfree = true;
-          config.allowUnsupportedSystem = true;
+          # config.allowUnsupportedSystem = true;
         };
       };
       nixosSystem = (systemModules: nixpkgs.lib.nixosSystem { modules = systemModules; });
@@ -50,11 +50,11 @@
           ./extras/gaming.nix
         ];
         NObangers = nixosSystem [
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable-arm ]; })
+          # ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable-arm ]; })
           nixos-hw.raspberry-pi-4
           ./systems/BASED.nix
           ./systems/NObangers.nix
-          ./users/tao.nix
+          ./users/pi.nix
           ./extras/uwuraid.nix
         ];
       };

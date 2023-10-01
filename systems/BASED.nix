@@ -2,7 +2,7 @@
   environment.systemPackages = with pkgs; [
     # exfatprogs
     # rustup
-    appimage-run
+    # appimage-run
     bat
     bottom
     cifs-utils
@@ -13,18 +13,18 @@
     helix
     mesa
     mpv
-    nfs-utils
+    # nfs-utils
     nil
-    nixpkgs-fmt
+    # nixpkgs-fmt
     # onlyoffice-bin
     ouch
-    ripgrep-all
+    # ripgrep-all
     skim
-    snapper
+    # snapper
     tree
-    unstable.yazi
-    unstable.joshuto
-    unstable.oculante
+    # unstable.yazi
+    # unstable.joshuto
+    # xunstable.oculante
     wezterm
     wget
     yt-dlp
