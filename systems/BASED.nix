@@ -25,6 +25,8 @@
   services.openssh.enable = true;
   services.flatpak.enable = lib.mkDefault true;
   services.printing.enable = lib.mkDefault true;
+
+  services.smartd.enable = true;
   services.btrfs.autoScrub.enable = lib.mkDefault true;
 
   environment.variables = {

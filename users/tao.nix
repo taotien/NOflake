@@ -14,14 +14,17 @@
     aspell
     aspellDicts.en
     bottles
-    cider
+    # cider
     darktable
     deluge
     discord
     gh
+    jellyfin-media-player
+    jellyfin-mpv-shim
     keepassxc
     libsForQt5.kcharselect
     libsForQt5.kdeconnect-kde
+    mosh
     obs-studio
     ocs-url
     onlyoffice-bin
@@ -38,11 +41,15 @@
     unstable.starship
     unstable.typst
     unstable.wezterm
+    unstable.joshuto
+    unstable.yazi
     virt-manager
     zathura
     zoom-us
     zoxide
     onefetch
+    thunderbird
+    birdtray
   ];
   environment.shells = with pkgs; [ unstable.nushell ];
 
