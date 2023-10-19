@@ -3,7 +3,7 @@
     freecad
     # alsa-lib
     # alsa-oss
-    # clang
+    clang
     # cmake
     # libclang
     # libopus

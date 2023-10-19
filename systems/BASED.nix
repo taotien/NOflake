@@ -2,6 +2,7 @@
   environment.systemPackages = with pkgs; [
     bat
     bottom
+    cifs-utils
     du-dust
     exfatprogs
     ffmpeg
@@ -81,8 +82,11 @@
   '';
 
   time.timeZone = "US/Pacific";
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.utf8";
   i18n.supportedLocales = [ "all" ];
+  # i18n.extraLocaleSettings = {
+  #   LC_MESSAGES = "en_US.UTF-8";
+  # };
 
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
