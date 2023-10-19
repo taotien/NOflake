@@ -50,6 +50,7 @@
     onefetch
     thunderbird
     birdtray
+    syncthingtray
   ];
   environment.shells = with pkgs; [ unstable.nushell ];
 
