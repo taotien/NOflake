@@ -1,30 +1,12 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+    gnumake
+    unstable.pijul
     freecad
-    # alsa-lib
-    # alsa-oss
     clang
-    # cmake
-    # libclang
-    # libopus
-    # opencv
-    # openssl
-    # pkg-config
-    # pkgconfig
     rustup
-    # udev
     nixpkgs-fmt
     nil
-    # expat
-    # fontconfig
-    # freetype
-    # freetype.dev
-    # libGL
-    # pkgconfig
-    # xorg.libX11
-    # xorg.libXcursor
-    # xorg.libXi
-    # xorg.libXrandr
     bacon
     unstable.cargo
     unstable.cargo-feature

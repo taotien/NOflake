@@ -6,11 +6,16 @@
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nixos-hardware.url = "nixos-hardware";
     nixos-raspberrypi.url = "github:ramblurr/nixos-raspberrypi";
-    # nixos-raspberrypi.inputs.nixpkgs.follows = "nixpkgs";
+    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
+    aagl.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, nixos-hardware, nixpkgs-unstable, nixos-raspberrypi, ... }:
+  outputs = { nixpkgs, nixos-hardware, nixpkgs-unstable, nixos-raspberrypi, aagl, ... }@attrs:
     let
+      nixos-system = (systemModules: nixpkgs.lib.nixosSystem {
+        modules = systemModules;
+        specialArgs = attrs;
+      });
       overlay-unstable = final: prev: {
         unstable = import nixpkgs-unstable {
           system = "x86_64-linux";
@@ -24,13 +29,12 @@
           # config.allowUnsupportedSystem = true;
         };
       };
-      nixosSystem = (systemModules: nixpkgs.lib.nixosSystem { modules = systemModules; });
       nixos-hw = nixos-hardware.nixosModules;
       nixos-rpi = nixos-raspberrypi.nixosModules;
     in
     {
       nixosConfigurations = {
-        NOcomputer = nixosSystem [
+        NOcomputer = nixos-system [
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           nixos-hw.common-cpu-amd
           nixos-hw.common-gpu-nvidia-nonprime
@@ -41,7 +45,7 @@
           ./extras/dev.nix
           ./extras/gaming.nix
         ];
-        NOlaptop = nixosSystem [
+        NOlaptop = nixos-system [
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           nixos-hw.common-cpu-intel
           # inputs.nixos-hardware.nixosModules.framework
@@ -52,7 +56,7 @@
           ./extras/dev.nix
           ./extras/gaming.nix
         ];
-        NObangers = nixosSystem [
+        NObangers = nixos-system [
           # ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable-arm ]; })
           nixos-hw.raspberry-pi-4
           nixos-rpi.hardware

@@ -24,7 +24,6 @@
     keepassxc
     libsForQt5.kcharselect
     libsForQt5.kdeconnect-kde
-    mosh
     obs-studio
     ocs-url
     onlyoffice-bin
@@ -51,7 +50,9 @@
     thunderbird
     birdtray
     syncthingtray
+    unstable.pandoc
   ];
+  programs.mosh.enable = true;
   environment.shells = with pkgs; [ unstable.nushell ];
 
   # services.expressvpn.enable = true;
@@ -74,7 +75,7 @@
 
   users.users.tao = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "dialout" "scanner" "lp" ];
+    extraGroups = [ "video" "wheel" "libvirtd" "dialout" "scanner" "lp" ];
     shell = pkgs.unstable.nushell;
   };
 

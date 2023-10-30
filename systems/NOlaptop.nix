@@ -35,6 +35,12 @@
 
   services.xserver.displayManager.defaultSession = "plasmawayland";
 
+  # SUBSYSTEM=="backlight", GROUP="video", MODE="0664"
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"
+    ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
+  '';
+
   boot.initrd.availableKernelModules = [
     "nvme"
     "sd_mod"

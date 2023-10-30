@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, aagl, ... }: {
+  imports = [ aagl.nixosModules.default ];
+
   environment.systemPackages = with pkgs; [
     unstable.lutris
     unstable.mangohud
@@ -11,6 +13,9 @@
   programs.steam.enable = true;
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
+
+  nix.settings = aagl.nixConfig;
+  programs.honkers-railway-launcher.enable = true;
 
   security.rtkit.enable = true;
   environment.etc =
@@ -28,5 +33,4 @@
         };
       };
     };
-
 }
