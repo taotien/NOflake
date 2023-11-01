@@ -15,7 +15,6 @@
       # nvidia-vaapi-driver
     ];
 
-
   environment.sessionVariables = {
     # wayland chromium workaround
     NIXOS_OZONE_WL = "1";

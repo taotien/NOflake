@@ -8,8 +8,11 @@
     nixos-raspberrypi.url = "github:ramblurr/nixos-raspberrypi";
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     aagl.inputs.nixpkgs.follows = "nixpkgs";
+    # prescurve.url = "path:/home/tao/Projects/prescurve";
+    # prescurve.inputs.nixpkgs.follows = "nixpkgs";
   };
 
+  # outputs = { nixpkgs, nixos-hardware, nixpkgs-unstable, nixos-raspberrypi, aagl, prescurve, ... }@attrs:
   outputs = { nixpkgs, nixos-hardware, nixpkgs-unstable, nixos-raspberrypi, aagl, ... }@attrs:
     let
       nixos-system = (systemModules: nixpkgs.lib.nixosSystem {

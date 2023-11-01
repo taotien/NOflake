@@ -26,9 +26,10 @@
     vulkan-loader
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-12.2.3"
-  ];
+  # nixpkgs.config.permittedInsecurePackages = [
+  #   # "electron-12.2.3"
+  #   "electron-24.8.6"
+  # ];
 
   services.udev.extraRules = ''
     SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic GDB Server", SYMLINK+="ttyBmpGdb"

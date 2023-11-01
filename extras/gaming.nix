@@ -10,6 +10,11 @@
     # unstable.parsec-bin
   ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-24.8.6"
+    # "electron-12.2.3"
+  ];
+
   programs.steam.enable = true;
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;

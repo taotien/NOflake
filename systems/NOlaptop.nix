@@ -1,5 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, prescurve, ... }: {
   environment.systemPackages = with pkgs; [
+    prescurve
     intel-gpu-tools
     # libsForQt5.skanpage
     powertop
@@ -34,6 +35,14 @@
   # };
 
   services.xserver.displayManager.defaultSession = "plasmawayland";
+
+  # systemd.user.services.backlight = {
+  #   # description = "";
+  #   ExecStart = "${pkgs.prescurve}/bin/prescurve_backlight";
+  #   Restart = "on-failure";
+  #   wantedBy = [ "default.target" ];
+  # };
+
 
   # SUBSYSTEM=="backlight", GROUP="video", MODE="0664"
   services.udev.extraRules = ''
