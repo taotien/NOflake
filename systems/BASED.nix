@@ -1,5 +1,6 @@
 { lib, pkgs, modulesPath, ... }: {
   environment.systemPackages = with pkgs; [
+    localsend
     bat
     bottom
     cifs-utils
@@ -33,11 +34,13 @@
   environment.variables = {
     EDITOR = "hx";
     VISUAL = "hx";
+    SKIM_DEFAULT_COMMAND = "rg --files";
   };
 
   environment.sessionVariables = {
     EDITOR = "hx";
     VISUAL = "hx";
+    SKIM_DEFAULT_COMMAND = "rg --files";
   };
 
   hardware.enableAllFirmware = true;
@@ -45,7 +48,7 @@
 
   boot.loader.systemd-boot.enable = lib.mkDefault true;
   boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
-  boot.loader.timeout = 0;
+  boot.loader.timeout = 1;
   boot.supportedFilesystems = [ "ntfs" ];
 
   networking.networkmanager = {
