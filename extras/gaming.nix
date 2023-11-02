@@ -2,11 +2,11 @@
   imports = [ aagl.nixosModules.default ];
 
   environment.systemPackages = with pkgs; [
+    unstable.heroic
     unstable.lutris
     unstable.mangohud
     unstable.prismlauncher
     wine
-    unstable.heroic
     # unstable.parsec-bin
   ];
 

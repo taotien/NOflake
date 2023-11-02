@@ -1,8 +1,8 @@
-{ pkgs, prescurve, ... }: {
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    prescurve
-    intel-gpu-tools
     # libsForQt5.skanpage
+    # prescurve
+    intel-gpu-tools
     powertop
   ];
 

@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   users.users.tao.packages = with pkgs; [
+    # cider
     # enchant
     # expressvpn
     # fractal
@@ -13,8 +14,8 @@
     appimage-run
     aspell
     aspellDicts.en
+    birdtray
     bottles
-    # cider
     darktable
     deluge
     discord
@@ -26,31 +27,30 @@
     libsForQt5.kdeconnect-kde
     obs-studio
     ocs-url
+    onefetch
     onlyoffice-bin
     ripgrep-all
     rustdesk
     snapper
+    syncthingtray
     tectonic
     texlab
+    thunderbird
     tio
     typst-lsp
+    unstable.joshuto
     unstable.nushell
     unstable.oculante
+    unstable.pandoc
     unstable.prusa-slicer
     unstable.starship
     unstable.typst
     unstable.wezterm
-    unstable.joshuto
     unstable.yazi
     virt-manager
     zathura
     zoom-us
     zoxide
-    onefetch
-    thunderbird
-    birdtray
-    syncthingtray
-    unstable.pandoc
   ];
   programs.mosh.enable = true;
   environment.shells = with pkgs; [ unstable.nushell ];

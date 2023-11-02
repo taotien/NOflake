@@ -6,13 +6,13 @@
 
   environment.systemPackages = with pkgs;
     [
+      # egl-wayland
       # mesa
-      openrgb
+      # nvidia-vaapi-driver
       gwe
       liquidctl
+      openrgb
       snapper
-      # egl-wayland
-      # nvidia-vaapi-driver
     ];
 
   environment.sessionVariables = {

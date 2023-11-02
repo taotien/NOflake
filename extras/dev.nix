@@ -1,27 +1,27 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    gnumake
-    unstable.pijul
-    freecad
-    clang
-    rustup
-    nixpkgs-fmt
-    nil
     bacon
-    unstable.cargo
-    unstable.cargo-feature
-    unstable.cargo-rr
+    clang
     clang-tools
-    unstable.clippy
-    unstable.elf2uf2-rs
     etcher
+    freecad
     gcc
     gdb
+    gnumake
     lldb
-    unstable.rust-analyzer
-    unstable.rustfmt
+    nil
+    nixpkgs-fmt
+    rustup
+    unstable.cargo
     unstable.cargo-edit
+    unstable.cargo-feature
+    unstable.cargo-rr
+    unstable.clippy
+    unstable.elf2uf2-rs
+    unstable.pijul
+    unstable.rust-analyzer
     unstable.rustc
+    unstable.rustfmt
     unstable.sccache
     vulkan-loader
   ];

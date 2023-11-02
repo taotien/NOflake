@@ -1,6 +1,5 @@
 { lib, pkgs, modulesPath, ... }: {
   environment.systemPackages = with pkgs; [
-    localsend
     bat
     bottom
     cifs-utils
@@ -10,6 +9,7 @@
     firefox
     git
     helix
+    localsend
     mesa
     mpv
     ouch

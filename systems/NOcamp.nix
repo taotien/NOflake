@@ -1,15 +1,15 @@
 { pkgs, ... }: {
-	environment.systemPackages = with pkgs; [
-		qgroundcontrol
-		qgis-ltr
-		arduino
-		firefox
-	];
+  environment.systemPackages = with pkgs; [
+    arduino
+    firefox
+    qgis-ltr
+    qgroundcontrol
+  ];
 
-	networking.hostName = "NObcer";
-	users.users.ssrov = {
-		isNormalUser = true;
-		extraGroups = [ "dialout" ];
-		hashedPassword = "";
-	};
+  networking.hostName = "NObcer";
+  users.users.ssrov = {
+    isNormalUser = true;
+    extraGroups = [ "dialout" ];
+    hashedPassword = "";
+  };
 }
