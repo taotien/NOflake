@@ -6,7 +6,7 @@
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nixos-hardware.url = "nixos-hardware";
     nixos-raspberrypi.url = "github:ramblurr/nixos-raspberrypi";
-    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
+    aagl.url = "github:ezKEa/aagl-gtk-on-nix/0c9d93bdb311f7948f9fb0e98d869316d78eec12";
     aagl.inputs.nixpkgs.follows = "nixpkgs";
     # prescurve.url = "path:/home/tao/Projects/prescurve";
     # prescurve.inputs.nixpkgs.follows = "nixpkgs";
@@ -23,6 +23,9 @@
         unstable = import nixpkgs-unstable {
           system = "x86_64-linux";
           config.allowUnfree = true;
+          config.permittedInsecurePackages = [
+            "electron-24.8.6"
+          ];
         };
       };
       overlay-unstable-arm = final: prev: {
