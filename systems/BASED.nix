@@ -1,5 +1,6 @@
 { lib, pkgs, modulesPath, ... }: {
   environment.systemPackages = with pkgs; [
+    libthai
     bat
     bottom
     cifs-utils

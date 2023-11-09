@@ -1,5 +1,8 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+    # unstable.swagger-cli
+    # swagger-codegen
+    openapi-generator-cli
     bacon
     clang
     clang-tools
@@ -28,7 +31,6 @@
 
   nixpkgs.config.permittedInsecurePackages = [
     "electron-12.2.3"
-    # "electron-24.8.6"
   ];
 
   services.udev.extraRules = ''
