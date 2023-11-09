@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
   services.xserver.displayManager = {
     autoLogin.enable = true;
     autoLogin.user = "tao";
@@ -81,6 +81,7 @@
   boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.kernelModules = [ "i2c-dev" "kvm-amd" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
 
   hardware.opengl = {
     enable = true;

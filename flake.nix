@@ -6,10 +6,9 @@
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nixos-hardware.url = "nixos-hardware";
     nixos-raspberrypi.url = "github:ramblurr/nixos-raspberrypi";
-    # aagl.url = "github:ezKEa/aagl-gtk-on-nix/0c9d93bdb311f7948f9fb0e98d869316d78eec12";
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     aagl.inputs.nixpkgs.follows = "nixpkgs";
-    # prescurve.url = "path:/home/tao/Projects/prescurve";
+    # prescurve.url = "github:taotien/prescurve";
     # prescurve.inputs.nixpkgs.follows = "nixpkgs";
   };
 
