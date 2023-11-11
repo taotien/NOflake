@@ -2,6 +2,7 @@
   environment.systemPackages = with pkgs; [
     # unstable.swagger-cli
     # swagger-codegen
+    sshfs
     openapi-generator-cli
     bacon
     clang
