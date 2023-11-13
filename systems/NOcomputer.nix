@@ -92,7 +92,7 @@
     modesetting.enable = true;
     powerManagement.enable = true;
     # package = config.boot.kernelPackages.nvidiaPackages.beta;
-    package = pkgs.unstable.linuxPackages_latest.nvidiaPackages.vulkan_beta;
+    # package = pkgs.unstable.linuxPackages_latest.nvidiaPackages.vulkan_beta;
   };
   # enable core and mem freq sliders for nvidia
   services.xserver.deviceSection = ''

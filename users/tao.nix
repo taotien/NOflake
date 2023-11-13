@@ -1,5 +1,7 @@
 { pkgs, ... }: {
   users.users.tao.packages = with pkgs; [
+    qmk
+    qmk-udev-rules
     # cider
     # enchant
     # expressvpn
@@ -30,7 +32,6 @@
     onefetch
     onlyoffice-bin
     ripgrep-all
-    rustdesk
     snapper
     syncthingtray
     tectonic
@@ -54,6 +55,8 @@
   ];
   programs.mosh.enable = true;
   environment.shells = with pkgs; [ unstable.nushell ];
+
+  hardware.keyboard.qmk.enable = true;
 
   # services.expressvpn.enable = true;
 

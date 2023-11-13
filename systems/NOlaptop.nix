@@ -4,6 +4,7 @@
     # libsForQt5.skanpage
     intel-gpu-tools
     powertop
+    unstable.fw-ectool
   ];
 
   fileSystems."/home" = {

@@ -1,5 +1,8 @@
 { lib, pkgs, modulesPath, ... }: {
   environment.systemPackages = with pkgs; [
+    macchina
+    unstable.rustdesk
+    screen
     libthai
     bat
     bottom
