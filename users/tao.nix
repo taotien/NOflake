@@ -1,7 +1,9 @@
 { pkgs, ... }: {
   users.users.tao.packages = with pkgs; [
+    calibre
     qmk
     qmk-udev-rules
+    # vial
     # cider
     # enchant
     # expressvpn
@@ -55,6 +57,9 @@
   ];
   programs.mosh.enable = true;
   environment.shells = with pkgs; [ unstable.nushell ];
+  # services.udev.extraRules = ''
+  #   KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+  # '';
 
   hardware.keyboard.qmk.enable = true;
 
