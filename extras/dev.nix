@@ -1,5 +1,12 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+    python310Packages.python-lsp-server
+    sqlite
+    unstable.sqlx-cli
+    unstable.ruff
+    unstable.ruff-lsp
+    pypy3
+    python3
     # unstable.swagger-cli
     # swagger-codegen
     sshfs

@@ -12,7 +12,7 @@
     ffmpeg
     firefox
     git
-    helix
+    unstable.helix
     localsend
     mesa
     mpv
