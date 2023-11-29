@@ -77,8 +77,8 @@
   #   wantedBy = [ "default.target" ];
   # };
 
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_5;
+  # boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.kernelModules = [ "i2c-dev" "kvm-amd" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
@@ -91,8 +91,9 @@
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
-    # package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
     # package = pkgs.unstable.linuxPackages_latest.nvidiaPackages.vulkan_beta;
+    # package = pkgs.unstable.linuxPackages_latest.nvidiaPackages.latest;
   };
   # enable core and mem freq sliders for nvidia
   services.xserver.deviceSection = ''
