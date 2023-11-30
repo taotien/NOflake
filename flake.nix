@@ -25,6 +25,7 @@
           config.allowUnfree = true;
           config.permittedInsecurePackages = [
             "electron-24.8.6"
+            "qtwebkit-5.212.0-alpha4"
           ];
         };
       };

@@ -60,7 +60,7 @@
   };
   networking.firewall.enable = false;
 
-  services.xserver.enable = true;
+  services.xserver.enable = lib.mkDefault true;
   services.xserver.layout = "us";
   systemd.services.display-manager.restartIfChanged = false;
   services.xserver.displayManager.sddm.enable = lib.mkDefault true;
