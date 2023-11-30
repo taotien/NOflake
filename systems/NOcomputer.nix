@@ -81,7 +81,8 @@
   boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.kernelModules = [ "i2c-dev" "kvm-amd" ];
-  boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
+  # boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
+  # boot.blacklistedKernelModules = with config.boot.kernelPackages; [ k10temp ];
 
   hardware.opengl = {
     enable = true;
