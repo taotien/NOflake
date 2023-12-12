@@ -1,5 +1,6 @@
 { lib, pkgs, modulesPath, ... }: {
   environment.systemPackages = with pkgs; [
+    xorg.xkill
     macchina
     unstable.rustdesk
     screen
