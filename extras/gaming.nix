@@ -37,5 +37,10 @@
           default.clock.max-quantum = 32;
         };
       };
+      # "pipewire/pipewire.d/99-input-denoising.conf" = json.generate "99-input-denoising.conf" {
+      #   context.modules = [{
+      #     name = "libpipewire-module-filter-chain";
+      #   }];
+      # };
     };
 }

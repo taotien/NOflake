@@ -45,7 +45,7 @@
     typst-lsp
     unstable.joshuto
     unstable.nushell
-    unstable.oculante
+    # unstable.oculante
     unstable.pandoc
     unstable.prusa-slicer
     unstable.starship
@@ -59,9 +59,10 @@
   ];
   programs.mosh.enable = true;
   environment.shells = with pkgs; [ unstable.nushell ];
-  # services.udev.extraRules = ''
-  #   KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
-  # '';
+  services.udev.extraRules = ''
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+  '';
 
   hardware.keyboard.qmk.enable = true;
 
