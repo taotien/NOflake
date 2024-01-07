@@ -8,7 +8,7 @@
     [
       # egl-wayland
       # mesa
-      # nvidia-vaapi-driver
+      nvidia-vaapi-driver
       gwe
       liquidctl
       openrgb
@@ -18,6 +18,9 @@
   environment.sessionVariables = {
     # wayland chromium workaround
     NIXOS_OZONE_WL = "1";
+    # firefox nvidia-vaapi-driver
+    MOZ_DISABLE_RDD_SANDBOX = "1";
+    LIBVA_DRIVER_NAME = "nvidia";
   };
 
   fileSystems."/home" = {
@@ -81,8 +84,11 @@
   boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.kernelModules = [ "i2c-dev" "kvm-amd" ];
+  boot.kernelParams = [ "nvidia-drm.modeset=1" ];
   # boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
   # boot.blacklistedKernelModules = with config.boot.kernelPackages; [ k10temp ];
+  boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
+  boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = "1";
 
   hardware.opengl = {
     enable = true;
