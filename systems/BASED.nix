@@ -2,7 +2,7 @@
   environment.systemPackages = with pkgs; [
     xorg.xkill
     macchina
-    unstable.rustdesk
+    rustdesk
     screen
     libthai
     bat
@@ -16,7 +16,7 @@
     unstable.helix
     localsend
     mesa
-    mpv
+    unstable.mpv
     ouch
     ripgrep
     skim
@@ -29,6 +29,8 @@
   programs.partition-manager.enable = lib.mkDefault true;
 
   services.tailscale.enable = true;
+  services.tailscale.package = pkgs.unstable.tailscale;
+
   services.openssh.enable = true;
   services.flatpak.enable = lib.mkDefault true;
   services.printing.enable = lib.mkDefault true;

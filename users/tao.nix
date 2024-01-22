@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   users.users.tao.packages = with pkgs; [
     mendeley
-    unstable.wkhtmltopdf
+    # unstable.wkhtmltopdf
     calibre
     qmk
     qmk-udev-rules
@@ -27,7 +27,7 @@
     discord
     gh
     jellyfin-media-player
-    jellyfin-mpv-shim
+    unstable.jellyfin-mpv-shim
     keepassxc
     libsForQt5.kcharselect
     libsForQt5.kdeconnect-kde
@@ -55,7 +55,7 @@
     virt-manager
     zathura
     zoom-us
-    zoxide
+    unstable.zoxide
   ];
   programs.mosh.enable = true;
   environment.shells = with pkgs; [ unstable.nushell ];

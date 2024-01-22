@@ -1,26 +1,27 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   services.xserver.displayManager = {
     autoLogin.enable = true;
     autoLogin.user = "tao";
   };
 
-  environment.systemPackages = with pkgs;
-    [
-      # egl-wayland
-      # mesa
-      nvidia-vaapi-driver
-      gwe
-      liquidctl
-      openrgb
-      snapper
-    ];
+  environment.systemPackages = with pkgs;[
+    # egl-wayland
+    # mesa
+    # nvidia-vaapi-driver
+    gwe
+    liquidctl
+    openrgb
+    snapper
+  ];
+
+  services.tailscale.useRoutingFeatures = "both";
 
   environment.sessionVariables = {
     # wayland chromium workaround
     NIXOS_OZONE_WL = "1";
     # firefox nvidia-vaapi-driver
-    MOZ_DISABLE_RDD_SANDBOX = "1";
-    LIBVA_DRIVER_NAME = "nvidia";
+    # MOZ_DISABLE_RDD_SANDBOX = "1";
+    # LIBVA_DRIVER_NAME = "nvidia";
   };
 
   fileSystems."/home" = {
