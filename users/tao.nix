@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   users.users.tao.packages = with pkgs; [
+    unstable.typstfmt
     mendeley
     # unstable.wkhtmltopdf
     calibre

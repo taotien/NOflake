@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+    nodejs
     python310Packages.python-lsp-server
     sqlite
     unstable.sqlx-cli
