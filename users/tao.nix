@@ -79,15 +79,15 @@
     configDir = "/home/tao/.config/syncthing";
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
     noto-fonts-cjk
-    noto-fonts-emoji
+    noto-fonts-color-emoji
   ];
 
   users.users.tao = {
     isNormalUser = true;
-    extraGroups = [ "video" "wheel" "libvirtd" "dialout" "scanner" "lp" ];
+    extraGroups = [ "video" "wheel" "libvirtd" "dialout" "game" ];
     shell = pkgs.unstable.nushell;
   };
 
