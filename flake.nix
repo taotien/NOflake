@@ -11,10 +11,12 @@
     aagl.inputs.nixpkgs.follows = "nixpkgs";
     # prescurve.url = "github:taotien/prescurve";
     # prescurve.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # outputs = { nixpkgs, nixos-hardware, nixpkgs-unstable, nixos-raspberrypi, aagl, prescurve, ... }@attrs:
-  outputs = { nixpkgs, nixos-hardware, nixpkgs-unstable, nixos-raspberrypi, aagl, ... }@attrs:
+  outputs = { nixpkgs, nixos-hardware, nixpkgs-unstable, nixos-raspberrypi, aagl, home-manager, ... }@attrs:
     let
       nixos-system = (systemModules: nixpkgs.lib.nixosSystem {
         modules = systemModules;
@@ -46,6 +48,7 @@
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           nixos-hw.common-cpu-amd
           nixos-hw.common-gpu-nvidia-nonprime
+          home-manager.nixosModules.home-manager
           ./systems/BASED.nix
           ./systems/NOcomputer.nix
           ./users/tao.nix

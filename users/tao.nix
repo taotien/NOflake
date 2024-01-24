@@ -91,20 +91,20 @@
     shell = pkgs.unstable.nushell;
   };
 
-  security.sudo = {
-    extraRules = [{
-      commands = [
-        {
-          command = "${pkgs.systemd}/bin/bootctl set-oneshot auto-windows";
-          options = [ "NOPASSWD" ];
-        }
-      ];
-      groups = [ "wheel" ];
-    }];
-  };
+  security.sudo-rs.enable = true;
+  security.sudo-rs.extraRules = [{
+    commands = [
+      { command = "${pkgs.systemd}/bin/bootctl set-oneshot auto-windows"; options = [ "NOPASSWD" ]; }
+    ];
+    groups = [ "wheel" ];
+  }];
 
   # i18n.inputMethod = {
   #   enabled = "fcitx5";
   #   fcitx5.addons = with pkgs; [ fcitx5-mozc fcitx5-chewing fcitx5-chinese-addons fcitx5-rime ];
   # };
+
+  home-manager.users.tao = {
+    home.stateVersion = "23.11";
+  };
 }
