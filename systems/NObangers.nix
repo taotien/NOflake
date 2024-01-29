@@ -24,14 +24,14 @@
       "console=tty1"
       # "console=ttyAMA0,115200"
     ];
-    loader = {
-      raspberryPi = {
-        enable = true;
-        version = 4;
-      };
-      systemd-boot.enable = false;
-      generic-extlinux-compatible.enable = false;
-    };
+    # loader = {
+    #   raspberryPi = {
+    #     enable = true;
+    #     version = 4;
+    #   };
+    #   systemd-boot.enable = false;
+    #   generic-extlinux-compatible.enable = false;
+    # };
     kernelPackages = pkgs.linuxPackages_rpi4;
   };
 

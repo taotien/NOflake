@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+    temurin-bin-17
     nodejs
     python310Packages.python-lsp-server
     sqlite
@@ -39,6 +40,7 @@
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
+    # probably etcher
     "electron-19.1.9"
   ];
 

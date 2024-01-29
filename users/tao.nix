@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   users.users.tao.packages = with pkgs; [
-    unstable.typstfmt
+    leetcode-cli
+    unstable.typst-fmt
     mendeley
     # unstable.wkhtmltopdf
     calibre
@@ -58,13 +59,14 @@
     zoom-us
     unstable.zoxide
   ];
+  # programs.adb.enable = true;
   programs.mosh.enable = true;
   environment.shells = with pkgs; [ unstable.nushell ];
+
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
   '';
-
   hardware.keyboard.qmk.enable = true;
 
   # services.expressvpn.enable = true;
@@ -91,6 +93,7 @@
     shell = pkgs.unstable.nushell;
   };
 
+
   security.sudo-rs.enable = true;
   security.sudo-rs.extraRules = [{
     commands = [
@@ -104,7 +107,9 @@
   #   fcitx5.addons = with pkgs; [ fcitx5-mozc fcitx5-chewing fcitx5-chinese-addons fcitx5-rime ];
   # };
 
-  home-manager.users.tao = {
-    home.stateVersion = "23.11";
-  };
+  # imports = [ (import "${home-manager}/nixos") ];
+
+  # home-manager.users.tao = {
+  #   home.stateversion = "23.11";
+  # };
 }
