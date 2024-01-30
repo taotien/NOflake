@@ -118,7 +118,9 @@
   # }
   # home.username = "tao";
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
+  # home-manager.useGlobalPkgs = true;
+  # home-manager.useUserPackages = false;
+  home-manager.verbose = true;
+  home-manager.backupFileExtension = ".hm-bak";
   home-manager.users.tao = import ./tao/home.nix;
 }

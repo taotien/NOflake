@@ -1,10 +1,6 @@
 { lib, pkgs, modulesPath, ... }: {
   environment.systemPackages = with pkgs; [
-    xorg.xkill
-    macchina
-    rustdesk
-    screen
-    libthai
+    # xorg.xkill
     bat
     bottom
     cifs-utils
@@ -14,11 +10,15 @@
     firefox
     git
     helix
+    libthai
     localsend
+    macchina
     mesa
     mpv
     ouch
     ripgrep
+    rustdesk
+    screen
     skim
     tree
     wezterm
