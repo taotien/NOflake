@@ -1,4 +1,4 @@
-{ pkgs, home-manager, ... }: {
+{ pkgs, ... }: {
   users.users.tao.packages = with pkgs; [
     leetcode-cli
     typst-fmt
@@ -116,7 +116,9 @@
   # home-manager.useUserPackages = true;
   #   home-manager.users.tao = import ./users/tao.nix;
   # }
-  home-manager.users.tao = { pkgs, ... }: {
-    home.stateversion = "23.11";
-  };
+  # home.username = "tao";
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.users.tao = import ./tao/home.nix;
 }

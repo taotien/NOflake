@@ -49,10 +49,6 @@
             ./systems/NOlaptop.nix
             ./users/tao.nix
             home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-            }
             ./extras/uwuraid.nix
             ./extras/dev.nix
             ./extras/gaming.nix
