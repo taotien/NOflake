@@ -4,12 +4,12 @@
     nodejs
     python310Packages.python-lsp-server
     sqlite
-    unstable.sqlx-cli
-    unstable.ruff
-    unstable.ruff-lsp
+    sqlx-cli
+    ruff
+    ruff-lsp
     pypy3
     python3
-    # unstable.swagger-cli
+    # swagger-cli
     # swagger-codegen
     sshfs
     openapi-generator-cli
@@ -25,17 +25,17 @@
     nil
     nixpkgs-fmt
     rustup
-    unstable.cargo
-    unstable.cargo-edit
-    unstable.cargo-feature
-    unstable.cargo-rr
-    unstable.clippy
-    unstable.elf2uf2-rs
-    unstable.pijul
-    unstable.rust-analyzer
-    unstable.rustc
-    unstable.rustfmt
-    unstable.sccache
+    cargo
+    cargo-edit
+    cargo-feature
+    cargo-rr
+    clippy
+    elf2uf2-rs
+    pijul
+    rust-analyzer
+    rustc
+    rustfmt
+    sccache
     vulkan-loader
   ];
 

@@ -13,10 +13,10 @@
     ffmpeg
     firefox
     git
-    unstable.helix
+    helix
     localsend
     mesa
-    unstable.mpv
+    mpv
     ouch
     ripgrep
     skim
@@ -29,7 +29,7 @@
   programs.partition-manager.enable = lib.mkDefault true;
 
   services.tailscale.enable = true;
-  services.tailscale.package = pkgs.unstable.tailscale;
+  services.tailscale.package = pkgs.tailscale;
 
   services.openssh.enable = true;
   services.flatpak.enable = lib.mkDefault true;

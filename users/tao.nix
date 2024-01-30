@@ -1,9 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, home-manager, ... }: {
   users.users.tao.packages = with pkgs; [
     leetcode-cli
-    unstable.typst-fmt
+    typst-fmt
     mendeley
-    # unstable.wkhtmltopdf
+    # wkhtmltopdf
     calibre
     qmk
     qmk-udev-rules
@@ -29,7 +29,7 @@
     discord
     gh
     jellyfin-media-player
-    unstable.jellyfin-mpv-shim
+    jellyfin-mpv-shim
     keepassxc
     libsForQt5.kcharselect
     libsForQt5.kdeconnect-kde
@@ -45,23 +45,23 @@
     thunderbird
     tio
     typst-lsp
-    unstable.joshuto
-    unstable.nushell
-    # unstable.oculante
-    unstable.pandoc
-    unstable.prusa-slicer
-    unstable.starship
-    unstable.typst
-    unstable.wezterm
-    unstable.yazi
+    joshuto
+    nushell
+    # oculante
+    pandoc
+    prusa-slicer
+    starship
+    typst
+    wezterm
+    yazi
     virt-manager
     zathura
     zoom-us
-    unstable.zoxide
+    zoxide
   ];
   # programs.adb.enable = true;
   programs.mosh.enable = true;
-  environment.shells = with pkgs; [ unstable.nushell ];
+  environment.shells = with pkgs; [ nushell ];
 
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
@@ -90,7 +90,7 @@
   users.users.tao = {
     isNormalUser = true;
     extraGroups = [ "video" "wheel" "libvirtd" "dialout" "game" ];
-    shell = pkgs.unstable.nushell;
+    shell = pkgs.nushell;
   };
 
 
@@ -108,8 +108,15 @@
   # };
 
   # imports = [ (import "${home-manager}/nixos") ];
+  # imports = [ home-manager.nixosModules.home-manager ];
 
-  # home-manager.users.tao = {
-  #   home.stateversion = "23.11";
-  # };
+  # home-manager.nixosModules.home-manager
+  # {
+  # home-manager.useGlobalPkgs = true;
+  # home-manager.useUserPackages = true;
+  #   home-manager.users.tao = import ./users/tao.nix;
+  # }
+  home-manager.users.tao = { pkgs, ... }: {
+    home.stateversion = "23.11";
+  };
 }

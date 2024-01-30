@@ -4,7 +4,7 @@
     libsForQt5.kdeconnect-kde
   ];
   # programs.nushell.enable = true;
-  # environment.shells = with pkgs; [ unstable.nushell ];
+  # environment.shells = with pkgs; [ nushell ];
 
   # services.expressvpn.enable = true;
 
@@ -24,7 +24,7 @@
   users.users.tao = {
     isNormalUser = true;
     extraGroups = [ "wheel" "dialout" ];
-    # shell = pkgs.unstable.nushell;
+    # shell = pkgs.nushell;
   };
 
   # i18n.inputMethod = {

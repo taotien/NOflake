@@ -82,7 +82,7 @@
   # };
 
   # boot.kernelPackages = pkgs.linuxPackages_6_5;
-  boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.kernelModules = [ "i2c-dev" "kvm-amd" ];
   boot.kernelParams = [ "nvidia-drm.modeset=1" ];
@@ -100,9 +100,9 @@
     modesetting.enable = true;
     powerManagement.enable = true;
     # package = config.boot.kernelPackages.nvidiaPackages.latest;
-    # package = pkgs.unstable.linuxPackages_latest.nvidiaPackages.vulkan_beta;
-    # package = pkgs.unstable.linuxPackages_latest.nvidiaPackages.latest;
-    package = pkgs.unstable.linuxPackages_latest.nvidiaPackages.production;
+    # package = pkgs.linuxPackages_latest.nvidiaPackages.vulkan_beta;
+    # package = pkgs.linuxPackages_latest.nvidiaPackages.latest;
+    package = pkgs.linuxPackages_latest.nvidiaPackages.production;
   };
   # enable core and mem freq sliders for nvidia
   services.xserver.deviceSection = ''

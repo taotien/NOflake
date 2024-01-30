@@ -4,7 +4,7 @@
     bottom
     cifs-utils
     git
-    unstable.helix
+    helix
     ouch
     ripgrep
     skim

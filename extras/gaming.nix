@@ -2,12 +2,12 @@
   imports = [ aagl.nixosModules.default ];
 
   environment.systemPackages = with pkgs; [
-    unstable.heroic
-    unstable.lutris
-    unstable.mangohud
-    unstable.prismlauncher
+    heroic
+    lutris
+    mangohud
+    prismlauncher
     wine
-    # unstable.parsec-bin
+    # parsec-bin
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
