@@ -1,16 +1,11 @@
 {
-  programs.helix = {
+  imports = [
+    ./helix.nix
+  ];
+
+  programs.wezterm = {
     enable = true;
-    defaultEditor = true;
-    settings = {
-      theme = "dracula";
-      editor = {
-        line-number = "relative";
-        cursorline = true;
-        completion-replace = true;
-      };
-    };
-    languages = { };
+    extraConfig = builtins.readFile ./wezterm.lua;
   };
 
   programs.git = {
