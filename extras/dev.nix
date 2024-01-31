@@ -1,5 +1,8 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+    jetbrains.idea-community
+    jdt-language-server
+    gradle
     temurin-bin-17
     nodejs
     python310Packages.python-lsp-server
