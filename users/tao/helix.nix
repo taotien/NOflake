@@ -24,6 +24,7 @@
           display-messages = true;
           display-inlay-hints = true;
         };
+        soft-wrap.enable = true;
       };
     };
     languages = {
@@ -34,6 +35,10 @@
           formatter = {
             command = "clang-format";
             args = [ "--style=file:/home/tao/Templates/clang-format" ];
+          };
+          indent = {
+            tab-width = 8;
+            unit = "\t";
           };
         }
         {

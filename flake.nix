@@ -18,30 +18,24 @@
   outputs = { self, nixpkgs, nixos-hardware, nixos-raspberrypi, home-manager, aagl, ... }@attrs:
     {
       nixosConfigurations = {
-        # NOcomputer = nixpkgs.lib.nixosSystem {
-        #   system = "x86_64-linux";
-        #   # config.allowUnfree = true;
-        #   modules = [
-        #     nixos-hardware.nixosModules.common-cpu-amd
-        #     nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-        #     ./systems/BASED.nix
-        #     ./systems/NOcomputer.nix
-        #     # ./users/tao.nix
-        #     home-manager.nixosModules.home-manager
-        #     {
-        #       home-manager.useGlobalPkgs = true;
-        #       home-manager.useUserPackages = true;
-        #       home-manager.users.jdoe = import ./tao.nix;
-        #     }
-        #     ./extras/uwuraid.nix
-        #     ./extras/dev.nix
-        #     ./extras/gaming.nix
-        #   ];
-        # };
+        NOcomputer = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = attrs;
+          modules = [
+            nixos-hardware.nixosModules.common-cpu-amd
+            nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+            ./systems/BASED.nix
+            ./systems/NOcomputer.nix
+            ./users/tao.nix
+            home-manager.nixosModules.home-manager
+            ./extras/uwuraid.nix
+            ./extras/dev.nix
+            ./extras/gaming.nix
+          ];
+        };
         NOlaptop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = attrs;
-          # config.allowUnfree = true;
           modules = [
             nixos-hardware.nixosModules.common-cpu-intel
             # inputs.nixos-hardware.nixosModules.framework
