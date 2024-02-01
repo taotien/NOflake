@@ -10,9 +10,15 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # prescurve.url = "github:taotien/prescurve";
     # prescurve.inputs.nixpkgs.follows = "nixpkgs";
+    inputs.hyprland.url = "github:hyprwm/Hyprland";
     # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     aagl.url = "github:ezKEa/aagl-gtk-on-nix/ee7b773dd7d028ad1b185cdf72bc16ce69ac0288";
     aagl.inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  nixConfig = {
+    extra-substituters = [ "https://hyprland.cachix.org" ];
+    extra-trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
 
   outputs = { self, nixpkgs, nixos-hardware, nixos-raspberrypi, home-manager, aagl, ... }@attrs:
