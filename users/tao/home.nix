@@ -6,27 +6,33 @@ in
     ./helix.nix
   ];
 
-  programs = enablePrograms {
+  # programs = enablePrograms {
+  programs = {
     git = {
+      enable = true;
       userName = "Tao Tien";
       userEmail = "29749622+taotien@users.noreply.github.com";
     };
 
     nushell = {
+      enable = true;
       configFile.source = ./config.nu;
       envFile.source = ./env.nu;
     };
 
-    starshell = {
-      enableNuShellIntegration = true;
-      settings = builtins.fromTOML (builtins.readFile ./starship.nix);
+    starship = {
+      enable = true;
+      enableNushellIntegration = true;
+      settings = builtins.fromTOML (builtins.readFile ./starship.toml);
     };
 
     wezterm = {
+      enable = true;
       extraConfig = builtins.readFile ./wezterm.lua;
     };
 
     zoxide = {
+      enable = true;
       enableNushellIntegration = true;
     };
   };
