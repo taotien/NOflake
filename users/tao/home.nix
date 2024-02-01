@@ -4,6 +4,7 @@ in
 {
   imports = [
     ./helix.nix
+    ./hyprland.nix
   ];
 
   # programs = enablePrograms {
