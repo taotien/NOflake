@@ -1,6 +1,6 @@
-let
-  enablePrograms = programs: builtins.mapAttrs (_: program: { enable = true; }) programs;
-in
+# let
+#   enablePrograms = programs: builtins.mapAttrs (_: program: { enable = true; }) programs;
+# in
 {
   imports = [
     ./helix.nix

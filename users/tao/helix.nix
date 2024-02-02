@@ -49,6 +49,15 @@
           };
         }
       ];
+      grammar = [
+        {
+          name = "nix";
+          source = {
+            git = "https://github.com/nix-community/tree-sitter-nix";
+            rev = "763168fa916a333a459434f1424b5d30645f015d";
+          };
+        }
+      ];
     };
     enable = true;
     defaultEditor = true;

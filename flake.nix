@@ -8,25 +8,30 @@
     nixos-raspberrypi.url = "github:ramblurr/nixos-raspberrypi";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    helix.url = "github:helix-editor/helix";
+    helix.inputs.nixpkgs.follows = "nixpkgs";
+    # hyprland.url = "github:hyprwm/Hyprland";
+    # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
+    # aagl.inputs.nixpkgs.follows = "nixpkgs";
+
     # prescurve.url = "github:taotien/prescurve";
     # prescurve.inputs.nixpkgs.follows = "nixpkgs";
-    inputs.hyprland.url = "github:hyprwm/Hyprland";
-    # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
-    aagl.url = "github:ezKEa/aagl-gtk-on-nix/ee7b773dd7d028ad1b185cdf72bc16ce69ac0288";
-    aagl.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   nixConfig = {
+    # extra-substituters = [ "https://hyprland.cachix.org" "https://ezkea.cachix.org" ];
+    # extra-trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
     extra-substituters = [ "https://hyprland.cachix.org" ];
     extra-trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, nixos-raspberrypi, home-manager, aagl, ... }@attrs:
+  # outputs = { self, nixpkgs, nixos-hardware, nixos-raspberrypi, home-manager, helix, aagl, ... }@inputs:
+  outputs = { self, nixpkgs, nixos-hardware, nixos-raspberrypi, home-manager, helix, ... }@inputs:
     {
       nixosConfigurations = {
         NOcomputer = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = attrs;
+          specialArgs = { inherit inputs; };
           modules = [
             nixos-hardware.nixosModules.common-cpu-amd
             nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
@@ -41,7 +46,7 @@
         };
         NOlaptop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = attrs;
+          specialArgs = { inherit inputs; };
           modules = [
             nixos-hardware.nixosModules.common-cpu-intel
             # inputs.nixos-hardware.nixosModules.framework

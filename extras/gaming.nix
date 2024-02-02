@@ -1,5 +1,6 @@
-{ pkgs, aagl, ... }: {
-  imports = [ aagl.nixosModules.default ];
+# { pkgs, aagl, ... }: {
+{ pkgs, ... }: {
+  # imports = [ aagl.nixosModules.default ];
 
   environment.systemPackages = with pkgs; [
     heroic
@@ -19,8 +20,8 @@
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
 
-  nix.settings = aagl.nixConfig;
-  programs.honkers-railway-launcher.enable = true;
+  # nix.settings = aagl.nixConfig;
+  # programs.honkers-railway-launcher.enable = true;
 
   users = { groups.game = { }; };
   security.pam.loginLimits = [

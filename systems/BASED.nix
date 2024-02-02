@@ -1,4 +1,4 @@
-{ lib, pkgs, modulesPath, ... }: {
+{ inputs, lib, pkgs, modulesPath, ... }: {
   environment.systemPackages = with pkgs; [
     # xorg.xkill
     bat
@@ -9,7 +9,7 @@
     ffmpeg
     firefox
     git
-    helix
+    inputs.helix.packages.${pkgs.system}.default
     libthai
     localsend
     macchina
@@ -84,6 +84,7 @@
   nix.settings = {
     experimental-features = "nix-command flakes";
     auto-optimise-store = true;
+    trusted-users = [ "root" "@wheel" ];
   };
   nixpkgs.config = { allowUnfree = true; };
 
