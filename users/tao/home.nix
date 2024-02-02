@@ -1,13 +1,10 @@
-# let
-#   enablePrograms = programs: builtins.mapAttrs (_: program: { enable = true; }) programs;
-# in
-{
+{ pkgs, inputs, ... }: {
   imports = [
-    ./helix.nix
+    (import ./helix.nix { inherit pkgs inputs; })
     ./hyprland.nix
   ];
 
-  # programs = enablePrograms {
+
   programs = {
     git = {
       enable = true;

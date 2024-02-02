@@ -1,4 +1,4 @@
-{
+{ inputs, pkgs, ... }: {
   programs.helix = {
     settings = {
       theme = "dracula";
@@ -61,5 +61,6 @@
     };
     enable = true;
     defaultEditor = true;
+    package = inputs.helix.packages.${pkgs.system}.default;
   };
 }

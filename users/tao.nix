@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   users.users.tao.packages = with pkgs; [
     leetcode-cli
     typst-fmt
@@ -107,20 +107,9 @@
   #   fcitx5.addons = with pkgs; [ fcitx5-mozc fcitx5-chewing fcitx5-chinese-addons fcitx5-rime ];
   # };
 
-  # imports = [ (import "${home-manager}/nixos") ];
-  # imports = [ home-manager.nixosModules.home-manager ];
-
-  # home-manager.nixosModules.home-manager
-  # {
-  # home-manager.useGlobalPkgs = true;
-  # home-manager.useUserPackages = true;
-  #   home-manager.users.tao = import ./users/tao.nix;
-  # }
-  # home.username = "tao";
-
-  # home-manager.useGlobalPkgs = true;
   # home-manager.useUserPackages = false;
+  home-manager.useGlobalPkgs = true;
   home-manager.verbose = true;
   home-manager.backupFileExtension = ".hm-bak";
-  home-manager.users.tao = import ./tao/home.nix;
+  home-manager.users.tao = (import ./tao/home.nix { inherit inputs pkgs; });
 }
