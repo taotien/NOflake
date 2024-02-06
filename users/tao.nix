@@ -1,12 +1,6 @@
 { inputs, pkgs, ... }: {
   users.users.tao.packages = with pkgs; [
-    leetcode-cli
-    typst-fmt
-    mendeley
     # wkhtmltopdf
-    calibre
-    qmk
-    qmk-udev-rules
     # vial
     # cider
     # enchant
@@ -19,42 +13,48 @@
     # partition-manager
     # pkg-config
     # slack
+    # oculante
+    # joshuto
+    # yazi
+    # gh
+    # tio
     appimage-run
     aspell
     aspellDicts.en
     birdtray
     bottles
+    calibre
     darktable
     deluge
     discord
-    gh
     jellyfin-media-player
     jellyfin-mpv-shim
     keepassxc
+    leetcode-cli
     libsForQt5.kcharselect
     libsForQt5.kdeconnect-kde
+    mendeley
+    nushell
     obs-studio
     ocs-url
     onefetch
     onlyoffice-bin
+    pandoc
+    prusa-slicer
+    qmk
+    qmk-udev-rules
     ripgrep-all
     snapper
+    starship
     syncthingtray
     tectonic
     texlab
     thunderbird
-    tio
-    typst-lsp
-    joshuto
-    nushell
-    # oculante
-    pandoc
-    prusa-slicer
-    starship
     typst
-    wezterm
-    yazi
+    typst-fmt
+    typst-lsp
     virt-manager
+    wezterm
     zathura
     zoom-us
     zoxide

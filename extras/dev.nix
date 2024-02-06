@@ -1,47 +1,47 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    jujutsu
-    vscode-langservers-extracted
-    mold-wrapped
-    jetbrains.idea-community
-    jdt-language-server
-    gradle
-    temurin-bin-17
-    nodejs
-    python310Packages.python-lsp-server
-    sqlite
-    sqlx-cli
-    ruff
-    ruff-lsp
-    pypy3
-    python3
+    # pijul
     # swagger-cli
     # swagger-codegen
-    sshfs
-    openapi-generator-cli
     bacon
+    cargo
+    cargo-edit
+    cargo-feature
+    cargo-rr
     clang
     clang-tools
+    clippy
+    elf2uf2-rs
     etcher
     freecad
     gcc
     gdb
     gnumake
+    gradle
+    jdt-language-server
+    jetbrains.idea-community
+    jujutsu
     lldb
+    mold-wrapped
     nil
     nixpkgs-fmt
-    rustup
-    cargo
-    cargo-edit
-    cargo-feature
-    cargo-rr
-    clippy
-    elf2uf2-rs
-    pijul
+    nodejs
+    openapi-generator-cli
+    pypy3
+    python3
+    python310Packages.python-lsp-server
+    ruff
+    ruff-lsp
     rust-analyzer
     rustc
     rustfmt
+    rustup
     sccache
+    sqlite
+    sqlx-cli
+    sshfs
+    temurin-bin-17
+    vscode-langservers-extracted
     vulkan-loader
   ];
 
