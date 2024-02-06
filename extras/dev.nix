@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+    mold-wrapped
     jetbrains.idea-community
     jdt-language-server
     gradle

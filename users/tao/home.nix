@@ -35,6 +35,19 @@
     };
   };
 
+  home.file.".cargo/config.toml".text = ''
+    [build]
+    target = "x86_64-unknown-linux-musl"
+    
+    [provile.dev]
+    debug = 0
+    strip = "debuginfo"
+
+    [target.x86-unknown-linux-musl]
+    linker = "clang"
+    rustflag = ["-C", "link-arg=ld-path=${pkgs.mold}/bin/mold"]
+  '';
+
   home.username = "tao";
   home.homeDirectory = "/home/tao";
   home.stateVersion = "23.11";
