@@ -28,6 +28,7 @@
   ];
   programs.partition-manager.enable = lib.mkDefault true;
 
+  services.resolved.enable = true;
   services.tailscale.enable = true;
   services.tailscale.package = pkgs.tailscale;
 
