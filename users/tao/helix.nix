@@ -36,18 +36,14 @@
             command = "clang-format";
             args = [ "--style=file:/home/tao/Templates/clang-format" ];
           };
-          indent = {
-            tab-width = 8;
-            unit = "\t";
-          };
+          indent = { tab-width = 8; unit = "\t"; };
         }
         {
           name = "nix";
           auto-format = true;
-          formatter = {
-            command = "nixpkgs-fmt";
-          };
+          formatter = { command = "nixpkgs-fmt"; };
         }
+        { name = "html"; auto-format = true; indent = { tab-width = 4; unit = "\t"; }; }
       ];
       grammar = [
         {

@@ -6,6 +6,16 @@
 
 
   programs = {
+    jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          name = "Tao Tien";
+          email = "29749622+taotien@users.noreply.github.com";
+        };
+      };
+    };
+
     git = {
       enable = true;
       userName = "Tao Tien";

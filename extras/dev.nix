@@ -1,5 +1,7 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+    jujutsu
+    vscode-langservers-extracted
     mold-wrapped
     jetbrains.idea-community
     jdt-language-server
