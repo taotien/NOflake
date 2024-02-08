@@ -33,6 +33,7 @@
     leetcode-cli
     libsForQt5.kcharselect
     libsForQt5.kdeconnect-kde
+    libsForQt5.plasma-vault
     mendeley
     nushell
     obs-studio

@@ -1,5 +1,7 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+    just
+    jq
     # pijul
     # swagger-cli
     # swagger-codegen
