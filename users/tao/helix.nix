@@ -38,12 +38,8 @@
           };
           indent = { tab-width = 8; unit = "\t"; };
         }
-        {
-          name = "nix";
-          auto-format = true;
-          formatter = { command = "nixpkgs-fmt"; };
-        }
-        { name = "html"; auto-format = true; indent = { tab-width = 4; unit = "\t"; }; }
+        { name = "html"; auto-format = false; indent = { tab-width = 4; unit = "\t"; }; }
+        { name = "nix"; auto-format = true; formatter = { command = "nixpkgs-fmt"; }; }
       ];
       grammar = [
         {
