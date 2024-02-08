@@ -42,6 +42,7 @@
             ./extras/uwuraid.nix
             ./extras/dev.nix
             ./extras/gaming.nix
+            ./extras/cosmic.nix
           ];
         };
         NOlaptop = nixpkgs.lib.nixosSystem {

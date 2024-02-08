@@ -11,7 +11,6 @@
     # mdbook
     # nuspell
     # partition-manager
-    # pkg-config
     # slack
     # oculante
     # joshuto
