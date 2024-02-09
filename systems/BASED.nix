@@ -28,9 +28,9 @@
   ];
   programs.partition-manager.enable = lib.mkDefault true;
 
-  services.resolved.enable = true;
   services.tailscale.enable = true;
   services.tailscale.package = pkgs.tailscale;
+  services.resolved.enable = true;
 
   services.openssh.enable = true;
   services.flatpak.enable = lib.mkDefault true;

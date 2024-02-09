@@ -57,6 +57,7 @@
             ./extras/uwuraid.nix
             ./extras/dev.nix
             ./extras/gaming.nix
+            ./extras/cosmic.nix
           ];
         };
         # NObangers = nixos-system [
