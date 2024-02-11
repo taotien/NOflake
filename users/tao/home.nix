@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }: {
   imports = [
     (import ./helix.nix { inherit pkgs inputs; })
-    ./hyprland.nix
+    # ./hyprland.nix
   ];
 
 
