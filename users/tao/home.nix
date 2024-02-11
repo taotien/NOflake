@@ -13,6 +13,10 @@
           name = "Tao Tien";
           email = "29749622+taotien@users.noreply.github.com";
         };
+        ui =
+          {
+            default-command = "log";
+          };
       };
     };
 
@@ -37,6 +41,11 @@
     wezterm = {
       enable = true;
       extraConfig = builtins.readFile ./wezterm.lua;
+    };
+
+    zellij = {
+      enable = true;
+      settings = { };
     };
 
     zoxide = {

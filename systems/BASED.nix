@@ -24,6 +24,7 @@
     wezterm
     wget
     yt-dlp
+    zellij
     zstd
   ];
   programs.partition-manager.enable = lib.mkDefault true;
@@ -42,12 +43,14 @@
   environment.variables = {
     EDITOR = "hx";
     VISUAL = "hx";
+    PAGER = "bat";
     SKIM_DEFAULT_COMMAND = "rg --files";
   };
 
   environment.sessionVariables = {
     EDITOR = "hx";
     VISUAL = "hx";
+    PAGER = "bat";
     SKIM_DEFAULT_COMMAND = "rg --files";
   };
 
