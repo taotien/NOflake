@@ -725,5 +725,7 @@ $env.config = {
 source ~/.zoxide.nu
 source ~/.cache/starship/init.nu
 
-alias zj = zellij
+alias zl = zellij
 alias ts = tailscale
+alias fetch = macchina
+alias cringe = sudo bootctl set-oneshot auto-windows
