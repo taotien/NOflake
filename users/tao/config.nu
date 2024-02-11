@@ -726,3 +726,4 @@ source ~/.zoxide.nu
 source ~/.cache/starship/init.nu
 
 alias zj = zellij
+alias ts = tailscale

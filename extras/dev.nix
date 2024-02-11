@@ -1,19 +1,7 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    # cargo
-    # cargo-edit
-    # cargo-feature
-    # cargo-rr
-    # clippy
-    # openapi-generator-cli
     # pijul
-    # rust-analyzer
-    # rustc
-    # rustfmt
-    # swagger-cli
-    # swagger-codegen
     # vulkan-loader
-
     etcher
     freecad
     hyperfine
@@ -55,6 +43,9 @@
 
     #rust
     bacon
+    # cargo-edit
+    # cargo-feature
+    # cargo-rr
     elf2uf2-rs
     mold-wrapped
     rustup

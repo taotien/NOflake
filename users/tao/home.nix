@@ -48,6 +48,7 @@
   home.file.".cargo/config.toml".text = ''
     [build]
     target = "x86_64-unknown-linux-musl"
+    rustc-wrapper = "${pkgs.sccache}/bin/sccache"
     
     [provile.dev]
     debug = 0
