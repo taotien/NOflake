@@ -1,51 +1,64 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    hyperfine
-    just
-    jq
+    # cargo
+    # cargo-edit
+    # cargo-feature
+    # cargo-rr
+    # clippy
+    # openapi-generator-cli
     # pijul
+    # rust-analyzer
+    # rustc
+    # rustfmt
     # swagger-cli
     # swagger-codegen
-    bacon
-    cargo
-    cargo-edit
-    cargo-feature
-    cargo-rr
-    clang
-    clang-tools
-    clippy
-    elf2uf2-rs
+    # vulkan-loader
+
     etcher
     freecad
-    gcc
-    gdb
-    gnumake
-    gradle
-    jdt-language-server
-    jetbrains.idea-community
+    hyperfine
+    jq
     jujutsu
+    just
     lldb
-    mold-wrapped
-    nil
-    nixpkgs-fmt
-    nodejs
-    openapi-generator-cli
-    pypy3
-    python3
-    python310Packages.python-lsp-server
-    ruff
-    ruff-lsp
-    rust-analyzer
-    rustc
-    rustfmt
-    rustup
-    sccache
     sqlite
     sqlx-cli
     sshfs
+
+    # c
+    clang
+    clang-tools
+    gcc
+    gdb
+    gnumake
+
+    # java (DSA)
+    gradle
+    jdt-language-server
+    jetbrains.idea-community
     temurin-bin-17
+
+    # michael
+    nodejs
     vscode-langservers-extracted
-    vulkan-loader
+
+    # nix
+    nil
+    nixpkgs-fmt
+
+    # python
+    pypy3
+    # python3
+    python310Packages.python-lsp-server
+    ruff
+    ruff-lsp
+
+    #rust
+    bacon
+    elf2uf2-rs
+    mold-wrapped
+    rustup
+    sccache
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
