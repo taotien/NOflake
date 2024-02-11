@@ -40,6 +40,7 @@
         }
         { name = "html"; auto-format = false; indent = { tab-width = 4; unit = "\t"; }; }
         { name = "nix"; auto-format = true; formatter = { command = "nixpkgs-fmt"; }; }
+        { name = "typst"; indent = { tab-width = 4; unit = " "; }; }
       ];
       grammar = [
         {
