@@ -9,7 +9,7 @@
     # mesa
     # nvidia-vaapi-driver
     gwe
-    liquidctl
+    # liquidctl
     openrgb
     snapper
   ];
