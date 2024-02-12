@@ -43,10 +43,8 @@
 
     #rust
     bacon
-    # cargo-edit
-    # cargo-feature
-    # cargo-rr
     elf2uf2-rs
+    mdbook
     mold-wrapped
     rustup
     sccache
