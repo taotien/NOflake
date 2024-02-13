@@ -55,16 +55,27 @@
   };
 
   home.file.".cargo/config.toml".text = ''
+    [alias]
+    rr = "run --release"
+    
     [build]
     target = "x86_64-unknown-linux-musl"
     rustc-wrapper = "${pkgs.sccache}/bin/sccache"
     
+    [unstable]
+    codegen-backend = true
+    
     [provile.dev]
     debug = 0
     strip = "debuginfo"
+    codegen-backend = "cranelift"
+
+    [profile.release]
+    incremental = true
 
     [target.x86-unknown-linux-musl]
-    linker = "clang"
+    # linker = "musl-gcc"
+    # linker = "clang"
     rustflag = ["-C", "link-arg=ld-path=${pkgs.mold}/bin/mold"]
   '';
 
