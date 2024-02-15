@@ -20,7 +20,7 @@
     appimage-run
     aspell
     aspellDicts.en
-    birdtray
+    # birdtray
     bottles
     calibre
     darktable
@@ -33,10 +33,10 @@
     libsForQt5.kcharselect
     libsForQt5.kdeconnect-kde
     libsForQt5.plasma-vault
-    mendeley
+    # mendeley
     nushell
     obs-studio
-    ocs-url
+    # ocs-url
     onefetch
     onlyoffice-bin
     pandoc

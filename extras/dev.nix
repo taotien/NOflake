@@ -3,7 +3,7 @@
     # pijul
     # vulkan-loader
     etcher
-    freecad
+    # freecad
     hyperfine
     jq
     jujutsu

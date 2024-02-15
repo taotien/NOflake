@@ -68,15 +68,18 @@
     [provile.dev]
     debug = 0
     strip = "debuginfo"
+    lto = "off"
     codegen-backend = "cranelift"
 
     [profile.release]
     incremental = true
+    codegen-units = 1
+    lto = "fat"
 
     [target.x86-unknown-linux-musl]
     # linker = "musl-gcc"
     # linker = "clang"
-    rustflag = ["-C", "link-arg=ld-path=${pkgs.mold}/bin/mold"]
+    rustflag = ["-C", "target-cpu=native", "link-arg=ld-path=${pkgs.mold}/bin/mold"]
   '';
 
   home.username = "tao";
