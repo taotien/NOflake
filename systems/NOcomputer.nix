@@ -27,17 +27,17 @@
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
     fsType = "btrfs";
-    options = [ "subvol=home_snaps/0/snapshot" "noatime" "compress-force=zstd:3" ];
+    options = [ "subvol=home_snaps/0/snapshot" "noatime" "compress-force=zstd:3" "discard=async" ];
   };
   fileSystems."/home/.snapshots" = {
     device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
     fsType = "btrfs";
-    options = [ "subvol=home_snaps/" "noatime" "compress-force=zstd:3" ];
+    options = [ "subvol=home_snaps/" "noatime" "compress-force=zstd:3" "discard=async" ];
   };
   fileSystems."/home/tao/Games" = {
     device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
     fsType = "btrfs";
-    options = [ "subvol=games" "nosuid" "nodev" "noatime" "compress-force=zstd:3" "users" "rw" "exec" ];
+    options = [ "subvol=games" "nosuid" "nodev" "noatime" "compress-force=zstd:3" "users" "rw" "exec" "discard=async" ];
   };
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/2B28-151D";
@@ -46,17 +46,17 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
     fsType = "btrfs";
-    options = [ "subvol=nixos" "noatime" "compress-force=zstd:3" ];
+    options = [ "subvol=nixos" "noatime" "compress-force=zstd:3" "discard=async" ];
   };
   fileSystems."/var" = {
     device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
     fsType = "btrfs";
-    options = [ "subvol=nixos/var" "noatime" "compress-force=zstd:3" ];
+    options = [ "subvol=nixos/var" "noatime" "compress-force=zstd:3" "discard=async" ];
   };
   fileSystems."/tmp" = {
     device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
     fsType = "btrfs";
-    options = [ "subvol=nixos/tmp" ];
+    options = [ "subvol=nixos/tmp" "discard=async" ];
   };
   swapDevices = [{ device = "/dev/disk/by-uuid/ca0ed3d7-8758-4ac7-b016-8b4cd9608ded"; }];
 

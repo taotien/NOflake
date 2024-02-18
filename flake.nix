@@ -50,7 +50,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             nixos-hardware.nixosModules.common-cpu-intel
-            # inputs.nixos-hardware.nixosModules.framework
+            # inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
             ./systems/BASED.nix
             ./systems/NOlaptop.nix
             ./users/tao.nix
