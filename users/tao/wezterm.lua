@@ -3,4 +3,6 @@ return {
 	color_scheme = "Dracula",
 	warn_about_missing_glyphs = false,
 	check_for_updates = false,
+
+	hide_tab_bar_if_only_one_tab = true,
 }

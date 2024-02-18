@@ -4,7 +4,7 @@
     autoLogin.user = "tao";
   };
 
-  environment.systemPackages = with pkgs;[
+  environment.systemPackages = with pkgs; [
     # egl-wayland
     # mesa
     # nvidia-vaapi-driver
@@ -81,8 +81,8 @@
   #   wantedBy = [ "default.target" ];
   # };
 
-  # boot.kernelPackages = pkgs.linuxPackages_6_5;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.kernelModules = [ "i2c-dev" "kvm-amd" ];
   boot.kernelParams = [ "nvidia-drm.modeset=1" ];

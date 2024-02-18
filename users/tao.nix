@@ -1,5 +1,6 @@
 { inputs, pkgs, ... }: {
   users.users.tao.packages = with pkgs; [
+    miniserve
     # wkhtmltopdf
     # vial
     # cider
