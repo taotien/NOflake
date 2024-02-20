@@ -48,6 +48,7 @@
     mold-wrapped
     rustup
     sccache
+    trunk
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
