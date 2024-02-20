@@ -2,8 +2,8 @@
   imports = [
     (import ./helix.nix { inherit pkgs inputs; })
     # ./hyprland.nix
+    ./cargo.nix
   ];
-
 
   programs = {
     jujutsu = {
@@ -53,34 +53,6 @@
       enableNushellIntegration = true;
     };
   };
-
-  home.file.".cargo/config.toml".text = ''
-    [alias]
-    rr = "run --release"
-    
-    [build]
-    target = "x86_64-unknown-linux-musl"
-    rustc-wrapper = "${pkgs.sccache}/bin/sccache"
-    
-    [unstable]
-    codegen-backend = true
-    
-    [provile.dev]
-    debug = 0
-    strip = "debuginfo"
-    lto = "off"
-    codegen-backend = "cranelift"
-
-    [profile.release]
-    incremental = true
-    codegen-units = 1
-    lto = "fat"
-
-    [target.x86-unknown-linux-musl]
-    # linker = "musl-gcc"
-    # linker = "clang"
-    rustflag = ["-C", "target-cpu=native", "link-arg=ld-path=${pkgs.mold}/bin/mold"]
-  '';
 
   home.username = "tao";
   home.homeDirectory = "/home/tao";
