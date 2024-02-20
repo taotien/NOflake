@@ -42,6 +42,20 @@
         { name = "java"; auto-format = true; indent = { tab-width = 4; unit = "\t"; }; }
         { name = "nix"; auto-format = true; formatter = { command = "nixpkgs-fmt"; }; }
         { name = "typst"; indent = { tab-width = 4; unit = " "; }; }
+        {
+          name = "rust";
+          language-server.rust-analyzer.config = {
+            procMacro = {
+              ignored = {
+                leptos_macro = [
+                  # Optional:
+                  # "component",
+                  "server"
+                ];
+              };
+            };
+          };
+        }
       ];
       grammar = [
         {
