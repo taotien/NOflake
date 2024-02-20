@@ -6,7 +6,7 @@
 
   environment.systemPackages = with pkgs; [
     # egl-wayland
-    # mesa
+    mesa
     # nvidia-vaapi-driver
     gwe
     # liquidctl
@@ -100,7 +100,7 @@
     modesetting.enable = true;
     powerManagement.enable = true;
     # options: production, beta, vulkan_beta, latest
-    package = pkgs.linuxPackages_latest.nvidiaPackages.production;
+    package = pkgs.linuxPackages_zen.nvidiaPackages.production;
   };
   # enable core and mem freq sliders for nvidia
   services.xserver.deviceSection = ''
