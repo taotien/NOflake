@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, config, pkgs, ... }: {
   users.users.tao.packages = with pkgs; [
     miniserve
     # wkhtmltopdf
@@ -82,6 +82,14 @@
     configDir = "/home/tao/.config/syncthing";
   };
 
+  # obs virtual camera
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+  ];
+  boot.extraModprobeConfig = ''
+    options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+  '';
+
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
     noto-fonts-cjk
@@ -93,15 +101,6 @@
     extraGroups = [ "video" "wheel" "libvirtd" "dialout" "game" ];
     shell = pkgs.nushell;
   };
-
-
-  security.sudo-rs.enable = true;
-  security.sudo-rs.extraRules = [{
-    commands = [
-      { command = "${pkgs.systemd}/bin/bootctl set-oneshot auto-windows"; options = [ "NOPASSWD" ]; }
-    ];
-    groups = [ "wheel" ];
-  }];
 
   # i18n.inputMethod = {
   #   enabled = "fcitx5";

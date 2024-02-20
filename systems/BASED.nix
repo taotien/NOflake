@@ -85,6 +85,14 @@
     pulse.enable = true;
   };
 
+  security.sudo-rs.enable = true;
+  # security.sudo-rs.extraRules = [{
+  #   commands = [
+  #     { command = "${pkgs.systemd}/bin/bootctl set-oneshot auto-windows"; options = [ "NOPASSWD" ]; }
+  #   ];
+  #   groups = [ "wheel" ];
+  # }];
+
   nix.settings = {
     experimental-features = "nix-command flakes";
     auto-optimise-store = true;

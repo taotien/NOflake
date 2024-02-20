@@ -44,19 +44,21 @@
         { name = "typst"; indent = { tab-width = 4; unit = " "; }; }
         {
           name = "rust";
-          language-server.rust-analyzer.config = {
-            procMacro = {
-              ignored = {
-                leptos_macro = [
-                  # Optional:
-                  # "component",
-                  "server"
-                ];
-              };
-            };
-          };
         }
       ];
+      language-servers = {
+        rust-analyzer.config = {
+          procMacro = {
+            ignored = {
+              leptos_macro = [
+                # Optional:
+                # "component",
+                "server"
+              ];
+            };
+          };
+        };
+      };
       grammar = [
         {
           name = "nix";
