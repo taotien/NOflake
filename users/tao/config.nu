@@ -1,3 +1,10 @@
+alias zl = zellij
+alias ts = tailscale
+alias fetch = macchina
+alias cringe = sudo bootctl set-oneshot auto-windows
+alias rebs = sudo nixos-rebuild switch --flake ~/Projects/NOflake/
+alias rebb = sudo nixos-rebuild boot --flake ~/Projects/NOflake/
+
 # Nushell Config File
 #
 # version = 0.83.1
@@ -725,7 +732,3 @@ $env.config = {
 source ~/.zoxide.nu
 source ~/.cache/starship/init.nu
 
-alias zl = zellij
-alias ts = tailscale
-alias fetch = macchina
-alias cringe = sudo bootctl set-oneshot auto-windows

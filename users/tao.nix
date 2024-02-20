@@ -1,5 +1,6 @@
 { inputs, config, pkgs, ... }: {
   users.users.tao.packages = with pkgs; [
+    plasma-integration
     miniserve
     # wkhtmltopdf
     # vial
