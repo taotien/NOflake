@@ -18,6 +18,7 @@
             default-command = "log";
           };
       };
+      package = inputs.jujutsu.packages.${pkgs.system}.default;
     };
 
     git = {

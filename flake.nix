@@ -10,6 +10,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     helix.url = "github:helix-editor/helix";
     helix.inputs.nixpkgs.follows = "nixpkgs";
+    jujutsu.url = "github:martinvonz/jj";
+    jujutsu.inputs.nixpkgs.follows = "nixpkgs";
     # hyprland.url = "github:hyprwm/Hyprland";
     # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     # aagl.inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +28,7 @@
   };
 
   # outputs = { self, nixpkgs, nixos-hardware, nixos-raspberrypi, home-manager, helix, aagl, ... }@inputs:
-  outputs = { self, nixpkgs, nixos-hardware, nixos-raspberrypi, home-manager, helix, ... }@inputs:
+  outputs = { self, nixpkgs, nixos-hardware, nixos-raspberrypi, home-manager, helix, jujutsu, ... }@inputs:
     {
       nixosConfigurations = {
         NOcomputer = nixpkgs.lib.nixosSystem {

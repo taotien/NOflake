@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     # pijul
     # vulkan-loader
@@ -6,7 +6,7 @@
     # freecad
     hyperfine
     jq
-    jujutsu
+    inputs.helix.packages.${pkgs.system}.default
     just
     lldb
     sqlite
