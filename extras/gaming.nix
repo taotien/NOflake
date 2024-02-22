@@ -7,6 +7,7 @@
     lutris
     mangohud
     prismlauncher
+    protonup
     wine
     # parsec-bin
   ];
