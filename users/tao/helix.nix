@@ -26,6 +26,14 @@
         };
         soft-wrap.enable = true;
       };
+      keys.normal = {
+        k = "move_line_down";
+        j = "move_line_up";
+      };
+      keys.select = {
+        k = "move_line_down";
+        j = "move_line_up";
+      };
     };
     languages = {
       language = [
@@ -38,13 +46,12 @@
           };
           indent = { tab-width = 8; unit = "\t"; };
         }
+        # { name = "css"; comment = "/*"; }
         { name = "html"; auto-format = false; indent = { tab-width = 4; unit = "\t"; }; }
         { name = "java"; auto-format = true; indent = { tab-width = 4; unit = "\t"; }; }
         { name = "nix"; auto-format = true; formatter = { command = "nixpkgs-fmt"; }; }
         { name = "typst"; indent = { tab-width = 4; unit = " "; }; }
-        {
-          name = "rust";
-        }
+        # { name = "rust"; }
       ];
       language-servers = {
         rust-analyzer.config = {
