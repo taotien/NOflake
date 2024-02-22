@@ -1,28 +1,28 @@
 { inputs, config, pkgs, ... }: {
   users.users.tao.packages = with pkgs; [
-    plasma-integration
-    miniserve
-    # wkhtmltopdf
-    # vial
+    # birdtray
     # cider
     # enchant
     # expressvpn
     # fractal
+    # gh
+    # joshuto
     # libftdi
     # libusb
     # mdbook
+    # mendeley
     # nuspell
+    # ocs-url
+    # oculante
     # partition-manager
     # slack
-    # oculante
-    # joshuto
-    # yazi
-    # gh
     # tio
+    # vial
+    # wkhtmltopdf
+    # yazi
     appimage-run
     aspell
     aspellDicts.en
-    # birdtray
     bottles
     calibre
     darktable
@@ -35,13 +35,13 @@
     libsForQt5.kcharselect
     libsForQt5.kdeconnect-kde
     libsForQt5.plasma-vault
-    # mendeley
+    miniserve
     nushell
     obs-studio
-    # ocs-url
     onefetch
     onlyoffice-bin
     pandoc
+    plasma-integration
     prusa-slicer
     qmk
     qmk-udev-rules

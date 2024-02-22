@@ -1,12 +1,12 @@
 { inputs, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+    # freecad
     # pijul
     # vulkan-loader
     etcher
-    # freecad
     hyperfine
-    jq
     inputs.helix.packages.${pkgs.system}.default
+    jq
     just
     lldb
     sqlite
@@ -26,7 +26,7 @@
     jetbrains.idea-community
     temurin-bin-17
 
-    # michael
+    # michael (webdev)
     nodejs
     vscode-langservers-extracted
 
