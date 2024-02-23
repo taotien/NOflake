@@ -6,7 +6,7 @@
     # expressvpn
     # fractal
     # gh
-    # joshuto
+    joshuto
     # libftdi
     # libusb
     # mdbook

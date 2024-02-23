@@ -4,7 +4,7 @@
     rr = "run --release"
 
     [build]
-    target = "x86_64-unknown-linux-musl"
+    target = "x86_64-unknown-linux-gnu"
     rustc-wrapper = "${pkgs.sccache}/bin/sccache"
     rustflags = ["-Z", "threads=8"]
 
@@ -27,7 +27,12 @@
     codegen-units = 1
     lto = "fat"
 
-    [target.x86-unknown-linux-musl]
+    # [target.x86-unknown-linux-musl]
+    # # linker = "musl-gcc"
+    # linker = "clang"
+    # rustflag = ["-C", "target-cpu=native", "link-arg=ld-path=${pkgs.mold}/bin/mold"]
+    
+    [target.x86-unknown-linux-gnu]
     # linker = "musl-gcc"
     linker = "clang"
     rustflag = ["-C", "target-cpu=native", "link-arg=ld-path=${pkgs.mold}/bin/mold"]
