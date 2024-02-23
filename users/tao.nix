@@ -28,6 +28,7 @@
     darktable
     deluge
     discord
+    gpt4all-chat
     jellyfin-media-player
     jellyfin-mpv-shim
     keepassxc
@@ -38,6 +39,7 @@
     miniserve
     nushell
     obs-studio
+    ollama
     onefetch
     onlyoffice-bin
     pandoc
