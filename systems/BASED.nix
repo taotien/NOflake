@@ -84,6 +84,7 @@
     gwenview
   ];
 
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = lib.mkDefault true;
     alsa.enable = true;
