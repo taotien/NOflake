@@ -50,6 +50,7 @@
     pandoc
     plasma-integration
     prusa-slicer
+    pueue
     qmk
     qmk-udev-rules
     ripgrep-all

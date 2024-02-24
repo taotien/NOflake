@@ -1,10 +1,13 @@
 alias zl = zellij
 alias ts = tailscale
+alias tss = tailscale status
+alias tsx = tailscale exit-node list
 alias fetch = macchina
 alias cringe = sudo bootctl set-oneshot auto-windows
 alias rebs = sudo nixos-rebuild switch --flake ~/Projects/NOflake/
 alias rebb = sudo nixos-rebuild boot --flake ~/Projects/NOflake/
 alias ff = firefox
+alias pu = pueue
 
 # Nushell Config File
 #
