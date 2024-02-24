@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     libraspberrypi
     raspberrypi-eeprom
@@ -7,7 +7,7 @@
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXOS_SD";
     fsType = "ext4";
-    options = [ "noatime" ];
+    options = ["noatime"];
     # autoResize = true;
   };
   programs.partition-manager.enable = false;
@@ -16,7 +16,7 @@
   services.btrfs.autoScrub.enable = false;
 
   boot = {
-    initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" "vc4" "pcie_brcmstb" "reset-raspberrypi" ];
+    initrd.availableKernelModules = ["xhci_pci" "usbhid" "usb_storage" "vc4" "pcie_brcmstb" "reset-raspberrypi"];
     # initrd.availableKernelModules = [ "xhci_pci" ];
     kernelParams = [
       "8250.nr_uarts=1"

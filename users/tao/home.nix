@@ -1,6 +1,10 @@
-{ pkgs, inputs, ... }: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
-    (import ./helix.nix { inherit pkgs inputs; })
+    (import ./helix.nix {inherit pkgs inputs;})
     # ./hyprland.nix
     ./cargo.nix
   ];
@@ -13,10 +17,9 @@
           name = "Tao Tien";
           email = "29749622+taotien@users.noreply.github.com";
         };
-        ui =
-          {
-            default-command = "log";
-          };
+        ui = {
+          default-command = "log";
+        };
       };
       package = inputs.jujutsu.packages.${pkgs.system}.default;
     };
@@ -46,7 +49,7 @@
 
     zellij = {
       enable = true;
-      settings = { };
+      settings = {};
     };
 
     zoxide = {

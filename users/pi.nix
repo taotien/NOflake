@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   users.users.tao.packages = with pkgs; [
     libsForQt5.kdeconnect-kde
   ];
@@ -16,14 +15,14 @@
   # };
 
   fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (nerdfonts.override {fonts = ["FiraCode"];})
     noto-fonts-cjk
     noto-fonts-emoji
   ];
 
   users.users.tao = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "dialout" ];
+    extraGroups = ["wheel" "dialout"];
     # shell = pkgs.nushell;
   };
 

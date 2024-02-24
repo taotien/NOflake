@@ -1,4 +1,9 @@
-{ inputs, config, pkgs, ... }: {
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
   users.users.tao.packages = with pkgs; [
     # birdtray
     # cider
@@ -65,7 +70,7 @@
   ];
   # programs.adb.enable = true;
   programs.mosh.enable = true;
-  environment.shells = with pkgs; [ nushell ];
+  environment.shells = with pkgs; [nushell];
 
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
@@ -94,14 +99,14 @@
   '';
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (nerdfonts.override {fonts = ["FiraCode"];})
     noto-fonts-cjk
     noto-fonts-color-emoji
   ];
 
   users.users.tao = {
     isNormalUser = true;
-    extraGroups = [ "video" "wheel" "libvirtd" "dialout" "game" ];
+    extraGroups = ["video" "wheel" "libvirtd" "dialout" "game"];
     shell = pkgs.nushell;
   };
 
@@ -114,5 +119,5 @@
   home-manager.useGlobalPkgs = true;
   home-manager.verbose = true;
   home-manager.backupFileExtension = ".hm-bak";
-  home-manager.users.tao = (import ./tao/home.nix { inherit inputs pkgs; });
+  home-manager.users.tao = import ./tao/home.nix {inherit inputs pkgs;};
 }

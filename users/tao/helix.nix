@@ -1,4 +1,8 @@
-{ inputs, pkgs, ... }: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   programs.helix = {
     settings = {
       theme = "dracula";
@@ -16,9 +20,9 @@
           select = "underline";
         };
         statusline = {
-          left = [ "mode" "spinner" "spacer" "version-control" ];
-          center = [ "file-name" "file-modification-indicator" ];
-          right = [ "diagnostics" "primary-selection-length" "total-line-numbers" "selections" "position" ];
+          left = ["mode" "spinner" "spacer" "version-control"];
+          center = ["file-name" "file-modification-indicator"];
+          right = ["diagnostics" "primary-selection-length" "total-line-numbers" "selections" "position"];
         };
         lsp = {
           display-messages = true;
@@ -42,15 +46,42 @@
           auto-format = true;
           formatter = {
             command = "clang-format";
-            args = [ "--style=file:/home/tao/Templates/clang-format" ];
+            args = ["--style=file:/home/tao/Templates/clang-format"];
           };
-          indent = { tab-width = 8; unit = "\t"; };
+          indent = {
+            tab-width = 8;
+            unit = "\t";
+          };
         }
         # { name = "css"; comment = "/*"; }
-        { name = "html"; auto-format = false; indent = { tab-width = 4; unit = "\t"; }; }
-        { name = "java"; auto-format = true; indent = { tab-width = 4; unit = "\t"; }; }
-        { name = "nix"; auto-format = true; formatter = { command = "nixpkgs-fmt"; }; }
-        { name = "typst"; indent = { tab-width = 4; unit = " "; }; }
+        {
+          name = "html";
+          auto-format = false;
+          indent = {
+            tab-width = 4;
+            unit = "\t";
+          };
+        }
+        {
+          name = "java";
+          auto-format = true;
+          indent = {
+            tab-width = 4;
+            unit = "\t";
+          };
+        }
+        {
+          name = "nix";
+          auto-format = true;
+          formatter = {command = "alejandra";};
+        }
+        {
+          name = "typst";
+          indent = {
+            tab-width = 4;
+            unit = " ";
+          };
+        }
         # { name = "rust"; }
       ];
       language-servers = {

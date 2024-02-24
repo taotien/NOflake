@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     bat
     bottom
@@ -32,4 +32,4 @@
     VISUAL = "hx";
     SKIM_DEFAULT_COMMAND = "rg --files";
   };
-
+}

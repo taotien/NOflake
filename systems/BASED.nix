@@ -1,4 +1,10 @@
-{ inputs, lib, pkgs, modulesPath, ... }: {
+{
+  inputs,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     # xorg.xkill
     bat
@@ -60,7 +66,7 @@
   boot.loader.systemd-boot.enable = lib.mkDefault true;
   boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
   boot.loader.timeout = 1;
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot.supportedFilesystems = ["ntfs"];
 
   networking.networkmanager = {
     enable = true;
@@ -96,9 +102,9 @@
   nix.settings = {
     experimental-features = "nix-command flakes";
     auto-optimise-store = true;
-    trusted-users = [ "root" "@wheel" ];
+    trusted-users = ["root" "@wheel"];
   };
-  nixpkgs.config = { allowUnfree = true; };
+  nixpkgs.config = {allowUnfree = true;};
 
   systemd.extraConfig = ''
     DefaultTimeoutStopSec=15s
@@ -106,7 +112,7 @@
 
   time.timeZone = "US/Pacific";
   i18n.defaultLocale = "en_US.utf8";
-  i18n.supportedLocales = [ "all" ];
+  i18n.supportedLocales = ["all"];
   i18n.extraLocaleSettings = {
     LC_CTYPE = "en_US.UTF-8";
     LC_MESSAGES = "en_US.UTF-8";
@@ -121,7 +127,7 @@
     ];
   };
 
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   system.stateVersion = lib.mkDefault "23.05";

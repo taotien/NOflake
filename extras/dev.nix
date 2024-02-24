@@ -1,4 +1,8 @@
-{ inputs, pkgs, ... }: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     # freecad
     # pijul
@@ -33,6 +37,7 @@
     # nix
     nil
     nixpkgs-fmt
+    alejandra
 
     # python
     pypy3

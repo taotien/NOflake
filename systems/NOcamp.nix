@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     arduino
     firefox
@@ -9,7 +9,7 @@
   networking.hostName = "NObcer";
   users.users.ssrov = {
     isNormalUser = true;
-    extraGroups = [ "dialout" ];
+    extraGroups = ["dialout"];
     hashedPassword = "";
   };
 }

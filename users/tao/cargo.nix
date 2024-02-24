@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.file.".cargo/config.toml".text = ''
     [alias]
     rr = "run --release"
@@ -31,7 +31,7 @@
     # # linker = "musl-gcc"
     # linker = "clang"
     # rustflag = ["-C", "target-cpu=native", "link-arg=ld-path=${pkgs.mold}/bin/mold"]
-    
+
     [target.x86-unknown-linux-gnu]
     # linker = "musl-gcc"
     linker = "clang"
