@@ -11,7 +11,6 @@
     # expressvpn
     # fractal
     # gh
-    joshuto
     # libftdi
     # libusb
     # mdbook
@@ -36,6 +35,7 @@
     gpt4all-chat
     jellyfin-media-player
     jellyfin-mpv-shim
+    joshuto
     keepassxc
     leetcode-cli
     libsForQt5.kcharselect
@@ -44,7 +44,7 @@
     miniserve
     nushell
     obs-studio
-    ollama
+    # ollama
     onefetch
     onlyoffice-bin
     pandoc
@@ -69,19 +69,18 @@
     zoxide
   ];
   # programs.adb.enable = true;
-  programs.mosh.enable = true;
+  # programs.mosh.enable = true;
   environment.shells = with pkgs; [nushell];
 
+  # virt
+  programs.dconf.enable = true;
+  virtualisation.libvirtd.enable = true;
+
+  hardware.keyboard.qmk.enable = true;
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
   '';
-  hardware.keyboard.qmk.enable = true;
-
-  # services.expressvpn.enable = true;
-
-  virtualisation.libvirtd.enable = true;
-  programs.dconf.enable = true;
 
   services.syncthing = {
     enable = true;
@@ -110,12 +109,6 @@
     shell = pkgs.nushell;
   };
 
-  # i18n.inputMethod = {
-  #   enabled = "fcitx5";
-  #   fcitx5.addons = with pkgs; [ fcitx5-mozc fcitx5-chewing fcitx5-chinese-addons fcitx5-rime ];
-  # };
-
-  # home-manager.useUserPackages = false;
   home-manager.useGlobalPkgs = true;
   home-manager.verbose = true;
   home-manager.backupFileExtension = ".hm-bak";

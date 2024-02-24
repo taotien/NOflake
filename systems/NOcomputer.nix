@@ -6,10 +6,9 @@
 
   environment.systemPackages = with pkgs; [
     # egl-wayland
-    mesa
     # nvidia-vaapi-driver
     gwe
-    # liquidctl
+    mesa
     openrgb
     snapper
   ];
@@ -19,6 +18,7 @@
   environment.sessionVariables = {
     # wayland chromium workaround
     NIXOS_OZONE_WL = "1";
+
     # firefox nvidia-vaapi-driver
     # MOZ_DISABLE_RDD_SANDBOX = "1";
     # LIBVA_DRIVER_NAME = "nvidia";
@@ -71,14 +71,6 @@
     };
   };
   services.snapper.snapshotInterval = "*:0/5";
-
-  # systemd.user.services.fans = {
-  #   description = "NZXT fans to 69% using liquidctl";
-  #   script = ''
-  #     ${pkgs.liquidctl}/bin/liquidctl -m nzxt set sync speed 69
-  #   '';
-  #   wantedBy = [ "default.target" ];
-  # };
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelPackages = pkgs.linuxPackages_zen;

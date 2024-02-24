@@ -5,9 +5,8 @@
 }: {
   environment.systemPackages = with pkgs; [
     # freecad
-    # pijul
     # vulkan-loader
-    etcher
+    # etcher
     hyperfine
     inputs.helix.packages.${pkgs.system}.default
     jq
@@ -36,7 +35,7 @@
 
     # nix
     nil
-    nixpkgs-fmt
+    # nixpkgs-fmt
     alejandra
 
     # python
@@ -56,10 +55,10 @@
     trunk
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    # probably etcher
-    "electron-19.1.9"
-  ];
+  # nixpkgs.config.permittedInsecurePackages = [
+  #   # probably etcher
+  #   "electron-19.1.9"
+  # ];
 
   services.udev.extraRules = ''
     SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic GDB Server", SYMLINK+="ttyBmpGdb"

@@ -2,7 +2,6 @@
   description = "we say NO to shitty OSes";
 
   inputs = {
-    # nixpkgs.url = "nixpkgs/nixos-23.11";
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixos-hardware.url = "nixos-hardware";
     nixos-raspberrypi.url = "github:ramblurr/nixos-raspberrypi";
@@ -12,7 +11,6 @@
     helix.inputs.nixpkgs.follows = "nixpkgs";
     jujutsu.url = "github:martinvonz/jj";
     jujutsu.inputs.nixpkgs.follows = "nixpkgs";
-    # hyprland.url = "github:hyprwm/Hyprland";
     # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     # aagl.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -21,13 +19,8 @@
   };
 
   nixConfig = {
-    # extra-substituters = [ "https://hyprland.cachix.org" "https://ezkea.cachix.org" ];
-    # extra-trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
-    extra-substituters = ["https://hyprland.cachix.org"];
-    extra-trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 
-  # outputs = { self, nixpkgs, nixos-hardware, nixos-raspberrypi, home-manager, helix, aagl, ... }@inputs:
   outputs = {
     self,
     nixpkgs,

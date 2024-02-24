@@ -45,7 +45,6 @@
   #   wantedBy = [ "default.target" ];
   # };
 
-  # SUBSYSTEM=="backlight", GROUP="video", MODE="0664"
   services.udev.extraRules = ''
     # Ethernet expansion card
     ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="8156", ATTR{power/autosuspend}="20"

@@ -1,28 +1,26 @@
-# { pkgs, aagl, ... }: {
 {pkgs, ...}: {
+  # { pkgs, aagl, ... }: {
   # imports = [ aagl.nixosModules.default ];
+  # nix.settings = aagl.nixConfig;
+  # programs.honkers-railway-launcher.enable = true;
+  # nixpkgs.config.permittedInsecurePackages = [
+  #   "electron-24.8.6"
+  #   # "electron-12.2.3"
+  # ];
 
   environment.systemPackages = with pkgs; [
+    # parsec-bin
     heroic
     lutris
     mangohud
     prismlauncher
     protonup
     wine
-    # parsec-bin
-  ];
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-24.8.6"
-    # "electron-12.2.3"
   ];
 
   programs.steam.enable = true;
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
-
-  # nix.settings = aagl.nixConfig;
-  # programs.honkers-railway-launcher.enable = true;
 
   users = {groups.game = {};};
   security.pam.loginLimits = [
@@ -65,10 +63,5 @@
         resample.quality = 1;
       };
     };
-    # "pipewire/pipewire.d/99-input-denoising.conf" = json.generate "99-input-denoising.conf" {
-    #   context.modules = [{
-    #     name = "libpipewire-module-filter-chain";
-    #   }];
-    # };
   };
 }
