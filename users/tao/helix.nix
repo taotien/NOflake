@@ -97,6 +97,12 @@
           };
         };
       };
+      language-server = {
+        jdtls = {
+          command = "jdtls";
+          args = ["-data" "/home/tao/.cache/jdtls/workspace"];
+        };
+      };
       grammar = [
         {
           name = "nix";
