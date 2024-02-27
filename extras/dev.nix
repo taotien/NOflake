@@ -6,7 +6,7 @@
   environment.systemPackages = with pkgs; [
     # freecad
     # vulkan-loader
-    # etcher
+    etcher
     hyperfine
     inputs.helix.packages.${pkgs.system}.default
     jq

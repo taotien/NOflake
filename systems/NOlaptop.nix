@@ -25,24 +25,24 @@
 
   swapDevices = [{device = "/dev/disk/by-uuid/ca55d0ea-c0db-44c5-af3a-e38eec803929";}];
 
+  # services.fstrim.enable = true;
   services.fprintd.enable = true;
   services.fwupd.enable = true;
-  # services.fstrim.enable = true;
   powerManagement.powertop.enable = true;
   hardware.sensor.iio.enable = true;
-
-  # hardware.sane = {
-  #   enable = true;
-  #   extraBackends = [ pkgs.epkowa ];
-  # };
-
-  services.xserver.displayManager.defaultSession = "plasmawayland";
 
   # systemd.user.services.backlight = {
   #   # description = "";
   #   ExecStart = "${pkgs.prescurve}/bin/prescurve_backlight";
   #   Restart = "on-failure";
   #   wantedBy = [ "default.target" ];
+  # };
+
+  services.xserver.displayManager.defaultSession = "plasmawayland";
+
+  # hardware.sane = {
+  #   enable = true;
+  #   extraBackends = [ pkgs.epkowa ];
   # };
 
   services.udev.extraRules = ''
@@ -74,8 +74,6 @@
   systemd.sleep.extraConfig = "HibernateDelaySec=180m";
   # boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
   # boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = "1";
-
-  services.pipewire.wireplumber.enable = true;
 
   networking.hostName = "NOlaptop";
 }

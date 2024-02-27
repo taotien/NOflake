@@ -11,16 +11,21 @@
     # expressvpn
     # fractal
     # gh
+    # joshuto
     # libftdi
     # libusb
-    # mdbook
     # mendeley
     # nuspell
     # ocs-url
     # oculante
+    # ollama
+    # onefetch
     # partition-manager
     # slack
+    # tectonic
+    # texlab
     # tio
+    # toastify
     # vial
     # wkhtmltopdf
     # yazi
@@ -32,23 +37,20 @@
     darktable
     deluge
     discord
-    gpt4all-chat
     jellyfin-media-player
     jellyfin-mpv-shim
-    joshuto
     keepassxc
     leetcode-cli
     libsForQt5.kcharselect
     libsForQt5.kdeconnect-kde
+    libsForQt5.plasma-integration
     libsForQt5.plasma-vault
     miniserve
     nushell
     obs-studio
-    # ollama
-    onefetch
     onlyoffice-bin
     pandoc
-    plasma-integration
+    pipe-rename
     prusa-slicer
     pueue
     qmk
@@ -57,8 +59,6 @@
     snapper
     starship
     syncthingtray
-    tectonic
-    texlab
     thunderbird
     typst
     typst-fmt
@@ -85,10 +85,10 @@
   };
 
   hardware.keyboard.qmk.enable = true;
-  services.udev.extraRules = ''
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
-  '';
+  # services.udev.extraRules = ''
+  #   KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+  #   KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+  # '';
 
   # obs virtual camera
   boot.extraModulePackages = with config.boot.kernelPackages; [

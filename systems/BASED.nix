@@ -90,6 +90,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = lib.mkDefault true;
   };
 
   security.sudo-rs.enable = true;

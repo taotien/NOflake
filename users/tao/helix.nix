@@ -35,8 +35,8 @@
         j = "move_line_up";
       };
       keys.select = {
-        k = "move_line_down";
-        j = "move_line_up";
+        k = "extend_line_down";
+        j = "extend_line_up";
       };
     };
     languages = {

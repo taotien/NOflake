@@ -6,6 +6,7 @@
 
   environment.systemPackages = with pkgs; [
     # egl-wayland
+    # gpt4all-chat
     # nvidia-vaapi-driver
     foldingathome
     gwe
@@ -23,14 +24,14 @@
     extraArgs = ["--passkey=76ba03d55acf116776ba03d55acf1167"];
   };
 
-  environment.sessionVariables = {
-    # wayland chromium workaround
-    NIXOS_OZONE_WL = "1";
+  # environment.sessionVariables = {
+  #   # wayland chromium workaround
+  #   NIXOS_OZONE_WL = "1";
 
-    # firefox nvidia-vaapi-driver
-    # MOZ_DISABLE_RDD_SANDBOX = "1";
-    # LIBVA_DRIVER_NAME = "nvidia";
-  };
+  #   # firefox nvidia-vaapi-driver
+  #   # MOZ_DISABLE_RDD_SANDBOX = "1";
+  #   # LIBVA_DRIVER_NAME = "nvidia";
+  # };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
