@@ -7,6 +7,7 @@
   environment.systemPackages = with pkgs; [
     # egl-wayland
     # nvidia-vaapi-driver
+    foldingathome
     gwe
     mesa
     openrgb
@@ -14,6 +15,13 @@
   ];
 
   services.tailscale.useRoutingFeatures = "both";
+
+  services.foldingathome = {
+    enable = true;
+    team = 223518;
+    user = "Tao_Tien";
+    extraArgs = ["--passkey=76ba03d55acf116776ba03d55acf1167"];
+  };
 
   environment.sessionVariables = {
     # wayland chromium workaround
