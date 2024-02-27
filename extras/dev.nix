@@ -12,9 +12,11 @@
     jq
     just
     lldb
+    sd
     sqlite
     sqlx-cli
     sshfs
+    tokei
 
     # c
     clang
