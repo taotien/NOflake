@@ -5,12 +5,22 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixos-hardware.url = "nixos-hardware";
     nixos-raspberrypi.url = "github:ramblurr/nixos-raspberrypi";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    helix.url = "github:helix-editor/helix";
-    helix.inputs.nixpkgs.follows = "nixpkgs";
-    jujutsu.url = "github:martinvonz/jj";
-    jujutsu.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    helix = {
+      url = "github:helix-editor/helix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    jujutsu = {
+      url = "github:martinvonz/jj";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix.url = "github:danth/stylix";
     # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     # aagl.inputs.nixpkgs.follows = "nixpkgs";
@@ -20,6 +30,8 @@
   };
 
   nixConfig = {
+    extra-substituters = ["https://cosmic.cachix.org/"];
+    extra-trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
   };
 
   outputs = {
@@ -30,6 +42,7 @@
     home-manager,
     helix,
     jujutsu,
+    nixos-cosmic,
     stylix,
     ...
   } @ inputs: {
@@ -42,6 +55,7 @@
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
           ./systems/BASED.nix
           ./systems/NOcomputer.nix
+          nixos-cosmic.nixosModules.default
           ./users/tao.nix
           home-manager.nixosModules.home-manager
           stylix.nixosModules.stylix
@@ -59,6 +73,7 @@
           # inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
           ./systems/BASED.nix
           ./systems/NOlaptop.nix
+          nixos-cosmic.nixosModules.default
           ./users/tao.nix
           home-manager.nixosModules.home-manager
           stylix.nixosModules.stylix
