@@ -11,6 +11,7 @@
     helix.inputs.nixpkgs.follows = "nixpkgs";
     jujutsu.url = "github:martinvonz/jj";
     jujutsu.inputs.nixpkgs.follows = "nixpkgs";
+    stylix.url = "github:danth/stylix";
     # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     # aagl.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -29,6 +30,7 @@
     home-manager,
     helix,
     jujutsu,
+    stylix,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -42,6 +44,7 @@
           ./systems/NOcomputer.nix
           ./users/tao.nix
           home-manager.nixosModules.home-manager
+          stylix.nixosModules.stylix
           ./extras/uwuraid.nix
           ./extras/dev.nix
           ./extras/gaming.nix
@@ -58,6 +61,7 @@
           ./systems/NOlaptop.nix
           ./users/tao.nix
           home-manager.nixosModules.home-manager
+          stylix.nixosModules.stylix
           ./extras/uwuraid.nix
           ./extras/dev.nix
           ./extras/gaming.nix
