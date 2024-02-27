@@ -6,6 +6,7 @@ alias fetch = macchina
 alias cringe = sudo bootctl set-oneshot auto-windows
 alias rebs = sudo nixos-rebuild switch --flake ~/Projects/NOflake/
 alias rebb = sudo nixos-rebuild boot --flake ~/Projects/NOflake/
+alias gc = sudo nix-collect-garbage -d
 alias ff = firefox
 alias pu = pueue
 

@@ -40,8 +40,8 @@
 
     # python
     pypy3
-    # python3
-    python310Packages.python-lsp-server
+    # # python3
+    # python310Packages.python-lsp-server
     ruff
     ruff-lsp
 
