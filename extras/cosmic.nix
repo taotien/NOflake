@@ -22,4 +22,9 @@
     cosmic-workspaces-epoch
     xdg-desktop-portal-cosmic
   ];
+  services.xserver.displayManager.cosmic-greeter.enable = true;
+  services.xserver.desktopManager.cosmic.enable = true;
+  services.pipewire = {
+    enable = false;
+  };
 }

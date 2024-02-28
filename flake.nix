@@ -73,14 +73,12 @@
           # inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
           ./systems/BASED.nix
           ./systems/NOlaptop.nix
-          nixos-cosmic.nixosModules.default
           ./users/tao.nix
           home-manager.nixosModules.home-manager
           stylix.nixosModules.stylix
           ./extras/uwuraid.nix
           ./extras/dev.nix
           ./extras/gaming.nix
-          ./extras/cosmic.nix
         ];
       };
       # NObangers = nixos-system [
