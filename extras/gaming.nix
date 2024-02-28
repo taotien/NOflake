@@ -32,16 +32,19 @@
     }
   ];
 
+  services.pipewire = {
+    enable = false;
+  };
   environment.etc = let
     json = pkgs.formats.json {};
   in {
     "pipewire/pipewire.conf.d/92-low-latency.conf".source = json.generate "92-low-latency.conf" {
       context.properties = {
         # default.allowed-rates = []
-        default.clock.rate = 44100;
-        default.clock.quantum = 24;
-        default.clock.min-quantum = 24;
-        default.clock.max-quantum = 24;
+        default.clock.rate = 192000;
+        default.clock.quantum = 32;
+        default.clock.min-quantum = 32;
+        default.clock.max-quantum = 32;
       };
     };
     "pipewire/pipewire-pulse.d/92-low-latency.conf".source = json.generate "92-low-latency.conf" {
@@ -49,16 +52,16 @@
         {
           name = "libpipewire-module-protocol-pulse";
           args = {
-            pulse.min.req = "24/44100";
-            pulse.default.req = "24/44100";
-            pulse.max.req = "24/44100";
-            pulse.min.quantum = "24/44100";
-            pulse.max.quantum = "24/44100";
+            pulse.min.req = "32/44100";
+            pulse.default.req = "32/192000";
+            pulse.max.req = "32/192000";
+            pulse.min.quantum = "32/192000";
+            pulse.max.quantum = "32/192000";
           };
         }
       ];
       stream.properties = {
-        node.latency = "24/44100";
+        node.latency = "32/192000";
         resample.quality = 1;
       };
     };
