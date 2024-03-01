@@ -100,7 +100,7 @@
     modesetting.enable = true;
     powerManagement.enable = true;
     # options: production, beta, vulkan_beta, latest
-    package = pkgs.linuxPackages_zen.nvidiaPackages.production;
+    package = pkgs.linuxPackages_zen.nvidiaPackages.latest;
   };
   # enable core and mem freq sliders for nvidia
   services.xserver.deviceSection = ''
