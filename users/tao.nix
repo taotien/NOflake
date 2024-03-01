@@ -36,7 +36,12 @@
     calibre
     darktable
     deluge
-    discord
+    # discord
+    # (discord.override {
+    #   withOpenASAR = true;
+    #   withVencord = true;
+    # })
+    vesktop
     jellyfin-media-player
     jellyfin-mpv-shim
     keepassxc

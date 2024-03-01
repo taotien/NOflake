@@ -25,5 +25,5 @@
   services.xserver.displayManager.cosmic-greeter.enable = true;
   services.xserver.displayManager.sddm.enable = false;
   services.xserver.desktopManager.cosmic.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  # services.xserver.desktopManager.plasma5.enable = true;
 }
