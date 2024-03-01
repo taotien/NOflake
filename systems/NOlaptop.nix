@@ -38,7 +38,7 @@
   #   wantedBy = [ "default.target" ];
   # };
 
-  services.xserver.displayManager.defaultSession = "plasmawayland";
+  services.xserver.displayManager.defaultSession = "plasma";
 
   # hardware.sane = {
   #   enable = true;
