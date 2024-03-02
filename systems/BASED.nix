@@ -77,7 +77,7 @@
   services.xserver.enable = lib.mkDefault true;
   services.xserver.xkb.layout = "us";
   systemd.services.display-manager.restartIfChanged = false;
-  services.xserver.displayManager.gdm.enable = lib.mkDefault true;
+  services.xserver.displayManager.sddm.enable = lib.mkDefault true;
   # services.xserver.desktopManager.plasma5.enable = lib.mkDefault true;
   services.xserver.desktopManager.plasma6.enable = lib.mkDefault true;
   # TODO plasma6
