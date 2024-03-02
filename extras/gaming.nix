@@ -16,6 +16,7 @@
     prismlauncher
     protonup
     wine
+    yuzu
   ];
 
   # programs.steam.enable = true;
