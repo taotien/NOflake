@@ -73,5 +73,34 @@
   #     };
   #   };
   # };
-  # services.pipewire.extraConfig = {};
+  # services.pipewire.enable = false;
+  services.pipewire.extraConfig = {
+    pipewire."99-low-latency" = {
+      context.properties = {
+        # default.allowed-rates = []
+        default.clock.rate = 192000;
+        default.clock.quantum = 32;
+        default.clock.min-quantum = 32;
+        default.clock.max-quantum = 32;
+      };
+    };
+    pipewire-pulse."99-low-latency" = {
+      context.modules = [
+        {
+          name = "libpipewire-module-protocol-pulse";
+          args = {
+            pulse.min.req = "32/44100";
+            pulse.default.req = "32/192000";
+            pulse.max.req = "32/192000";
+            pulse.min.quantum = "32/192000";
+            pulse.max.quantum = "32/192000";
+          };
+        }
+      ];
+      stream.properties = {
+        node.latency = "32/192000";
+        resample.quality = 1;
+      };
+    };
+  };
 }
