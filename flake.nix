@@ -17,10 +17,10 @@
       url = "github:martinvonz/jj";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nixos-cosmic = {
+    #   url = "github:lilyinstarlight/nixos-cosmic";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     stylix.url = "github:danth/stylix";
     # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     # aagl.inputs.nixpkgs.follows = "nixpkgs";
@@ -42,7 +42,7 @@
     home-manager,
     helix,
     jujutsu,
-    nixos-cosmic,
+    # nixos-cosmic,
     stylix,
     ...
   } @ inputs: {
@@ -53,16 +53,16 @@
         modules = [
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-          ./systems/BASED.nix
-          ./systems/NOcomputer.nix
-          nixos-cosmic.nixosModules.default
-          ./users/tao.nix
           home-manager.nixosModules.home-manager
           stylix.nixosModules.stylix
+          ./systems/BASED.nix
+          ./systems/NOcomputer.nix
+          ./users/tao.nix
           ./extras/uwuraid.nix
           ./extras/dev.nix
           ./extras/gaming.nix
-          ./extras/cosmic.nix
+          # nixos-cosmic.nixosModules.default
+          # ./extras/cosmic.nix
         ];
       };
       NOlaptop = nixpkgs.lib.nixosSystem {
@@ -71,11 +71,11 @@
         modules = [
           nixos-hardware.nixosModules.common-cpu-intel
           # inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
+          home-manager.nixosModules.home-manager
+          stylix.nixosModules.stylix
           ./systems/BASED.nix
           ./systems/NOlaptop.nix
           ./users/tao.nix
-          home-manager.nixosModules.home-manager
-          stylix.nixosModules.stylix
           ./extras/uwuraid.nix
           ./extras/dev.nix
           ./extras/gaming.nix

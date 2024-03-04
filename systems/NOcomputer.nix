@@ -8,7 +8,7 @@
     # egl-wayland
     # gpt4all-chat
     # nvidia-vaapi-driver
-    foldingathome
+    # foldingathome
     gwe
     mesa
     openrgb
@@ -16,13 +16,15 @@
   ];
 
   services.tailscale.useRoutingFeatures = "both";
+  boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
+  boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = "1";
 
-  services.foldingathome = {
-    enable = true;
-    team = 223518;
-    user = "Tao_Tien";
-    extraArgs = ["--passkey=76ba03d55acf116776ba03d55acf1167"];
-  };
+  # services.foldingathome = {
+  #   enable = true;
+  #   team = 223518;
+  #   user = "Tao_Tien";
+  #   extraArgs = ["--passkey=76ba03d55acf116776ba03d55acf1167"];
+  # };
 
   environment.sessionVariables = {
     # wayland chromium workaround
@@ -88,8 +90,6 @@
   boot.kernelParams = ["nvidia-drm.modeset=1"];
   # boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
   # boot.blacklistedKernelModules = with config.boot.kernelPackages; [ k10temp ];
-  boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
-  boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = "1";
 
   hardware.opengl = {
     enable = true;
@@ -117,6 +117,13 @@
     KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a3c5", MODE="0666"
   '';
 
+  # windows can suck my ass
   time.hardwareClockInLocalTime = true;
+
+  # services.xserver.displayManager = {
+  #   autoLogin.enable = true;
+  #   autoLogin.user = "tao";
+  # };
+
   networking.hostName = "NOcomputer";
 }

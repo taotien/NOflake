@@ -71,7 +71,7 @@
   networking.networkmanager.enable = true;
 
   # TODO check why this???
-  networking.firewall.enable = true;
+  # networking.firewall.enable = true;
 
   services.xserver.enable = lib.mkDefault true;
   services.xserver.xkb.layout = "us";
