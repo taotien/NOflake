@@ -68,20 +68,17 @@
   boot.loader.timeout = 1;
   boot.supportedFilesystems = ["ntfs"];
 
-  networking.networkmanager = {
-    enable = true;
-  };
+  networking.networkmanager.enable = true;
+
   # TODO check why this???
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   services.xserver.enable = lib.mkDefault true;
   services.xserver.xkb.layout = "us";
   systemd.services.display-manager.restartIfChanged = false;
   services.xserver.displayManager.sddm.enable = lib.mkDefault true;
-  # services.xserver.desktopManager.plasma5.enable = lib.mkDefault true;
   services.xserver.desktopManager.plasma6.enable = lib.mkDefault true;
-  # TODO plasma6
-  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
+  environment.plasma6.excludePackages = with pkgs.libsForQt6; [
     elisa
     konsole
     gwenview

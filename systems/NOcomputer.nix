@@ -1,8 +1,8 @@
 {pkgs, ...}: {
-  # services.xserver.displayManager = {
-  #   autoLogin.enable = true;
-  #   autoLogin.user = "tao";
-  # };
+  services.xserver.displayManager = {
+    autoLogin.enable = true;
+    autoLogin.user = "tao";
+  };
 
   environment.systemPackages = with pkgs; [
     # egl-wayland
