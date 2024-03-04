@@ -92,7 +92,7 @@
     pulse.enable = true;
     wireplumber.enable = lib.mkDefault true;
   };
-  hardware.pulseaudio.enable = false;
+  hardware.pulseaudio.enable = lib.mkDefault false;
 
   security.sudo-rs.enable = true;
   # security.sudo-rs.extraRules = [{

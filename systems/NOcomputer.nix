@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  services.pipewire.enable = false;
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
+
   environment.systemPackages = with pkgs; [
     # egl-wayland
     # gpt4all-chat

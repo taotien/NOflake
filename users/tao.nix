@@ -138,7 +138,7 @@
 
   users.users.tao = {
     isNormalUser = true;
-    extraGroups = ["video" "wheel" "libvirtd" "dialout" "game"];
+    extraGroups = ["audio" "video" "wheel" "libvirtd" "dialout" "game"];
     shell = pkgs.nushell;
   };
 
