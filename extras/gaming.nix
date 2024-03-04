@@ -40,12 +40,24 @@
   services.pipewire.extraConfig = {
     pipewire."99-low-latency" = {
       context.properties = {
-        # default.allowed-rates = []
+        default.allowed-rates = [44100 48000 96000];
         default.clock.rate = 192000;
         default.clock.quantum = 32;
         default.clock.min-quantum = 32;
         default.clock.max-quantum = 32;
       };
+      context.modules = [
+        {
+          name = "libpipewire-module-rt";
+          args = {
+            nice.level = -12;
+            rt.prio = 89;
+            rt.time.soft = 200000;
+            rt.time.hard = 200000;
+          };
+          flags = ["ifexists nofail"];
+        }
+      ];
     };
     pipewire-pulse."99-low-latency" = {
       context.modules = [
