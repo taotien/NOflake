@@ -34,6 +34,7 @@
     # michael (webdev)
     nodejs
     vscode-langservers-extracted
+    nodePackages_latest.typescript-language-server
 
     # nix
     nil

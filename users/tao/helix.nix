@@ -71,6 +71,14 @@
           };
         }
         {
+          name = "javascript";
+          auto-format = true;
+          indent = {
+            tab-width = 4;
+            unit = "\t";
+          };
+        }
+        {
           name = "nix";
           auto-format = true;
           formatter = {command = "alejandra";};
