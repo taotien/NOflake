@@ -83,13 +83,13 @@
           auto-format = true;
           formatter = {command = "alejandra";};
         }
-        {
-          name = "typst";
-          indent = {
-            tab-width = 4;
-            unit = " ";
-          };
-        }
+        # {
+        #   name = "typst";
+        #   indent = {
+        #     tab-width = 4;
+        #     unit = " ";
+        #   };
+        # }
         # { name = "rust"; }
       ];
       language-servers = {
@@ -123,6 +123,6 @@
     };
     enable = true;
     defaultEditor = true;
-    package = inputs.helix.packages.${pkgs.system}.default;
+    # package = inputs.helix.packages.${pkgs.system}.default;
   };
 }
