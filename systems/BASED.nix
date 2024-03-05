@@ -15,8 +15,7 @@
     ffmpeg
     firefox
     git
-    # inputs.helix.packages.${pkgs.system}.default
-    helix
+    inputs.helix.packages.${pkgs.system}.default
     # libthai
     localsend
     macchina
