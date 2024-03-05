@@ -11,7 +11,7 @@
     };
     # stylix.url = "github:danth/stylix";
     helix = {
-      url = "github:helix-editor/helix";
+      url = "github:the-mikedavis/helix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     jujutsu = {
@@ -40,10 +40,10 @@
     nixos-hardware,
     nixos-raspberrypi,
     home-manager,
+    # stylix,
     helix,
     jujutsu,
     # nixos-cosmic,
-    # stylix,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -81,15 +81,6 @@
           ./extras/gaming.nix
         ];
       };
-      # NObangers = nixos-system [
-      #   # ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable-arm ]; })
-      #   nixos-hw.raspberry-pi-4
-      #   nixos-rpi.hardware
-      #   ./systems/BASED.nix
-      #   ./systems/NObangers.nix
-      #   ./users/pi.nix
-      #   ./extras/uwuraid.nix
-      # ];
     };
   };
 }
