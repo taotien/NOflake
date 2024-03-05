@@ -8,7 +8,6 @@
     # vulkan-loader
     etcher
     hyperfine
-    inputs.helix.packages.${pkgs.system}.default
     jq
     just
     lldb
@@ -59,7 +58,7 @@
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
-    # probably etcher
+    # etcher
     "electron-19.1.9"
   ];
 
