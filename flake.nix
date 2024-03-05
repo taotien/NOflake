@@ -9,6 +9,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # stylix.url = "github:danth/stylix";
     helix = {
       url = "github:helix-editor/helix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,7 +22,6 @@
     #   url = "github:lilyinstarlight/nixos-cosmic";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    stylix.url = "github:danth/stylix";
     # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     # aagl.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -43,7 +43,7 @@
     helix,
     jujutsu,
     # nixos-cosmic,
-    stylix,
+    # stylix,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -54,7 +54,7 @@
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
           home-manager.nixosModules.home-manager
-          stylix.nixosModules.stylix
+          # stylix.nixosModules.stylix
           ./systems/BASED.nix
           ./systems/NOcomputer.nix
           ./users/tao.nix
@@ -72,7 +72,7 @@
           nixos-hardware.nixosModules.common-cpu-intel
           # inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
           home-manager.nixosModules.home-manager
-          stylix.nixosModules.stylix
+          # stylix.nixosModules.stylix
           ./systems/BASED.nix
           ./systems/NOlaptop.nix
           ./users/tao.nix
