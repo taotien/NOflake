@@ -16,7 +16,7 @@
     prismlauncher
     protonup
     wine
-    # yuzu
+    # yuzu # nintendo can suck the shit out of my asshole
   ];
 
   programs.steam = {
