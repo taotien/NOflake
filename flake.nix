@@ -18,10 +18,10 @@
       url = "github:martinvonz/jj";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nixos-cosmic = {
-    #   url = "github:lilyinstarlight/nixos-cosmic";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     # aagl.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -43,7 +43,7 @@
     # stylix,
     helix,
     jujutsu,
-    # nixos-cosmic,
+    nixos-cosmic,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -61,8 +61,8 @@
           ./extras/uwuraid.nix
           ./extras/dev.nix
           ./extras/gaming.nix
-          # nixos-cosmic.nixosModules.default
-          # ./extras/cosmic.nix
+          nixos-cosmic.nixosModules.default
+          ./extras/cosmic.nix
         ];
       };
       NOlaptop = nixpkgs.lib.nixosSystem {

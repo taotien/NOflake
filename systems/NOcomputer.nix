@@ -100,6 +100,7 @@
     powerManagement.enable = true;
     # options: production, beta, vulkan_beta, latest
     package = pkgs.linuxPackages_zen.nvidiaPackages.latest;
+    open = true;
   };
   # enable core and mem freq sliders for nvidia
   services.xserver.deviceSection = ''
