@@ -39,6 +39,7 @@
   # };
 
   services.xserver.displayManager.defaultSession = "plasma";
+  services.xserver.displayManager.sddm.wayland.enable = true;
 
   # hardware.sane = {
   #   enable = true;
