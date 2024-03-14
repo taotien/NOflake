@@ -1,5 +1,5 @@
 {...}: {
-  services.rpcbind.enable = true;
+  # services.rpcbind.enable = true;
   systemd.mounts = let
     opts = {
       type = "cifs";
