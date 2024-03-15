@@ -4,9 +4,10 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    lua-language-server
     # freecad
     # vulkan-loader
-    etcher
+    # etcher
     hyperfine
     jq
     just
@@ -57,10 +58,10 @@
     trunk
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    # etcher
-    "electron-19.1.9"
-  ];
+  # nixpkgs.config.permittedInsecurePackages = [
+  #   # etcher
+  #   "electron-19.1.9"
+  # ];
 
   services.udev.extraRules = ''
     SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic GDB Server", SYMLINK+="ttyBmpGdb"

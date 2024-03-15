@@ -31,14 +31,19 @@
 
     nushell = {
       enable = true;
-      configFile.source = ./config.nu;
-      envFile.source = ./env.nu;
+      configFile.source = ./nushell/config.nu;
+      envFile.source = ./nushell/env.nu;
+      extraConfig = builtins.readFile ./nushell/stuff.nu;
     };
 
     starship = {
       enable = true;
       enableNushellIntegration = true;
       settings = builtins.fromTOML (builtins.readFile ./starship.toml);
+    };
+
+    taskwarrior = {
+      enable = true;
     };
 
     wezterm = {

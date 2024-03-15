@@ -29,9 +29,9 @@
     # wayland chromium workaround
     NIXOS_OZONE_WL = "1";
 
-    #   # firefox nvidia-vaapi-driver
-    #   # MOZ_DISABLE_RDD_SANDBOX = "1";
-    #   # LIBVA_DRIVER_NAME = "nvidia";
+    # firefox nvidia-vaapi-driver
+    # MOZ_DISABLE_RDD_SANDBOX = "1";
+    # LIBVA_DRIVER_NAME = "nvidia";
   };
 
   fileSystems."/home" = {
@@ -99,6 +99,7 @@
     modesetting.enable = true;
     powerManagement.enable = true;
     # options: production, beta, vulkan_beta, latest
+    # package = pkgs.linuxPackages_latest.nvidiaPackages.latest;
     package = pkgs.linuxPackages_zen.nvidiaPackages.latest;
     open = true;
   };
