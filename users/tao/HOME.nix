@@ -42,19 +42,19 @@
       settings = builtins.fromTOML (builtins.readFile ./starship.toml);
     };
 
-    taskwarrior = {
-      enable = true;
-    };
+    # taskwarrior = {
+    #   enable = true;
+    # };
 
     wezterm = {
       enable = true;
       extraConfig = builtins.readFile ./wezterm.lua;
     };
 
-    zellij = {
-      enable = true;
-      settings = {};
-    };
+    # zellij = {
+    #   enable = true;
+    #   settings = {};
+    # };
 
     zoxide = {
       enable = true;
@@ -62,12 +62,12 @@
     };
   };
 
-  services = {
-    pueue = {
-      enable = true;
-      settings = {};
-    };
-  };
+  # services = {
+  #   pueue = {
+  #     enable = true;
+  #     settings = {};
+  #   };
+  # };
 
   home.username = "tao";
   home.homeDirectory = "/home/tao";

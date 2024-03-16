@@ -9,7 +9,7 @@
     # nvidia-vaapi-driver
     # foldingathome
     gwe
-    mesa
+    # mesa
     openrgb
     snapper
   ];

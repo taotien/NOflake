@@ -58,11 +58,6 @@
     trunk
   ];
 
-  # nixpkgs.config.permittedInsecurePackages = [
-  #   # etcher
-  #   "electron-19.1.9"
-  # ];
-
   services.udev.extraRules = ''
     SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic GDB Server", SYMLINK+="ttyBmpGdb"
     SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic UART Port",  SYMLINK+="ttyBmpTarg"

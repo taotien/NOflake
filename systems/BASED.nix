@@ -12,15 +12,12 @@
     cifs-utils
     du-dust
     exfatprogs
-    ffmpeg
-    firefox
     git
     inputs.helix.packages.${pkgs.system}.default
     # libthai
     localsend
     macchina
     mesa
-    mpv
     ouch
     ripgrep
     rustdesk
@@ -29,8 +26,9 @@
     tree
     wezterm
     # wget
-    yt-dlp
-    zellij
+    # yt-dlp
+    # zellij
+    pueue
     zstd
   ];
   programs.partition-manager.enable = lib.mkDefault true;

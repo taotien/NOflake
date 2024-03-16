@@ -5,6 +5,9 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    ffmpeg
+    firefox
+    yt-dlp
     # birdtray
     # cider
     # enchant
@@ -51,13 +54,13 @@
     libsForQt5.plasma-integration
     libsForQt5.plasma-vault
     miniserve
+    mpv
     nushell
     obs-studio
     onlyoffice-bin
     pandoc
     pipe-rename
     prusa-slicer
-    pueue
     qmk
     qmk-udev-rules
     ripgrep-all
