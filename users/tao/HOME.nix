@@ -5,8 +5,9 @@
 }: {
   imports = [
     (import ./helix.nix {inherit pkgs inputs;})
-    ./cargo.nix
   ];
+
+  home.file.".cargo/config.toml".text = builtins.readFile ./cargo.toml;
 
   programs = {
     jujutsu = {
@@ -42,9 +43,9 @@
       settings = builtins.fromTOML (builtins.readFile ./starship.toml);
     };
 
-    # taskwarrior = {
-    #   enable = true;
-    # };
+    taskwarrior = {
+      enable = true;
+    };
 
     wezterm = {
       enable = true;
@@ -62,12 +63,12 @@
     };
   };
 
-  # services = {
-  #   pueue = {
-  #     enable = true;
-  #     settings = {};
-  #   };
-  # };
+  services = {
+    pueue = {
+      enable = true;
+      settings = {};
+    };
+  };
 
   home.username = "tao";
   home.homeDirectory = "/home/tao";
