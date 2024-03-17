@@ -102,6 +102,7 @@
     # package = pkgs.linuxPackages_latest.nvidiaPackages.latest;
     package = pkgs.linuxPackages_zen.nvidiaPackages.latest;
     open = true;
+    # open = true;
   };
   # enable core and mem freq sliders for nvidia
   services.xserver.deviceSection = ''
