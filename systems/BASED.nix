@@ -16,7 +16,8 @@
     inputs.helix.packages.${pkgs.system}.default
     # libthai
     localsend
-    macchina
+    # macchina
+    neofetch
     mesa
     ouch
     ripgrep

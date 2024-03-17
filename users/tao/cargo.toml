@@ -3,7 +3,8 @@ rr = "run --release"
 
 [build]
 target = "x86_64-unknown-linux-gnu"
-rustc-wrapper = "${pkgs.sccache}/bin/sccache"
+# rustc-wrapper = "${pkgs.sccache}/bin/sccache"
+rustc-wrapper = "path/to/sccache"
 rustflags = ["-Z", "threads=8"]
 
 [unstable]

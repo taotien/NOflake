@@ -2,12 +2,15 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  cargoFile = builtins.readFile ./cargo.toml;
+  cargoConfig = builtins.replaceStrings ["path/to/sccache"] ["${pkgs.sccache}/bin/sccache"] cargoFile;
+in {
   imports = [
     (import ./helix.nix {inherit pkgs inputs;})
   ];
 
-  home.file.".cargo/config.toml".text = builtins.readFile ./cargo.toml;
+  home.file.".cargo/config.toml".text = cargoConfig;
 
   programs = {
     jujutsu = {

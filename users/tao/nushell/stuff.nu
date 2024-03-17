@@ -1,7 +1,7 @@
 source ~/.cache/starship/init.nu
 source ~/.zoxide.nu
 alias cringe = sudo bootctl set-oneshot auto-windows
-alias fetch = macchina
+alias fetch = neofetch
 alias ff = firefox
 alias gc = sudo nix-collect-garbage -d
 alias js = jj status

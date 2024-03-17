@@ -58,6 +58,11 @@
     trunk
   ];
 
+  # programs.nix-ld.enable = true;
+  # programs.nix-ld.libraries = with pkgs; [
+  #   xorg.libX11
+  # ];
+
   services.udev.extraRules = ''
     SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic GDB Server", SYMLINK+="ttyBmpGdb"
     SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic UART Port",  SYMLINK+="ttyBmpTarg"

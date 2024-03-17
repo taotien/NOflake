@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  # THE FINALS audio borked
   services.pipewire.enable = false;
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
@@ -8,8 +9,8 @@
     # gpt4all-chat
     # nvidia-vaapi-driver
     # foldingathome
-    gwe
     # mesa
+    gwe
     openrgb
     snapper
   ];
