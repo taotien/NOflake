@@ -7,6 +7,33 @@
     fw-ectool
   ];
 
+  powerManagement.powertop.enable = true;
+  services.fwupd.enable = true;
+  services.fprintd.enable = true;
+  hardware.sensor.iio.enable = true;
+
+  services.xserver.displayManager.defaultSession = "plasma";
+  services.xserver.displayManager.sddm.wayland.enable = true;
+
+  # systemd.user.services.backlight = {
+  #   # description = "";
+  #   ExecStart = "${pkgs.prescurve}/bin/prescurve_backlight";
+  #   Restart = "on-failure";
+  #   wantedBy = [ "default.target" ];
+  # };
+  # hardware.sane = {
+  #   enable = true;
+  #   extraBackends = [ pkgs.epkowa ];
+  # };
+
+  services.udev.extraRules = ''
+    # Ethernet expansion card
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="8156", ATTR{power/autosuspend}="20"
+
+    ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"
+    ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
+  '';
+
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/e4244a97-9b48-49f0-8093-782163045020";
     fsType = "btrfs";
@@ -22,37 +49,7 @@
     fsType = "btrfs";
     options = ["subvol=nixos" "noatime" "compress-force=zstd:3" "discard=async"];
   };
-
   swapDevices = [{device = "/dev/disk/by-uuid/ca55d0ea-c0db-44c5-af3a-e38eec803929";}];
-
-  # services.fstrim.enable = true;
-  services.fprintd.enable = true;
-  services.fwupd.enable = true;
-  powerManagement.powertop.enable = true;
-  hardware.sensor.iio.enable = true;
-
-  # systemd.user.services.backlight = {
-  #   # description = "";
-  #   ExecStart = "${pkgs.prescurve}/bin/prescurve_backlight";
-  #   Restart = "on-failure";
-  #   wantedBy = [ "default.target" ];
-  # };
-
-  services.xserver.displayManager.defaultSession = "plasma";
-  services.xserver.displayManager.sddm.wayland.enable = true;
-
-  # hardware.sane = {
-  #   enable = true;
-  #   extraBackends = [ pkgs.epkowa ];
-  # };
-
-  services.udev.extraRules = ''
-    # Ethernet expansion card
-    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="8156", ATTR{power/autosuspend}="20"
-
-    ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"
-    ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
-  '';
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.availableKernelModules = [

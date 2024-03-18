@@ -5,25 +5,16 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
-    ffmpeg
-    firefox
-    yt-dlp
-    # birdtray
-    # cider
     # enchant
-    # expressvpn
     # fractal
-    # gh
     # joshuto
     # libftdi
     # libusb
     # mendeley
     # nuspell
     # ocs-url
-    # oculante
-    # ollama
+    oculante
     # onefetch
-    # partition-manager
     # slack
     # tectonic
     # texlab
@@ -39,12 +30,8 @@
     calibre
     darktable
     deluge
-    discord
-    # (discord.override {
-    #   withOpenASAR = true;
-    #   withVencord = true;
-    # })
-    # vesktop
+    ffmpeg
+    firefox
     jellyfin-media-player
     jellyfin-mpv-shim
     keepassxc
@@ -74,12 +61,13 @@
     typst-lsp
     virt-manager
     wezterm
+    yt-dlp
     zathura
     zoom-us
     zoxide
+    discord
   ];
   # programs.adb.enable = true;
-  # programs.mosh.enable = true;
   environment.shells = with pkgs; [nushell];
 
   # virt

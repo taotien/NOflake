@@ -7,6 +7,7 @@
     lua-language-server
     # freecad
     # vulkan-loader
+    # gh
     # etcher
     hyperfine
     jq
@@ -58,10 +59,18 @@
     trunk
   ];
 
-  # programs.nix-ld.enable = true;
-  # programs.nix-ld.libraries = with pkgs; [
-  #   xorg.libX11
-  # ];
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    libxkbcommon
+    libGL
+
+    wayland.dev
+
+    xorg.libX11
+    xorg.libXrandr
+    xorg.libXi
+    xorg.libX11
+  ];
 
   services.udev.extraRules = ''
     SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic GDB Server", SYMLINK+="ttyBmpGdb"

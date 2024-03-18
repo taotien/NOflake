@@ -1,15 +1,9 @@
 {pkgs, ...}: {
-  # THE FINALS audio borked
-  services.pipewire.enable = false;
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
-
   environment.systemPackages = with pkgs; [
     # egl-wayland
     # gpt4all-chat
     # nvidia-vaapi-driver
     # foldingathome
-    # mesa
     gwe
     openrgb
     snapper
@@ -19,6 +13,52 @@
   boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = "1";
 
+  # THE FINALS audio borked
+  services.pipewire.enable = false;
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
+  services.pipewire.extraConfig = {
+    pipewire."99-low-latency" = {
+      context.properties = {
+        default.allowed-rates = [44100 48000 96000];
+        default.clock.rate = 192000;
+        default.clock.quantum = 32;
+        default.clock.min-quantum = 32;
+        default.clock.max-quantum = 32;
+      };
+      context.modules = [
+        {
+          name = "libpipewire-module-rt";
+          args = {
+            nice.level = -12;
+            rt.prio = 89;
+            rt.time.soft = 200000;
+            rt.time.hard = 200000;
+          };
+          flags = ["ifexists nofail"];
+        }
+      ];
+    };
+    pipewire-pulse."99-low-latency" = {
+      context.modules = [
+        {
+          name = "libpipewire-module-protocol-pulse";
+          args = {
+            pulse.min.req = "32/192000";
+            pulse.default.req = "32/192000";
+            pulse.max.req = "32/192000";
+            pulse.min.quantum = "32/192000";
+            pulse.max.quantum = "32/192000";
+          };
+        }
+      ];
+      stream.properties = {
+        node.latency = "32/192000";
+        resample.quality = 1;
+      };
+    };
+  };
+
   # services.foldingathome = {
   #   enable = true;
   #   team = 223518;
@@ -26,14 +66,54 @@
   #   extraArgs = ["--passkey=76ba03d55acf116776ba03d55acf1167"];
   # };
 
-  environment.sessionVariables = {
-    # wayland chromium workaround
-    NIXOS_OZONE_WL = "1";
+  # environment.sessionVariables = {
+  #   # wayland chromium workaround
+  #   NIXOS_OZONE_WL = "1";
 
-    # firefox nvidia-vaapi-driver
-    # MOZ_DISABLE_RDD_SANDBOX = "1";
-    # LIBVA_DRIVER_NAME = "nvidia";
+  #   # firefox nvidia-vaapi-driver
+  #   # MOZ_DISABLE_RDD_SANDBOX = "1";
+  #   # LIBVA_DRIVER_NAME = "nvidia";
+  # };
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
   };
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    # options: production, beta, vulkan_beta, latest
+    # package = pkgs.linuxPackages_latest.nvidiaPackages.latest;
+    package = pkgs.linuxPackages_zen.nvidiaPackages.latest;
+    # open = true;
+  };
+  # enable core and mem freq sliders for nvidia
+  services.xserver.deviceSection = ''
+    Option "Coolbits" "8"
+  '';
+  systemd.services.nvpl = {
+    description = "Increase GPU power limit to 400w";
+    script = "/run/current-system/sw/bin/nvidia-smi -pl=400";
+    wantedBy = ["multi-user.target"];
+  };
+
+  services.udev.packages = [pkgs.openrgb];
+  services.udev.extraRules = ''
+    KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a3c5", MODE="0666"
+  '';
+
+  services.snapper.configs = {
+    home = {
+      SUBVOLUME = "/home";
+      ALLOW_USERS = ["tao"];
+      TIMELINE_CREATE = true;
+      TIMELINE_CLEANUP = true;
+      TIMELINE_LIMIT_HOURLY = "5";
+      TIMELINE_LIMIT_DAILY = "7";
+    };
+  };
+  services.snapper.snapshotInterval = "*:0/5";
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
@@ -71,18 +151,6 @@
   };
   swapDevices = [{device = "/dev/disk/by-uuid/ca0ed3d7-8758-4ac7-b016-8b4cd9608ded";}];
 
-  services.snapper.configs = {
-    home = {
-      SUBVOLUME = "/home";
-      ALLOW_USERS = ["tao"];
-      TIMELINE_CREATE = true;
-      TIMELINE_CLEANUP = true;
-      TIMELINE_LIMIT_HOURLY = "5";
-      TIMELINE_LIMIT_DAILY = "7";
-    };
-  };
-  services.snapper.snapshotInterval = "*:0/5";
-
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
@@ -91,41 +159,8 @@
   # boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
   # boot.blacklistedKernelModules = with config.boot.kernelPackages; [ k10temp ];
 
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    # options: production, beta, vulkan_beta, latest
-    # package = pkgs.linuxPackages_latest.nvidiaPackages.latest;
-    package = pkgs.linuxPackages_zen.nvidiaPackages.latest;
-    # open = true;
-  };
-  # enable core and mem freq sliders for nvidia
-  services.xserver.deviceSection = ''
-    Option "Coolbits" "8"
-  '';
-  systemd.services.nvpl = {
-    description = "Increase GPU power limit to 400w";
-    script = "/run/current-system/sw/bin/nvidia-smi -pl=400";
-    wantedBy = ["multi-user.target"];
-  };
-
-  services.udev.packages = [pkgs.openrgb];
-  services.udev.extraRules = ''
-    KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a3c5", MODE="0666"
-  '';
-
   # windows can suck my ass
   time.hardwareClockInLocalTime = true;
-
-  # services.xserver.displayManager = {
-  #   autoLogin.enable = true;
-  #   autoLogin.user = "tao";
-  # };
 
   networking.hostName = "NOcomputer";
 }
