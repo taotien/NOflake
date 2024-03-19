@@ -106,8 +106,8 @@
 
   boot.loader.systemd-boot.enable = lib.mkDefault true;
   boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
-  boot.loader.timeout = 1;
-  boot.supportedFilesystems = ["ntfs"];
+  boot.loader.timeout = lib.mkForce 1;
+  boot.supportedFilesystems = ["ntfs" "btrfs"];
   systemd.extraConfig = ''
     DefaultTimeoutStopSec=15s
   '';

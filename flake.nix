@@ -52,6 +52,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           nixos-hardware.nixosModules.common-cpu-amd
+          nixos-hardware.nixosModules.common-cpu-amd-pstate
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
           home-manager.nixosModules.home-manager
           # stylix.nixosModules.stylix
@@ -69,16 +70,49 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          nixos-hardware.nixosModules.common-cpu-intel
-          # inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
+          nixos-hardware.nixosModules.common-cpu-amd
+          nixos-hardware.nixosModules.common-cpu-amd-pstate
+          nixos-hardware.nixosModules.common-gpu-amd
           home-manager.nixosModules.home-manager
-          # stylix.nixosModules.stylix
           ./systems/BASED.nix
           ./systems/NOlaptop.nix
           ./users/tao.nix
           ./extras/uwuraid.nix
           ./extras/dev.nix
           ./extras/gaming.nix
+        ];
+      };
+      NOmom = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          nixos-hardware.nixosModules.common-cpu-intel
+          # inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
+          home-manager.nixosModules.home-manager
+          # stylix.nixosModules.stylix
+          ./systems/BASED.nix
+          ./systems/NOmom.nix
+          ./users/tao.nix
+          ./extras/uwuraid.nix
+          ./extras/dev.nix
+          ./extras/gaming.nix
+        ];
+      };
+      NOiso = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+          home-manager.nixosModules.home-manager
+          ./systems/BASED.nix
+          ./users/tao.nix
+          ({lib, ...}: {
+            isoImage.squashfsCompression = "zstd";
+            networking.wireless.enable = false;
+            security.sudo-rs.enable = lib.mkForce false;
+            services.btrfs.autoScrub.enable = false;
+            system.stateVersion = lib.mkForce "24.05";
+          })
         ];
       };
     };
