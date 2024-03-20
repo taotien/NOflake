@@ -104,7 +104,7 @@
       "kwin"."Walk Through Windows of Current Application Alternative (Reverse)" = [ ];
       "kwin"."Window Above Other Windows" = [ ];
       "kwin"."Window Below Other Windows" = [ ];
-      "kwin"."Window Close" = "Alt+F4";
+      "kwin"."Window Close" = ["Alt+F4" "Meta+W"];
       "kwin"."Window Fullscreen" = [ ];
       "kwin"."Window Grow Horizontal" = [ ];
       "kwin"."Window Grow Vertical" = [ ];
@@ -231,6 +231,8 @@
       "baloofilerc"."General"."dbVersion" = 2;
       "baloofilerc"."General"."exclude filters" = "*~,*.part,*.o,*.la,*.lo,*.loT,*.moc,moc_*.cpp,qrc_*.cpp,ui_*.h,cmake_install.cmake,CMakeCache.txt,CTestTestfile.cmake,libtool,config.status,confdefs.h,autom4te,conftest,confstat,Makefile.am,*.gcode,.ninja_deps,.ninja_log,build.ninja,*.csproj,*.m4,*.rej,*.gmo,*.pc,*.omf,*.aux,*.tmp,*.po,*.vm*,*.nvram,*.rcore,*.swp,*.swap,lzo,litmain.sh,*.orig,.histfile.*,.xsession-errors*,*.map,*.so,*.a,*.db,*.qrc,*.ini,*.init,*.img,*.vdi,*.vbox*,vbox.log,*.qcow2,*.vmdk,*.vhd,*.vhdx,*.sql,*.sql.gz,*.ytdl,*.tfstate*,*.class,*.pyc,*.pyo,*.elc,*.qmlc,*.jsc,*.fastq,*.fq,*.gb,*.fasta,*.fna,*.gbff,*.faa,po,CVS,.svn,.git,_darcs,.bzr,.hg,CMakeFiles,CMakeTmp,CMakeTmpQmake,.moc,.obj,.pch,.uic,.npm,.yarn,.yarn-cache,__pycache__,node_modules,node_packages,nbproject,.terraform,.venv,venv,core-dumps,lost+found";
       "baloofilerc"."General"."exclude filters version" = 9;
+      "dolphinrc"."KFileDialog Settings"."Places Icons Auto-resize" = false;
+      "dolphinrc"."KFileDialog Settings"."Places Icons Static Size" = 22;
       "kactivitymanagerdrc"."activities"."4c4b4e59-b0da-4a45-b9cc-729233bb1e9a" = "Default";
       "kactivitymanagerdrc"."main"."currentActivity" = "4c4b4e59-b0da-4a45-b9cc-729233bb1e9a";
       "kcminputrc"."Libinput.2362.628.PIXA3854:00 093A:0274 Touchpad"."ClickMethod" = 2;
@@ -239,6 +241,7 @@
       "kcminputrc"."Libinput.2362.628.PIXA3854:00 093A:0274 Touchpad"."PointerAcceleration" = 0.420;
       "kcminputrc"."Libinput.2362.628.PIXA3854:00 093A:0274 Touchpad"."PointerAccelerationProfile" = 1;
       "kcminputrc"."Libinput.2362.628.PIXA3854:00 093A:0274 Touchpad"."ScrollFactor" = 0.1;
+      "kded5rc"."Module-browserintegrationreminder"."autoload" = false;
       "kded5rc"."Module-device_automounter"."autoload" = false;
       "kdeglobals"."WM"."activeBackground" = "49,54,59";
       "kdeglobals"."WM"."activeBlend" = "252,252,252";
@@ -256,13 +259,18 @@
       "kglobalshortcutsrc"."mediacontrol"."_k_friendly_name" = "Media Controller";
       "kglobalshortcutsrc"."org_kde_powerdevil"."_k_friendly_name" = "KDE Power Management System";
       "kglobalshortcutsrc"."plasmashell"."_k_friendly_name" = "plasmashell";
+      "kiorc"."Confirmations"."ConfirmDelete" = true;
       "kwalletrc"."Wallet"."First Use" = false;
       "kwinrc"."Desktops"."Id_1" = "925ef4df-45a9-4cdc-a29f-0f6a17a59588";
       "kwinrc"."Desktops"."Number" = 1;
       "kwinrc"."Desktops"."Rows" = 1;
-      "kwinrc"."Tiling"."padding" = 4;
+      "kwinrc"."Tiling"."padding" = 21;
       "kwinrc"."Tiling.b139d5e7-0994-57d9-b378-1e6f13020bc3"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.5},{\"width\":0.5}]}";
       "kwinrc"."Wayland"."InputMethod[$e]" = "/run/current-system/sw/share/applications/fcitx5-wayland-launcher.desktop";
+      "kwinrc"."Windows"."AutoRaise" = true;
+      "kwinrc"."Windows"."AutoRaiseInterval" = 250;
+      "kwinrc"."Windows"."DelayFocusInterval" = 200;
+      "kwinrc"."Windows"."FocusPolicy" = "FocusFollowsMouse";
       "kwinrc"."Xwayland"."Scale" = 1;
       "kxkbrc"."Layout"."DisplayNames" = "";
       "kxkbrc"."Layout"."LayoutList" = "us";
