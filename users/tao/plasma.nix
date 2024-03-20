@@ -45,7 +45,7 @@
       "kwin"."MoveZoomLeft" = [ ];
       "kwin"."MoveZoomRight" = [ ];
       "kwin"."MoveZoomUp" = [ ];
-      "kwin"."Overview" = "Meta+W";
+      "kwin"."Overview" = [ ];
       "kwin"."Setup Window Shortcut" = [ ];
       "kwin"."Show Desktop" = "Meta+D";
       "kwin"."Switch One Desktop Down" = "Meta+Ctrl+Down";
@@ -225,6 +225,7 @@
       "plasmashell"."switch to next activity" = [ ];
       "plasmashell"."switch to previous activity" = [ ];
       "plasmashell"."toggle do not disturb" = [ ];
+      "services.org.wezfurlong.wezterm.desktop"."_launch" = "Meta+Return";
     };
     configFile = {
       "baloofilerc"."General"."dbVersion" = 2;
@@ -260,7 +261,7 @@
       "kwinrc"."Desktops"."Number" = 1;
       "kwinrc"."Desktops"."Rows" = 1;
       "kwinrc"."Tiling"."padding" = 4;
-      "kwinrc"."Tiling.b139d5e7-0994-57d9-b378-1e6f13020bc3"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.b139d5e7-0994-57d9-b378-1e6f13020bc3"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.5},{\"width\":0.5}]}";
       "kwinrc"."Wayland"."InputMethod[$e]" = "/run/current-system/sw/share/applications/fcitx5-wayland-launcher.desktop";
       "kwinrc"."Xwayland"."Scale" = 1;
       "kxkbrc"."Layout"."DisplayNames" = "";

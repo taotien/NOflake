@@ -9,6 +9,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    plasma-manager = {
+      url = "github:pjones/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # stylix.url = "github:danth/stylix";
     helix = {
       url = "github:the-mikedavis/helix";
@@ -40,6 +44,7 @@
     nixos-hardware,
     nixos-raspberrypi,
     home-manager,
+    plasma-manager,
     # stylix,
     helix,
     jujutsu,

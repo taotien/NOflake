@@ -5,6 +5,7 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    inputs.plasma-manager.packages.${pkgs.system}.default
     # enchant
     # fractal
     # joshuto
