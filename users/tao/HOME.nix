@@ -8,6 +8,7 @@
 in {
   imports = [
     (import ./helix.nix {inherit pkgs inputs;})
+    ./plasma.nix
   ];
 
   home.file.".cargo/config.toml".text = cargoConfig;

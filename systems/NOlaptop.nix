@@ -12,20 +12,24 @@
   services.xserver.displayManager.defaultSession = "plasma";
   services.xserver.displayManager.sddm.wayland.enable = true;
 
+  fileSystems."/home/tao/games" = {
+    device = "/dev/disk/by-uuid/d97a81dc-669c-41d1-912b-829f88fd6f69";
+    fsType = "btrfs";
+    options = ["subvol=/home/tao/games" "nosuid" "nodev" "noatime" "compress-force=zstd:3" "users" "rw" "exec" "discard=async"];
+  };
   fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/2e1ba9af-4224-48a3-b935-519947da97db";
+    device = "/dev/disk/by-uuid/d97a81dc-669c-41d1-912b-829f88fd6f69";
     fsType = "btrfs";
     options = ["subvol=home" "noatime" "compress-force=zstd:3" "discard=async"];
   };
-  # fileSystems."/home/tao/Games" = {
-  #   device = "/dev/disk/by-uuid/e4244a97-9b48-49f0-8093-782163045020";
-  #   fsType = "btrfs";
-  #   options = ["subvol=games" "nosuid" "nodev" "noatime" "compress-force=zstd:3" "users" "rw" "exec" "discard=async"];
-  # };
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/2e1ba0af-4224-48a3-b935-519947da97db";
+    device = "/dev/disk/by-uuid/d97a81dc-669c-41d1-912b-829f88fd6f69";
     fsType = "btrfs";
-    options = ["subvol=nixos" "noatime" "compress-force=zstd:3" "discard=async"];
+    options = ["noatime" "compress-force=zstd:3" "discard=async"];
+  };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/8E28-E53F";
+    fsType = "vfat";
   };
   swapDevices = [{device = "/dev/disk/by-uuid/36216521-db46-4bb0-8994-38a36d5c4528";}];
 
@@ -38,6 +42,10 @@
     "xhci_pci"
     "usbhid"
     "uas"
+  ];
+  boot.kernelParams = [
+    # "mem_sleep_default=deep"
+    "nvme.noacpi=1"
   ];
   boot.kernelModules = ["kvm-amd"];
   powerManagement.cpuFreqGovernor = "powersave";

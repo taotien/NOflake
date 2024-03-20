@@ -61,7 +61,7 @@
   ];
   boot.kernelParams = [
     "acpi_osi=\"!Windows 2020\""
-    "mem_sleep_default=s2idle"
+    "mem_sleep_default=deep"
     "nvme.noacpi=1"
     "i915.enable_psr=1"
   ];
