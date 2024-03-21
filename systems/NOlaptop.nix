@@ -1,13 +1,46 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # prescurve
+    libinput
     powertop
     fw-ectool
   ];
 
-  powerManagement.powertop.enable = true;
   services.fwupd.enable = true;
   services.fprintd.enable = true;
+
+  powerManagement.powertop.enable = false;
+  systemd.services.powertop = {
+    wantedBy = ["multi-user.target"];
+    after = ["multi-user.target"];
+    path = [pkgs.kmod];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = "yes";
+      ExecStart = "${pkgs.powertop}/bin/powertop --auto-tune";
+      ExecStartPost = "
+          /bin/sh -c 'for f in $(grep -l 'Keyboard' /sys/bus/usb/devices/*/product | sed \"s/product\\\\power/control/\"); do echo on >| '$f'; done'
+        ";
+    };
+  };
+
+  environment.etc = {
+    "libinput/local-overrides.quirks".text = "
+      # MatchUdevType=touchpad
+      # MatchDMIModalias=dmi:*svnFramework:pnLaptop*
+      # AttrEventCode=-BTN_RIGHT
+
+      [Framework Laptop 16 Keyboard Module]
+      MatchName=Framework Laptop 16 Keyboard Module*
+      MatchUdevType=keyboard
+      MatchDMIModalias=dmi:*svnFramework:pnLaptop16*
+      AttrKeyboardIntegration=internal
+    ";
+  };
+  # services.xserver.libinput = {
+  #   enable = true;
+  #   # touchpad.disableWhileTyping = true;
+  # };
 
   services.xserver.displayManager.defaultSession = "plasma";
   services.xserver.displayManager.sddm.wayland.enable = true;
@@ -45,7 +78,7 @@
   ];
   boot.kernelParams = [
     # "mem_sleep_default=deep"
-    "nvme.noacpi=1"
+    # "nvme.noacpi=1"
   ];
   boot.kernelModules = ["kvm-amd"];
   powerManagement.cpuFreqGovernor = "powersave";

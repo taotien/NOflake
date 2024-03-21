@@ -37,10 +37,10 @@
     jellyfin-mpv-shim
     keepassxc
     leetcode-cli
-    libsForQt5.kcharselect
-    libsForQt5.kdeconnect-kde
-    libsForQt5.plasma-integration
-    libsForQt5.plasma-vault
+    # libsForQt5.kcharselect
+    # libsForQt5.kdeconnect-kde
+    # libsForQt5.plasma-integration
+    plasma-vault
     miniserve
     mpv
     nushell
