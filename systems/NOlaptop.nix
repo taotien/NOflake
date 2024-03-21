@@ -24,22 +24,22 @@
     };
   };
 
-  environment.etc = {
-    "libinput/local-overrides.quirks".text = "
-      # MatchUdevType=touchpad
-      # MatchDMIModalias=dmi:*svnFramework:pnLaptop*
-      # AttrEventCode=-BTN_RIGHT
+  # environment.etc = {
+  #   "libinput/local-overrides.quirks".text = "
+  #     # MatchUdevType=touchpad
+  #     # MatchDMIModalias=dmi:*svnFramework:pnLaptop*
+  #     # AttrEventCode=-BTN_RIGHT
 
-      [Framework Laptop 16 Keyboard Module]
-      MatchName=Framework Laptop 16 Keyboard Module*
-      MatchUdevType=keyboard
-      MatchDMIModalias=dmi:*svnFramework:pnLaptop16*
-      AttrKeyboardIntegration=internal
-    ";
-  };
+  #     [Framework Laptop 16 Keyboard Module]
+  #     MatchName=Framework Laptop 16 Keyboard Module*
+  #     MatchUdevType=keyboard
+  #     # MatchDMIModalias=dmi:*svnFramework:pnLaptop16*
+  #     AttrKeyboardIntegration=internal
+  #   ";
+  # };
   # services.xserver.libinput = {
   #   enable = true;
-  #   # touchpad.disableWhileTyping = true;
+  #   touchpad.disableWhileTyping = true;
   # };
 
   services.xserver.displayManager.defaultSession = "plasma";

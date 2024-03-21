@@ -37,6 +37,7 @@
     jellyfin-mpv-shim
     keepassxc
     leetcode-cli
+    # kdeconnect
     # libsForQt5.kcharselect
     # libsForQt5.kdeconnect-kde
     # libsForQt5.plasma-integration
@@ -70,6 +71,7 @@
     discord
   ];
   # programs.adb.enable = true;
+  programs.kdeconnect.enable = true;
   environment.shells = with pkgs; [nushell];
 
   # virt
@@ -81,6 +83,14 @@
     user = "tao";
     dataDir = "/home/tao/sync";
     configDir = "/home/tao/.config/syncthing";
+    settings = {
+      folders = {
+        "sync".path = "/home/tao/sync";
+        "school".path = "/home/tao/school";
+        # "projects".path = "/home/tao/projects";
+        # "pictures".path = "/home/tao/pictures";
+      };
+    };
   };
 
   hardware.keyboard.qmk.enable = true;

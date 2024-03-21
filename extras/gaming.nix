@@ -10,6 +10,7 @@
 
   environment.systemPackages = with pkgs; [
     # parsec-bin
+    gamemode
     heroic
     lutris
     mangohud
