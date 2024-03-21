@@ -225,6 +225,8 @@
       "plasmashell"."switch to next activity" = [ ];
       "plasmashell"."switch to previous activity" = [ ];
       "plasmashell"."toggle do not disturb" = [ ];
+      "services.firefox.desktop"."_launch" = "Meta+F";
+      "services.firefox.desktop"."new-private-window" = "Meta+Shift+F";
       "services.org.wezfurlong.wezterm.desktop"."_launch" = "Meta+Return";
     };
     configFile = {
@@ -272,6 +274,20 @@
       "kwinrc"."Windows"."DelayFocusInterval" = 200;
       "kwinrc"."Windows"."FocusPolicy" = "FocusFollowsMouse";
       "kwinrc"."Xwayland"."Scale" = 1;
+      "kwinrulesrc"."1"."Description" = "Application settings for org.wezfurlong.wezterm";
+      "kwinrulesrc"."1"."size" = "1420,969";
+      "kwinrulesrc"."1"."sizerule" = 3;
+      "kwinrulesrc"."1"."wmclass" = "wezterm-gui org.wezfurlong.wezterm";
+      "kwinrulesrc"."1"."wmclasscomplete" = true;
+      "kwinrulesrc"."1"."wmclassmatch" = 1;
+      "kwinrulesrc"."94b88066-bf8f-4089-8678-61be77391e5c"."Description" = "Application settings for org.wezfurlong.wezterm";
+      "kwinrulesrc"."94b88066-bf8f-4089-8678-61be77391e5c"."size" = "1420,969";
+      "kwinrulesrc"."94b88066-bf8f-4089-8678-61be77391e5c"."sizerule" = 3;
+      "kwinrulesrc"."94b88066-bf8f-4089-8678-61be77391e5c"."wmclass" = "wezterm-gui org.wezfurlong.wezterm";
+      "kwinrulesrc"."94b88066-bf8f-4089-8678-61be77391e5c"."wmclasscomplete" = true;
+      "kwinrulesrc"."94b88066-bf8f-4089-8678-61be77391e5c"."wmclassmatch" = 1;
+      "kwinrulesrc"."General"."count" = 1;
+      "kwinrulesrc"."General"."rules" = 1;
       "kxkbrc"."Layout"."DisplayNames" = "";
       "kxkbrc"."Layout"."LayoutList" = "us";
       "kxkbrc"."Layout"."Use" = true;
