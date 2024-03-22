@@ -41,7 +41,6 @@
     gwenview
     kate
     xterm
-    kwrite
   ];
 
   services.openssh.enable = true;

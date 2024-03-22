@@ -1,5 +1,6 @@
 source ~/.cache/starship/init.nu
 source ~/.zoxide.nu
+alias b = btm;
 alias cringe = sudo bootctl set-oneshot auto-windows
 alias fetch = neofetch
 alias ff = firefox
