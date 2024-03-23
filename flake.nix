@@ -103,23 +103,23 @@
           ./extras/gaming.nix
         ];
       };
-      NOiso = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
-        modules = [
-          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-          home-manager.nixosModules.home-manager
-          ./systems/BASED.nix
-          ./users/tao.nix
-          ({lib, ...}: {
-            isoImage.squashfsCompression = "zstd";
-            networking.wireless.enable = false;
-            security.sudo-rs.enable = lib.mkForce false;
-            services.btrfs.autoScrub.enable = false;
-            system.stateVersion = lib.mkForce "24.05";
-          })
-        ];
-      };
+      # NOiso = nixpkgs.lib.nixosSystem {
+      #   system = "x86_64-linux";
+      #   specialArgs = {inherit inputs;};
+      #   modules = [
+      #     "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+      #     home-manager.nixosModules.home-manager
+      #     ./systems/BASED.nix
+      #     ./users/tao.nix
+      #     ({lib, ...}: {
+      #       isoImage.squashfsCompression = "zstd";
+      #       networking.wireless.enable = false;
+      #       security.sudo-rs.enable = lib.mkForce false;
+      #       services.btrfs.autoScrub.enable = false;
+      #       system.stateVersion = lib.mkForce "24.05";
+      #     })
+      #   ];
+      # };
     };
   };
 }
