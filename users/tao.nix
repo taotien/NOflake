@@ -83,6 +83,8 @@
     user = "tao";
     dataDir = "/home/tao/sync";
     configDir = "/home/tao/.config/syncthing";
+    overrideDevices = false;
+    overrideFolders = false;
     settings = {
       folders = {
         "sync".path = "/home/tao/sync";

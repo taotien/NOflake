@@ -9,7 +9,7 @@ in {
   imports = [
     (import ./helix.nix {inherit pkgs inputs;})
     # ./plasma.nix
-    ./firefox.nix
+    # ./firefox.nix
   ];
 
   home.file.".cargo/config.toml".text = cargoConfig;

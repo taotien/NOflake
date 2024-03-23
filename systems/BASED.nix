@@ -34,6 +34,7 @@
   programs.firefox.policies = {
     DisablePocket = true;
     PasswordManagerEnabled = false;
+    NoDefaultBookmarks = false;
   };
 
   services.xserver.enable = lib.mkDefault true;
@@ -56,8 +57,8 @@
   networking.networkmanager.enable = true;
   services.tailscale.enable = true;
   services.tailscale.package = pkgs.tailscale;
-  services.resolved.enable = true;
-  networking.interfaces.tailscale0.useDHCP = false;
+  # services.resolved.enable = true;
+  # networking.interfaces.tailscale0.useDHCP = false;
 
   services.smartd.enable = true;
   services.btrfs.autoScrub.enable = lib.mkDefault true;
@@ -73,7 +74,7 @@
   };
 
   security.sudo-rs.enable = true;
-  # security.sudo-rs.extraRules = [{
+  # security.sudo-rs.ertraRules = [{
   #   commands = [
   #     { command = "${pkgs.systemd}/bin/bootctl set-oneshot auto-windows"; options = [ "NOPASSWD" ]; }
   #   ];
