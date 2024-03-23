@@ -28,7 +28,13 @@
     wget
     zstd
   ];
+  programs.firefox.enable = true;
   programs.partition-manager.enable = lib.mkDefault true;
+
+  programs.firefox.policies = {
+    DisablePocket = true;
+    PasswordManagerEnabled = false;
+  };
 
   services.xserver.enable = lib.mkDefault true;
   services.xserver.xkb.layout = "us";
