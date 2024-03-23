@@ -103,18 +103,6 @@
     KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a3c5", MODE="0666"
   '';
 
-  services.snapper.configs = {
-    home = {
-      SUBVOLUME = "/home";
-      ALLOW_USERS = ["tao"];
-      TIMELINE_CREATE = true;
-      TIMELINE_CLEANUP = true;
-      TIMELINE_LIMIT_HOURLY = "5";
-      TIMELINE_LIMIT_DAILY = "7";
-    };
-  };
-  services.snapper.snapshotInterval = "*:0/5";
-
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
     fsType = "btrfs";
