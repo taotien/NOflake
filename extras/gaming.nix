@@ -36,4 +36,15 @@
       value = -20;
     }
   ];
+  security.sudo-rs.extraRules = [
+    {
+      commands = [
+        {
+          command = "${pkgs.systemd}/bin/bootctl set-oneshot auto-windows";
+          options = ["NOPASSWD"];
+        }
+      ];
+      groups = ["wheel"];
+    }
+  ];
 }

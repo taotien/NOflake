@@ -74,12 +74,6 @@
   };
 
   security.sudo-rs.enable = true;
-  # security.sudo-rs.ertraRules = [{
-  #   commands = [
-  #     { command = "${pkgs.systemd}/bin/bootctl set-oneshot auto-windows"; options = [ "NOPASSWD" ]; }
-  #   ];
-  #   groups = [ "wheel" ];
-  # }];
 
   i18n.inputMethod = {
     enabled = "fcitx5";

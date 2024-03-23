@@ -41,7 +41,7 @@
     # libsForQt5.kcharselect
     # libsForQt5.kdeconnect-kde
     # libsForQt5.plasma-integration
-    plasma-vault
+    kdePackages.plasma-vault
     miniserve
     mpv
     nushell
