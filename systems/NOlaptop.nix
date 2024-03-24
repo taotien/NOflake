@@ -1,4 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: let
+  amdgpu-kernel-module = pkgs.callPackage ./vrr_patch.nix {
+    kernel = config.boot.kernelPackages.kernel;
+  };
+in {
   environment.systemPackages = with pkgs; [
     # prescurve
     libinput
@@ -45,6 +53,34 @@
   services.xserver.displayManager.defaultSession = "plasma";
   services.xserver.displayManager.sddm.wayland.enable = true;
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "sd_mod"
+    "thunderbolt"
+    "usb_storage"
+    "xhci_pci"
+    "usbhid"
+    "uas"
+  ];
+  boot.kernelParams = [
+    # "mem_sleep_default=deep"
+    # "nvme.noacpi=1"
+  ];
+  boot.kernelModules = ["kvm-amd"];
+  boot.extraModulePackages = [
+    (amdgpu-kernel-module.overrideAttrs (_: {
+      patches = [
+        (pkgs.fetchurl {
+          url = "https://gitlab.freedesktop.org/agd5f/linux/-/commit/2f14c0c8cae8e9e3b603a3f91909baba66540027.diff";
+          hash = "sha256-0++twr9t4AkJXZfj0aHGMVDuOhxtLP/q2d4FGfggnww=";
+        })
+      ];
+    }))
+  ];
+  powerManagement.cpuFreqGovernor = "powersave";
+  systemd.sleep.extraConfig = "HibernateDelaySec=180m";
+
   fileSystems."/home/tao/games" = {
     device = "/dev/disk/by-uuid/d97a81dc-669c-41d1-912b-829f88fd6f69";
     fsType = "btrfs";
@@ -65,24 +101,6 @@
     fsType = "vfat";
   };
   swapDevices = [{device = "/dev/disk/by-uuid/36216521-db46-4bb0-8994-38a36d5c4528";}];
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.initrd.availableKernelModules = [
-    "nvme"
-    "sd_mod"
-    "thunderbolt"
-    "usb_storage"
-    "xhci_pci"
-    "usbhid"
-    "uas"
-  ];
-  boot.kernelParams = [
-    # "mem_sleep_default=deep"
-    # "nvme.noacpi=1"
-  ];
-  boot.kernelModules = ["kvm-amd"];
-  powerManagement.cpuFreqGovernor = "powersave";
-  systemd.sleep.extraConfig = "HibernateDelaySec=180m";
 
   networking.hostName = "NOlaptop";
 }
