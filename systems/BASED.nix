@@ -36,6 +36,10 @@
     PasswordManagerEnabled = false;
     NoDefaultBookmarks = false;
   };
+  programs.firefox.preferences = {
+    "widget.use-xdg-desktop-portal.file-picker" = 1;
+    "widget.use-xdg-desktop-portal.mime-handler" = 1;
+  };
 
   services.xserver.enable = lib.mkDefault true;
   services.xserver.xkb.layout = "us";
