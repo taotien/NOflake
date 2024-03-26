@@ -26,9 +26,7 @@ in {
       Type = "oneshot";
       RemainAfterExit = "yes";
       ExecStart = "${pkgs.powertop}/bin/powertop --auto-tune";
-      ExecStartPost = "
-          /bin/sh -c 'for f in $(grep -l 'Keyboard' /sys/bus/usb/devices/*/product | sed \"s/product\\\\power/control/\"); do echo on >| '$f'; done'
-        ";
+      ExecStartPost = "/bin/sh -c 'for f in $(grep -l \"Keyboard\" /sys/bus/usb/devices/*/product | sed \"s/product/power\\\\/control/\"); do echo on >| '$f'; done'";
     };
   };
 
