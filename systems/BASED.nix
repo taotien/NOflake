@@ -12,10 +12,13 @@
     cifs-utils
     du-dust
     exfatprogs
+    firefox
+    ffmpeg
     git
     inputs.helix.packages.${pkgs.system}.default
     localsend
     mesa
+    mpv
     neofetch
     ouch
     pueue

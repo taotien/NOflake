@@ -42,10 +42,6 @@ MatchName=Framework Laptop 16 Keyboard Module*
 # MatchDMIModalias=dmi:*svnFramework:pnLaptop16*
 AttrKeyboardIntegration=internal";
   };
-  # services.xserver.libinput = {
-  #   enable = true;
-  #   touchpad.disableWhileTyping = true;
-  # };
 
   services.xserver.displayManager.defaultSession = "plasma";
   services.xserver.displayManager.sddm.wayland.enable = true;

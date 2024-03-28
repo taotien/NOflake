@@ -31,8 +31,6 @@
     calibre
     darktable
     deluge
-    ffmpeg
-    firefox
     jellyfin-media-player
     jellyfin-mpv-shim
     keepassxc
@@ -43,7 +41,6 @@
     # libsForQt5.plasma-integration
     kdePackages.plasma-vault
     miniserve
-    mpv
     nushell
     obs-studio
     onlyoffice-bin

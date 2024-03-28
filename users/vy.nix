@@ -1,15 +1,11 @@
 {pkgs, ...}: {
   users.users.vy.packages = with pkgs; [
     audacity
-    firefox
     jellyfin-media-player
     keepassxc
-    libsForQt5.kdeconnect-kde
-    mpv
     onlyoffice-bin
     snapper
     syncthingtray
-    wezterm
     yt-dlp
     zoom-us
   ];

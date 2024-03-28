@@ -15,7 +15,7 @@
     lutris
     mangohud
     prismlauncher
-    protonup
+    protonup-qt
     wine
     # yuzu # nintendo can suck the shit out of my asshole
   ];
