@@ -4,7 +4,11 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixos-hardware.url = "nixos-hardware";
-    nixos-raspberrypi.url = "github:ramblurr/nixos-raspberrypi";
+    # nixos-raspberrypi.url = "github:ramblurr/nixos-raspberrypi";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.darwin.follows = "";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,7 +46,8 @@
     self,
     nixpkgs,
     nixos-hardware,
-    nixos-raspberrypi,
+    # nixos-raspberrypi,
+    agenix,
     home-manager,
     plasma-manager,
     # stylix,
@@ -78,6 +83,7 @@
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-cpu-amd-pstate
           nixos-hardware.nixosModules.common-gpu-amd
+          agenix.nixosModules.default
           home-manager.nixosModules.home-manager
           ./systems/BASED.nix
           ./systems/NOlaptop.nix

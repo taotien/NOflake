@@ -75,6 +75,7 @@
   programs.dconf.enable = true;
   virtualisation.libvirtd.enable = true;
 
+  age.secrets.syncthing-NOcomputer.file = ../secrets/syncthing-NOcomputer.age;
   services.syncthing = {
     enable = true;
     user = "tao";
@@ -83,6 +84,11 @@
     overrideDevices = false;
     overrideFolders = false;
     settings = {
+      devices = {
+        # # we do a lil anti-patterns https://github.com/ryantm/agenix?tab=readme-ov-file#builtinsreadfile-anti-pattern
+        # # bootstrap by commenting out devices first, and running nixos-rebuild as user
+        # "nocomputer".id = builtins.readFile config.age.secrets.syncthing-NOcomputer.path;
+      };
       folders = {
         "sync".path = "/home/tao/sync";
         "school".path = "/home/tao/school";

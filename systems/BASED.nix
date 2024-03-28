@@ -7,6 +7,7 @@
 }: {
   environment.systemPackages = with pkgs; [
     # macchina
+    inputs.agenix.packages.${pkgs.system}.default
     bat
     bottom
     cifs-utils

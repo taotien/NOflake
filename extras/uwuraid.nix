@@ -1,9 +1,9 @@
-{...}: {
-  # services.rpcbind.enable = true;
+{config, ...}: {
+  age.secrets.uwuraid.file = ../secrets/uwuraid.age;
   systemd.mounts = let
     opts = {
       type = "cifs";
-      mountConfig = {Options = "users,noauto,credentials=/etc/nixos/smb-secrets,noatime,uid=1000,gid=100";};
+      mountConfig = {Options = "users,noauto,credentials=${config.age.secrets.uwuraid.path},noatime,uid=1000,gid=100";};
     };
   in [
     (opts
