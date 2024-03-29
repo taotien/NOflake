@@ -9,6 +9,7 @@
     yt-dlp
     zoom-us
   ];
+  programs.kdeconnect.enable = true;
 
   fonts.packages = with pkgs; [
     noto-fonts-cjk
@@ -17,6 +18,6 @@
 
   users.users.vy = {
     isNormalUser = true;
-    extraGroups = ["audio" "video"];
+    extraGroups = ["wheel" "audio" "video"];
   };
 }

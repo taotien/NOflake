@@ -104,11 +104,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1711723484,
-        "narHash": "sha256-lRF/0zfF4jwsUvJAbl7D4pQRxpqrTCJaEMZ7DvPOw60=",
+        "lastModified": 1711828815,
+        "narHash": "sha256-KcmXrdxyk7vJ+KCSzbgBCJq0XnUVZ+3JU0kJJbMkruk=",
         "owner": "the-mikedavis",
         "repo": "helix",
-        "rev": "22e2d20ac058efb86c4ca35a6d221f92eedc8f3b",
+        "rev": "b0a133eeacec44cfd03b8f00502e107fe144c988",
         "type": "github"
       },
       "original": {
@@ -189,11 +189,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1711764865,
-        "narHash": "sha256-Np6mPZUAt9Ecx+8lv6juER5zUcpmRuGRxdEFgeBlWfA=",
+        "lastModified": 1711816545,
+        "narHash": "sha256-E3N3N0uEQmzaWbBRdVaZq5sA5t2w2uWBn8G0AV4PFOk=",
         "owner": "martinvonz",
         "repo": "jj",
-        "rev": "08b5b66ad41146491339efff5670cba4a81e56f4",
+        "rev": "bbe906b426472e4e8278674da36c2d3b3145b0ef",
         "type": "github"
       },
       "original": {
@@ -276,11 +276,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1711748679,
-        "narHash": "sha256-qaxqvAl4ngnTxXUX2P9ij/+bsCQaXtNcejziO6s0yY4=",
+        "lastModified": 1711799416,
+        "narHash": "sha256-BM3aduxJjvSL0jTYG1ixWDhBvIWuouycvprKQYP0FnM=",
         "owner": "pjones",
         "repo": "plasma-manager",
-        "rev": "fb4a1cdd4e54d4a5fa4d9eddae052cb60844c104",
+        "rev": "25b222a95a764bb76b7082746e8a1115c46ae2d8",
         "type": "github"
       },
       "original": {

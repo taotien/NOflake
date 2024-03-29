@@ -43,6 +43,18 @@ MatchName=Framework Laptop 16 Keyboard Module*
 AttrKeyboardIntegration=internal";
   };
 
+  services.snapper.configs = {
+    home = {
+      SUBVOLUME = "/home";
+      ALLOW_USERS = ["tao"];
+      TIMELINE_CREATE = true;
+      TIMELINE_CLEANUP = true;
+      TIMELINE_LIMIT_HOURLY = "5";
+      TIMELINE_LIMIT_DAILY = "7";
+    };
+  };
+  services.snapper.snapshotInterval = "*:0/5";
+
   services.xserver.displayManager.defaultSession = "plasma";
   services.xserver.displayManager.sddm.wayland.enable = true;
 

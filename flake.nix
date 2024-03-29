@@ -104,6 +104,7 @@
           ./systems/BASED.nix
           ./systems/NOmom.nix
           ./users/tao.nix
+          ./users/vy.nix
           ./extras/uwuraid.nix
           ./extras/dev.nix
           ./extras/gaming.nix
