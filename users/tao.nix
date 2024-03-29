@@ -120,10 +120,9 @@
   services.snapper.snapshotInterval = "*:0/5";
 
   hardware.keyboard.qmk.enable = true;
-  # services.udev.extraRules = ''
-  #   KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
-  #   KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
-  # '';
+  services.udev.extraRules = ''
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+  '';
 
   # obs virtual camera
   boot.extraModulePackages = with config.boot.kernelPackages; [
