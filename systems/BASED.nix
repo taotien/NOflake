@@ -105,8 +105,8 @@
     SKIM_DEFAULT_COMMAND = "rg --files";
   };
 
-  # time.timeZone = "US/Pacific";
-  services.automatic-timezoned.enable = lib.mkDefault true;
+  time.timeZone = lib.mkDefault "US/Pacific";
+  # services.automatic-timezoned.enable = lib.mkDefault true;
   i18n.defaultLocale = "en_US.utf8";
   i18n.supportedLocales = ["all"];
   i18n.extraLocaleSettings = {

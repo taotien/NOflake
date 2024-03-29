@@ -10,6 +10,7 @@ alias jd = jj diff
 alias pu = pueue
 alias rb = sudo nice -n19 nixos-rebuild boot --flake . --impure
 alias rs = sudo nice -n19 nixos-rebuild switch --flake . --impure
+# alias ru = gc; nix flake update; rb; rc2nix | save -f users/tao/plasma.nix
 alias t = task
 alias ts = tailscale
 alias tss = tailscale status

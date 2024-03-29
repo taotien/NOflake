@@ -30,6 +30,7 @@
           display-inlay-hints = true;
         };
         soft-wrap.enable = true;
+        smart-tab.supersede-menu = false;
       };
       keys.normal = {
         k = "move_line_down";
