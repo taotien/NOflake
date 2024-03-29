@@ -1,7 +1,8 @@
 let
-  tao-NOlaptop = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINimJXI8WOYUMwfAcGyKB9EYtuaClNjeEH4ZTQl9tuUY";
-  users = [tao-NOlaptop];
+  NOlaptop = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGFACYTHNr0dgtTe8cb6q+NwI1KaKJmNsUrnz5/8ZDvH";
+  systems = [NOlaptop];
 in {
-  "uwuraid.age".publicKeys = users;
-  "syncthing-NOcomputer.age".publicKeys = users;
+  "uwuraid.age".publicKeys = systems;
+  "syncthing-NOcomputer.age".publicKeys = systems;
+  "syncthing-NOlaptop.age".publicKeys = systems;
 }
