@@ -87,21 +87,21 @@
       devices = {
         # we do a lil anti-patterns https://github.com/ryantm/agenix?tab=readme-ov-file#builtinsreadfile-anti-pattern
         # bootstrap by commenting out devices first and rebuild switch impurely
-        "nocomputer".id = builtins.readFile config.age.secrets.syncthing-NOcomputer.path;
+        # "nocomputer".id = builtins.readFile config.age.secrets.syncthing-NOcomputer.path;
       };
       folders = {
-        "sync" = {
-          path = "/home/tao/sync";
-          devices = ["nocomputer"];
-        };
-        "school" = {
-          path = "/home/tao/school";
-          devices = ["nocomputer"];
-        };
-        "projects" = {
-          path = "/home/tao/projects";
-          devices = ["nocomputer"];
-        };
+        # "sync" = {
+        #   path = "/home/tao/sync";
+        #   devices = ["nocomputer"];
+        # };
+        # "school" = {
+        #   path = "/home/tao/school";
+        #   devices = ["nocomputer"];
+        # };
+        # "projects" = {
+        #   path = "/home/tao/projects";
+        #   devices = ["nocomputer"];
+        # };
         # "pictures".path = "/home/tao/pictures";
       };
     };
