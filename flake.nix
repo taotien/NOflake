@@ -107,8 +107,6 @@
           ./users/tao.nix
           ./users/vy.nix
           ./extras/uwuraid.nix
-          ./extras/dev.nix
-          ./extras/gaming.nix
         ];
       };
       # NOiso = nixpkgs.lib.nixosSystem {

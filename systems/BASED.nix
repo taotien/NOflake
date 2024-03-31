@@ -59,7 +59,6 @@
   ];
 
   services.openssh.enable = true;
-  # services.flatpak.enable = lib.mkDefault true;
   services.printing.enable = lib.mkDefault true;
 
   networking.networkmanager.enable = true;
