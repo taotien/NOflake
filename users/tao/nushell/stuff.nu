@@ -1,5 +1,9 @@
 source ~/.cache/starship/init.nu
 source ~/.zoxide.nu
+def bump [] {
+  nix flake update;
+  rc2nix | save -f /home/tao/projects/NOflake/users/tao/plasma.nix;
+};
 alias b = btm;
 alias cringe = sudo bootctl set-oneshot auto-windows
 alias fetch = neofetch
@@ -10,7 +14,6 @@ alias jd = jj diff
 alias pu = pueue
 alias rb = sudo nice -n19 nixos-rebuild boot --flake . --impure
 alias rs = sudo nice -n19 nixos-rebuild switch --flake . --impure
-# alias ru = gc; nix flake update; rb; rc2nix | save -f users/tao/plasma.nix
 alias t = task
 alias ts = tailscale
 alias tss = tailscale status

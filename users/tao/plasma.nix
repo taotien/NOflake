@@ -294,7 +294,7 @@
       "kwinrc"."Desktops"."Rows".value = 1;
       "kwinrc"."Tiling"."padding".value = 4;
       "kwinrc"."Tiling/530b5b99-fb5c-526e-822b-a6ca66eb2461"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling/7e0b89fb-bf08-5d5d-a334-0ecfa3cb7b04"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.559375},{\"width\":0.4406249999999965}]}";
+      "kwinrc"."Tiling/7e0b89fb-bf08-5d5d-a334-0ecfa3cb7b04"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.2520833333333333},{\"width\":0.7479166666666595}]}";
       "kwinrc"."Tiling/b139d5e7-0994-57d9-b378-1e6f13020bc3"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"layoutDirection\":\"vertical\",\"tiles\":[{\"height\":0.55125},{\"height\":0.44875}],\"width\":0.492578125},{\"width\":0.5074218749999996}]}";
       "kwinrc"."Tiling/b4e8ebb4-a5b0-596a-b70d-9a1b27c4f05b"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.3312500000000039},{\"width\":0.6687499999999946}]}";
       "kwinrc"."Tiling/e23d0cc4-ba9f-5b08-9f6b-33b2434ca622"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
