@@ -99,6 +99,7 @@
         modules = [
           nixos-hardware.nixosModules.common-cpu-intel
           # inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
+          agenix.nixosModules.default
           home-manager.nixosModules.home-manager
           # stylix.nixosModules.stylix
           ./systems/BASED.nix
