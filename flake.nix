@@ -64,6 +64,7 @@
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-cpu-amd-pstate
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+          agenix.nixosModules.default
           home-manager.nixosModules.home-manager
           # stylix.nixosModules.stylix
           ./systems/BASED.nix
