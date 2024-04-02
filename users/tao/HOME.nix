@@ -13,8 +13,8 @@ in {
   ];
 
   home.file.".cargo/config.toml".text = cargoConfig;
-  home.file = {
-    "autostart" = ./autostart;
+  home.file."autostart" = {
+    source = ./autostart;
     recursive = true;
   };
 
