@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: let
   cargoFile = builtins.readFile ./cargo.toml;
@@ -23,7 +24,7 @@ in {
       enable = true;
       settings = {
         battery =
-          if builtins.readFile /etc/hostname == "NOlaptop"
+          if lib.strings.hasPrefix "NOlaptop" (builtins.readFile /etc/hostname)
           then true
           else false;
         hide_time = true;

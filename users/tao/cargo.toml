@@ -36,5 +36,6 @@ lto = "fat"
 linker = "clang"
 rustflag = ["-C", "target-cpu=native", "link-arg=ld-path=${pkgs.mold}/bin/mold"]
 
-# https://benw.is/posts/how-i-improved-my-rust-compile-times-by-seventy-five-percent
 # jonhoo
+# https://benw.is/posts/how-i-improved-my-rust-compile-times-by-seventy-five-percent
+# https://www.williballenthin.com/post/rust-compilation-time/

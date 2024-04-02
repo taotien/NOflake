@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }: {
   users.users.tao.packages = with pkgs; [
@@ -59,7 +60,7 @@
     typst
     typst-fmt
     typst-lsp
-    virt-manager
+    # virt-manager
     wezterm
     yt-dlp
     zathura
@@ -72,8 +73,8 @@
   environment.shells = with pkgs; [nushell];
 
   # virt
-  programs.dconf.enable = true;
-  virtualisation.libvirtd.enable = true;
+  # programs.dconf.enable = true;
+  # virtualisation.libvirtd.enable = true;
 
   age.secrets.syncthing-NOcomputer.file = ../secrets/syncthing-NOcomputer.age;
   age.secrets.syncthing-NOlaptop.file = ../secrets/syncthing-NOlaptop.age;
@@ -167,7 +168,8 @@
   };
 
   home-manager.useGlobalPkgs = true;
+  home-manager.useUserPkgs = true;
   home-manager.verbose = true;
   home-manager.backupFileExtension = ".hm-bak";
-  home-manager.users.tao = import ./tao/HOME.nix {inherit inputs pkgs;};
+  home-manager.users.tao = import ./tao/HOME.nix {inherit inputs pkgs lib;};
 }
