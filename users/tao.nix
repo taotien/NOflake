@@ -89,12 +89,12 @@
         # we do a lil anti-patterns https://github.com/ryantm/agenix?tab=readme-ov-file#builtinsreadfile-anti-pattern
         # bootstrap by commenting out devices first and rebuild switch impurely
         "nocomputer".id = builtins.readFile config.age.secrets.syncthing-NOcomputer.path;
-        "nolaptop".id = builtins.readFile config.age.secrets.syncthing-NOlaptop.path;
+        # "nolaptop".id = builtins.readFile config.age.secrets.syncthing-NOlaptop.path;
       };
       folders = let
         devs = [
           "nocomputer"
-          "nolaptop"
+          # "nolaptop"
         ];
       in {
         "sync" = {

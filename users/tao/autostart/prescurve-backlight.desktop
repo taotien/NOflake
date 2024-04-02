@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/home/tao/.cargo/bin/prescurve-backlight
+Icon=application-x-executable
+Name=prescurve-backlight
+Type=Application
+X-KDE-AutostartScript=true

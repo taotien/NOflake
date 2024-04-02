@@ -13,6 +13,10 @@ in {
   ];
 
   home.file.".cargo/config.toml".text = cargoConfig;
+  home.file = {
+    "autostart" = ./autostart;
+    recursive = true;
+  };
 
   programs = {
     jujutsu = {
