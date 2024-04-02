@@ -19,6 +19,18 @@ in {
   };
 
   programs = {
+    bottom = {
+      enable = true;
+      settings = {
+        battery =
+          if builtins.readFile /etc/hostname == "NOlaptop"
+          then true
+          else false;
+        hide_time = true;
+        enable_gpu = true;
+      };
+    };
+
     jujutsu = {
       enable = true;
       settings = {
