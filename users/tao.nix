@@ -76,6 +76,7 @@
   virtualisation.libvirtd.enable = true;
 
   age.secrets.syncthing-NOcomputer.file = ../secrets/syncthing-NOcomputer.age;
+  age.secrets.syncthing-NOlaptop.file = ../secrets/syncthing-NOlaptop.age;
   services.syncthing = {
     enable = true;
     user = "tao";
@@ -88,19 +89,25 @@
         # we do a lil anti-patterns https://github.com/ryantm/agenix?tab=readme-ov-file#builtinsreadfile-anti-pattern
         # bootstrap by commenting out devices first and rebuild switch impurely
         "nocomputer".id = builtins.readFile config.age.secrets.syncthing-NOcomputer.path;
+        "nolaptop".id = builtins.readFile config.age.secrets.syncthing-NOlaptop.path;
       };
-      folders = {
+      folders = let
+        devs = [
+          "nocomputer"
+          "nolaptop"
+        ];
+      in {
         "sync" = {
           path = "/home/tao/sync";
-          devices = ["nocomputer"];
+          devices = devs;
         };
         "school" = {
           path = "/home/tao/school";
-          devices = ["nocomputer"];
+          devices = devs;
         };
         "projects" = {
           path = "/home/tao/projects";
-          devices = ["nocomputer"];
+          devices = devs;
         };
         # "pictures".path = "/home/tao/pictures";
       };
