@@ -43,11 +43,11 @@
     alejandra
 
     # python
-    pypy3
-    # # python3
+    # pypy3
+    # python3
     # python310Packages.python-lsp-server
-    ruff
-    ruff-lsp
+    # ruff
+    # ruff-lsp
 
     #rust
     bacon

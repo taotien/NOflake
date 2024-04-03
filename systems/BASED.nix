@@ -16,7 +16,8 @@
     firefox
     ffmpeg
     git
-    inputs.helix.packages.${pkgs.system}.default
+    # inputs.helix.packages.${pkgs.system}.default
+    helix
     localsend
     mesa
     mpv
@@ -41,8 +42,14 @@
     NoDefaultBookmarks = false;
   };
   programs.firefox.preferences = {
+    "accessibility.browsewithcaret_shortcut.enabled" = false;
+    "browser.bookmarks.restore_default_bookmarks" = false;
+
     "widget.use-xdg-desktop-portal.file-picker" = 1;
+    "widget.use-xdg-desktop-portal.location" = 1;
     "widget.use-xdg-desktop-portal.mime-handler" = 1;
+    "widget.use-xdg-desktop-portal.open-uri" = 1;
+    "widget.use-xdg-desktop-portal.settings" = 1;
   };
 
   services.xserver.enable = lib.mkDefault true;
@@ -98,10 +105,10 @@
     SKIM_DEFAULT_COMMAND = "rg --files";
   };
   environment.sessionVariables = {
-    EDITOR = "hx";
-    VISUAL = "hx";
-    PAGER = "bat";
-    SKIM_DEFAULT_COMMAND = "rg --files";
+    # EDITOR = "hx";
+    # VISUAL = "hx";
+    # PAGER = "bat";
+    # SKIM_DEFAULT_COMMAND = "rg --files";
   };
 
   time.timeZone = lib.mkDefault "US/Pacific";

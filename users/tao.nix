@@ -168,7 +168,7 @@
   };
 
   home-manager.useGlobalPkgs = true;
-  home-manager.useUserPkgs = true;
+  home-manager.useUserPackages = true;
   home-manager.verbose = true;
   home-manager.backupFileExtension = ".hm-bak";
   home-manager.users.tao = import ./tao/HOME.nix {inherit inputs pkgs lib;};
