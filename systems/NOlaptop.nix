@@ -1,34 +1,29 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
-  amdgpu-kernel-module = pkgs.callPackage ./vrr_patch.nix {
-    kernel = config.boot.kernelPackages.kernel;
-  };
-in {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # prescurve
     libinput
     powertop
     fw-ectool
+    nvtopPackages.amd
   ];
 
+  services.power-profiles-daemon.enable = true;
   services.fwupd.enable = true;
   services.fprintd.enable = true;
 
-  powerManagement.powertop.enable = false;
-  systemd.services.powertop = {
-    wantedBy = ["multi-user.target"];
-    after = ["multi-user.target"];
-    path = [pkgs.kmod];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = "yes";
-      ExecStart = "${pkgs.powertop}/bin/powertop --auto-tune";
-      ExecStartPost = "/bin/sh -c 'for f in $(grep -l \"Keyboard\\|Preonic\\|Razer\\|Macropad\" /sys/bus/usb/devices/*/product | sed \"s/product/power\\\\/control/\"); do echo on >| '$f'; done'";
-    };
-  };
+  # stop using this: https://community.frame.work/t/tracking-ppd-v-tlp-for-amd-ryzen-7040/39423/9?u=ghett_klapson
+  # powerManagement.powertop.enable = false;
+  # systemd.services.powertop = {
+  #   wantedBy = ["multi-user.target"];
+  #   after = ["multi-user.target"];
+  #   path = [pkgs.kmod];
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     RemainAfterExit = "yes";
+  #     ExecStart = "${pkgs.powertop}/bin/powertop --auto-tune";
+  #     ExecStartPost = "/bin/sh -c 'for f in $(grep -l \"Keyboard\\|Preonic\\|Razer\\|Macropad\" /sys/bus/usb/devices/*/product | sed \"s/product/power\\\\/control/\"); do echo on >| '$f'; done'";
+  #   };
+  # };
 
   environment.etc = {
     "libinput/local-overrides.quirks".text = "
@@ -76,18 +71,10 @@ AttrKeyboardIntegration=internal";
   boot.kernelParams = [
     # "mem_sleep_default=deep"
     # "nvme.noacpi=1"
+    "amdgpu.abmlevel=1"
   ];
   boot.kernelModules = ["kvm-amd"];
-  boot.extraModulePackages = [
-    (amdgpu-kernel-module.overrideAttrs (_: {
-      patches = [
-        (pkgs.fetchurl {
-          url = "https://gitlab.freedesktop.org/agd5f/linux/-/commit/2f14c0c8cae8e9e3b603a3f91909baba66540027.diff";
-          hash = "sha256-0++twr9t4AkJXZfj0aHGMVDuOhxtLP/q2d4FGfggnww=";
-        })
-      ];
-    }))
-  ];
+  # boot.extraModulePackages = [  ];
   powerManagement.cpuFreqGovernor = "powersave";
   systemd.sleep.extraConfig = "HibernateDelaySec=180m";
 

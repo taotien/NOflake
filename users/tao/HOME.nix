@@ -14,7 +14,7 @@ in {
   ];
 
   home.file.".cargo/config.toml".text = cargoConfig;
-  home.file."autostart" = {
+  home.file.".config/autostart" = {
     source = ./autostart;
     recursive = true;
   };
@@ -43,7 +43,7 @@ in {
           default-command = "log";
         };
       };
-      package = inputs.jujutsu.packages.${pkgs.system}.default;
+      # package = inputs.jujutsu.packages.${pkgs.system}.default;
     };
 
     git = {
@@ -90,6 +90,19 @@ in {
       enable = true;
       settings = {};
     };
+  };
+
+  xdg.userDirs = {
+    desktop = null;
+    documents = "documents";
+    download = "downloads";
+    music = "music";
+    pictures = "pictures";
+    templates = "templates";
+    videos = "videos";
+    publicShare = null;
+    createDirectories = true;
+    enable = true;
   };
 
   home.username = "tao";

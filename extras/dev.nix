@@ -18,6 +18,7 @@
     sqlx-cli
     sshfs
     tokei
+    jujutsu
 
     # c
     clang

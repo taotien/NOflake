@@ -78,6 +78,7 @@
 
   age.secrets.syncthing-NOcomputer.file = ../secrets/syncthing-NOcomputer.age;
   age.secrets.syncthing-NOlaptop.file = ../secrets/syncthing-NOlaptop.age;
+  age.secrets.syncthing-uwuraid.file = ../secrets/syncthing-uwuraid.age;
   services.syncthing = {
     enable = true;
     user = "tao";
@@ -91,11 +92,13 @@
         # bootstrap by commenting out devices first and rebuild switch impurely
         "nocomputer".id = builtins.readFile config.age.secrets.syncthing-NOcomputer.path;
         "nolaptop".id = builtins.readFile config.age.secrets.syncthing-NOlaptop.path;
+        "uwuraid".id = builtins.readFile config.age.secrets.syncthing-uwuraid.path;
       };
       folders = let
         devs = [
           "nocomputer"
           "nolaptop"
+          "uwuraid"
         ];
       in {
         "sync" = {
@@ -108,6 +111,10 @@
         };
         "projects" = {
           path = "/home/tao/projects";
+          devices = devs;
+        };
+        "pictures" = {
+          path = "/home/tao/pictures";
           devices = devs;
         };
         # "pictures".path = "/home/tao/pictures";

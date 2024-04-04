@@ -7,4 +7,5 @@ in {
   "uwuraid.age".publicKeys = systems;
   "syncthing-NOcomputer.age".publicKeys = systems;
   "syncthing-NOlaptop.age".publicKeys = systems;
+  "syncthing-uwuraid.age".publicKeys = systems;
 }
