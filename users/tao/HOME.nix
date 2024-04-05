@@ -50,6 +50,8 @@ in {
       enable = true;
       userName = "Tao Tien";
       userEmail = "29749622+taotien@users.noreply.github.com";
+      # extraConfig = {
+      # };
     };
 
     nushell = {
@@ -93,13 +95,13 @@ in {
   };
 
   xdg.userDirs = {
-    desktop = null;
     documents = "documents";
     download = "downloads";
     music = "music";
     pictures = "pictures";
     templates = "templates";
     videos = "videos";
+    desktop = null;
     publicShare = null;
     createDirectories = true;
     enable = true;

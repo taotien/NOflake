@@ -6,18 +6,17 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    # macchina
-    inputs.agenix.packages.${pkgs.system}.default
+    # inputs.helix.packages.${pkgs.system}.default
     bat
     bottom
     cifs-utils
     du-dust
     exfatprogs
-    firefox
     ffmpeg
+    firefox
     git
-    # inputs.helix.packages.${pkgs.system}.default
     helix
+    inputs.agenix.packages.${pkgs.system}.default
     localsend
     mesa
     mpv

@@ -6,25 +6,17 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
-    inputs.plasma-manager.packages.${pkgs.system}.default
-    # enchant
     # fractal
-    # joshuto
-    # libftdi
-    # libusb
+    # kdeconnect
+    # libsForQt5.kcharselect
     # mendeley
-    # nuspell
-    # ocs-url
-    oculante
-    # onefetch
     # slack
     # tectonic
     # texlab
     # tio
     # toastify
-    vial
+    # virt-manager
     # wkhtmltopdf
-    # yazi
     appimage-run
     aspell
     aspellDicts.en
@@ -32,18 +24,17 @@
     calibre
     darktable
     deluge
+    discord
+    inputs.plasma-manager.packages.${pkgs.system}.default
     jellyfin-media-player
     jellyfin-mpv-shim
+    kdePackages.plasma-vault
     keepassxc
     leetcode-cli
-    # kdeconnect
-    # libsForQt5.kcharselect
-    # libsForQt5.kdeconnect-kde
-    # libsForQt5.plasma-integration
-    kdePackages.plasma-vault
     miniserve
     nushell
     obs-studio
+    oculante
     onlyoffice-bin
     pandoc
     pipe-rename
@@ -60,13 +51,12 @@
     typst
     typst-fmt
     typst-lsp
-    # virt-manager
+    vial
     wezterm
     yt-dlp
     zathura
     zoom-us
     zoxide
-    discord
   ];
   # programs.adb.enable = true;
   programs.kdeconnect.enable = true;
@@ -101,23 +91,26 @@
           "uwuraid"
         ];
       in {
-        "sync" = {
-          path = "/home/tao/sync";
-          devices = devs;
-        };
-        "school" = {
-          path = "/home/tao/school";
-          devices = devs;
-        };
-        "projects" = {
-          path = "/home/tao/projects";
+        "documents" = {
+          path = "/home/tao/documents";
           devices = devs;
         };
         "pictures" = {
           path = "/home/tao/pictures";
           devices = devs;
         };
-        # "pictures".path = "/home/tao/pictures";
+        "projects" = {
+          path = "/home/tao/projects";
+          devices = devs;
+        };
+        "school" = {
+          path = "/home/tao/school";
+          devices = devs;
+        };
+        "sync" = {
+          path = "/home/tao/sync";
+          devices = devs;
+        };
       };
     };
   };

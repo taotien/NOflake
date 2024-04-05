@@ -57,6 +57,14 @@
     KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a3c5", MODE="0666"
   '';
 
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
+  boot.kernelModules = ["i2c-dev" "kvm-amd"];
+  boot.kernelParams = ["nvidia-drm.modeset=1"];
+  # boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
+  # boot.blacklistedKernelModules = with config.boot.kernelPackages; [ k10temp ];
+
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
     fsType = "btrfs";
@@ -92,14 +100,6 @@
     options = ["subvol=nixos/tmp" "discard=async"];
   };
   swapDevices = [{device = "/dev/disk/by-uuid/ca0ed3d7-8758-4ac7-b016-8b4cd9608ded";}];
-
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.linuxPackages_zen;
-  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
-  boot.kernelModules = ["i2c-dev" "kvm-amd"];
-  boot.kernelParams = ["nvidia-drm.modeset=1"];
-  # boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
-  # boot.blacklistedKernelModules = with config.boot.kernelPackages; [ k10temp ];
 
   # windows can suck my ass
   time.hardwareClockInLocalTime = true;

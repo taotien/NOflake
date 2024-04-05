@@ -1,8 +1,5 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    # prescurve
-    libinput
-    powertop
     fw-ectool
     nvtopPackages.amd
   ];
