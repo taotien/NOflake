@@ -30,16 +30,19 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
-    # aagl.inputs.nixpkgs.follows = "nixpkgs";
-
     # prescurve.url = "github:taotien/prescurve";
     # prescurve.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   nixConfig = {
-    extra-substituters = ["https://cosmic.cachix.org/" "https://helix.cachix.org/"];
-    extra-trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="];
+    extra-substituters = [
+      "https://cosmic.cachix.org/"
+      "https://helix.cachix.org/"
+    ];
+    extra-trusted-public-keys = [
+      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+      "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+    ];
   };
 
   outputs = {
@@ -92,6 +95,8 @@
           ./extras/uwuraid.nix
           ./extras/dev.nix
           ./extras/gaming.nix
+          nixos-cosmic.nixosModules.default
+          ./extras/cosmic.nix
         ];
       };
       NOmom = nixpkgs.lib.nixosSystem {

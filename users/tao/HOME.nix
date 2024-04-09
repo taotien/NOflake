@@ -96,13 +96,13 @@ in {
   };
 
   xdg.userDirs = {
+    desktop = "desktop";
     documents = "documents";
     download = "downloads";
     music = "music";
     pictures = "pictures";
     templates = "templates";
     videos = "videos";
-    desktop = null;
     publicShare = null;
     createDirectories = true;
     enable = true;

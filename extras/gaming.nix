@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
+  # aagl.inputs.nixpkgs.follows = "nixpkgs";
+
   environment.systemPackages = with pkgs; [
     # parsec-bin
     gamemode
