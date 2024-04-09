@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    fw-ectool
+    # fw-ectool
+    framework-tool
     nvtopPackages.amd
   ];
 

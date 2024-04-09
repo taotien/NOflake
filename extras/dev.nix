@@ -4,6 +4,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    radicle-cli
     lua-language-server
     # freecad
     # vulkan-loader
@@ -19,6 +20,7 @@
     sshfs
     tokei
     jujutsu
+    taplo
 
     # c
     clang

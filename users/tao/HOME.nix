@@ -77,6 +77,13 @@ in {
       extraConfig = builtins.readFile ./wezterm.lua;
     };
 
+    zathura = {
+      enable = true;
+      options = {
+        selection-clipboard = "clipboard";
+      };
+    };
+
     # zellij = {
     #   enable = true;
     #   settings = {};
