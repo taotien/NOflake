@@ -69,6 +69,7 @@ in {
 
     taskwarrior = {
       enable = true;
+      dataLocation = "/home/tao/sync";
     };
 
     wezterm = {
