@@ -10,7 +10,7 @@
       "kaccess"."Toggle Screen Reader On and Off" = "Meta+Alt+S";
       "kcm_touchpad"."Disable Touchpad" = "Touchpad Off";
       "kcm_touchpad"."Enable Touchpad" = "Touchpad On";
-      "kcm_touchpad"."Toggle Touchpad" = ["Touchpad Toggle" "Meta+Ctrl+Zenkaku Hankaku"];
+      "kcm_touchpad"."Toggle Touchpad" = ["Meta+Shift+Space" "Touchpad Toggle" "Meta+Ctrl+Zenkaku Hankaku"];
       "kmix"."decrease_microphone_volume" = "Microphone Volume Down";
       "kmix"."decrease_volume" = "Volume Down";
       "kmix"."decrease_volume_small" = "Shift+Volume Down";
@@ -244,10 +244,12 @@
       "kcminputrc"."Libinput/2362/628/PIXA3854:00 093A:0274 Mouse"."PointerAccelerationProfile".value = 1;
       "kcminputrc"."Libinput/2362/628/PIXA3854:00 093A:0274 Touchpad"."ClickMethod".value = 2;
       "kcminputrc"."Libinput/2362/628/PIXA3854:00 093A:0274 Touchpad"."DisableWhileTyping".value = true;
+      "kcminputrc"."Libinput/2362/628/PIXA3854:00 093A:0274 Touchpad"."Enabled".value = true;
       "kcminputrc"."Libinput/2362/628/PIXA3854:00 093A:0274 Touchpad"."NaturalScroll".value = true;
       "kcminputrc"."Libinput/2362/628/PIXA3854:00 093A:0274 Touchpad"."PointerAcceleration".value = 1.000;
       "kcminputrc"."Libinput/2362/628/PIXA3854:00 093A:0274 Touchpad"."PointerAccelerationProfile".value = 1;
       "kcminputrc"."Libinput/2362/628/PIXA3854:00 093A:0274 Touchpad"."ScrollFactor".value = 0.1;
+      "kcminputrc"."Libinput/2362/628/PIXA3854:00 093A:0274 Touchpad"."TapDragLock".value = false;
       "kcminputrc"."Libinput/5426/123/Razer Razer Viper Ultimate Dongle"."PointerAccelerationProfile".value = 1;
       "kcminputrc"."Mouse"."X11LibInputXAccelProfileFlat".value = true;
       "kded5rc"."Module-browserintegrationreminder"."autoload".value = false;
@@ -301,11 +303,12 @@
       "kwinrc"."Desktops"."Rows".value = 1;
       "kwinrc"."Effect-translucency"."Inactive".value = 90;
       "kwinrc"."Plugins"."translucencyEnabled".value = true;
+      "kwinrc"."Plugins"."wobblywindowsEnabled".value = true;
       "kwinrc"."Tiling"."padding".value = 0;
       "kwinrc"."Tiling/530b5b99-fb5c-526e-822b-a6ca66eb2461"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
       "kwinrc"."Tiling/7162cb98-d4d5-5d5d-9367-29e0f5b63060"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
       "kwinrc"."Tiling/7e0b89fb-bf08-5d5d-a334-0ecfa3cb7b04"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.2520833333333333},{\"width\":0.7479166666666595}]}";
-      "kwinrc"."Tiling/b139d5e7-0994-57d9-b378-1e6f13020bc3"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"layoutDirection\":\"vertical\",\"tiles\":[{\"height\":0.5},{\"height\":0.5}],\"width\":0.5003906250000002},{\"layoutDirection\":\"vertical\",\"tiles\":[{\"height\":0.5},{\"height\":0.5}],\"width\":0.4996093749999996}]}";
+      "kwinrc"."Tiling/b139d5e7-0994-57d9-b378-1e6f13020bc3"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.5003906250000002},{\"width\":0.4996093749999996}]}";
       "kwinrc"."Tiling/b4e8ebb4-a5b0-596a-b70d-9a1b27c4f05b"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.3312500000000039},{\"width\":0.6687499999999946}]}";
       "kwinrc"."Tiling/e23d0cc4-ba9f-5b08-9f6b-33b2434ca622"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
       "kwinrc"."Tiling/e688eb74-7230-5d02-a5e0-3b38a54bc04e"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";

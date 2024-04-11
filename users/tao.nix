@@ -13,7 +13,6 @@
     # slack
     # tectonic
     # texlab
-    # tio
     # toastify
     # virt-manager
     # wkhtmltopdf
@@ -21,6 +20,7 @@
     aspell
     aspellDicts.en
     bottles
+    boxxy
     calibre
     darktable
     deluge

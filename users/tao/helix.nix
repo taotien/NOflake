@@ -55,6 +55,18 @@
             unit = "\t";
           };
         }
+        {
+          name = "cpp";
+          auto-format = true;
+          formatter = {
+            command = "clang-format";
+            args = ["--style=file:/home/tao/Templates/clang-format"];
+          };
+          indent = {
+            tab-width = 8;
+            unit = "\t";
+          };
+        }
         # { name = "css"; comment = "/*"; }
         {
           name = "html";
@@ -91,6 +103,7 @@
             tab-width = 4;
             unit = " ";
           };
+          text-width = 100;
         }
       ];
       language-servers = {

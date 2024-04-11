@@ -4,6 +4,9 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    arduino-language-server
+    arduino-cli
+    tio
     radicle-cli
     lua-language-server
     # freecad

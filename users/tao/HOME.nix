@@ -8,11 +8,15 @@
   cargoConfig = builtins.replaceStrings ["path/to/sccache"] ["${pkgs.sccache}/bin/sccache"] cargoFile;
 in {
   imports = [
+    # ./boxxy.nix
     (import ./helix.nix {inherit pkgs inputs;})
     # ./plasma.nix
     # ./firefox.nix
   ];
 
+  home.sessionPath = [
+    "$HOME/.cargo/bin"
+  ];
   home.file.".cargo/config.toml".text = cargoConfig;
   home.file.".config/autostart" = {
     source = ./autostart;
@@ -23,12 +27,14 @@ in {
     bottom = {
       enable = true;
       settings = {
-        battery =
-          if lib.strings.hasPrefix "NOlaptop" (builtins.readFile /etc/hostname)
-          then true
-          else false;
-        hide_time = true;
-        enable_gpu = true;
+        flags = {
+          battery =
+            if lib.strings.hasPrefix "NOlaptop" (builtins.readFile /etc/hostname)
+            then true
+            else false;
+          hide_time = true;
+          enable_gpu = true;
+        };
       };
     };
 
