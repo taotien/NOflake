@@ -252,6 +252,7 @@
       "kcminputrc"."Mouse"."X11LibInputXAccelProfileFlat".value = true;
       "kded5rc"."Module-browserintegrationreminder"."autoload".value = false;
       "kded5rc"."Module-device_automounter"."autoload".value = false;
+      "kdeglobals"."DirSelect Dialog"."DirSelectDialog Size".value = "884,584";
       "kdeglobals"."KFileDialog Settings"."Allow Expansion".value = false;
       "kdeglobals"."KFileDialog Settings"."Automatically select filename extension".value = true;
       "kdeglobals"."KFileDialog Settings"."Breadcrumb Navigation".value = true;
@@ -288,6 +289,7 @@
       "kglobalshortcutsrc"."plasmashell"."_k_friendly_name".value = "plasmashell";
       "kiorc"."Confirmations"."ConfirmDelete".value = true;
       "krunnerrc"."Plugins"."baloosearchEnabled".value = false;
+      "ksmserverrc"."General"."loginMode".value = "restoreSavedSession";
       "kwalletrc"."Wallet"."First Use".value = false;
       "kwinrc"."Desktops"."Id_1".value = "925ef4df-45a9-4cdc-a29f-0f6a17a59588";
       "kwinrc"."Desktops"."Id_2".value = "04cca492-9c1d-4df0-b285-13986a1b84c5";
@@ -297,11 +299,13 @@
       "kwinrc"."Desktops"."Id_6".value = "d1f16ccc-bf0b-4cb4-9275-456a6d2a92ef";
       "kwinrc"."Desktops"."Number".value = 6;
       "kwinrc"."Desktops"."Rows".value = 1;
+      "kwinrc"."Effect-translucency"."Inactive".value = 90;
+      "kwinrc"."Plugins"."translucencyEnabled".value = true;
       "kwinrc"."Tiling"."padding".value = 0;
       "kwinrc"."Tiling/530b5b99-fb5c-526e-822b-a6ca66eb2461"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
       "kwinrc"."Tiling/7162cb98-d4d5-5d5d-9367-29e0f5b63060"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
       "kwinrc"."Tiling/7e0b89fb-bf08-5d5d-a334-0ecfa3cb7b04"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.2520833333333333},{\"width\":0.7479166666666595}]}";
-      "kwinrc"."Tiling/b139d5e7-0994-57d9-b378-1e6f13020bc3"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.8217968749999999},{\"width\":0.17820312500000013}]}";
+      "kwinrc"."Tiling/b139d5e7-0994-57d9-b378-1e6f13020bc3"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"layoutDirection\":\"vertical\",\"tiles\":[{\"height\":0.5},{\"height\":0.5}],\"width\":0.5003906250000002},{\"layoutDirection\":\"vertical\",\"tiles\":[{\"height\":0.5},{\"height\":0.5}],\"width\":0.4996093749999996}]}";
       "kwinrc"."Tiling/b4e8ebb4-a5b0-596a-b70d-9a1b27c4f05b"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.3312500000000039},{\"width\":0.6687499999999946}]}";
       "kwinrc"."Tiling/e23d0cc4-ba9f-5b08-9f6b-33b2434ca622"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
       "kwinrc"."Tiling/e688eb74-7230-5d02-a5e0-3b38a54bc04e"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
@@ -311,6 +315,7 @@
       "kwinrc"."Windows"."DelayFocusInterval".value = 200;
       "kwinrc"."Windows"."FocusPolicy".value = "FocusFollowsMouse";
       "kwinrc"."Xwayland"."Scale".value = 1;
+      "kwinrc"."org.kde.kdecoration2"."ButtonsOnLeft".value = "MFS";
       "kwinrulesrc"."1"."Description".value = "Application settings for discord";
       "kwinrulesrc"."1"."clientmachine".value = "localhost";
       "kwinrulesrc"."1"."desktops".value = "\\0";
