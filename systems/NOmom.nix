@@ -13,7 +13,7 @@
   hardware.sensor.iio.enable = true;
 
   services.xserver.displayManager.defaultSession = "plasma";
-  services.xserver.displayManager.sddm.wayland.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
 
   # systemd.user.services.backlight = {
   #   # description = "";

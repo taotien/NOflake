@@ -56,7 +56,7 @@
   services.xserver.enable = lib.mkDefault true;
   services.xserver.xkb.layout = "us";
   systemd.services.display-manager.restartIfChanged = false;
-  services.xserver.displayManager.sddm.enable = lib.mkDefault true;
+  services.displayManager.sddm.enable = lib.mkDefault true;
   services.desktopManager.plasma6.enable = lib.mkDefault true;
   environment.plasma6.excludePackages = with pkgs; [
     elisa
