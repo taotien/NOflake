@@ -44,6 +44,21 @@
     languages = {
       language = [
         {
+          name = "arduino";
+          scope = "source.arduino";
+          injection-regex = "arduino";
+          file-types = ["ino" "cpp" "h"];
+          comment-token = "//";
+          roots = ["*.ino" "sketch.yaml"];
+          language-servers = ["arduino-language-server"];
+          indent = {
+            tab-width = 8;
+            unit = "\t";
+          };
+          auto-format = true;
+          formatter = {command = "clang-format";};
+        }
+        {
           name = "c";
           auto-format = true;
           formatter = {
@@ -62,6 +77,30 @@
             command = "clang-format";
             args = ["--style=file:/home/tao/Templates/clang-format"];
           };
+          file-types = [
+            "cc"
+            "hh"
+            "c++"
+            "cpp"
+            "hpp"
+            "h"
+            "ipp"
+            "tpp"
+            "cxx"
+            "hxx"
+            "ixx"
+            "txx"
+            "C"
+            "H"
+            "cu"
+            "cuh"
+            "cppm"
+            "h++"
+            "ii"
+            "inl"
+            {glob = ".hpp.in";}
+            {glob = ".h.in";}
+          ];
           indent = {
             tab-width = 8;
             unit = "\t";
@@ -124,8 +163,18 @@
           command = "jdtls";
           args = ["-data" "/home/tao/.cache/jdtls/workspace"];
         };
+        arduino-language-server = {
+          command = "arduino-language-server";
+        };
       };
       grammar = [
+        {
+          name = "arduino";
+          source = {
+            git = "https://github.com/ObserverOfTime/tree-sitter-arduino";
+            rev = "db929fc6822b9b9e1211678d508f187894ce0345";
+          };
+        }
       ];
     };
     enable = true;

@@ -1,29 +1,30 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    arduino-language-server
-    arduino-cli
-    tio
-    radicle-cli
-    lua-language-server
-    # freecad
-    # vulkan-loader
-    # gh
     # etcher
+    # freecad
+    # gh
+    # vulkan-loader
     hyperfine
     jq
+    jujutsu
     just
     lldb
+    lua-language-server
+    radicle-cli
     sd
     sqlite
     sqlx-cli
     sshfs
-    tokei
-    jujutsu
     taplo
+    tio
+    tokei
+
+    # arduino
+    arduino-language-server
+    arduino-cli
+    pkgsCross.avr.buildPackages.gcc
+    avrdude
+    ravedude
 
     # c
     clang
@@ -56,6 +57,9 @@
     # ruff-lsp
 
     #rust
+    bacon
+    cargo-feature
+    cargo-generate
     bacon
     elf2uf2-rs
     mdbook
