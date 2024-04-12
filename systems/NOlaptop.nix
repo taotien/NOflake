@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     # fw-ectool
     framework-tool
@@ -72,7 +77,9 @@ AttrKeyboardIntegration=internal";
     "amdgpu.abmlevel=1"
   ];
   boot.kernelModules = ["kvm-amd"];
-  # boot.extraModulePackages = [  ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    framework-laptop-kmod
+  ];
   powerManagement.cpuFreqGovernor = "powersave";
   systemd.sleep.extraConfig = "HibernateDelaySec=180m";
 
