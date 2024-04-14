@@ -62,6 +62,11 @@
     #     what = "//100.97.47.81/television";
     #     where = "/mnt/uwuraid/television";
     #   })
+    (opts
+      // {
+        what = "//100.97.47.81/virginia";
+        where = "/mnt/uwuraid/virginia";
+      })
   ];
   systemd.automounts = let
     opts = {
@@ -80,6 +85,7 @@
     (opts // {where = "/mnt/uwuraid/music";})
     (opts // {where = "/mnt/uwuraid/photos";})
     (opts // {where = "/mnt/uwuraid/syncthing";})
+    (opts // {where = "/mnt/uwuraid/virginia";})
     # (opts // {where = "/mnt/uwuraid/television";})
   ];
 }

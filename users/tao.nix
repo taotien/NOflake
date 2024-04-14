@@ -91,14 +91,14 @@
           "uwuraid"
         ];
       in {
-        "documents" = {
-          path = "/home/tao/documents";
-          devices = devs;
-        };
-        "pictures" = {
-          path = "/home/tao/pictures";
-          devices = devs;
-        };
+        # "documents" = {
+        #   path = "/home/tao/documents";
+        #   devices = devs;
+        # };
+        # "pictures" = {
+        #   path = "/home/tao/pictures";
+        #   devices = devs;
+        # };
         "projects" = {
           path = "/home/tao/projects";
           devices = devs;

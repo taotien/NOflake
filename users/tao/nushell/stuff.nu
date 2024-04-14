@@ -2,7 +2,7 @@ source ~/.cache/starship/init.nu
 source ~/.zoxide.nu
 def bump [] {
   cd /home/tao/projects/NOflake/;
-  jj new -B @ -m "bump";
+  jj new -m "bump";
   nix flake update;
   rc2nix | save -f /home/tao/projects/NOflake/users/tao/plasma.nix;
   sudo nixos-rebuild --flake /home/tao/projects/NOflake/ boot --impure;

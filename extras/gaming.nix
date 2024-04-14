@@ -43,9 +43,9 @@
   ];
 
   # THE FINALS audio borked
-  services.pipewire.enable = false;
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
+  # services.pipewire.enable = false;
+  # hardware.pulseaudio.enable = true;
+  # hardware.pulseaudio.support32Bit = true;
   services.pipewire.extraConfig = {
     pipewire."99-low-latency" = {
       context.properties = {
