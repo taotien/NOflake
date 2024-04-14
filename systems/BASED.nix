@@ -71,7 +71,7 @@
 
   networking.networkmanager.enable = true;
   services.tailscale.enable = true;
-  services.tailscale.package = pkgs.tailscale;
+  # services.tailscale.package = pkgs.tailscale;
   # services.resolved.enable = true;
   # networking.interfaces.tailscale0.useDHCP = false;
 
@@ -89,6 +89,7 @@
   };
 
   security.sudo-rs.enable = true;
+  security.sudo.enable = false;
 
   i18n.inputMethod = {
     enabled = "fcitx5";

@@ -53,7 +53,7 @@ AttrKeyboardIntegration=internal";
   };
   services.snapper.snapshotInterval = "*:0/5";
 
-  services.xserver.displayManager.defaultSession = "plasma";
+  services.displayManager.defaultSession = "plasma";
   services.displayManager.sddm.wayland.enable = true;
 
   services.udev.extraRules = ''
