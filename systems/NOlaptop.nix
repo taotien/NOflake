@@ -14,6 +14,15 @@
   services.fwupd.enable = true;
   services.fprintd.enable = true;
 
+  services.beesd.filesystems = {
+    root = {
+      spec = "LABEL=NOlaptop";
+      hashTableSizeMB = 4096;
+      verbosity = "crit";
+      extraOptions = ["--loadavg-target" "2.0"];
+    };
+  };
+
   # stop using this: https://community.frame.work/t/tracking-ppd-v-tlp-for-amd-ryzen-7040/39423/9?u=ghett_klapson
   # powerManagement.powertop.enable = false;
   # systemd.services.powertop = {

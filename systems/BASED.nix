@@ -67,6 +67,8 @@
   ];
 
   services.openssh.enable = true;
+  programs.ssh.startAgent = true;
+
   services.printing.enable = lib.mkDefault true;
 
   networking.networkmanager.enable = true;
