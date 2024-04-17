@@ -14,26 +14,13 @@
   services.fwupd.enable = true;
   services.fprintd.enable = true;
 
-  services.beesd.filesystems = {
-    root = {
-      spec = "LABEL=NOlaptop";
-      hashTableSizeMB = 4096;
-      verbosity = "crit";
-      extraOptions = ["--loadavg-target" "2.0"];
-    };
-  };
-
-  # stop using this: https://community.frame.work/t/tracking-ppd-v-tlp-for-amd-ryzen-7040/39423/9?u=ghett_klapson
-  # powerManagement.powertop.enable = false;
-  # systemd.services.powertop = {
-  #   wantedBy = ["multi-user.target"];
-  #   after = ["multi-user.target"];
-  #   path = [pkgs.kmod];
-  #   serviceConfig = {
-  #     Type = "oneshot";
-  #     RemainAfterExit = "yes";
-  #     ExecStart = "${pkgs.powertop}/bin/powertop --auto-tune";
-  #     ExecStartPost = "/bin/sh -c 'for f in $(grep -l \"Keyboard\\|Preonic\\|Razer\\|Macropad\" /sys/bus/usb/devices/*/product | sed \"s/product/power\\\\/control/\"); do echo on >| '$f'; done'";
+  # TODO investigate tradeoffs
+  # services.beesd.filesystems = {
+  #   root = {
+  #     spec = "LABEL=NOlaptop";
+  #     hashTableSizeMB = 4096;
+  #     verbosity = "crit";
+  #     extraOptions = ["--loadavg-target" "2.0"];
   #   };
   # };
 
@@ -68,6 +55,10 @@ AttrKeyboardIntegration=internal";
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"
     ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
+
+    # prevent kb and mouse from waking laptop
+    ACTION=="add", SUBSYSTEM=="usb", KERNEL=="1-3.2", ATTR{power/wakeup}="disabled"
+    ACTION=="add", SUBSYSTEM=="usb", KERNEL=="1-4.2", ATTR{power/wakeup}="disabled"
   '';
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
