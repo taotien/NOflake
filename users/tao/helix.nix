@@ -32,6 +32,9 @@
         soft-wrap.enable = true;
         smart-tab.supersede-menu = false;
       };
+      keys.insert = {
+        # C-space =
+      };
       keys.normal = {
         k = "move_line_down";
         j = "move_line_up";
@@ -39,6 +42,12 @@
       keys.select = {
         k = "extend_line_down";
         j = "extend_line_up";
+      };
+      keys.normal.space.w = {
+        k = "jump_view_down";
+        j = "jump_view_up";
+        K = "swap_view_down";
+        J = "swap_view_up";
       };
     };
     languages = {
