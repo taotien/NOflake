@@ -4,14 +4,30 @@
   lib,
   ...
 }: {
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+  };
   nixpkgs.overlays = [
     (import ../extras/libinput-overlay.nix)
   ];
+
   environment.systemPackages = with pkgs; [
     # fw-ectool
     framework-tool
     nvtopPackages.amd
   ];
+
+  nix.buildMachines = [
+    {
+      hostName = "nocomputer";
+      systems = ["x86_64-linux"];
+    }
+  ];
+  nix.extraOptions = ''
+    builders-use-substitutes = true
+  '';
+  nix.distributedBuilds = true;
 
   services.power-profiles-daemon.enable = true;
   services.fwupd.enable = true;
