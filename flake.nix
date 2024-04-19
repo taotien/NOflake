@@ -96,7 +96,7 @@
           ./extras/dev.nix
           ./extras/gaming.nix
           nixos-cosmic.nixosModules.default
-          ./extras/cosmic.nix
+          # ./extras/cosmic.nix
         ];
       };
       NOmom = nixpkgs.lib.nixosSystem {
