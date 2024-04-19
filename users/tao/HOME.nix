@@ -14,9 +14,9 @@ in {
     # ./firefox.nix
   ];
 
-  home.sessionPath = [
-    "$HOME/.cargo/bin"
-  ];
+  # home.sessionPath = [
+  #   "/home/tao/.cargo/bin"
+  # ];
   home.file.".cargo/config.toml".text = cargoConfig;
   home.file.".config/autostart" = {
     source = ./autostart;
