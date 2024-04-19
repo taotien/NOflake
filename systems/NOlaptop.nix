@@ -11,7 +11,6 @@
   nixpkgs.overlays = [
     (import ../extras/libinput-overlay.nix)
   ];
-
   environment.systemPackages = with pkgs; [
     # fw-ectool
     framework-tool
