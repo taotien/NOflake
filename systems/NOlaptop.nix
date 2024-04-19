@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
   zramSwap = {
@@ -9,8 +8,17 @@
     algorithm = "zstd";
   };
   nixpkgs.overlays = [
-    (import ../extras/libinput-overlay.nix)
+    (final: prev: {
+      libinput = prev.libinput.overrideAttrs (old: {
+        patches =
+          (old.patches or [])
+          ++ [
+            ../extras/libinput-delay.patch
+          ];
+      });
+    })
   ];
+
   environment.systemPackages = with pkgs; [
     # fw-ectool
     framework-tool

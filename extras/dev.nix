@@ -4,6 +4,7 @@
     # freecad
     # gh
     # vulkan-loader
+    qFlipper
     hyperfine
     jq
     jujutsu
@@ -69,18 +70,20 @@
     trunk
   ];
 
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    libxkbcommon
-    libGL
+  hardware.flipperzero.enable = true;
 
-    wayland.dev
+  # programs.nix-ld.enable = true;
+  # programs.nix-ld.libraries = with pkgs; [
+  #   libxkbcommon
+  #   libGL
 
-    xorg.libX11
-    xorg.libXrandr
-    xorg.libXi
-    xorg.libX11
-  ];
+  #   wayland.dev
+
+  #   xorg.libX11
+  #   xorg.libXrandr
+  #   xorg.libXi
+  #   xorg.libX11
+  # ];
 
   services.udev.extraRules = ''
     SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic GDB Server", SYMLINK+="ttyBmpGdb"

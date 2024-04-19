@@ -1,0 +1,15 @@
+diff --git a/src/evdev-mt-touchpad.c b/src/evdev-mt-touchpad.c
+index 5b040ce..4bf172b 100644
+--- a/src/evdev-mt-touchpad.c
++++ b/src/evdev-mt-touchpad.c
+@@ -37,8 +37,8 @@
+ 
+ #define DEFAULT_TRACKPOINT_ACTIVITY_TIMEOUT ms2us(300)
+ #define DEFAULT_TRACKPOINT_EVENT_TIMEOUT ms2us(40)
+-#define DEFAULT_KEYBOARD_ACTIVITY_TIMEOUT_1 ms2us(200)
+-#define DEFAULT_KEYBOARD_ACTIVITY_TIMEOUT_2 ms2us(500)
++#define DEFAULT_KEYBOARD_ACTIVITY_TIMEOUT_1 ms2us(2000)
++#define DEFAULT_KEYBOARD_ACTIVITY_TIMEOUT_2 ms2us(5000)
+ #define FAKE_FINGER_OVERFLOW bit(7)
+ #define THUMB_IGNORE_SPEED_THRESHOLD 20 /* mm/s */
+ 
