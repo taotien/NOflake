@@ -1,4 +1,13 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  if_desktop =
+    if lib.strings.hasPrefix "NOcomputer" (builtins.readFile /etc/hostname)
+    then true
+    else false;
+in {
   # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
   # aagl.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -43,9 +52,9 @@
   ];
 
   # THE FINALS audio borked
-  # services.pipewire.enable = false;
-  # hardware.pulseaudio.enable = true;
-  # hardware.pulseaudio.support32Bit = true;
+  services.pipewire.enable = !if_desktop;
+  hardware.pulseaudio.enable = if_desktop;
+  hardware.pulseaudio.support32Bit = if_desktop;
   services.pipewire.extraConfig = {
     pipewire."99-low-latency" = {
       context.properties = {

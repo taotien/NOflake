@@ -7,17 +7,17 @@
     enable = true;
     algorithm = "zstd";
   };
-  nixpkgs.overlays = [
-    (final: prev: {
-      libinput = prev.libinput.overrideAttrs (old: {
-        patches =
-          (old.patches or [])
-          ++ [
-            ../extras/libinput-delay.patch
-          ];
-      });
-    })
-  ];
+  # nixpkgs.overlays = [
+  #   (final: prev: {
+  #     libinput = prev.libinput.overrideAttrs (old: {
+  #       patches =
+  #         (old.patches or [])
+  #         ++ [
+  #           ../extras/libinput-delay.patch
+  #         ];
+  #     });
+  #   })
+  # ];
 
   environment.systemPackages = with pkgs; [
     # fw-ectool
@@ -28,7 +28,7 @@
   nix.buildMachines = [
     {
       hostName = "nocomputer";
-      systems = ["x86_64-linux"];
+      systems = ["x86_64-linux" "i686-linux"];
       supportedFeatures = ["big-parallel"];
     }
   ];

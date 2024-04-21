@@ -21,7 +21,7 @@
     aspellDicts.en
     bottles
     boxxy
-    calibre
+    # calibre
     darktable
     deluge
     discord
