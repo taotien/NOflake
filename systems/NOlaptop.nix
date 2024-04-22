@@ -41,6 +41,8 @@
   services.fwupd.enable = true;
   services.fprintd.enable = true;
 
+  systemd.services."backlight@backlight:amdgpu_bl2".enable = false;
+
   # TODO investigate tradeoffs
   # services.beesd.filesystems = {
   #   root = {

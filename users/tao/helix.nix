@@ -5,7 +5,7 @@
 }: {
   programs.helix = {
     settings = {
-      theme = "dracula";
+      theme = "gruvbox_dark_hard";
       editor = {
         # rainbow-brackets = true;
         line-number = "relative";

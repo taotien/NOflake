@@ -4,6 +4,7 @@
     # freecad
     # gh
     # vulkan-loader
+    direnv
     qFlipper
     hyperfine
     jq

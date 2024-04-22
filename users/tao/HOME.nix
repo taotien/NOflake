@@ -38,6 +38,12 @@ in {
       };
     };
 
+    direnv = {
+      enable = true;
+      enableNushellIntegration = true;
+      nix-direnv.enable = true;
+    };
+
     jujutsu = {
       enable = true;
       settings = {
