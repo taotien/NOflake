@@ -3,10 +3,6 @@
   pkgs,
   ...
 }: {
-  zramSwap = {
-    enable = true;
-    algorithm = "zstd";
-  };
   # nixpkgs.overlays = [
   #   (final: prev: {
   #     libinput = prev.libinput.overrideAttrs (old: {
@@ -25,11 +21,13 @@
     nvtopPackages.amd
   ];
 
+  services.tailscale.useRoutingFeatures = "client";
+
   nix.buildMachines = [
     {
       hostName = "nocomputer";
       systems = ["x86_64-linux" "i686-linux"];
-      supportedFeatures = ["big-parallel"];
+      supportedFeatures = ["big-parallel" "kvm" "nixos-test" "benchmark"];
     }
   ];
   nix.extraOptions = ''

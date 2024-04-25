@@ -12,7 +12,7 @@
   services.fprintd.enable = true;
   hardware.sensor.iio.enable = true;
 
-  services.xserver.displayManager.defaultSession = "plasma";
+  services.displayManager.defaultSession = "plasma";
   services.displayManager.sddm.wayland.enable = true;
 
   # systemd.user.services.backlight = {

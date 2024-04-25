@@ -128,6 +128,11 @@
     DefaultTimeoutStopSec=15s
   '';
 
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+  };
+
   boot.loader.systemd-boot.enable = lib.mkDefault true;
   boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
   boot.loader.timeout = lib.mkForce 1;
