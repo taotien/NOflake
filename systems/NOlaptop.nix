@@ -26,16 +26,6 @@
 
   systemd.services."backlight@backlight:amdgpu_bl2".enable = false;
 
-  # TODO investigate tradeoffs
-  # services.beesd.filesystems = {
-  #   root = {
-  #     spec = "LABEL=NOlaptop";
-  #     hashTableSizeMB = 4096;
-  #     verbosity = "crit";
-  #     extraOptions = ["--loadavg-target" "2.0"];
-  #   };
-  # };
-
   environment.etc = {
     "libinput/local-overrides.quirks".text = "
 # MatchUdevType=touchpad
@@ -62,7 +52,6 @@ AttrKeyboardIntegration=internal";
   services.snapper.snapshotInterval = "*:0/5";
 
   services.displayManager.defaultSession = "plasma";
-  services.displayManager.sddm.wayland.enable = true;
 
   nix.buildMachines = [
     {
@@ -99,7 +88,7 @@ AttrKeyboardIntegration=internal";
     # "mem_sleep_default=deep"
     "amdgpu.abmlevel=1"
     # TODO DMUB bugfix? (apparently disables PSR?)
-    "amdgpu.dcdebugmask=0x10"
+    # "amdgpu.dcdebugmask=0x10"
   ];
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = with config.boot.kernelPackages; [
