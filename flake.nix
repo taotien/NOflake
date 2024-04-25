@@ -59,6 +59,13 @@
     nixos-cosmic,
     ...
   } @ inputs: {
+    hydraJobs = {
+      # inherit
+      #   (self)
+      #   nixosConfigurations.NOlaptop
+      #   ;
+      x86_64-linux.NOlaptop = self.nixosConfigurations.NOlaptop.config.system.build.toplevel;
+    };
     nixosConfigurations = {
       NOcomputer = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

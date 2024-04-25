@@ -13,6 +13,28 @@
   boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = "1";
 
+  nix.buildMachines = [
+    {
+      hostName = "localhost";
+      systems = ["x86_64-linux" "i686-linux"];
+      supportedFeatures = ["big-parallel" "kvm" "nixos-test" "benchmark"];
+    }
+  ];
+  nix.extraOptions = ''
+    builders-use-substitutes = true
+  '';
+  services.hydra = {
+    enable = true;
+    hydraURL = "http://localhost:3000";
+    notificationSender = "hydra@localhost";
+    useSubstitutes = true;
+  };
+  nix.settings.allowed-uris = [
+    "github:"
+    "git+https://github.com/"
+    "git+ssh://github.com/"
+  ];
+
   # services.foldingathome = {
   #   enable = true;
   #   team = 223518;
