@@ -21,23 +21,8 @@
     nvtopPackages.amd
   ];
 
-  services.tailscale.useRoutingFeatures = "client";
-
-  nix.buildMachines = [
-    {
-      hostName = "nocomputer";
-      systems = ["x86_64-linux" "i686-linux"];
-      supportedFeatures = ["big-parallel" "kvm" "nixos-test" "benchmark"];
-    }
-  ];
-  nix.extraOptions = ''
-    builders-use-substitutes = true
-  '';
-  nix.distributedBuilds = true;
-
-  services.power-profiles-daemon.enable = true;
   services.fwupd.enable = true;
-  services.fprintd.enable = true;
+  services.tailscale.useRoutingFeatures = "client";
 
   systemd.services."backlight@backlight:amdgpu_bl2".enable = false;
 
@@ -78,6 +63,18 @@ AttrKeyboardIntegration=internal";
 
   services.displayManager.defaultSession = "plasma";
   services.displayManager.sddm.wayland.enable = true;
+
+  nix.buildMachines = [
+    {
+      hostName = "nocomputer";
+      systems = ["x86_64-linux" "i686-linux"];
+      supportedFeatures = ["big-parallel" "kvm" "nixos-test" "benchmark"];
+    }
+  ];
+  nix.extraOptions = ''
+    builders-use-substitutes = true
+  '';
+  nix.distributedBuilds = true;
 
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"

@@ -28,4 +28,9 @@ alias ts = tailscale
 alias tss = tailscale status
 alias tsx = tailscale exit-node list
 alias zl = zellij
+
+def l [] {
+  ls | sort-by type
+}
+
 task

@@ -84,9 +84,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          nixos-hardware.nixosModules.common-cpu-amd
-          nixos-hardware.nixosModules.common-cpu-amd-pstate
-          nixos-hardware.nixosModules.common-gpu-amd
+          nixos-hardware.nixosModules.framework-16-7040-amd
           agenix.nixosModules.default
           home-manager.nixosModules.home-manager
           ./systems/BASED.nix
