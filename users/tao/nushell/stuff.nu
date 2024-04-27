@@ -10,7 +10,7 @@ def bump [] {
 };
 
 def tse [exit_node] {
-  tailscale set --exit-node="$exit_node"
+  tailscale set --exit-node=$exit_node
 }
 
 alias b = btm;
@@ -31,6 +31,10 @@ alias zl = zellij
 
 def l [] {
   ls | sort-by type
+}
+
+def c [] {
+  cd; l;
 }
 
 task

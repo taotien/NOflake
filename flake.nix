@@ -18,14 +18,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # stylix.url = "github:danth/stylix";
-    helix = {
-      url = "github:the-mikedavis/helix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    jujutsu = {
-      url = "github:martinvonz/jj";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # helix = {
+    #   url = "github:the-mikedavis/helix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # jujutsu = {
+    #   url = "github:martinvonz/jj";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,11 +37,11 @@
   nixConfig = {
     extra-substituters = [
       "https://cosmic.cachix.org/"
-      "https://helix.cachix.org/"
+      # "https://helix.cachix.org/"
     ];
     extra-trusted-public-keys = [
       "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-      "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+      # "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
     ];
   };
 
@@ -54,8 +54,8 @@
     home-manager,
     plasma-manager,
     # stylix,
-    helix,
-    jujutsu,
+    # helix,
+    # jujutsu,
     nixos-cosmic,
     ...
   } @ inputs: {
@@ -94,7 +94,7 @@
           ./extras/dev.nix
           ./extras/gaming.nix
           nixos-cosmic.nixosModules.default
-          # ./extras/cosmic.nix
+          ./extras/cosmic.nix
         ];
       };
       NOmom = nixpkgs.lib.nixosSystem {

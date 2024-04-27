@@ -33,7 +33,7 @@
         smart-tab.supersede-menu = false;
       };
       keys.insert = {
-        # C-space =
+        C-space = "completion";
       };
       keys.normal = {
         k = "move_line_down";
