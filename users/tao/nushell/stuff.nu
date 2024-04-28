@@ -2,12 +2,12 @@ source ~/.cache/starship/init.nu
 source ~/.zoxide.nu
 
 def bump [] {
-  cd /home/tao/projects/NOflake/;
-  jj new -m "bump";
-  nix flake update;
+  cd /home/tao/projects/NOflake/
+  jj new -m "bump"
+  nix flake update
   # rc2nix | save -f /home/tao/projects/NOflake/users/tao/plasma.nix;
-  sudo nixos-rebuild boot --flake /home/tao/projects/NOflake/ --impure --verbose;
-};
+  sudo nixos-rebuild boot --flake /home/tao/projects/NOflake/ --impure --verbose
+}
 
 def tse [exit_node] {
   tailscale set --exit-node=$exit_node
@@ -33,8 +33,9 @@ def l [] {
   ls | sort-by type
 }
 
-def c [] {
-  cd; l;
+def c [$path] {
+  cd $path;
+  l;
 }
 
 task
