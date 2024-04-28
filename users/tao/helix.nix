@@ -65,7 +65,10 @@
             unit = "\t";
           };
           auto-format = true;
-          formatter = {command = "clang-format";};
+          formatter = {
+            command = "clang-format";
+            args = ["--style=file:/home/tao/Templates/clang-format"];
+          };
         }
         {
           name = "c";
@@ -85,6 +88,10 @@
           formatter = {
             command = "clang-format";
             args = ["--style=file:/home/tao/Templates/clang-format"];
+          };
+          indent = {
+            tab-width = 8;
+            unit = "\t";
           };
           file-types = [
             "cc"
@@ -110,12 +117,7 @@
             {glob = ".hpp.in";}
             {glob = ".h.in";}
           ];
-          indent = {
-            tab-width = 8;
-            unit = "\t";
-          };
         }
-        # { name = "css"; comment = "/*"; }
         {
           name = "html";
           auto-format = false;
@@ -173,15 +175,16 @@
           args = ["-data" "/home/tao/.cache/jdtls/workspace"];
         };
         arduino-language-server = {
-          command = "arduino-language-server";
+          command = "boxxy";
+          args = ["arduino-language-server" "-cli" "arduino-cli" "-cli-config" "~/.local/share/arduino/cli/arduino-cli.yaml" "-jobs" "0"];
         };
       };
       grammar = [
         {
           name = "arduino";
           source = {
-            git = "https://github.com/ObserverOfTime/tree-sitter-arduino";
-            rev = "db929fc6822b9b9e1211678d508f187894ce0345";
+            git = "https://github.com/tree-sitter-grammars/tree-sitter-arduino";
+            rev = "8518c3fa6b8562af545a496d55c9abd78f53e732";
           };
         }
       ];

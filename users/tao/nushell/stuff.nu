@@ -9,33 +9,48 @@ def bump [] {
   sudo nixos-rebuild boot --flake /home/tao/projects/NOflake/ --impure --verbose
 }
 
+def l [
+  path?
+  flags?
+] {
+  if $path == null {
+    # ls $flags
+    ls
+  } else {
+    # ls $flags $path
+    ls $path
+  } | sort-by type name -i
+}
+
 def tse [exit_node] {
   tailscale set --exit-node=$exit_node
 }
 
+def rb [] {
+  sudo nice -n19 nixos-rebuild boot --flake . --impure --verbose
+  hx --grammar fetch; hx --grammar build
+}
+
+def rs [] {
+  sudo nice -n19 nixos-rebuild boot --flake . --impure --verbose
+  hx --grammar fetch; hx --grammar build
+}
+
+
+alias ard = arduino-cli
+alias arduino-cli = boxxy arduino-cli
 alias b = btm;
 alias cringe = sudo bootctl set-oneshot auto-windows
 alias fetch = neofetch
 alias ff = firefox
 alias gc = sudo nix-collect-garbage -d --verbose
-alias js = jj status
 alias jd = jj diff
+alias js = jj status
 alias pu = pueue
-alias rb = sudo nice -n19 nixos-rebuild boot --flake . --impure --verbose
-alias rs = sudo nice -n19 nixos-rebuild switch --flake . --impure --verbose
 alias t = task
 alias ts = tailscale
 alias tss = tailscale status
 alias tsx = tailscale exit-node list
 alias zl = zellij
-
-def l [] {
-  ls | sort-by type
-}
-
-def c [$path] {
-  cd $path;
-  l;
-}
 
 task

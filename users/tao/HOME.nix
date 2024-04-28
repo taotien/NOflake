@@ -8,7 +8,7 @@
   cargoConfig = builtins.replaceStrings ["path/to/sccache"] ["${pkgs.sccache}/bin/sccache"] cargoFile;
 in {
   imports = [
-    # ./boxxy.nix
+    ./boxxy.nix
     (import ./helix.nix {inherit pkgs inputs;})
     # ./plasma.nix
     # ./firefox.nix

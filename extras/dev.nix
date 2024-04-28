@@ -4,6 +4,7 @@
     # freecad
     # gh
     # vulkan-loader
+    fontforge
     direnv
     qFlipper
     hyperfine
