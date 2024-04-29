@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixos-hardware.url = "nixos-hardware";
-    # nixos-raspberrypi.url = "github:ramblurr/nixos-raspberrypi";
     agenix = {
       url = "github:ryantm/agenix";
       inputs.darwin.follows = "";
@@ -17,13 +16,8 @@
       url = "github:pjones/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # stylix.url = "github:danth/stylix";
     # helix = {
     #   url = "github:the-mikedavis/helix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # jujutsu = {
-    #   url = "github:martinvonz/jj";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
     nixos-cosmic = {
@@ -49,13 +43,10 @@
     self,
     nixpkgs,
     nixos-hardware,
-    # nixos-raspberrypi,
     agenix,
     home-manager,
     plasma-manager,
-    # stylix,
     # helix,
-    # jujutsu,
     nixos-cosmic,
     ...
   } @ inputs: {
@@ -69,7 +60,6 @@
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
           agenix.nixosModules.default
           home-manager.nixosModules.home-manager
-          # stylix.nixosModules.stylix
           ./systems/BASED.nix
           ./systems/NOcomputer.nix
           ./users/tao.nix
@@ -106,7 +96,6 @@
           # inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
           agenix.nixosModules.default
           home-manager.nixosModules.home-manager
-          # stylix.nixosModules.stylix
           ./systems/BASED.nix
           ./systems/NOmom.nix
           ./users/tao.nix
@@ -114,23 +103,6 @@
           ./extras/uwuraid.nix
         ];
       };
-      # NOiso = nixpkgs.lib.nixosSystem {
-      #   system = "x86_64-linux";
-      #   specialArgs = {inherit inputs;};
-      #   modules = [
-      #     "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-      #     home-manager.nixosModules.home-manager
-      #     ./systems/BASED.nix
-      #     ./users/tao.nix
-      #     ({lib, ...}: {
-      #       isoImage.squashfsCompression = "zstd";
-      #       networking.wireless.enable = false;
-      #       security.sudo-rs.enable = lib.mkForce false;
-      #       services.btrfs.autoScrub.enable = false;
-      #       system.stateVersion = lib.mkForce "24.05";
-      #     })
-      #   ];
-      # };
     };
   };
 }

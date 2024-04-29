@@ -1,4 +1,5 @@
 {
+  lib,
   config,
   pkgs,
   ...
@@ -14,6 +15,14 @@
   #     });
   #   })
   # ];
+  nix.settings.system-features = [
+    "benchmark"
+    "big-parallel"
+    "gccarch-znver3"
+    "gccarch-znver4"
+    "kvm"
+    "nixos-test"
+  ];
 
   environment.systemPackages = with pkgs; [
     framework-tool
@@ -27,15 +36,15 @@
 
   environment.etc = {
     "libinput/local-overrides.quirks".text = "
-# MatchUdevType=touchpad
-# MatchDMIModalias=dmi:*svnFramework:pnLaptop*
-# AttrEventCode=-BTN_RIGHT
+      # MatchUdevType=touchpad
+      # MatchDMIModalias=dmi:*svnFramework:pnLaptop*
+      # AttrEventCode=-BTN_RIGHT
 
-[Framework Laptop 16 Keyboard Module]
-MatchName=Framework Laptop 16 Keyboard Module*
-# MatchUdevType=keyboard
-# MatchDMIModalias=dmi:*svnFramework:pnLaptop16*
-AttrKeyboardIntegration=internal";
+      [Framework Laptop 16 Keyboard Module]
+      MatchName=Framework Laptop 16 Keyboard Module*
+      # MatchUdevType=keyboard
+      # MatchDMIModalias=dmi:*svnFramework:pnLaptop16*
+      AttrKeyboardIntegration=internal";
   };
 
   services.displayManager.defaultSession = "plasma";
@@ -44,7 +53,7 @@ AttrKeyboardIntegration=internal";
     {
       hostName = "nocomputer";
       systems = ["x86_64-linux" "i686-linux"];
-      supportedFeatures = ["big-parallel" "kvm" "nixos-test" "benchmark"];
+      supportedFeatures = ["gccarch-znver4" "big-parallel" "kvm" "nixos-test" "benchmark"];
     }
   ];
   nix.extraOptions = ''

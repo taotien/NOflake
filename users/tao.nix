@@ -140,33 +140,6 @@
     options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
   '';
 
-  # stylix.autoEnable = false;
-  # stylix.image = /home/tao/Pictures/Wallpapers/DJI_0121.JPG;
-  # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
-  # stylix.fonts = with pkgs; {
-  #   monospace = {
-  #     package = nerdfonts.override {fonts = ["FiraCode"];};
-  #     name = "FiraCode Nerd Font";
-  #   };
-  # };
-  # stylix.targets = {
-  #   console.enable = true;
-  # };
-  # home-manager.sharedModules = [
-  #   {
-  #     stylix.targets = {
-  #       bat.enable = true;
-  #       # firefox.enable = true;
-  #       # helix.enable = true;
-  #       kde.enable = true;
-  #       nushell.enable = true;
-  #       # wezterm.enable = true;
-  #       zathura.enable = true;
-  #       zellij.enable = true;
-  #     };
-  #   }
-  # ];
-
   fonts.packages = with pkgs; [
     (nerdfonts.override {fonts = ["FiraCode"];})
     noto-fonts-cjk
