@@ -32,9 +32,13 @@
     wget
     zstd
   ];
-  programs.firefox.enable = true;
   programs.partition-manager.enable = lib.mkDefault true;
 
+  programs.nh = {
+    enable = true;
+  };
+
+  programs.firefox.enable = true;
   programs.firefox.policies = {
     DisablePocket = true;
     PasswordManagerEnabled = false;

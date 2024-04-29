@@ -16,7 +16,6 @@
   # ];
 
   environment.systemPackages = with pkgs; [
-    # fw-ectool
     framework-tool
     nvtopPackages.amd
   ];
@@ -63,6 +62,7 @@ AttrKeyboardIntegration=internal";
   '';
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.initrd.availableKernelModules = [
     "nvme"
     "sd_mod"

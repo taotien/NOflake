@@ -67,7 +67,7 @@
     fsType = "btrfs";
     options = ["subvol=home_snaps/" "noatime" "compress-force=zstd:3" "discard=async"];
   };
-  fileSystems."/home/tao/Games" = {
+  fileSystems."/home/tao/games" = {
     device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";
     fsType = "btrfs";
     options = ["subvol=games" "nosuid" "nodev" "noatime" "compress-force=zstd:3" "users" "rw" "exec" "discard=async"];
