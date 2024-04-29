@@ -151,7 +151,6 @@
     experimental-features = "nix-command flakes";
     auto-optimise-store = true;
     trusted-users = ["root" "@wheel"];
-    show-trace = true;
   };
   nixpkgs.config = {allowUnfree = true;};
 

@@ -8,7 +8,7 @@
     direnv
     qFlipper
     hyperfine
-    jq
+    # jq
     jujutsu
     just
     lldb
