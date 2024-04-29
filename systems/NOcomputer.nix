@@ -6,7 +6,6 @@
     # foldingathome
     gwe
     openrgb
-    snapper
   ];
 
   services.tailscale.useRoutingFeatures = "both";

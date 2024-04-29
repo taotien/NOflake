@@ -54,6 +54,7 @@
       language = [
         {
           name = "arduino";
+          grammar = "arduino";
           scope = "source.arduino";
           injection-regex = "arduino";
           file-types = ["ino" "cpp" "h"];
@@ -67,7 +68,7 @@
           auto-format = true;
           formatter = {
             command = "clang-format";
-            args = ["--style=file:/home/tao/Templates/clang-format"];
+            args = ["--style=file:/home/tao/templates/clang-format"];
           };
         }
         {
@@ -75,7 +76,7 @@
           auto-format = true;
           formatter = {
             command = "clang-format";
-            args = ["--style=file:/home/tao/Templates/clang-format"];
+            args = ["--style=file:/home/tao/templates/clang-format"];
           };
           indent = {
             tab-width = 8;
@@ -87,7 +88,7 @@
           auto-format = true;
           formatter = {
             command = "clang-format";
-            args = ["--style=file:/home/tao/Templates/clang-format"];
+            args = ["--style=file:/home/tao/templates/clang-format"];
           };
           indent = {
             tab-width = 8;

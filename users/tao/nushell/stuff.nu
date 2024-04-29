@@ -13,7 +13,7 @@ def l [
   path?
   flags?
 ] {
-  if $path {
+  if $path != null {
     ls $path
   } else {
     ls
@@ -21,7 +21,7 @@ def l [
 }
 
 def tse [exit_node?] {
-  if exit_node {
+  if $exit_node != null {
     tailscale set --exit-node $exit_node
   } else {
     tailscale set --exit-node=""
@@ -34,7 +34,7 @@ def rb [] {
 }
 
 def rs [] {
-  sudo nice -n19 nixos-rebuild boot --flake . --impure --verbose
+  sudo nice -n19 nixos-rebuild switch --flake . --impure --verbose
   hx --grammar fetch; hx --grammar build
 }
 
