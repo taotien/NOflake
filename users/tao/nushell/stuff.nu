@@ -13,17 +13,19 @@ def l [
   path?
   flags?
 ] {
-  if $path == null {
-    # ls $flags
-    ls
-  } else {
-    # ls $flags $path
+  if $path {
     ls $path
+  } else {
+    ls
   } | sort-by type name -i
 }
 
-def tse [exit_node] {
-  tailscale set --exit-node=$exit_node
+def tse [exit_node?] {
+  if exit_node {
+    tailscale set --exit-node $exit_node
+  } else {
+    tailscale set --exit-node=""
+  }
 }
 
 def rb [] {
