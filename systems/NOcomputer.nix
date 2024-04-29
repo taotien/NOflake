@@ -13,13 +13,6 @@
   boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = "1";
 
-  # services.foldingathome = {
-  #   enable = true;
-  #   team = 223518;
-  #   user = "Tao_Tien";
-  #   extraArgs = ["--passkey=76ba03d55acf116776ba03d55acf1167"];
-  # };
-
   # environment.sessionVariables = {
   #   # wayland chromium workaround
   #   NIXOS_OZONE_WL = "1";
