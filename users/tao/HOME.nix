@@ -96,10 +96,10 @@ in {
       };
     };
 
-    # zellij = {
-    #   enable = true;
-    #   settings = {};
-    # };
+    zellij = {
+      enable = true;
+      settings = {};
+    };
 
     zoxide = {
       enable = true;

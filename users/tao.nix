@@ -55,6 +55,7 @@
     wezterm
     yt-dlp
     zathura
+    zellij
     zoom-us
     zoxide
   ];
