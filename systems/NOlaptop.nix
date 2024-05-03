@@ -4,6 +4,16 @@
   pkgs,
   ...
 }: {
+  boot.kernelPatches = [
+    (lib.mkIf (lib.versionOlder pkgs.linuxPackages_latest.kernel.version "6.9")
+      {
+        name = "cros_ec_lpc";
+        patch = pkgs.fetchpatch {
+          url = "https://patchwork.kernel.org/series/840830/mbox/";
+          sha256 = "sha256-7jSEAGInFC+a+ozCyD4dFz3Qgh2JrHskwz7UfswizFw=";
+        };
+      })
+  ];
   # nixpkgs.overlays = [
   #   (final: prev: {
   #     libinput = prev.libinput.overrideAttrs (old: {
@@ -32,7 +42,6 @@
   services.fwupd.enable = true;
   services.tailscale.useRoutingFeatures = "client";
   systemd.services."backlight@backlight:amdgpu_bl2".enable = false;
-  services.displayManager.defaultSession = "plasmawayland";
 
   environment.etc = {
     "libinput/local-overrides.quirks".text = "
@@ -46,8 +55,6 @@
       # MatchDMIModalias=dmi:*svnFramework:pnLaptop16*
       AttrKeyboardIntegration=internal";
   };
-
-  services.displayManager.defaultSession = "plasma";
 
   nix.buildMachines = [
     {
