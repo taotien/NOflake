@@ -28,14 +28,25 @@ def tse [exit_node?] {
   }
 }
 
+def tsr [] {
+  tailscale status --json | from json | get Peer | transpose nodekey node | get node | filter {$in.Location?.Country == USA} | get TailscaleIPs | each {get 0} | select (random int 0..($in | length)) | tse $in.0;
+  tailscale status
+}
+
 def rb [] {
   sudo nice -n19 nixos-rebuild boot --flake . --impure --verbose
   hx --grammar fetch; hx --grammar build
+  rm -rf ~/.cache/jdtls/
 }
 
 def rs [] {
   sudo nice -n19 nixos-rebuild switch --flake . --impure --verbose
   hx --grammar fetch; hx --grammar build
+  rm -rf ~/.cache/jdtls/
+}
+
+def ns [package] {
+  nix shell $"nixpkgs#($package)"
 }
 
 

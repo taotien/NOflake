@@ -1,14 +1,14 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    # lychee # link checker
     # etcher
     # freecad
     # gh
     # vulkan-loader
-    fontforge
+    # fontforge
     direnv
     qFlipper
     hyperfine
-    # jq
     jujutsu
     just
     lldb
@@ -21,6 +21,7 @@
     taplo
     tio
     tokei
+    typos
 
     # arduino
     arduino-language-server
@@ -70,6 +71,7 @@
     rustup
     sccache
     trunk
+    wasm-bindgen-cli
   ];
 
   hardware.flipperzero.enable = true;

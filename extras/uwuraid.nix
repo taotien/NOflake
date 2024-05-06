@@ -36,7 +36,11 @@
     #     what = "//100.97.47.81/isos";
     #     where = "/mnt/uwuraid/isos";
     #   })
-    # (opts // { what = "//100.97.47.81/jellyfin"; where = "/mnt/uwuraid/jellyfin"; })
+    # (opts
+    #   // {
+    #     what = "//100.97.47.81/jellyfin";
+    #     where = "/mnt/uwuraid/jellyfin";
+    #   })
     (opts
       // {
         what = "//100.97.47.81/movies";
