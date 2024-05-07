@@ -30,20 +30,20 @@ def bump [] {
   jj new -m "bump"
   nix flake update
   # rc2nix | save -f /home/tao/projects/NOflake/users/tao/plasma.nix;
-  sudo nix store ping --store ssh://nocomputer
+  # sudo nix store ping --store ssh://nocomputer
   sudo nice -n19 nixos-rebuild boot --flake /home/tao/projects/NOflake/ --impure --verbose
   jj new
 }
 
 def rb [] {
-  sudo nix store ping --store ssh://nocomputer
+  # sudo nix store ping --store ssh://nocomputer
   sudo nice -n19 nixos-rebuild boot --flake . --impure --verbose
   hx --grammar fetch; hx --grammar build
   rm -rf ~/.cache/jdtls/
 }
 
 def rs [] {
-  sudo nix store ping --store ssh://nocomputer
+  # sudo nix store ping --store ssh://nocomputer
   sudo nice -n19 nixos-rebuild switch --flake . --impure --verbose
   hx --grammar fetch; hx --grammar build
   rm -rf ~/.cache/jdtls/
