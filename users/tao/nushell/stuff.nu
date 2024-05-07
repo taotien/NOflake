@@ -1,14 +1,6 @@
 source ~/.cache/starship/init.nu
 source ~/.zoxide.nu
 
-def bump [] {
-  cd /home/tao/projects/NOflake/
-  jj new -m "bump"
-  nix flake update
-  # rc2nix | save -f /home/tao/projects/NOflake/users/tao/plasma.nix;
-  sudo nixos-rebuild boot --flake /home/tao/projects/NOflake/ --impure --verbose
-}
-
 def l [
   path?
   flags?
@@ -33,13 +25,25 @@ def tsr [] {
   tailscale status
 }
 
+def bump [] {
+  cd /home/tao/projects/NOflake/
+  jj new -m "bump"
+  nix flake update
+  # rc2nix | save -f /home/tao/projects/NOflake/users/tao/plasma.nix;
+  sudo nix store ping --store ssh://nocomputer
+  sudo nice -n19 nixos-rebuild boot --flake /home/tao/projects/NOflake/ --impure --verbose
+  jj new
+}
+
 def rb [] {
+  sudo nix store ping --store ssh://nocomputer
   sudo nice -n19 nixos-rebuild boot --flake . --impure --verbose
   hx --grammar fetch; hx --grammar build
   rm -rf ~/.cache/jdtls/
 }
 
 def rs [] {
+  sudo nix store ping --store ssh://nocomputer
   sudo nice -n19 nixos-rebuild switch --flake . --impure --verbose
   hx --grammar fetch; hx --grammar build
   rm -rf ~/.cache/jdtls/
