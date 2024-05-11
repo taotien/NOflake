@@ -156,6 +156,10 @@
           };
           text-width = 100;
         }
+        {
+          name = "toml";
+          auto-format = true;
+        }
       ];
       language-servers = {
         rust-analyzer.config = {

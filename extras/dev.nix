@@ -61,6 +61,7 @@
     # ruff-lsp
 
     #rust
+    probe-rs
     bacon
     cargo-feature
     cargo-generate
@@ -72,6 +73,7 @@
     sccache
     trunk
     wasm-bindgen-cli
+    flip-link
   ];
 
   hardware.flipperzero.enable = true;

@@ -22,7 +22,7 @@ def tse [exit_node?] {
 def tsr [] {
   tailscale status --json | from json | get Peer | transpose nodekey node | get node | filter {$in.Location?.Country == USA} | get TailscaleIPs | each {get 0} | select (random int 0..($in | length)) | tse $in.0
   tailscale status
-  ff https://mullvad.net/en/check
+  firefox https://mullvad.net/en/check
 }
 
 def rebuild [subcommand] {
