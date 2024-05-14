@@ -12,6 +12,7 @@
     cifs-utils
     du-dust
     exfatprogs
+    fastfetch
     ffmpeg
     firefox
     git
@@ -20,7 +21,6 @@
     localsend
     mesa
     mpv
-    neofetch
     ouch
     pueue
     ripgrep

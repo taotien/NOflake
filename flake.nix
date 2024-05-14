@@ -67,8 +67,8 @@
           ./extras/dev.nix
           ./extras/gaming.nix
           ./extras/folding.nix
-          # nixos-cosmic.nixosModules.default
-          # ./extras/cosmic.nix
+          nixos-cosmic.nixosModules.default
+          ./extras/cosmic.nix
         ];
       };
       NOlaptop = nixpkgs.lib.nixosSystem {
