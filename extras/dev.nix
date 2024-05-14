@@ -6,29 +6,29 @@
     # gh
     # vulkan-loader
     # fontforge
+    # radicle-node
+    # hyperfine # benchmarking
     direnv
-    qFlipper
-    hyperfine
     jujutsu
     just
     lldb
     lua-language-server
-    radicle-cli
+    qFlipper
     sd
     sqlite
     sqlx-cli
     sshfs
-    taplo
+    taplo # toml lsp
     tio
     tokei
     typos
 
-    # arduino
-    arduino-language-server
-    arduino-cli
-    pkgsCross.avr.buildPackages.gcc
-    avrdude
-    ravedude
+    # # arduino
+    # arduino-language-server
+    # arduino-cli
+    # pkgsCross.avr.buildPackages.gcc
+    # avrdude
+    # ravedude
 
     # c
     clang
@@ -53,7 +53,7 @@
     # nixpkgs-fmt
     alejandra
 
-    # python
+    # # python
     # pypy3
     # python3
     # python310Packages.python-lsp-server
@@ -61,19 +61,18 @@
     # ruff-lsp
 
     #rust
-    probe-rs
     bacon
     cargo-feature
     cargo-generate
-    bacon
     elf2uf2-rs
+    flip-link
     mdbook
     mold-wrapped
+    probe-rs
     rustup
     sccache
     trunk
     wasm-bindgen-cli
-    flip-link
   ];
 
   hardware.flipperzero.enable = true;
