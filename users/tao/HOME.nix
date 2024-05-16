@@ -24,9 +24,17 @@ in {
   };
 
   programs = {
+    bat = {
+      enable = true;
+      config = {
+        theme = "gruvbox-dark";
+      };
+    };
+
     bottom = {
       enable = true;
       settings = {
+        color = "gruvbox";
         flags = {
           battery =
             if lib.strings.hasPrefix "NOlaptop" (builtins.readFile /etc/hostname)

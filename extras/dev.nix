@@ -37,16 +37,17 @@
     gdb
     gnumake
 
-    # java (DSA)
-    gradle
-    jdt-language-server
-    jetbrains.idea-community
-    temurin-bin-17
+    # # java (DSA)
+    # gradle
+    # jdt-language-server
+    # jetbrains.idea-community
+    # maven
+    # temurin-bin-17
 
-    # michael (webdev)
-    nodejs
-    vscode-langservers-extracted
-    nodePackages_latest.typescript-language-server
+    # # michael (webdev)
+    # nodejs
+    # vscode-langservers-extracted
+    # nodePackages_latest.typescript-language-server
 
     # nix
     nil

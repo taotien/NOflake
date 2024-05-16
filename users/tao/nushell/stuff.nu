@@ -19,7 +19,7 @@ def l [
   path: path = "."
 ] {
   ls $path
-  | sort-by type name -i
+  | sort-by type name -i -n
 }
 
 
@@ -89,6 +89,8 @@ def tsr [] {
 }
 alias ts = tailscale
 alias tss = tailscale status
+alias tsu = tailscale up
+alias tsd = tailscale down
 alias tsx = tailscale exit-node list
 
 
