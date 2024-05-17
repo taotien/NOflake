@@ -13,14 +13,15 @@ in {
 
   environment.systemPackages = with pkgs; [
     # parsec-bin
+    # yuzu # nintendo can suck the shit out of my asshole
     gamemode
     heroic
     lutris
     mangohud
     prismlauncher
     protonup-qt
+    r2modman
     wine
-    # yuzu # nintendo can suck the shit out of my asshole
   ];
 
   programs.steam = {
