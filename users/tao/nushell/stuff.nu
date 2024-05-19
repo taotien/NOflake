@@ -4,12 +4,14 @@ alias b = btm
 alias cringe = sudo bootctl set-oneshot auto-windows
 alias fetch = fastfetch
 alias ff = firefox
-alias jd = jj diff
-alias js = jj status
 alias pu = pueue
 alias t = task
 alias zl = zellij
 
+alias jd = jj diff
+alias js = jj status
+alias jp = jj git push
+alias jm = jj branch set main
 
 def c [path: path = "~"] {
   cd $path
@@ -84,8 +86,8 @@ def tsr [] {
     | each {get 0}
     | select (random int 0..($in | length))
     | tse $in.0
-  tailscale status
-  firefox https://mullvad.net/en/check
+  # tailscale status
+  http get https://am.i.mullvad.net/json
 }
 alias ts = tailscale
 alias tss = tailscale status

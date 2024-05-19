@@ -43,6 +43,7 @@
     qmk-udev-rules
     qmk_hid
     ripgrep-all
+    signal-desktop
     snapper
     starship
     syncthingtray

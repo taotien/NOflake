@@ -17,6 +17,7 @@
     sd
     sqlite
     sqlx-cli
+    sea-orm-cli
     sshfs
     taplo # toml lsp
     tio
@@ -38,11 +39,11 @@
     gnumake
 
     # # java (DSA)
-    # gradle
-    # jdt-language-server
-    # jetbrains.idea-community
-    # maven
-    # temurin-bin-17
+    gradle
+    jdt-language-server
+    jetbrains.idea-community
+    maven
+    temurin-bin-17
 
     # # michael (webdev)
     # nodejs
@@ -65,6 +66,7 @@
     bacon
     cargo-feature
     cargo-generate
+    cargo-watch
     elf2uf2-rs
     flip-link
     mdbook
