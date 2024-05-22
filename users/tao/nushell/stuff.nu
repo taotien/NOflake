@@ -48,7 +48,8 @@ alias gc = nh clean all
 
 
 def tse [exit_node: string = ""] {
-    tailscale set --exit-node $exit_node
+  tailscale set --exit-node $exit_node
+  http get https://am.i.mullvad.net/json
 }
 def tsp [] {
   tailscale exit-node list
@@ -73,7 +74,7 @@ def tsp [] {
           | get 0
         }
       }
-    | sort-by ping -n
+    | sort-by ping -n -r
  }
 def tsr [] {
   tailscale status --json
