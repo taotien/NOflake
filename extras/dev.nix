@@ -8,6 +8,7 @@
     # fontforge
     # radicle-node
     # hyperfine # benchmarking
+    b3sum
     direnv
     jujutsu
     just
@@ -38,21 +39,8 @@
     gdb
     gnumake
 
-    # # java (DSA)
-    gradle
-    jdt-language-server
-    jetbrains.idea-community
-    maven
-    temurin-bin-17
-
-    # # michael (webdev)
-    # nodejs
-    # vscode-langservers-extracted
-    # nodePackages_latest.typescript-language-server
-
     # nix
     nil
-    # nixpkgs-fmt
     alejandra
 
     # # python
@@ -79,19 +67,6 @@
   ];
 
   hardware.flipperzero.enable = true;
-
-  # programs.nix-ld.enable = true;
-  # programs.nix-ld.libraries = with pkgs; [
-  #   libxkbcommon
-  #   libGL
-
-  #   wayland.dev
-
-  #   xorg.libX11
-  #   xorg.libXrandr
-  #   xorg.libXi
-  #   xorg.libX11
-  # ];
 
   services.udev.extraRules = ''
     SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic GDB Server", SYMLINK+="ttyBmpGdb"

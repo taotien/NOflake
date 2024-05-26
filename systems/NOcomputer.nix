@@ -25,14 +25,14 @@
   boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = "1";
 
-  # environment.sessionVariables = {
-  #   # wayland chromium workaround
-  #   NIXOS_OZONE_WL = "1";
+  environment.sessionVariables = {
+    # wayland chromium workaround
+    NIXOS_OZONE_WL = "1";
 
-  #   # firefox nvidia-vaapi-driver
-  #   # MOZ_DISABLE_RDD_SANDBOX = "1";
-  #   # LIBVA_DRIVER_NAME = "nvidia";
-  # };
+    # firefox nvidia-vaapi-driver
+    # MOZ_DISABLE_RDD_SANDBOX = "1";
+    # LIBVA_DRIVER_NAME = "nvidia";
+  };
 
   hardware.opengl = {
     enable = true;

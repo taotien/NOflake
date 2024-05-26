@@ -9,6 +9,7 @@ alias t = task
 alias zl = zellij
 
 alias jd = jj diff
+alias jc = jj desc
 alias js = jj status
 alias jp = jj git push
 alias jm = jj branch set main
@@ -18,16 +19,23 @@ def c [path: path = "~"] {
   l
 }
 def l [
+  --all (-a)
   path: path = "."
 ] {
-  ls $path
+  if $all {
+    ls -a $path
+  } else {
+    ls $path
+  }
   | sort-by type name -i -n
 }
 
 
+alias nd = nix develop
 def ns [package] {
   nix shell $"nixpkgs#($package)"
 }
+
 def rebuild [subcommand] {
     sudo nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose
     hx --grammar fetch; hx --grammar build
