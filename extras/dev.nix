@@ -8,6 +8,7 @@
     # fontforge
     # radicle-node
     # hyperfine # benchmarking
+    git-cliff
     b3sum
     direnv
     jujutsu

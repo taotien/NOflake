@@ -20,16 +20,28 @@ def c [path: path = "~"] {
 }
 def l [
   --all (-a)
+  --long (-l)
   path: path = "."
 ] {
-  if $all {
+  if $all and $long {
+    ls -la $path
+  } else if $all {
     ls -a $path
+  } else if $long {
+    ls -l $path
   } else {
     ls $path
   }
   | sort-by type name -i -n
 }
 
+def rg [pattern?] {
+  if $pattern == null {
+    sk --ansi -i -c 'rg --color=always --line-number "{}"'
+  } else {
+    rg $pattern
+  }
+}
 
 alias nd = nix develop
 def ns [package] {
@@ -38,6 +50,7 @@ def ns [package] {
 
 def rebuild [subcommand] {
     sudo nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose
+    rm ~/.config/helix/runtime/grammars/*
     hx --grammar fetch; hx --grammar build
     rm -rf ~/.cache/jdtls/
 }

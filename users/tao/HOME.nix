@@ -5,7 +5,7 @@
   ...
 }: let
   cargoFile = builtins.readFile ./cargo.toml;
-  cargoConfig = builtins.replaceStrings ["path/to/sccache"] ["${pkgs.sccache}/bin/sccache"] cargoFile;
+  cargoConfig = builtins.replaceStrings ["/path/to/sccache" "/path/to/mold"] ["${pkgs.sccache}/bin/sccache" "${pkgs.mold}/bin/mold}"] cargoFile;
 in {
   imports = [
     ./boxxy.nix

@@ -4,7 +4,7 @@ rr = "run --release"
 [build]
 target = "x86_64-unknown-linux-gnu"
 # rustc-wrapper = "${pkgs.sccache}/bin/sccache"
-rustc-wrapper = "path/to/sccache"
+rustc-wrapper = "/path/to/sccache"
 rustflags = ["-Z", "threads=8"]
 
 [unstable]
@@ -31,10 +31,10 @@ lto = "fat"
 # linker = "clang"
 # rustflag = ["-C", "target-cpu=native", "link-arg=ld-path=${pkgs.mold}/bin/mold"]
 
-[target.x86-unknown-linux-gnu]
+[target.x86_64-unknown-linux-gnu]
 # linker = "musl-gcc"
 linker = "clang"
-rustflag = ["-C", "target-cpu=native", "link-arg=ld-path=${pkgs.mold}/bin/mold"]
+rustflags = ["-Ctarget-cpu=native", "-Clink-arg=-fuse-ld=mold"]
 
 # jonhoo
 # https://benw.is/posts/how-i-improved-my-rust-compile-times-by-seventy-five-percent

@@ -51,6 +51,7 @@
       };
     };
     languages = {
+      use-grammars.only = ["rust" "c" "cpp" "typst" "nix" "html"];
       language = [
         {
           name = "arduino";
