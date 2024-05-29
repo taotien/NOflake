@@ -25,7 +25,7 @@
     pueue
     ripgrep
     rustdesk
-    screen
+    # screen
     skim
     tree
     wezterm
@@ -78,6 +78,8 @@
 
   networking.networkmanager.enable = true;
   services.tailscale.enable = true;
+  # TODO figure out a socks5 that blocks when not connected to tailscale exit-node
+  # services.tailscale.extraDaemonFlags = ["--socks5-server=localhost:1055"];
   services.resolved.enable = true;
   # networking.interfaces.tailscale0.useDHCP = false;
 

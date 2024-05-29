@@ -35,24 +35,23 @@ def l [
   | sort-by type name -i -n
 }
 
-def rg [pattern?] {
-  if $pattern == null {
-    sk --ansi -i -c 'rg --color=always --line-number "{}"'
-  } else {
-    rg $pattern
-  }
+def srg [pattern] {
+  sk --ansi -i -c 'rg --color=always --line-number "{}"'
 }
 
 alias nd = nix develop
 def ns [package] {
   nix shell $"nixpkgs#($package)"
 }
+def nr [package] {
+  nix search nixpkgs $package
+}
 
 def rebuild [subcommand] {
     sudo nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose
-    rm ~/.config/helix/runtime/grammars/*
+    rm -r ~/.config/helix/runtime/grammars/
     hx --grammar fetch; hx --grammar build
-    rm -rf ~/.cache/jdtls/
+    rustup update
 }
 def bump [] {
   cd /home/tao/projects/NOflake/
@@ -69,34 +68,39 @@ alias gc = nh clean all
 
 
 def tse [exit_node: string = ""] {
-  tailscale set --exit-node $exit_node
+  if ($exit_node | is-empty) and (ps | find deluge | is-not-empty) {
+    print "stop summoning first!"
+    return
+  } else {
+    tailscale set --exit-node $exit_node
+  }
   http get https://am.i.mullvad.net/json
 }
-def tsp [] {
-  tailscale exit-node list
-    | split row "\n"
-    | each {str trim}
-    | filter {is-not-empty}
-    | skip 1
-    | last 19
-    | first 17
-    | split column -r '\s{2,}'
-    | reject column5 column3
-    | rename ip addr city
-    | par-each {
-      insert ping {
-        |row| $row.addr
-          | str replace "mullvad.ts.net" "relays.mullvad.net"
-          | ping -c5 -q $in
-          | split row "\n"
-          | last
-          | split column "/"
-          | get column6?
-          | get 0
-        }
-      }
-    | sort-by ping -n -r
- }
+# def tsp [] {
+#   tailscale exit-node list
+#     | split row "\n"
+#     | each {str trim}
+#     | filter {is-not-empty}
+#     | skip 1
+#     | last 19
+#     | first 17
+#     | split column -r '\s{2,}'
+#     | reject column5 column3
+#     | rename ip addr city
+#     | par-each {
+#       insert ping {
+#         |row| $row.addr
+#           | str replace "mullvad.ts.net" "relays.mullvad.net"
+#           | ping -c5 -q $in
+#           | split row "\n"
+#           | last
+#           | split column "/"
+#           | get column6?
+#           | get 0
+#         }
+#       }
+#     | sort-by ping -n -r
+#  }
 def tsr [] {
   tailscale status --json
     | from json
@@ -116,7 +120,28 @@ alias tss = tailscale status
 alias tsu = tailscale up
 alias tsd = tailscale down
 alias tsx = tailscale exit-node list
+alias tsp = tailscale exit-node suggest
 
+def "config stuff" [] {
+  hx ~/projects/NOflake/users/tao/nushell/stuff.nu
+}
+
+def deluge-gtk [] {
+  tsr
+  deluge-gtk
+}
+alias deluge = deluge-gtk
+
+def fixme [] {
+  rg TODO --json
+    | lines
+    | each {from json}
+    | where type == "match"
+    | get data
+    | flatten
+    | each {$"($in.text):($in.line_number)"}
+    | hx ...$in
+}
 
 source ~/.cache/starship/init.nu
 source ~/.zoxide.nu

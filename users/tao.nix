@@ -54,6 +54,7 @@
     typst-lsp
     vial
     wezterm
+    wl-clipboard-rs
     yt-dlp
     zathura
     zellij

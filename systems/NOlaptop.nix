@@ -78,7 +78,6 @@
   '';
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.initrd.availableKernelModules = [
     "nvme"
     "sd_mod"
@@ -89,10 +88,7 @@
     "uas"
   ];
   boot.kernelParams = [
-    # "mem_sleep_default=deep"
     "amdgpu.abmlevel=1"
-    # TODO DMUB bugfix? (apparently disables PSR?)
-    # "amdgpu.dcdebugmask=0x10"
   ];
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = with config.boot.kernelPackages; [
