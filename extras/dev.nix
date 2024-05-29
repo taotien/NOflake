@@ -8,6 +8,7 @@
     # fontforge
     # radicle-node
     # hyperfine # benchmarking
+    markdown-oxide
     git-cliff
     b3sum
     direnv

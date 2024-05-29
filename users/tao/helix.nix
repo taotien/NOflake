@@ -34,6 +34,7 @@
       };
       keys.insert = {
         C-space = "completion";
+        k = {k = "normal_mode";};
       };
       keys.normal = {
         k = "move_line_down";
@@ -51,7 +52,7 @@
       };
     };
     languages = {
-      use-grammars.only = ["rust" "c" "cpp" "typst" "nix" "html"];
+      use-grammars.only = ["rust" "c" "cpp" "typst" "nix" "html" "toml" "markdown"];
       language = [
         {
           name = "arduino";
