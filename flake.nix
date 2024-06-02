@@ -8,6 +8,10 @@
       url = "github:ryantm/agenix";
       inputs.darwin.follows = "";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,6 +48,7 @@
     nixpkgs,
     nixos-hardware,
     agenix,
+    disko,
     home-manager,
     plasma-manager,
     # helix,
@@ -101,6 +106,18 @@
           ./users/tao.nix
           ./users/vy.nix
           ./extras/uwuraid.nix
+        ];
+      };
+      NOserver-minecraft = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          agenix.nixosModules.default
+          disko.nixosModules.disko
+          {disko.devices.disk.disk1.device = "/dev/vda";}
+          ./systems/NOserver.nix
+          ./extras/disk-config.nix
+          ./extras/minecraft-server.nix
         ];
       };
     };

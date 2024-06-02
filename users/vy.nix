@@ -35,4 +35,8 @@
     isNormalUser = true;
     extraGroups = ["wheel" "audio" "video"];
   };
+
+  users.users.root.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJKLOGhoTauV+yBide0qYQzZ/0rRw7ImfrOTvuZxjIFl"
+  ];
 }
