@@ -22,7 +22,10 @@ in {
     protonup-qt
     r2modman
     wine
+    temurin-jre-bin-17
   ];
+
+  networking.firewall.allowedTCPPorts = [25565];
 
   programs.steam = {
     enable = true;

@@ -135,7 +135,6 @@
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
   '';
 
-  # obs virtual camera
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
   ];

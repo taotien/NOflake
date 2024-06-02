@@ -74,6 +74,7 @@ def tse [exit_node: string = ""] {
   } else {
     tailscale set --exit-node $exit_node
   }
+  sleep 5sec
   http get https://am.i.mullvad.net/json
 }
 def tsp [] {
