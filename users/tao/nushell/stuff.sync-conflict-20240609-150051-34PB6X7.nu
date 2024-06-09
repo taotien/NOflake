@@ -74,33 +74,34 @@ def tse [exit_node: string = ""] {
   } else {
     tailscale set --exit-node $exit_node
   }
+  sleep 5sec
   http get https://am.i.mullvad.net/json
 }
-def tsp [] {
-  tailscale exit-node list
-    | split row "\n"
-    | each {str trim}
-    | filter {is-not-empty}
-    | skip 1
-    | last 19
-    | first 17
-    | split column -r '\s{2,}'
-    | reject column5 column3
-    | rename ip addr city
-    | par-each {
-      insert ping {
-        |row| $row.addr
-          | str replace "mullvad.ts.net" "relays.mullvad.net"
-          | ping -c5 -q $in
-          | split row "\n"
-          | last
-          | split column "/"
-          | get column6?
-          | get 0
-        }
-      }
-    | sort-by ping -n -r
- }
+# def tsp [] {
+#   tailscale exit-node list
+#     | split row "\n"
+#     | each {str trim}
+#     | filter {is-not-empty}
+#     | skip 1
+#     | last 19
+#     | first 17
+#     | split column -r '\s{2,}'
+#     | reject column5 column3
+#     | rename ip addr city
+#     | par-each {
+#       insert ping {
+#         |row| $row.addr
+#           | str replace "mullvad.ts.net" "relays.mullvad.net"
+#           | ping -c5 -q $in
+#           | split row "\n"
+#           | last
+#           | split column "/"
+#           | get column6?
+#           | get 0
+#         }
+#       }
+#     | sort-by ping -n -r
+#  }
 def tsr [] {
   tailscale status --json
     | from json
@@ -120,7 +121,7 @@ alias tss = tailscale status
 alias tsu = tailscale up
 alias tsd = tailscale down
 alias tsx = tailscale exit-node list
-alias tsa = tailscale exit-node suggest
+alias tsp = tailscale exit-node suggest
 
 def "config stuff" [] {
   hx ~/projects/NOflake/users/tao/nushell/stuff.nu

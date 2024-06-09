@@ -3,7 +3,7 @@
     # boinctui
   ];
   services.boinc = {
-    enable = true;
+    enable = false;
   };
 
   # services.foldingathome = {
