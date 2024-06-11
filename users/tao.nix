@@ -79,6 +79,7 @@
     configDir = "/home/tao/.config/syncthing";
     overrideDevices = false;
     overrideFolders = false;
+    openDefaultPorts = true;
     settings = {
       devices = {
         # we do a lil anti-patterns https://github.com/ryantm/agenix?tab=readme-ov-file#builtinsreadfile-anti-pattern
@@ -98,10 +99,10 @@
         #   path = "/home/tao/documents";
         #   devices = devs;
         # };
-        # "pictures" = {
-        #   path = "/home/tao/pictures";
-        #   devices = devs;
-        # };
+        "pictures" = {
+          path = "/home/tao/pictures";
+          devices = devs;
+        };
         "projects" = {
           path = "/home/tao/projects";
           devices = devs;
@@ -112,6 +113,10 @@
         };
         "sync" = {
           path = "/home/tao/sync";
+          devices = devs;
+        };
+        "work" = {
+          path = "/home/tao/work";
           devices = devs;
         };
       };

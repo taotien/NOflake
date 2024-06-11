@@ -49,10 +49,12 @@ def nr [package] {
 
 def rebuild [subcommand] {
     sudo nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose
-    rm -r ~/.config/helix/runtime/grammars/
-    hx --grammar fetch; hx --grammar build
-    rustup update
 }
+# def post-rebuild [] {
+#     # rm -r ~/.config/helix/runtime/grammars/
+#     # hx --grammar fetch; hx --grammar build
+#     # rustup update
+# }
 def bump [] {
   cd /home/tao/projects/NOflake/
   jj new -m "bump"
