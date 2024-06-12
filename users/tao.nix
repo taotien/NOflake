@@ -6,6 +6,7 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    cloud-hypervisor
     # fractal
     # kdeconnect
     # libsForQt5.kcharselect
