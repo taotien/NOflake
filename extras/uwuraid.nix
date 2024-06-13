@@ -26,11 +26,11 @@
         what = "//100.97.47.81/everything";
         where = "/mnt/uwuraid/everything";
       })
-    # (opts
-    #   // {
-    #     what = "//100.97.47.81/games";
-    #     where = "/mnt/uwuraid/games";
-    #   })
+    (opts
+      // {
+        what = "//100.97.47.81/games";
+        where = "/mnt/uwuraid/games";
+      })
     # (opts
     #   // {
     #     what = "//100.97.47.81/isos";
@@ -82,7 +82,7 @@
     # (opts // {where = "/mnt/uwuraid/appdata";})
     (opts // {where = "/mnt/uwuraid/backup";})
     (opts // {where = "/mnt/uwuraid/everything";})
-    # (opts // {where = "/mnt/uwuraid/games";})
+    (opts // {where = "/mnt/uwuraid/games";})
     # (opts // {where = "/mnt/uwuraid/isos";})
     # (opts // { where = "/mnt/uwuraid/jellyfin"; })
     (opts // {where = "/mnt/uwuraid/movies";})

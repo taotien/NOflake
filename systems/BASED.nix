@@ -18,7 +18,7 @@
     git
     helix
     inputs.agenix.packages.${pkgs.system}.default
-    localsend
+    sendme
     mesa
     mpv
     ouch
@@ -58,6 +58,7 @@
   };
 
   services.xserver.enable = lib.mkDefault true;
+  services.xserver.excludePackages = [pkgs.xterm];
   services.xserver.xkb.layout = "us";
   systemd.services.display-manager.restartIfChanged = false;
   services.displayManager.sddm.enable = lib.mkDefault true;

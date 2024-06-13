@@ -6,6 +6,7 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    nixos-anywhere
     cloud-hypervisor
     # fractal
     # kdeconnect
@@ -153,6 +154,8 @@
     noto-fonts-cjk
     noto-fonts-color-emoji
   ];
+
+  documentation.enable = true;
 
   users.users.tao = {
     isNormalUser = true;
