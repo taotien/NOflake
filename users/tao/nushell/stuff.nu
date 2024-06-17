@@ -7,6 +7,7 @@ alias ff = firefox
 alias pu = pueue
 alias t = task
 alias zl = zellij
+alias snapper = snapper -c home
 
 alias jd = jj diff
 alias jc = jj desc
@@ -15,7 +16,7 @@ alias jp = jj git push
 alias jm = jj branch set main
 
 def c [path: path = "~"] {
-  cd $path
+  export-env {cd $path}
   l
 }
 def l [
