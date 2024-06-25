@@ -34,17 +34,12 @@
     # LIBVA_DRIVER_NAME = "nvidia";
   };
 
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
     # options: production, beta, vulkan_beta, latest
     # package = pkgs.linuxPackages_latest.nvidiaPackages.latest;
-    package = pkgs.linuxPackages_zen.nvidiaPackages.beta;
+    package = pkgs.linuxPackages_zen.nvidiaPackages.latest;
     # open = true;
   };
   # enable core and mem freq sliders for nvidia
