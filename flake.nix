@@ -91,7 +91,7 @@
           ./extras/gaming.nix
           nixos-cosmic.nixosModules.default
           ./extras/cosmic.nix
-          ./extras/ssrov-laptop.nix
+          # ./extras/ssrov-laptop.nix
         ];
       };
       NOmom = nixpkgs.lib.nixosSystem {

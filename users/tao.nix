@@ -6,6 +6,7 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    freerdp
     nixos-anywhere
     cloud-hypervisor
     # fractal
@@ -16,7 +17,6 @@
     # tectonic
     # texlab
     # toastify
-    # virt-manager
     # wkhtmltopdf
     appimage-run
     aspell
@@ -67,9 +67,9 @@
   programs.kdeconnect.enable = true;
   environment.shells = with pkgs; [nushell];
 
-  # virt
-  # programs.dconf.enable = true;
-  # virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+  programs.virt-manager.enable = true;
 
   age.secrets.syncthing-NOcomputer.file = ../secrets/syncthing-NOcomputer.age;
   age.secrets.syncthing-NOlaptop.file = ../secrets/syncthing-NOlaptop.age;

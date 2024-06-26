@@ -25,18 +25,6 @@
   #   extraBackends = [ pkgs.epkowa ];
   # };
 
-  services.snapper.configs = {
-    home = {
-      SUBVOLUME = "/home";
-      ALLOW_USERS = ["vy" "tao"];
-      TIMELINE_CREATE = true;
-      TIMELINE_CLEANUP = true;
-      TIMELINE_LIMIT_HOURLY = "5";
-      TIMELINE_LIMIT_DAILY = "7";
-    };
-  };
-  services.snapper.snapshotInterval = "*:0/5";
-
   services.udev.extraRules = ''
     # Ethernet expansion card
     ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="8156", ATTR{power/autosuspend}="20"
