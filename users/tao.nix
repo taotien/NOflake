@@ -71,6 +71,11 @@
   virtualisation.spiceUSBRedirection.enable = true;
   programs.virt-manager.enable = true;
 
+  # virtualisation.virtualbox.host = {
+  #   enable = true;
+  #   enableExtensionPack = true;
+  # };
+
   age.secrets.syncthing-NOcomputer.file = ../secrets/syncthing-NOcomputer.age;
   age.secrets.syncthing-NOlaptop.file = ../secrets/syncthing-NOlaptop.age;
   age.secrets.syncthing-uwuraid.file = ../secrets/syncthing-uwuraid.age;
