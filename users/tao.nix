@@ -63,11 +63,12 @@
     zoom-us
     zoxide
   ];
-  # programs.adb.enable = true;
+  programs.adb.enable = true;
   programs.kdeconnect.enable = true;
   environment.shells = with pkgs; [nushell];
 
   virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.qemu.swtpm.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
   programs.virt-manager.enable = true;
 
