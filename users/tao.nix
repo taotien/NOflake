@@ -24,7 +24,7 @@
     # bottles
     boxxy
     # calibre
-    darktable
+    # darktable
     deluge
     discord
     inputs.plasma-manager.packages.${pkgs.system}.default
