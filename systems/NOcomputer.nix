@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -34,13 +35,15 @@
     # LIBVA_DRIVER_NAME = "nvidia";
   };
 
+  services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = true;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
     # options: production, beta, vulkan_beta, latest
-    # package = pkgs.linuxPackages_latest.nvidiaPackages.latest;
-    package = pkgs.linuxPackages_zen.nvidiaPackages.beta;
-    # open = true;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    open = false;
+    nvidiaSettings = true;
   };
   # enable core and mem freq sliders for nvidia
   services.xserver.deviceSection = ''
@@ -67,7 +70,7 @@
   #     modDirVersion = "6.8.8";
   #   };
   # });
-  # boot.kernelPackages = pkgs.linuxPackages_6_8;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
   boot.kernelModules = ["i2c-dev" "kvm-amd"];
