@@ -58,6 +58,7 @@
     "browser.bookmarks.restore_default_bookmarks" = false;
   };
 
+  hardware.graphics.enable = true;
   services.xserver.enable = lib.mkDefault true;
   services.xserver.excludePackages = [pkgs.xterm];
   services.xserver.xkb.layout = "us";
