@@ -10,6 +10,7 @@
     bat
     bottom
     cifs-utils
+    dumbpipe
     du-dust
     exfatprogs
     fastfetch
