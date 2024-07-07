@@ -21,7 +21,7 @@
     appimage-run
     aspell
     aspellDicts.en
-    # bottles
+    bottles
     boxxy
     # calibre
     # darktable

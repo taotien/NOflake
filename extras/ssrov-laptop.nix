@@ -7,7 +7,6 @@
         # hvplot
         # ipywidgets
         # ipywidgets
-        # jupyter
         # linkify-it-py
         # markdown-it-py
         # mdit-py-plugins
