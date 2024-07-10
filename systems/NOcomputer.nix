@@ -18,7 +18,7 @@
     # gpt4all-chat
     # nvidia-vaapi-driver
     # foldingathome
-    gwe
+    # gwe
     openrgb
   ];
 
