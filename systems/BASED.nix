@@ -153,6 +153,14 @@
     experimental-features = "nix-command flakes";
     auto-optimise-store = true;
     trusted-users = ["root" "@wheel"];
+    system-features = [
+      "benchmark"
+      "big-parallel"
+      "gccarch-znver3"
+      "gccarch-znver4"
+      "kvm"
+      "nixos-test"
+    ];
   };
   nixpkgs.config = {allowUnfree = true;};
 

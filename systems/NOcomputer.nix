@@ -4,15 +4,6 @@
   lib,
   ...
 }: {
-  nix.settings.system-features = [
-    "benchmark"
-    "big-parallel"
-    "gccarch-znver3"
-    "gccarch-znver4"
-    "kvm"
-    "nixos-test"
-  ];
-
   environment.systemPackages = with pkgs; [
     # egl-wayland
     # gpt4all-chat

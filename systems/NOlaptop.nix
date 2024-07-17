@@ -15,14 +15,6 @@
   #     });
   #   })
   # ];
-  nix.settings.system-features = [
-    "benchmark"
-    "big-parallel"
-    "gccarch-znver3"
-    "gccarch-znver4"
-    "kvm"
-    "nixos-test"
-  ];
 
   environment.systemPackages = with pkgs; [
     fw-ectool
@@ -51,7 +43,13 @@ AttrKeyboardIntegration=internal";
     {
       hostName = "nocomputer";
       systems = ["x86_64-linux" "i686-linux"];
-      supportedFeatures = ["gccarch-znver4" "big-parallel" "kvm" "nixos-test" "benchmark"];
+      supportedFeatures = [
+        "benchmark"
+        "big-parallel"
+        "gccarch-znver4"
+        "kvm"
+        "nixos-test"
+      ];
     }
   ];
   nix.extraOptions = ''
@@ -86,7 +84,7 @@ AttrKeyboardIntegration=internal";
   #   framework-laptop-kmod
   # ];
   powerManagement.cpuFreqGovernor = "powersave";
-  systemd.sleep.extraConfig = "HibernateDelaySec=180m";
+  systemd.sleep.extraConfig = "HibernateDelaySec=360m";
 
   fileSystems."/home/tao/games" = {
     device = "/dev/disk/by-uuid/d97a81dc-669c-41d1-912b-829f88fd6f69";
