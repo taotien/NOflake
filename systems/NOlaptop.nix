@@ -25,6 +25,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    fw-ectool
     framework-tool
     nvtopPackages.amd
   ];
