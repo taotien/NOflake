@@ -5,6 +5,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    nvtopPackages.nvidia
     # egl-wayland
     # gpt4all-chat
     # nvidia-vaapi-driver
