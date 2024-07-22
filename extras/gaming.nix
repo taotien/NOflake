@@ -62,7 +62,7 @@ in {
   services.pipewire.extraConfig = {
     pipewire."99-low-latency" = {
       context.properties = {
-        default.allowed-rates = [44100 48000 96000];
+        default.allowed-rates = [44100 48000 96000 192000];
         default.clock.rate = 192000;
         default.clock.quantum = 32;
         default.clock.min-quantum = 32;

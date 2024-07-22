@@ -4,6 +4,16 @@
   pkgs,
   ...
 }: {
+  boot.kernelPatches = [
+    (lib.mkIf (lib.versionOlder config.boot.kernelPackages.kernel.version "6.11")
+      {
+        name = "cros_ec_lpc";
+        patch = pkgs.fetchpatch {
+          url = "https://patchwork.kernel.org/series/840830/mbox/";
+          sha256 = "sha256-7jSEAGInFC+a+ozCyD4dFz3Qgh2JrHskwz7UfswizFw=";
+        };
+      })
+  ];
   # boot.kernelPatches = [
   #   (lib.mkIf (lib.versionOlder config.boot.kernelPackages.kernel.version "6.11")
   #     {

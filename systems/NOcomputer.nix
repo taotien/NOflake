@@ -27,15 +27,13 @@
     # LIBVA_DRIVER_NAME = "nvidia";
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
-    modesetting.enable = true;
     powerManagement.enable = false;
     powerManagement.finegrained = false;
     # options: production, beta, vulkan_beta, latest
     package = config.boot.kernelPackages.nvidiaPackages.production;
     open = false;
-    nvidiaSettings = true;
+    nvidiaSettings = false;
   };
   # enable core and mem freq sliders for nvidia
   services.xserver.deviceSection = ''
