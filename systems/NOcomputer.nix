@@ -31,8 +31,8 @@
     powerManagement.enable = false;
     powerManagement.finegrained = false;
     # options: production, beta, vulkan_beta, latest
-    package = config.boot.kernelPackages.nvidiaPackages.production;
-    open = false;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
+    open = true;
     nvidiaSettings = false;
   };
   # enable core and mem freq sliders for nvidia

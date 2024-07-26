@@ -49,8 +49,6 @@ def nr [package] {
 }
 
 def rebuild [subcommand] {
-    sudo nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose
-  # sudo nix store ping --store ssh://nocomputer
   sudo nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose
 }
 # def post-rebuild [] {
