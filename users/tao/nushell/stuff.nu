@@ -116,6 +116,7 @@ def tsr [] {
     | select (random int 0..($in | length))
     | tse $in.0
   # tailscale status
+  sleep 5sec
   http get https://am.i.mullvad.net/json
 }
 alias ts = tailscale
