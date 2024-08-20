@@ -52,6 +52,11 @@
     # ruff
     # ruff-lsp
 
+    # go
+    go
+    gopls
+    delve
+
     #rust
     bacon
     cargo-feature

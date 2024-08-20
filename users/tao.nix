@@ -6,9 +6,9 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
-    # freerdp
-    # nixos-anywhere
-    # cloud-hypervisor
+    freerdp
+    nixos-anywhere
+    cloud-hypervisor
     # fractal
     # kdeconnect
     # libsForQt5.kcharselect
@@ -54,7 +54,7 @@
     typst
     typst-fmt
     # typst-lsp
-    # vial
+    vial
     wezterm
     wl-clipboard-rs
     yt-dlp
