@@ -81,6 +81,32 @@ in {
       extraConfig = builtins.readFile ./nushell/stuff.nu;
     };
 
+    ssh = {
+      enable = true;
+      addKeysToAgent = "yes";
+      compression = true;
+      matchBlocks = {
+        "stargate" = {
+          hostname = "stargate.cs.usfca.edu";
+          user = "tltien";
+          forwardAgent = true;
+          identityFile = "/home/tao/.ssh/id_ed25519";
+        };
+        "beagle" = {
+          hostname = "beagle";
+          user = "tltien";
+          forwardAgent = true;
+          identityFile = "/home/tao/.ssh/id_ed25519";
+          proxyCommand = "ssh stargate -W %h:%p";
+        };
+        "github" = {
+          hostname = "github.com";
+          forwardAgent = true;
+          identityFile = "/home/tao/.ssh/id_ed25519";
+        };
+      };
+    };
+
     starship = {
       enable = true;
       enableNushellIntegration = true;

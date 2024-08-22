@@ -49,7 +49,7 @@
     snapper
     starship
     syncthingtray
-    taskwarrior
+    taskwarrior3
     thunderbird
     typst
     typst-fmt

@@ -1,5 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    qemu
+    # quickemu
     # lychee # link checker
     # etcher
     # freecad

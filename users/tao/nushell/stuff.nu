@@ -69,6 +69,12 @@ alias rb = rebuild boot
 alias rs = rebuild switch
 alias gc = nh clean all
 
+def check-mullvad [] {
+  $env.LAST_EXIT_CODE = 69
+  if $env.LAST_EXIT_CODE != 0 {
+    http get https://am.i.mullvad.net/json
+  }
+}
 
 def tse [exit_node: string = ""] {
   if ($exit_node | is-empty) and (ps | find deluge | is-not-empty) {
@@ -77,7 +83,7 @@ def tse [exit_node: string = ""] {
   } else {
     tailscale set --exit-node $exit_node
   }
-  http get https://am.i.mullvad.net/json
+  check-mullvad
 }
 def tsp [] {
   tailscale exit-node list
@@ -116,8 +122,7 @@ def tsr [] {
     | select (random int 0..($in | length))
     | tse $in.0
   # tailscale status
-  sleep 5sec
-  http get https://am.i.mullvad.net/json
+  check-mullvad
 }
 alias ts = tailscale
 alias tss = tailscale status
