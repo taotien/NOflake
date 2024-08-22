@@ -71,7 +71,8 @@ alias gc = nh clean all
 
 def check-mullvad [] {
   $env.LAST_EXIT_CODE = 69
-  if $env.LAST_EXIT_CODE != 0 {
+  while $env.LAST_EXIT_CODE != 0 {
+    print "checking connection status"
     http get https://am.i.mullvad.net/json
   }
 }
