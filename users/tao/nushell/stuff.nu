@@ -70,10 +70,10 @@ alias rs = rebuild switch
 alias gc = nh clean all
 
 def check-mullvad [] {
-  $env.LAST_EXIT_CODE = 69
-  while $env.LAST_EXIT_CODE != 0 {
+  loop {
     print "checking connection status"
-    http get https://am.i.mullvad.net/json
+    http get https://am.i.mullvad.net/json 
+      | if $in.mullvad_exit_ip == true {break}
   }
 }
 
