@@ -52,7 +52,7 @@
       };
     };
     languages = {
-      use-grammars.only = ["rust" "c" "cpp" "typst" "nix" "html" "toml" "markdown" "just"];
+      use-grammars.only = ["rust" "c" "cpp" "typst" "nix" "html" "toml" "markdown" "just" "bash"];
       language = [
         {
           name = "arduino";

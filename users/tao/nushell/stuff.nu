@@ -1,5 +1,7 @@
-task 
+task
 
+alias xo = xdg-open
+alias h = hx (sk)
 alias b = btm
 alias cringe = sudo bootctl set-oneshot auto-windows
 alias fetch = fastfetch
@@ -10,13 +12,11 @@ alias zl = zellij
 alias snapper = snapper -c home
 alias quiet = sudo ectool fanduty 42
 alias loud = sudo ectool autofanctl
-
 alias jd = jj diff
 alias jc = jj desc
 alias js = jj status
 alias jp = jj git push
 alias jm = jj branch set main
-
 def c [path: path = "~"] {
   export-env {cd $path}
   l
@@ -37,11 +37,9 @@ def l [
   }
   | sort-by type name -i -n
 }
-
 def srg [pattern] {
   sk --ansi -i -c 'rg --color=always --line-number "{}"'
 }
-
 alias nd = nix develop
 def ns [package] {
   nix shell $"nixpkgs#($package)"
@@ -49,7 +47,6 @@ def ns [package] {
 def nr [package] {
   nix search nixpkgs $package
 }
-
 def rebuild [subcommand] {
   sudo nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose
 }
@@ -70,15 +67,14 @@ def bump [] {
 alias rb = rebuild boot
 alias rs = rebuild switch
 alias gc = nh clean all
-
 def check-mullvad [] {
   loop {
     print "checking connection status"
     http get https://am.i.mullvad.net/json 
       | if $in.mullvad_exit_ip == true {break}
+    sleep 1sec
   }
 }
-
 def tse [exit_node: string = ""] {
   if ($exit_node | is-empty) and (ps | find deluge | is-not-empty) {
     print "stop summoning first!"
@@ -86,7 +82,9 @@ def tse [exit_node: string = ""] {
   } else {
     tailscale set --exit-node $exit_node
   }
-  check-mullvad
+  if ($exit_node | is-not-empty) {
+    check-mullvad
+  }
 }
 def tsp [] {
   tailscale exit-node list
@@ -133,17 +131,14 @@ alias tsu = tailscale up
 alias tsd = tailscale down
 alias tsx = tailscale exit-node list
 alias tsa = tailscale exit-node suggest
-
 def "config stuff" [] {
   hx ~/projects/NOflake/users/tao/nushell/stuff.nu
 }
-
 def deluge-gtk [] {
   tsr
   deluge-gtk
 }
 alias deluge = deluge-gtk
-
 def fixme [] {
   rg TODO --json
     | lines
@@ -154,6 +149,5 @@ def fixme [] {
     | each {$"($in.text):($in.line_number)"}
     | hx ...$in
 }
-
 source ~/.cache/starship/init.nu
 source ~/.zoxide.nu

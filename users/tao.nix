@@ -6,6 +6,7 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    nufmt
     freerdp
     nixos-anywhere
     cloud-hypervisor

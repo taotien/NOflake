@@ -22,6 +22,7 @@ in {
     source = ./autostart;
     recursive = true;
   };
+  home.file.".config/direnv/lib/uv.sh".source = ./uv.sh;
 
   programs = {
     bat = {

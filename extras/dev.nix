@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    bash-language-server
     qemu
     # quickemu
     # lychee # link checker
@@ -47,12 +48,13 @@
     nil
     alejandra
 
-    # # python
-    # pypy3
-    # python3
+    # python
+    pypy3
+    python3
     # python310Packages.python-lsp-server
-    # ruff
-    # ruff-lsp
+    uv
+    ruff
+    ruff-lsp
 
     # go
     go
