@@ -11,7 +11,7 @@ alias t = task
 alias zl = zellij
 alias snapper = snapper -c home
 alias quiet = sudo ectool fanduty 42
-alias loud = sudo ectool autofanctl
+alias loud = sudo ectool autofanctrl
 alias jd = jj diff
 alias jc = jj desc
 alias js = jj status
@@ -47,8 +47,12 @@ def ns [package] {
 def nr [package] {
   nix search nixpkgs $package
 }
-def rebuild [subcommand] {
-  sudo nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose
+def rebuild [--no-builders (-n), subcommand] {
+  if $no_builders {
+      sudo nice -n19 nixos-rebuild $subcommand --builders "" --flake /home/tao/projects/NOflake/ --impure --verbose
+  } else {
+    sudo nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose
+  }
 }
 # def post-rebuild [] {
 #     # rm -r ~/.config/helix/runtime/grammars/
