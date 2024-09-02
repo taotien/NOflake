@@ -17,8 +17,8 @@ alias jc = jj desc
 alias js = jj status
 alias jp = jj git push
 alias jm = jj branch set main
-def c [path: path = "~"] {
-  export-env {cd $path}
+def --env c [path: path = "~"] {
+  cd $path
   l
 }
 def l [
