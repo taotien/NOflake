@@ -1,7 +1,7 @@
 task
 
 alias xo = xdg-open
-alias h = hx (sk)
+# alias h = hx (sk)
 alias b = btm
 alias cringe = sudo bootctl set-oneshot auto-windows
 alias fetch = fastfetch
@@ -10,13 +10,21 @@ alias pu = pueue
 alias t = task
 alias zl = zellij
 alias snapper = snapper -c home
-alias quiet = sudo ectool fanduty 42
+alias quiet = sudo ectool fanduty 30
 alias loud = sudo ectool autofanctrl
 alias jd = jj diff
 alias jc = jj desc
 alias js = jj status
 alias jp = jj git push
 alias jm = jj branch set main
+
+def h [] {
+  sk | complete |
+  if $in.exit_code == 0 {
+    $in.stdout | str trim | hx $in
+  }
+}
+
 def --env c [path: path = "~"] {
   cd $path
   l
@@ -37,7 +45,7 @@ def l [
   }
   | sort-by type name -i -n
 }
-def srg [pattern] {
+def srg [] {
   sk --ansi -i -c 'rg --color=always --line-number "{}"'
 }
 alias nd = nix develop

@@ -77,7 +77,7 @@ AttrKeyboardIntegration=internal";
     # macropad
     ACTION=="add", ATTRS{idVendor}="32ac", ATTRS{idProduct}="0013", ATTR{power/wakeup}="disabled"
     #
-    ACTION=="add", ATTRS{idVendor}="32ac", ATTRS{idProduct}="", ATTR{power/wakeup}="disabled"
+    # ACTION=="add", ATTRS{idVendor}="32ac", ATTRS{idProduct}="", ATTR{power/wakeup}="disabled"
   '';
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
