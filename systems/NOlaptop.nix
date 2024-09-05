@@ -72,8 +72,12 @@ AttrKeyboardIntegration=internal";
     ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
 
     # prevent kb and mouse from waking laptop
-    ACTION=="add", SUBSYSTEM=="usb", KERNEL=="1-3.2", ATTR{power/wakeup}="disabled"
-    ACTION=="add", SUBSYSTEM=="usb", KERNEL=="1-4.2", ATTR{power/wakeup}="disabled"
+    # kb
+    ACTION=="add", ATTRS{idVendor}="32ac", ATTRS{idProduct}="0012", ATTR{power/wakeup}="disabled"
+    # macropad
+    ACTION=="add", ATTRS{idVendor}="32ac", ATTRS{idProduct}="0013", ATTR{power/wakeup}="disabled"
+    #
+    ACTION=="add", ATTRS{idVendor}="32ac", ATTRS{idProduct}="", ATTR{power/wakeup}="disabled"
   '';
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
