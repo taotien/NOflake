@@ -6,6 +6,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    inputs.zen-browser.packages."${system}".default
     # inputs.helix.packages.${pkgs.system}.default
     bat
     bottom

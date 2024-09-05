@@ -30,6 +30,7 @@
     };
     # prescurve.url = "github:taotien/prescurve";
     # prescurve.inputs.nixpkgs.follows = "nixpkgs";
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
   nixConfig = {
@@ -53,6 +54,7 @@
     plasma-manager,
     # helix,
     nixos-cosmic,
+    zen-browser,
     ...
   } @ inputs: {
     nixosConfigurations = {
