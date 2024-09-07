@@ -83,7 +83,7 @@ def check-mullvad [] {
   loop {
     print "checking connection status"
     http get https://am.i.mullvad.net/json 
-      | if $in.mullvad_exit_ip == true {break}
+      | if $in.mullvad_exit_ip == true {break} else {print $in}
     sleep 1sec
   }
 }
