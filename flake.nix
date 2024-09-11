@@ -30,7 +30,10 @@
     };
     # prescurve.url = "github:taotien/prescurve";
     # prescurve.inputs.nixpkgs.follows = "nixpkgs";
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser = {
+      url = "github:MarceColl/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {

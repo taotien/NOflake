@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    gh
     bash-language-server
     qemu
     # quickemu
