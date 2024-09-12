@@ -151,14 +151,6 @@
           formatter = {command = "alejandra";};
         }
         {
-          name = "typst";
-          indent = {
-            tab-width = 4;
-            unit = " ";
-          };
-          text-width = 100;
-        }
-        {
           name = "toml";
           auto-format = true;
         }

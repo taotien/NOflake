@@ -1,17 +1,16 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     gh
-    bash-language-server
+    # bash-language-server
     qemu
     # quickemu
     # lychee # link checker
     # etcher
     # freecad
-    # gh
     # vulkan-loader
     # fontforge
     # radicle-node
-    # hyperfine # benchmarking
+    hyperfine # benchmarking
     markdown-oxide
     git-cliff
     b3sum

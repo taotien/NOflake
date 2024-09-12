@@ -26,7 +26,7 @@
     bottles
     boxxy
     # calibre
-    # darktable
+    darktable
     deluge
     discord
     inputs.plasma-manager.packages.${pkgs.system}.default
@@ -55,7 +55,8 @@
     thunderbird
     typst
     typst-fmt
-    # typst-lsp
+    typst-lsp
+    tinymist
     vial
     wezterm
     wl-clipboard-rs
