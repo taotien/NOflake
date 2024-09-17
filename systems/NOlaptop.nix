@@ -36,19 +36,6 @@
   services.tailscale.useRoutingFeatures = "client";
   systemd.services."backlight@backlight:amdgpu_bl2".enable = false;
 
-  environment.etc = {
-    "libinput/local-overrides.quirks".text = "
-# MatchUdevType=touchpad
-# MatchDMIModalias=dmi:*svnFramework:pnLaptop*
-# AttrEventCode=-BTN_RIGHT
-
-[Framework Laptop 16 Keyboard Module]
-MatchName=Framework Laptop 16 Keyboard Module*
-# MatchUdevType=keyboard
-# MatchDMIModalias=dmi:*svnFramework:pnLaptop16*
-AttrKeyboardIntegration=internal";
-  };
-
   nix.buildMachines = [
     {
       hostName = "nocomputer";
@@ -68,16 +55,14 @@ AttrKeyboardIntegration=internal";
   nix.distributedBuilds = true;
 
   services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"
-    ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
+    # ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"
+    # ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
 
-    # prevent kb and mouse from waking laptop
+    # prevent kb from waking laptop
     # kb
-    ACTION=="add", ATTRS{idVendor}="32ac", ATTRS{idProduct}="0012", ATTR{power/wakeup}="disabled"
+    ACTION=="add", ATTR{idVendor}="32ac", ATTR{idProduct}="0012", ATTR{power/wakeup}="disabled"
     # macropad
-    ACTION=="add", ATTRS{idVendor}="32ac", ATTRS{idProduct}="0013", ATTR{power/wakeup}="disabled"
-    #
-    # ACTION=="add", ATTRS{idVendor}="32ac", ATTRS{idProduct}="", ATTR{power/wakeup}="disabled"
+    ACTION=="add", ATTR{idVendor}="32ac", ATTR{idProduct}="0013", ATTR{power/wakeup}="disabled"
   '';
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -94,9 +79,6 @@ AttrKeyboardIntegration=internal";
     "amdgpu.abmlevel=1"
   ];
   boot.kernelModules = ["kvm-amd"];
-  # boot.extraModulePackages = with config.boot.kernelPackages; [
-  #   framework-laptop-kmod
-  # ];
   powerManagement.cpuFreqGovernor = "powersave";
   systemd.sleep.extraConfig = "HibernateDelaySec=360m";
 
