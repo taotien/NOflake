@@ -10,8 +10,13 @@ alias pu = pueue
 alias t = task
 alias zl = zellij
 alias snapper = snapper -c home
+
 alias quiet = sudo ectool fanduty 30
 alias loud = sudo ectool autofanctrl
+
+alias cp = cp -prv
+alias mv = mv -pv
+
 alias jd = jj diff
 alias jc = jj desc
 alias js = jj status
