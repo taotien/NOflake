@@ -6,6 +6,7 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    gurk-rs
     # davinci-resolve
     nufmt
     freerdp
