@@ -6,7 +6,7 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
-    davinci-resolve
+    # davinci-resolve
     nufmt
     freerdp
     nixos-anywhere

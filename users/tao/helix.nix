@@ -7,6 +7,7 @@
     settings = {
       theme = "gruvbox_dark_hard";
       editor = {
+        shell = ["nu" "--stdin" "-c"];
         # rainbow-brackets = true;
         line-number = "relative";
         cursorline = true;
@@ -52,7 +53,7 @@
       };
     };
     languages = {
-      use-grammars.only = ["rust" "c" "cpp" "typst" "nix" "html" "toml" "markdown" "just" "bash"];
+      use-grammars.only = ["rust" "c" "cpp" "typst" "nix" "html" "toml" "markdown" "just" "bash" "gas"];
       language = [
         {
           name = "arduino";
@@ -129,14 +130,14 @@
             unit = "\t";
           };
         }
-        {
-          name = "java";
-          auto-format = true;
-          indent = {
-            tab-width = 4;
-            unit = "\t";
-          };
-        }
+        # {
+        #   name = "java";
+        #   auto-format = true;
+        #   indent = {
+        #     tab-width = 4;
+        #     unit = "\t";
+        #   };
+        # }
         {
           name = "javascript";
           auto-format = true;
@@ -169,10 +170,13 @@
         };
       };
       language-server = {
-        jdtls = {
-          command = "jdtls";
-          args = ["-data" "/home/tao/.cache/jdtls/workspace"];
-        };
+        # gas = {
+        #   command = "asm-lsp";
+        # };
+        # jdtls = {
+        #   command = "jdtls";
+        #   args = ["-data" "/home/tao/.cache/jdtls/workspace"];
+        # };
         arduino-language-server = {
           command = "boxxy";
           args = ["arduino-language-server" "-cli" "arduino-cli" "-cli-config" "~/.local/share/arduino/cli/arduino-cli.yaml" "-jobs" "0"];

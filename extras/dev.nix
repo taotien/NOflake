@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    asm-lsp
     gh
     # bash-language-server
     qemu
