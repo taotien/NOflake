@@ -6,6 +6,8 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    man-pages
+    man-pages-posix
     gurk-rs
     # davinci-resolve
     nufmt
