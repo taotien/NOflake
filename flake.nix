@@ -34,6 +34,7 @@
       url = "github:MarceColl/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    inputs.determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
   };
 
   nixConfig = {
@@ -58,6 +59,7 @@
     # helix,
     nixos-cosmic,
     zen-browser,
+    determinate,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -97,6 +99,7 @@
           nixos-cosmic.nixosModules.default
           ./extras/cosmic.nix
           # ./extras/ssrov-laptop.nix
+          determinate.nixosModules.default
         ];
       };
       NOmom = nixpkgs.lib.nixosSystem {
