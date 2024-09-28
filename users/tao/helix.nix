@@ -53,8 +53,25 @@
       };
     };
     languages = {
-      use-grammars.only = ["rust" "c" "cpp" "typst" "nix" "html" "toml" "markdown" "just" "bash" "gas"];
+      use-grammars.only = [
+        "rust"
+        "c"
+        "cpp"
+        "typst"
+        "nix"
+        "html"
+        "toml"
+        "markdown"
+        "just"
+        "bash"
+        "gas"
+        "sql"
+      ];
       language = [
+        {
+          name = "sql";
+          language-servers = ["sqls"];
+        }
         {
           name = "arduino";
           grammar = "arduino";
@@ -180,6 +197,9 @@
         arduino-language-server = {
           command = "boxxy";
           args = ["arduino-language-server" "-cli" "arduino-cli" "-cli-config" "~/.local/share/arduino/cli/arduino-cli.yaml" "-jobs" "0"];
+        };
+        sqls = {
+          command = "sqls";
         };
       };
       grammar = [

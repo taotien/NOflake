@@ -22,8 +22,9 @@
     lua-language-server
     qFlipper
     sd
-    # sqlite
-    # sqlx-cli
+    sqlite
+    sqls
+    sqlx-cli
     # sea-orm-cli
     sshfs
     taplo # toml lsp

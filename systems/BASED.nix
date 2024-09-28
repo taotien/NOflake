@@ -87,11 +87,14 @@
   };
 
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.backend = "iwd";
   services.tailscale.enable = true;
-  # TODO figure out a socks5 that blocks when not connected to tailscale exit-node
-  # services.tailscale.extraDaemonFlags = ["--socks5-server=localhost:1055"];
   services.resolved.enable = true;
-  # networking.interfaces.tailscale0.useDHCP = false;
+  networking.wireless.iwd = {
+    enable = true;
+    settings.IPv6.Enabled = true;
+    settings.Settings.AutoConnect = true;
+  };
 
   services.smartd.enable = true;
   services.btrfs.autoScrub.enable = lib.mkDefault true;
