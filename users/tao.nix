@@ -165,6 +165,8 @@
     (nerdfonts.override {fonts = ["FiraCode"];})
     noto-fonts-cjk
     noto-fonts-color-emoji
+    ibm-plex
+    cooper-hewitt
   ];
 
   documentation.enable = true;
