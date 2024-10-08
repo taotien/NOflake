@@ -68,6 +68,7 @@
 
     #rust
     bacon
+    cargo-expand
     cargo-feature
     cargo-generate
     cargo-watch

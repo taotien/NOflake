@@ -22,7 +22,8 @@ alias jd = jj diff
 alias jc = jj desc
 alias js = jj status
 alias jp = jj git push
-alias jm = jj branch set main
+alias jm = jj bookmark set main
+alias jg = jj git clone --colocate
 
 def h [] {
   sk | complete |

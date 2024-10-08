@@ -73,6 +73,10 @@
           language-servers = ["sqls"];
         }
         {
+          name = "go";
+          formatter.command = "goimports";
+        }
+        {
           name = "arduino";
           grammar = "arduino";
           scope = "source.arduino";
@@ -187,6 +191,7 @@
         };
       };
       language-server = {
+        rust-analyzer.config.check.command = "clippy";
         # gas = {
         #   command = "asm-lsp";
         # };
@@ -198,6 +203,11 @@
           command = "boxxy";
           args = ["arduino-language-server" "-cli" "arduino-cli" "-cli-config" "~/.local/share/arduino/cli/arduino-cli.yaml" "-jobs" "0"];
         };
+        # gopls = {
+        #   config = {
+        #     unusedVariable = false;
+        #   };
+        # };
         sqls = {
           command = "sqls";
         };
