@@ -18,12 +18,13 @@ alias loud = sudo ectool autofanctrl
 alias cp = cp -prv
 alias mv = mv -pv
 
-alias jd = jj diff
+alias ja = log -r 'all()'
 alias jc = jj desc
-alias js = jj status
-alias jp = jj git push
-alias jm = jj bookmark set main
+alias jd = jj diff
 alias jg = jj git clone --colocate
+alias jm = jj bookmark set main
+alias jp = jj git push
+alias js = jj status
 
 def h [] {
   sk | complete |
