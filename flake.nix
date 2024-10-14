@@ -36,6 +36,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
+    nixos.url = "nixpkgs/nixos-24.05";
   };
 
   nixConfig = {
@@ -62,6 +63,7 @@
     nixos-cosmic,
     zen-browser,
     determinate,
+    nixos,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -139,6 +141,20 @@
           ./systems/NOserver.nix
           ./extras/NOserver-disk-config.nix
           ./extras/minecraft-server.nix
+        ];
+      };
+      bcachefs-iso = nixos.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          "${nixos}/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix"
+          ({
+            lib,
+            pkgs,
+            ...
+          }: {
+            boot.supportedFilesystems = ["bcachefs"];
+            boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages_latest;
+          })
         ];
       };
     };

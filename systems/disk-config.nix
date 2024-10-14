@@ -1,7 +1,7 @@
 {lib, ...}: {
   disko.devices = {
     disk.disk1 = {
-      device = lib.mkDefault "/dev/disk/by-diskseq/1";
+      device = lib.mkDefault "/dev/nvme0n1";
       type = "disk";
       content = {
         type = "gpt";
@@ -30,13 +30,13 @@
             content = {
               type = "filesystem";
               format = "bcachefs";
-              mountOptions = ["noatime"];
-              mountpoint = "/";
-              extraArgs = [
-                "--compression zstd"
-                "--background_compression zstd"
-                "--discard"
+              mountOptions = [
+                "noatime"
+                "compression=zstd"
+                "background_compression=zstd"
+                "discard"
               ];
+              mountpoint = "/";
               # subvolumes = {
               #   "/home" = {};
               #   "/nix" = {};
