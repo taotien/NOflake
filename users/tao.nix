@@ -98,41 +98,41 @@
       devices = {
         # we do a lil anti-patterns https://github.com/ryantm/agenix?tab=readme-ov-file#builtinsreadfile-anti-pattern
         # bootstrap by commenting out devices first and rebuild switch impurely
-        #   "nocomputer".id = builtins.readFile config.age.secrets.syncthing-NOcomputer.path;
-        #   "nolaptop".id = builtins.readFile config.age.secrets.syncthing-NOlaptop.path;
-        #   "uwuraid".id = builtins.readFile config.age.secrets.syncthing-uwuraid.path;
+        "nocomputer".id = builtins.readFile config.age.secrets.syncthing-NOcomputer.path;
+        "nolaptop".id = builtins.readFile config.age.secrets.syncthing-NOlaptop.path;
+        "uwuraid".id = builtins.readFile config.age.secrets.syncthing-uwuraid.path;
+      };
+      folders = let
+        devs = [
+          "nocomputer"
+          "nolaptop"
+          "uwuraid"
+        ];
+      in {
+        # "documents" = {
+        #   path = "/home/tao/documents";
+        #   devices = devs;
         # };
-        # folders = let
-        #   devs = [
-        #     "nocomputer"
-        #     "nolaptop"
-        #     "uwuraid"
-        #   ];
-        # in {
-        #   # "documents" = {
-        #   #   path = "/home/tao/documents";
-        #   #   devices = devs;
-        #   # };
-        #   "pictures" = {
-        #     path = "/home/tao/pictures";
-        #     devices = devs;
-        #   };
-        #   "projects" = {
-        #     path = "/home/tao/projects";
-        #     devices = devs;
-        #   };
-        #   "school" = {
-        #     path = "/home/tao/school";
-        #     devices = devs;
-        #   };
-        #   "sync" = {
-        #     path = "/home/tao/sync";
-        #     devices = devs;
-        #   };
-        #   "work" = {
-        #     path = "/home/tao/work";
-        #     devices = devs;
-        #   };
+        "pictures" = {
+          path = "/home/tao/pictures";
+          devices = devs;
+        };
+        "projects" = {
+          path = "/home/tao/projects";
+          devices = devs;
+        };
+        "school" = {
+          path = "/home/tao/school";
+          devices = devs;
+        };
+        "sync" = {
+          path = "/home/tao/sync";
+          devices = devs;
+        };
+        "work" = {
+          path = "/home/tao/work";
+          devices = devs;
+        };
       };
     };
   };

@@ -65,6 +65,8 @@
     ACTION=="add", ATTR{idVendor}="32ac", ATTR{idProduct}="0013", ATTR{power/wakeup}="disabled"
   '';
 
+  services.fprintd.enable = true;
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.initrd.availableKernelModules = [
   #   "nvme"
