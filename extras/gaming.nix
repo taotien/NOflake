@@ -2,12 +2,14 @@
   pkgs,
   lib,
   ...
-}: let
-  if_desktop =
-    if lib.strings.hasPrefix "NOcomputer" (builtins.readFile /etc/hostname)
-    then true
-    else false;
-in {
+}:
+# let
+#   if_desktop =
+#     if lib.strings.hasPrefix "NOcomputer" (builtins.readFile /etc/hostname)
+#     then true
+#     else false;
+# in
+{
   # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
   # aagl.inputs.nixpkgs.follows = "nixpkgs";
 

@@ -90,12 +90,12 @@
     SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic UART Port",  SYMLINK+="ttyBmpTarg"
   '';
 
-  virtualisation.docker = {
-    enable = true;
-    storageDriver = "btrfs";
-  };
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
-  };
+  # virtualisation.docker = {
+  #   enable = true;
+  #   storageDriver = "btrfs";
+  # };
+  # virtualisation.docker.rootless = {
+  #   enable = true;
+  #   setSocketVariable = true;
+  # };
 }

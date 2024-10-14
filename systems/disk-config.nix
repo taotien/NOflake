@@ -31,15 +31,16 @@
               type = "filesystem";
               format = "bcachefs";
               mountOptions = ["noatime"];
+              mountpoint = "/";
               extraArgs = [
                 "--compression zstd"
                 "--background_compression zstd"
                 "--discard"
               ];
-              subvolumes = {
-                "/home" = {};
-                "/nix" = {};
-              };
+              # subvolumes = {
+              #   "/home" = {};
+              #   "/nix" = {};
+              # };
             };
           };
         };

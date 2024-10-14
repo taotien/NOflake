@@ -38,9 +38,10 @@ in {
         color = "gruvbox";
         flags = {
           battery =
-            if lib.strings.hasPrefix "NOlaptop" (builtins.readFile /etc/hostname)
-            then true
-            else false;
+            # if lib.strings.hasPrefix "NOlaptop" (builtins.readFile /etc/hostname)
+            # then true
+            # else false;
+            true;
           hide_time = true;
           enable_gpu = true;
         };
