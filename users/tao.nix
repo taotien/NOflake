@@ -98,9 +98,9 @@
       devices = {
         # we do a lil anti-patterns https://github.com/ryantm/agenix?tab=readme-ov-file#builtinsreadfile-anti-pattern
         # bootstrap by commenting out devices first and rebuild switch impurely
-        "nocomputer".id = builtins.readFile config.age.secrets.syncthing-NOcomputer.path;
-        "nolaptop".id = builtins.readFile config.age.secrets.syncthing-NOlaptop.path;
-        "uwuraid".id = builtins.readFile config.age.secrets.syncthing-uwuraid.path;
+        # "nocomputer".id = builtins.readFile config.age.secrets.syncthing-NOcomputer.path;
+        # "nolaptop".id = builtins.readFile config.age.secrets.syncthing-NOlaptop.path;
+        # "uwuraid".id = builtins.readFile config.age.secrets.syncthing-uwuraid.path;
       };
       folders = let
         devs = [
@@ -173,6 +173,7 @@
 
   users.users.tao = {
     isNormalUser = true;
+    passwordFile = config.age.secrets.password-tao.path;
     extraGroups = ["audio" "video" "wheel" "libvirtd" "dialout" "game"];
     shell = pkgs.nushell;
   };

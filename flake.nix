@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
     nixos-hardware.url = "nixos-hardware/master";
     agenix = {
       url = "github:ryantm/agenix";
@@ -51,6 +52,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixos-facter-modules,
     nixos-hardware,
     agenix,
     disko,
@@ -67,6 +69,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
+          disko.nixosModules.disko
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-cpu-amd-pstate
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
@@ -87,7 +90,16 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          nixos-hardware.nixosModules.framework-16-7040-amd
+          # nixos-hardware.nixosModules.framework-16-7040-amd
+          disko.nixosModules.disko
+          ./systems/disk-config.nix
+          nixos-facter-modules.nixosModules.facter
+          {
+            config.facter.reportPath =
+              if builtins.pathExists ./systems/NOlaptop-facter.json
+              then ./systems/NOlaptop-facter.json
+              else throw "Have you forgotten to run nixos-anywhere with `--generate-hardware-config nixos-facter ./facter.json`?";
+          }
           agenix.nixosModules.default
           home-manager.nixosModules.home-manager
           ./systems/BASED.nix
@@ -125,7 +137,7 @@
           disko.nixosModules.disko
           {disko.devices.disk.disk1.device = "/dev/vda";}
           ./systems/NOserver.nix
-          ./extras/disk-config.nix
+          ./extras/NOserver-disk-config.nix
           ./extras/minecraft-server.nix
         ];
       };

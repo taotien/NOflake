@@ -76,6 +76,8 @@
   ];
 
   services.openssh.enable = true;
+  users.users.root.openssh.authorizedKeys.keys = [
+  ];
   programs.ssh.startAgent = true;
 
   services.printing.enable = lib.mkDefault true;
@@ -155,7 +157,7 @@
   boot.loader.systemd-boot.enable = lib.mkDefault true;
   boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
   boot.loader.timeout = lib.mkForce 1;
-  boot.supportedFilesystems = ["ntfs" "btrfs"];
+  # boot.supportedFilesystems = ["ntfs" "btrfs"];
   hardware.enableAllFirmware = true;
   hardware.bluetooth.enable = lib.mkDefault true;
 
