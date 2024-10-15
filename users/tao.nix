@@ -91,8 +91,8 @@
     user = "tao";
     dataDir = "/home/tao/sync";
     configDir = "/home/tao/.config/syncthing";
-    overrideDevices = false;
-    overrideFolders = false;
+    overrideDevices = true;
+    overrideFolders = true;
     openDefaultPorts = true;
     settings = {
       devices = {
@@ -129,17 +129,30 @@
           path = "/home/tao/sync";
           devices = devs;
         };
-        "work" = {
-          path = "/home/tao/work";
-          devices = devs;
-        };
+        # "work" = {
+        #   path = "/home/tao/work";
+        #   devices = devs;
+        # };
       };
     };
   };
 
+  # nixpkgs.overlays = [
+  #   (final: prev: {
+  #     options.services.snapper.configs = prev.options.services.snapper.configs.overrideAttrs (old: {
+  #       configOptions.FSTYPE = lib.mkOption {
+  #         type = lib.types.enum ["btrfs" "bcachefs"];
+  #       };
+  #     });
+  #   })
+  # ];
+
+  disabledModules = ["services/misc/snapper.nix"];
+  imports = [../extras/snapper.nix];
   services.snapper.configs = {
     home = {
       SUBVOLUME = "/home";
+      FSTYPE = "bcachefs";
       ALLOW_USERS = ["tao"];
       TIMELINE_CREATE = true;
       TIMELINE_CLEANUP = true;
