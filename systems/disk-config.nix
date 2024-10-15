@@ -37,10 +37,6 @@
                 "discard"
               ];
               mountpoint = "/";
-              # subvolumes = {
-              #   "/home" = {};
-              #   "/nix" = {};
-              # };
             };
           };
         };
