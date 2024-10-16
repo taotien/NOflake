@@ -152,7 +152,11 @@
   services.snapper.configs = {
     home = {
       SUBVOLUME = "/home";
-      FSTYPE = "bcachefs";
+      # FSTYPE = "bcachefs";
+      FSTYPE =
+        if lib.nixosSystem == "NOlaptop"
+        then "bcachefs"
+        else "btrfs";
       ALLOW_USERS = ["tao"];
       TIMELINE_CREATE = true;
       TIMELINE_CLEANUP = true;
@@ -187,7 +191,7 @@
   age.secrets.password-tao.file = ../secrets/syncthing-uwuraid.age;
   users.users.tao = {
     isNormalUser = true;
-    passwordFile = config.age.secrets.password-tao.path;
+    hashedPasswordFile = config.age.secrets.password-tao.path;
     extraGroups = ["audio" "video" "wheel" "libvirtd" "dialout" "game"];
     shell = pkgs.nushell;
   };
