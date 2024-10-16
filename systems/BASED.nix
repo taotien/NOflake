@@ -167,6 +167,7 @@
     experimental-features = "nix-command flakes";
     auto-optimise-store = true;
     trusted-users = ["root" "@wheel"];
+    nix-path = "nixpkgs=flake:nixpkgs";
     system-features = [
       "benchmark"
       "big-parallel"

@@ -103,6 +103,7 @@
               else throw "Have you forgotten to run nixos-anywhere with `--generate-hardware-config nixos-facter ./facter.json`?";
           }
           agenix.nixosModules.default
+          determinate.nixosModules.default
           home-manager.nixosModules.home-manager
           ./systems/BASED.nix
           ./systems/NOlaptop.nix
@@ -110,10 +111,9 @@
           ./extras/uwuraid.nix
           ./extras/dev.nix
           ./extras/gaming.nix
-          nixos-cosmic.nixosModules.default
-          ./extras/cosmic.nix
+          # nixos-cosmic.nixosModules.default
+          # ./extras/cosmic.nix
           # ./extras/ssrov-laptop.nix
-          determinate.nixosModules.default
         ];
       };
       NOmom = nixpkgs.lib.nixosSystem {

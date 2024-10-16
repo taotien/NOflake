@@ -63,12 +63,8 @@ def ns [package] {
 def nr [package] {
   nix search nixpkgs $package
 }
-def rebuild [--no-builders (-n), subcommand] {
-  if $no_builders {
-      sudo nice -n19 nixos-rebuild $subcommand --builders "" --flake /home/tao/projects/NOflake/ --impure --verbose
-  } else {
-    sudo nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose
-  }
+def rebuild --wrapped [subcommand, ...rest] {
+      sudo nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose ...$rest
 }
 # def post-rebuild [] {
 #     # rm -r ~/.config/helix/runtime/grammars/
