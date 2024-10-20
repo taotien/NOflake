@@ -74,7 +74,8 @@
           disko.nixosModules.disko
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-cpu-amd-pstate
-          nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+          nixos-hardware.nixosModules.common-gpu-nvidia-nvidia
+          # nixos-hardware.common.gpu.nvidia.ampere
           agenix.nixosModules.default
           home-manager.nixosModules.home-manager
           ./systems/BASED.nix

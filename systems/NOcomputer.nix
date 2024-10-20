@@ -29,16 +29,11 @@
 
   hardware.nvidia = {
     powerManagement.enable = false;
-    powerManagement.finegrained = false;
     # options: production, beta, vulkan_beta, latest
     package = config.boot.kernelPackages.nvidiaPackages.latest;
     open = true;
     nvidiaSettings = false;
   };
-  # enable core and mem freq sliders for nvidia
-  services.xserver.deviceSection = ''
-    Option "Coolbits" "8"
-  '';
   systemd.services.nvpl = {
     description = "Increase GPU power limit to 400w";
     script = "/run/current-system/sw/bin/nvidia-smi -pl=400";
