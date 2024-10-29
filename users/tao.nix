@@ -180,7 +180,8 @@
 
   fonts.packages = with pkgs; [
     (nerdfonts.override {fonts = ["FiraCode"];})
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
     noto-fonts-color-emoji
     ibm-plex
     cooper-hewitt
