@@ -85,8 +85,8 @@
           ./extras/dev.nix
           ./extras/gaming.nix
           ./extras/folding.nix
-          # nixos-cosmic.nixosModules.default
-          # ./extras/cosmic.nix
+          nixos-cosmic.nixosModules.default
+          ./extras/cosmic.nix
         ];
       };
       NOlaptop = nixpkgs.lib.nixosSystem {
@@ -112,9 +112,8 @@
           ./extras/uwuraid.nix
           ./extras/dev.nix
           ./extras/gaming.nix
-          # nixos-cosmic.nixosModules.default
-          # ./extras/cosmic.nix
-          # ./extras/ssrov-laptop.nix
+          nixos-cosmic.nixosModules.default
+          ./extras/cosmic.nix
         ];
       };
       NOmom = nixpkgs.lib.nixosSystem {
