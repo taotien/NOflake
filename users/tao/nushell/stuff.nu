@@ -27,6 +27,7 @@ alias jg = jj git clone --colocate
 alias jm = jj bookmark set main
 alias jp = jj git push
 alias js = jj status
+alias jw = jj workspace update-stale
 
 def h [] {
   sk | complete |
@@ -66,6 +67,9 @@ def nr [package] {
   nix search nixpkgs $package
 }
 def rebuild --wrapped [subcommand, ...rest] {
+      if (open /etc/hostname == NOlaptop) {
+        sudo nix store info --store ssh://nocomputer
+      }
       sudo nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose ...$rest
 }
 # def post-rebuild [] {
