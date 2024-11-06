@@ -70,7 +70,7 @@
     #rust
     bacon
     cargo-expand
-    cargo-feature
+    # cargo-feature
     cargo-generate
     cargo-watch
     elf2uf2-rs

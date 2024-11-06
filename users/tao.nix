@@ -34,7 +34,7 @@
     discord
     inputs.plasma-manager.packages.${pkgs.system}.default
     jellyfin-media-player
-    jellyfin-mpv-shim
+    # jellyfin-mpv-shim
     kdePackages.plasma-vault
     keepassxc
     leetcode-cli
