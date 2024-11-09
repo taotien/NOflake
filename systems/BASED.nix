@@ -160,6 +160,7 @@
   # boot.supportedFilesystems = ["ntfs" "btrfs"];
   hardware.enableAllFirmware = true;
   hardware.bluetooth.enable = lib.mkDefault true;
+  # hardware.bluetooth.settings.General.Experimental = true;
 
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
