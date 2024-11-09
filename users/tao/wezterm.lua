@@ -2,6 +2,7 @@ local wezterm = require 'wezterm';
 local config = {
 	font = wezterm.font 'FiraCode Nerd Font',
 	color_scheme = 'GruvboxDarkHard',
+	window_decorations = "RESIZE",
 
 	warn_about_missing_glyphs = false,
 	check_for_updates = false,
@@ -11,6 +12,7 @@ local config = {
 	-- enable_wayland = false,
 	webgpu_power_preference = 'LowPower',
 	front_end = 'WebGpu',
+
 }
 
 return config

@@ -5,6 +5,7 @@
     jellyfin-media-player
     keepassxc
     onlyoffice-bin
+    signal-desktop
     snapper
     syncthingtray
     yt-dlp
