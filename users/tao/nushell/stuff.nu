@@ -67,7 +67,7 @@ def nr [package] {
   nix search nixpkgs $package
 }
 def rebuild --wrapped [subcommand, ...rest] {
-      if (open /etc/hostname == NOlaptop) {
+      if ((open /etc/hostname --raw) == NOlaptop) {
         sudo nix store info --store ssh://nocomputer
       }
       sudo nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose ...$rest
