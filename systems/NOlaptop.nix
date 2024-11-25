@@ -57,12 +57,6 @@
   services.udev.extraRules = ''
     # ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"
     # ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
-
-    # prevent kb from waking laptop
-    # kb
-    ACTION=="add", ATTR{idVendor}="32ac", ATTR{idProduct}="0012", ATTR{power/wakeup}="disabled"
-    # macropad
-    ACTION=="add", ATTR{idVendor}="32ac", ATTR{idProduct}="0013", ATTR{power/wakeup}="disabled"
   '';
 
   services.fprintd.enable = true;
