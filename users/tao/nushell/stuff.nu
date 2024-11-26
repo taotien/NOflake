@@ -20,7 +20,7 @@ alias cp = cp -prv
 alias mv-full = mv
 alias mv = mv -pv
 
-alias ja = log -r 'all()'
+alias ja = jj log -r 'all()'
 alias jc = jj desc
 alias jd = jj diff
 alias je = jj edit
@@ -101,14 +101,14 @@ def check-mullvad [] {
 }
 def tse [exit_node: string = ""] {
   if ($exit_node | is-empty) and (ps | find deluge | is-not-empty) {
-    print "stop summoning first!"
-    return
+    return "stop summoning first!"
   } else {
     tailscale set --exit-node $exit_node
   }
   if ($exit_node | is-not-empty) {
     check-mullvad
   }
+  return "exit node set"
 }
 def tsp [] {
   tailscale exit-node list

@@ -6,6 +6,7 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    toastify
     man-pages
     man-pages-posix
     gurk-rs
