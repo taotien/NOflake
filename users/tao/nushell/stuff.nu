@@ -15,7 +15,9 @@ alias follow = readlink -f
 alias quiet = sudo ectool fanduty 30
 alias loud = sudo ectool autofanctrl
 
+alias cp-full = cp
 alias cp = cp -prv
+alias mv-full = mv
 alias mv = mv -pv
 
 alias ja = log -r 'all()'
