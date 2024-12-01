@@ -93,16 +93,16 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          # nixos-hardware.nixosModules.framework-16-7040-amd
           disko.nixosModules.disko
           ./systems/disk-config.nix
-          nixos-facter-modules.nixosModules.facter
-          {
-            config.facter.reportPath =
-              if builtins.pathExists ./systems/NOlaptop-facter.json
-              then ./systems/NOlaptop-facter.json
-              else throw "Have you forgotten to run nixos-anywhere with `--generate-hardware-config nixos-facter ./facter.json`?";
-          }
+          nixos-hardware.nixosModules.framework-16-7040-amd
+          # nixos-facter-modules.nixosModules.facter
+          # {
+          #   config.facter.reportPath =
+          #     if builtins.pathExists ./systems/NOlaptop-facter.json
+          #     then ./systems/NOlaptop-facter.json
+          #     else throw "Have you forgotten to run nixos-anywhere with `--generate-hardware-config nixos-facter ./facter.json`?";
+          # }
           agenix.nixosModules.default
           determinate.nixosModules.default
           home-manager.nixosModules.home-manager
