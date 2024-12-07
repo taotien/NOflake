@@ -32,7 +32,7 @@
     # options: production, beta, vulkan_beta, latest
     package = config.boot.kernelPackages.nvidiaPackages.latest;
     open = true;
-    nvidiaSettings = false;
+    nvidiaSettings = true;
   };
   systemd.services.nvpl = {
     description = "Increase GPU power limit to 400w";
