@@ -5,12 +5,16 @@
     intel-gpu-tools
     powertop
     fw-ectool
+
+    libimobiledevice
+    ifuse
   ];
 
   powerManagement.powertop.enable = true;
   services.fwupd.enable = true;
   services.fprintd.enable = true;
   hardware.sensor.iio.enable = true;
+  services.usbmuxd.enable = true;
 
   services.displayManager.sddm.wayland.enable = true;
 

@@ -14,7 +14,8 @@
   programs.kdeconnect.enable = true;
 
   fonts.packages = with pkgs; [
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
     noto-fonts-color-emoji
   ];
 
