@@ -6,6 +6,7 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    mousai
     toastify
     man-pages
     man-pages-posix
