@@ -102,7 +102,7 @@
       SUBVOLUME = "/home";
       # FSTYPE = "bcachefs";
       FSTYPE =
-        if lib.nixosSystem == "NOlaptop"
+        if lib.strings.hasPrefix "NOlaptop" (builtins.readFile /etc/hostname)
         then "bcachefs"
         else "btrfs";
       ALLOW_USERS = ["tao"];
