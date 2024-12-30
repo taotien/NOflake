@@ -45,8 +45,8 @@
     KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a3c5", MODE="0666"
   '';
 
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
   boot.kernelModules = ["i2c-dev" "kvm-amd"];
   boot.kernelParams = ["nvidia-drm.modeset=1"];
