@@ -101,7 +101,7 @@
   services.smartd.enable = true;
   # services.btrfs.autoScrub.enable = lib.mkDefault true;
 
-  hardware.pulseaudio.enable = lib.mkDefault false;
+  # hardware.pulseaudio.enable = lib.mkDefault false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = lib.mkDefault true;

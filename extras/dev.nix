@@ -30,11 +30,11 @@
     typos
 
     # databases
-    sqlite
-    sqls
-    sqlx-cli
+    # sqlite
+    # sqls
+    # sqlx-cli
     # sea-orm-cli
-    rainfrog
+    # rainfrog
 
     # # arduino
     # arduino-language-server
@@ -55,7 +55,7 @@
     alejandra
 
     # python
-    pypy3
+    # pypy3
     python3
     # python310Packages.python-lsp-server
     uv
@@ -63,9 +63,9 @@
     ruff-lsp
 
     # go
-    go
-    gopls
-    delve
+    # go
+    # gopls
+    # delve
 
     #rust
     bacon
