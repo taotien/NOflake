@@ -6,6 +6,7 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    piper
     mousai
     toastify
     man-pages
@@ -118,6 +119,7 @@
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
   '';
+  services.ratbagd.enable = true;
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
