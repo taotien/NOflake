@@ -20,6 +20,7 @@ alias cp = cp -prv
 alias mv-full = mv
 alias mv = mv -pv
 
+alias j = jj
 alias ja = jj log -r 'all()'
 alias jc = jj desc
 alias jd = jj diff
