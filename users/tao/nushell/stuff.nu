@@ -1,4 +1,4 @@
-task
+# task
 
 alias xo = xdg-open
 # alias h = hx (sk)
