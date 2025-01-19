@@ -9,9 +9,9 @@ local config = {
 
 	hide_tab_bar_if_only_one_tab = true,
 
-	enable_wayland = false,
-	webgpu_power_preference = 'LowPower',
-	front_end = 'WebGpu',
+	-- enable_wayland = false,
+	-- webgpu_power_preference = 'LowPower',
+	-- front_end = 'WebGpu',
 }
 
 return config
