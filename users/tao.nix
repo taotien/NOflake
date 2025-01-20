@@ -6,6 +6,7 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    freecad-wayland
     piper
     mousai
     toastify

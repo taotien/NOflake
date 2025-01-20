@@ -67,7 +67,8 @@
     # gopls
     # delve
 
-    #rust
+    # rust
+    rustlings
     bacon
     cargo-expand
     cargo-feature
