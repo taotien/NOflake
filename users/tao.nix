@@ -6,6 +6,7 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    usbutils
     freecad-wayland
     piper
     mousai
