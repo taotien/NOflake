@@ -2,7 +2,7 @@
   environment.systemPackages = with pkgs; [
     aichat
     # (llm.withPlugins (ps: with ps; [llm-openrouter]))
-    llm
+    # llm
     aider-chat
     # digital
     asm-lsp
@@ -60,7 +60,12 @@
 
     # python
     # pypy3
-    python3
+    # python3
+    (python3.withPackages (ps:
+      with ps; [
+        llm
+        # llm-openrouter
+      ]))
     # python310Packages.python-lsp-server
     uv
     ruff

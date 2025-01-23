@@ -115,8 +115,8 @@ vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
 vimcmd_replace_symbol = '[](bold fg:color_purple)'
 vimcmd_visual_symbol = '[](bold fg:color_yellow)'
 
-[[battery.display]]
-threshold = 42
+# [[battery.display]]
+# threshold = 42
 
 # custom module for jj status
 [custom.jj]
@@ -125,7 +125,7 @@ description = "current jj status"
 symbol = ""
 when = true
 command = '''
-jj root > /dev/null && jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
+if ((jj root | complete).exit_code == 0) {jj log --no-pager --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
   separate(" ",
     "🥋",
     change_id.shortest(4),
@@ -142,12 +142,13 @@ jj root > /dev/null && jj log --revisions @ --no-graph --ignore-working-copy --c
       "(no description set)",
       if(description.first_line().substr(0, 29) == description.first_line(),
         description.first_line(),
-        description.first_line().substr(0, 29) ++ "…",
+        description.first_line().substr(0, 29) ++ "...",
       )
     ) ++ raw_escape_sequence("\x1b[0m"),
   )
-'
+'}
 '''
+shell = ["nu", "-c"]
 
 # disable git modules
 [git_state]
