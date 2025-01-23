@@ -1,6 +1,10 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    digital
+    aichat
+    # (llm.withPlugins (ps: with ps; [llm-openrouter]))
+    llm
+    aider-chat
+    # digital
     asm-lsp
     gh
     # bash-language-server

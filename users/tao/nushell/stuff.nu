@@ -74,6 +74,7 @@ def rebuild --wrapped [subcommand, ...rest] {
         sudo nix store info --store ssh://nocomputer
       }
       sudo nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose ...$rest
+      toastify send rebuild done!
 }
 # def post-rebuild [] {
 #     # rm -r ~/.config/helix/runtime/grammars/
