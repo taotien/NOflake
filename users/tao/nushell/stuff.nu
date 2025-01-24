@@ -11,6 +11,7 @@ alias t = task
 alias zl = zellij
 alias snapper = snapper -c home
 alias follow = readlink -f
+alias la = ls -a
 
 alias quiet = sudo ectool fanduty 30
 alias loud = sudo ectool autofanctrl

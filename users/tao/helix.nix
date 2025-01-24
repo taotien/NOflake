@@ -11,7 +11,7 @@
         # rainbow-brackets = true;
         line-number = "relative";
         cursorline = true;
-        completion-replace = true;
+        completion-replace = false;
         preview-completion-insert = false;
         indent-guides = {
           render = true;
@@ -50,6 +50,9 @@
         j = "jump_view_up";
         K = "swap_view_down";
         J = "swap_view_up";
+      };
+      keys.normal.space.t = {
+        r = "@mip:reflow<ret>";
       };
     };
     languages = {
