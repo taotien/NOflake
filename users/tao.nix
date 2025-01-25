@@ -63,7 +63,6 @@
     thunderbird
     typst
     typst-fmt
-    typst-lsp
     tinymist
     vial
     wezterm
