@@ -74,7 +74,7 @@ def rebuild --wrapped [subcommand, ...rest] {
       if ((open /etc/hostname --raw) == "NOlaptop\n" and not (try {$rest | first | str starts-with "--builders"} catch {true})) {
         sudo nix store info --store ssh://nocomputer
       }
-      sudo nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose ...$rest
+      sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose ...$rest
       toastify send rebuild done!
 }
 # def post-rebuild [] {
