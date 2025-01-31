@@ -62,7 +62,7 @@
     taskwarrior3
     thunderbird
     typst
-    typst-fmt
+    # typst-fmt
     tinymist
     vial
     wezterm

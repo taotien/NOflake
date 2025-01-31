@@ -11,11 +11,11 @@
         what = "//100.97.47.81/anime";
         where = "/mnt/uwuraid/anime";
       })
-    # (opts
-    #   // {
-    #     what = "//100.97.47.81/appdata";
-    #     where = "/mnt/uwuraid/appdata";
-    #   })
+    (opts
+      // {
+        what = "//100.97.47.81/appdata";
+        where = "/mnt/uwuraid/appdata";
+      })
     (opts
       // {
         what = "//100.97.47.81/backup";
@@ -79,7 +79,7 @@
     };
   in [
     (opts // {where = "/mnt/uwuraid/anime";})
-    # (opts // {where = "/mnt/uwuraid/appdata";})
+    (opts // {where = "/mnt/uwuraid/appdata";})
     (opts // {where = "/mnt/uwuraid/backup";})
     (opts // {where = "/mnt/uwuraid/everything";})
     (opts // {where = "/mnt/uwuraid/games";})

@@ -178,3 +178,7 @@ def fixme [] {
 }
 source ~/.cache/starship/init.nu
 source ~/.zoxide.nu
+def --env z [path: string = "~"] {
+  zo $path
+  l
+}

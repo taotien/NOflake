@@ -69,6 +69,7 @@
         "bash"
         "gas"
         "sql"
+        "scheme"
       ];
       language = [
         {
@@ -179,6 +180,14 @@
           name = "toml";
           auto-format = true;
         }
+        {
+          name = "typst";
+          language-servers = ["tinymist"];
+        }
+        {
+          name = "scheme";
+          language-servers = ["steel"];
+        }
       ];
       language-servers = {
         rust-analyzer.config = {
@@ -213,6 +222,12 @@
         # };
         sqls = {
           command = "sqls";
+        };
+        tinymist = {
+          command = "tinymist";
+        };
+        steel-language-server = {
+          command = "steel-language-server";
         };
       };
       grammar = [

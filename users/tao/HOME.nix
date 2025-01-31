@@ -29,6 +29,36 @@ in {
   home.file.".config/direnv/lib/uv.sh".source = ./uv.sh;
 
   programs = {
+    bacon = {
+      enable = true;
+      settings.jobs.default = {
+        command = [
+          "cargo"
+          "clippy"
+          "--"
+          "-A"
+          "clippy::bool_to_int_with_if"
+          "-A"
+          "clippy::collapsible_else_if"
+          "-A"
+          "clippy::collapsible_if"
+          "-A"
+          "clippy::derive_partial_eq_without_eq"
+          "-A"
+          "clippy::get_first"
+          "-A"
+          "clippy::if_same_then_else"
+          "-A"
+          "clippy::len_without_is_empty"
+          "-A"
+          "clippy::map_entry"
+          "-A"
+          "clippy::while_let_on_iterator"
+        ];
+        need_stdout = false;
+      };
+    };
+
     bat = {
       enable = true;
       config = {
