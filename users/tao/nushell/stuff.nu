@@ -70,25 +70,30 @@ def ns [package] {
 def nr [package] {
   nix search nixpkgs $package
 }
-def rebuild --wrapped [subcommand, ...rest] {
-      if ((open /etc/hostname --raw) == "NOlaptop\n" and not (try {$rest | first | str starts-with "--builders"} catch {true})) {
-        sudo nix store info --store ssh://nocomputer
-      }
-      sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose ...$rest
-      toastify send rebuild done!
+  def rebuild --wrapped [subcommand, --builders: string, ...rest] {
+  if (open /etc/hostname --raw) == "NOlaptop\n" and ($builders | is-empty) {
+    sudo nix store info --store ssh://nocomputer
+  }
+
+  if ($builders | is-empty) {
+    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose ...$rest
+  } else {
+    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose --builders $builders ...$rest
+  }
+  toastify send rebuild done!
 }
-# def post-rebuild [] {
-#     # rm -r ~/.config/helix/runtime/grammars/
-#     # hx --grammar fetch; hx --grammar build
-#     # rustup update
-# }
-def bump [] {
+def post-rebuild [] {
+    rm -r ~/.config/helix/runtime/grammars/
+    hx --grammar fetch; hx --grammar build
+    rustup update
+}
+def bump --wrapped [...rest] {
   cd /home/tao/projects/NOflake/
   jj new -m "bump"
   nix flake update
   # rc2nix | save -f /home/tao/projects/NOflake/users/tao/plasma.nix;
   # sudo nix store ping --store ssh://nocomputer
-  rebuild boot
+  rebuild boot ...$rest
   jj new
 }
 alias rb = rebuild boot

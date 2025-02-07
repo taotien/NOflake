@@ -1,5 +1,7 @@
 [alias]
 rr = "run --release"
+rb = "run --bin"
+d = "doc --no-deps --open"
 
 [build]
 target = "x86_64-unknown-linux-gnu"

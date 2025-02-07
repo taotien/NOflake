@@ -11,8 +11,9 @@
     # nvidia-vaapi-driver
     # foldingathome
     # gwe
-    openrgb
+    # openrgb
   ];
+  services.hardware.openrgb.enable = true;
 
   services.tailscale.useRoutingFeatures = "both";
   boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
@@ -28,7 +29,7 @@
   };
 
   hardware.nvidia = {
-    powerManagement.enable = false;
+    powerManagement.enable = true;
     # options: production, beta, vulkan_beta, latest
     package = config.boot.kernelPackages.nvidiaPackages.latest;
     open = true;
