@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    devenv
     act
     aichat
     # (llm.withPlugins (ps: with ps; [llm-openrouter]))
@@ -102,13 +103,13 @@
     SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic UART Port",  SYMLINK+="ttyBmpTarg"
   '';
 
-  virtualisation.docker = {
-    enable = true;
-    storageDriver = "btrfs";
-  };
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
-  };
-  users.extraGroups.docker.members = ["tao"];
+  # virtualisation.docker = {
+  #   enable = true;
+  #   storageDriver = "btrfs";
+  # };
+  # virtualisation.docker.rootless = {
+  #   enable = true;
+  #   setSocketVariable = true;
+  # };
+  # users.extraGroups.docker.members = ["tao"];
 }

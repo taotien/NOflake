@@ -13,7 +13,7 @@ alias snapper = snapper -c home
 alias follow = readlink -f
 alias la = ls -a
 
-alias quiet = sudo ectool fanduty 30
+alias quiet = sudo ectool fanduty 42
 alias loud = sudo ectool autofanctrl
 
 alias cp-full = cp
@@ -71,14 +71,14 @@ def nr [package] {
   nix search nixpkgs $package
 }
   def rebuild --wrapped [subcommand, --builders: string, ...rest] {
-  if (open /etc/hostname --raw) == "NOlaptop\n" and ($builders | is-empty) {
+  if (open /etc/hostname --raw) == "NOlaptop\n" and ($builders != "") {
     sudo nix store info --store ssh://nocomputer
   }
 
-  if ($builders | is-empty) {
-    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose ...$rest
+  if ($builders == "") {
+    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose --builders ""
   } else {
-    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose --builders $builders ...$rest
+    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose ...$rest
   }
   toastify send rebuild done!
 }
