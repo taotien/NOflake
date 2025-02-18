@@ -147,14 +147,40 @@
       bcachefs-iso = nixos.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          "${nixos}/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix"
+          # "${nixos}/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix"
+          "${nixos}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
           ({
             lib,
             pkgs,
             ...
           }: {
-            boot.supportedFilesystems = ["bcachefs"];
-            boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages_latest;
+            nixpkgs.config = {
+              allowUnfree = true;
+            };
+            environment.systemPackages = with pkgs; [
+              helix
+              bat
+              bottom
+              dumbpipe
+              sendme
+              git
+              firefox
+              ouch
+              pueue
+              ripgrep
+              # rustdesk
+              skim
+              tree
+              wezterm
+              wget
+              zstd
+              # bcachefs-tools
+            ];
+            # boot.supportedFilesystems = ["bcachefs"];
+            boot.supportedFilesystems.btrfs = true;
+            boot.supportedFilesystems.zfs = lib.mkForce false;
+            boot.kernelPackages = pkgs.linuxPackages_latest;
+            isoImage.squashfsCompression = "zstd";
           })
         ];
       };

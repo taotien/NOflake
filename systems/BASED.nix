@@ -139,11 +139,12 @@
 
   time.timeZone = lib.mkDefault "US/Pacific";
   # services.automatic-timezoned.enable = lib.mkDefault true;
-  i18n.extraLocaleSettings = {
-    LC_CTYPE = "en_US.UTF-8";
-    LC_MESSAGES = "en_US.UTF-8";
-    LC_ALL = "en_US.UTF-8";
-  };
+  # i18n.defaultLocale = "en_US.UTF-8";
+  # i18n.extraLocaleSettings = {
+  #   LC_CTYPE = "en_US.UTF-8";
+  #   LC_MESSAGES = "en_US.UTF-8";
+  #   LC_ALL = "en_US.UTF-8";
+  # };
 
   systemd.extraConfig = ''
     DefaultTimeoutStopSec=15s
