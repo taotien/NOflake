@@ -180,9 +180,6 @@
   };
   nixpkgs.config = {allowUnfree = true;};
   nix.nixPath = ["nixpkgs=${pkgs.path}"];
-  nix.extraOptions = ''
-    trusted-users = root tao
-  '';
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   system.stateVersion = lib.mkDefault "23.05";

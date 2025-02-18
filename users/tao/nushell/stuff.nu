@@ -76,9 +76,9 @@ def nr [package] {
   }
 
   if ($builders == "") {
-    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose --builders ""
+    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --impure --verbose --builders ""
   } else {
-    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake /home/tao/projects/NOflake/ --impure --verbose ...$rest
+    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --impure --verbose ...$rest
   }
   toastify send rebuild done!
 }

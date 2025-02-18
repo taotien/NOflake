@@ -26,7 +26,8 @@ in {
     source = ./autostart;
     recursive = true;
   };
-  home.file.".config/direnv/lib/uv.sh".source = ./uv.sh;
+  home.file.".config/direnv/lib/uv.sh".source = ./direnv/uv.sh;
+  home.file.".config/direnv/lib/devenv.sh".source = ./direnv/devenv.sh;
 
   programs = {
     bacon = {
