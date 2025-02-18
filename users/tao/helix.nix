@@ -62,21 +62,25 @@
     };
     languages = {
       use-grammars.only = [
-        "rust"
+        "bash"
         "c"
         "cpp"
-        "typst"
-        "nix"
-        "html"
-        "toml"
-        "markdown"
-        "just"
-        "bash"
         "gas"
-        "sql"
+        "html"
+        "just"
+        "markdown"
+        "nix"
+        "rust"
         "scheme"
+        "sql"
+        "toml"
+        "typst"
       ];
       language = [
+        {
+          name = "typst";
+          text-width = "100";
+        }
         {
           name = "sql";
           language-servers = ["sqls"];
