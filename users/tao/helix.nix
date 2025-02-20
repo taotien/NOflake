@@ -7,6 +7,11 @@
     settings = {
       theme = "gruvbox_dark_hard";
       editor = {
+        auto-save = {
+          focus-lost = true;
+          after-delay.enable = true;
+          after-delay.timeout = 1000;
+        };
         shell = ["nu" "--stdin" "-c"];
         # rainbow-brackets = true;
         line-number = "relative";

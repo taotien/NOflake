@@ -6,50 +6,47 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
-    usbutils
-    freecad-wayland
-    piper
-    mousai
-    toastify
-    man-pages
-    man-pages-posix
-    gurk-rs
+    # calibre
     # davinci-resolve
-    nufmt
-    freerdp
-    nixos-anywhere
-    cloud-hypervisor
     # fractal
-    # kdeconnect
+    # inputs.plasma-manager.packages.${pkgs.system}.default
+    # jellyfin-mpv-shim
     # libsForQt5.kcharselect
     # mendeley
     # slack
     # tectonic
     # texlab
-    # toastify
     # wkhtmltopdf
     appimage-run
     aspell
     aspellDicts.en
     bottles
     boxxy
-    # calibre
+    carapace
+    cloud-hypervisor
     darktable
     deluge
     discord
-    # inputs.plasma-manager.packages.${pkgs.system}.default
+    freecad-wayland
+    freerdp
+    gurk-rs
     jellyfin-media-player
-    # jellyfin-mpv-shim
     kdePackages.plasma-vault
     keepassxc
     leetcode-cli
+    man-pages
+    man-pages-posix
     miniserve
+    mousai
+    nixos-anywhere
+    nufmt
     nushell
     obs-studio
     oculante
     onlyoffice-bin
     pandoc
     pipe-rename
+    piper
     prusa-slicer
     qmk
     qmk-udev-rules
@@ -61,9 +58,10 @@
     syncthingtray
     taskwarrior3
     thunderbird
-    typst
-    # typst-fmt
     tinymist
+    toastify
+    typst
+    usbutils
     vial
     wezterm
     wl-clipboard-rs

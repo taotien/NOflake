@@ -26,8 +26,8 @@ in {
     source = ./autostart;
     recursive = true;
   };
-  home.file.".config/direnv/lib/uv.sh".source = ./direnv/uv.sh;
-  home.file.".config/direnv/lib/devenv.sh".source = ./direnv/devenv.sh;
+  home.file.".config/direnv/lib/".source = ./direnv;
+  home.file.".config/direnv/lib/".recursive = true;
 
   programs = {
     bacon = {
@@ -115,7 +115,12 @@ in {
       enable = true;
       configFile.source = ./nushell/config.nu;
       envFile.source = ./nushell/env.nu;
-      extraConfig = builtins.readFile ./nushell/stuff.nu;
+      # extraConfig = builtins.readFile ./nushell/stuff.nu;
+      extraConfig = lib.concatStrings (
+        map (
+          builtins.readFile builtins.readDir ./nushell/extra
+        )
+      );
     };
 
     ssh = {

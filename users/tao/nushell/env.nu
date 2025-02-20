@@ -82,3 +82,7 @@ $env.NU_PLUGIN_DIRS = [
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/home/tao/.cargo/bin')
 
 $env.GOPATH = '/home/tao/.go'
+
+# $env.CARAPACE_BRIDGES
+mkdir ~/.cache/carapace
+carapace _carapace nushell | save -f ~/.cache/carapace/init.nu
