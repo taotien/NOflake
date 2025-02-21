@@ -116,11 +116,7 @@ in {
       configFile.source = ./nushell/config.nu;
       envFile.source = ./nushell/env.nu;
       # extraConfig = builtins.readFile ./nushell/stuff.nu;
-      extraConfig = lib.concatStrings (
-        map (
-          builtins.readFile builtins.readDir ./nushell/extra
-        )
-      );
+      extraConfig = lib.concatStrings (map builtins.readFile (map (x: ./nushell/extras/. + x) (map (x: "/" + x) (builtins.attrNames (builtins.readDir ./nushell/extras)))));
     };
 
     ssh = {
