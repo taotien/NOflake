@@ -79,7 +79,7 @@
       language = [
         {
           name = "typst";
-          text-width = "100";
+          text-width = 100;
         }
         {
           name = "sql";

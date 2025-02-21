@@ -145,11 +145,11 @@ in {
       };
     };
 
-    # starship = {
-    #   enable = true;
-    #   enableNushellIntegration = true;
-    #   settings = builtins.fromTOML (builtins.readFile ./starship.toml);
-    # };
+    starship = {
+      enable = true;
+      enableNushellIntegration = true;
+      settings = builtins.fromTOML (builtins.readFile ./starship.toml);
+    };
 
     taskwarrior = {
       enable = true;
