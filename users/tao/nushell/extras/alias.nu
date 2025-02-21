@@ -26,9 +26,12 @@ alias jd = jj diff
 alias je = jj edit
 alias jf = jj git fetch
 alias jg = jj git clone --colocate
-alias jm = jj bookmark set main
+# alias jm = jj bookmark set main
 alias jp = jj git push
 alias js = jj status
 alias jw = jj workspace update-stale
 
-
+def jm [] {
+  jj bookmark set main
+  jj git push
+}

@@ -7,6 +7,10 @@
     settings = {
       theme = "gruvbox_dark_hard";
       editor = {
+        end-of-line-diagnostics = "hint";
+        inline-diagnostics = {
+          cursor-line = "warning";
+        };
         auto-save = {
           focus-lost = true;
           after-delay.enable = true;
@@ -34,6 +38,7 @@
         lsp = {
           display-messages = true;
           display-inlay-hints = true;
+          display-progress-messages = true;
         };
         soft-wrap.enable = true;
         smart-tab.supersede-menu = false;

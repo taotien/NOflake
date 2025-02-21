@@ -53,7 +53,7 @@ def fixme [] {
     | each {$"($in.text):($in.line_number)"}
     | hx ...$in
 }
-source ~/.cache/starship/init.nu
+# source ~/.cache/starship/init.nu
 # source ~/.cache/carapace/init.nu
 source ~/.zoxide.nu
 def --env z [path: string = "~"] {
