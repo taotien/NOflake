@@ -109,6 +109,10 @@ in {
       userEmail = "29749622+taotien@users.noreply.github.com";
       # extraConfig = {
       # };
+      ignores = [
+        "/target"
+        ".direnv"
+      ];
     };
 
     nushell = {
@@ -130,8 +134,8 @@ in {
           forwardAgent = true;
           identityFile = "/home/tao/.ssh/id_ed25519";
         };
-        "beagle" = {
-          hostname = "beagle";
+        "griffin" = {
+          hostname = "griffin";
           user = "tltien";
           forwardAgent = true;
           identityFile = "/home/tao/.ssh/id_ed25519";

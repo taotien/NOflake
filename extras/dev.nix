@@ -79,7 +79,7 @@
     # delve
 
     # rust
-    rustlings
+    cargo-binstall
     bacon
     cargo-expand
     cargo-feature
