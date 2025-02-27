@@ -3,26 +3,26 @@
 format = """
 [](color_orange)\
 $username\
+
 [](bg:color_yellow fg:color_orange)\
 $directory\
+
 [](fg:color_yellow bg:color_aqua)\
-$jj\
-$git_branch\
-$git_status\
+${custom.jj}\
+
 [](fg:color_aqua bg:color_blue)\
-$c\
 $rust\
-$python\
+
 [](fg:color_blue bg:color_bg3)\
-$docker_context\
-$conda\
+$battery\
+
 [](fg:color_bg3 bg:color_bg1)\
 $time\
+
 [ ](fg:color_bg1)\
 $line_break$character"""
 
 palette = 'gruvbox_dark'
-
 [palettes.gruvbox_dark]
 color_fg0 = '#fbf1c7'
 color_bg1 = '#3c3836'
@@ -34,12 +34,6 @@ color_orange = '#d65d0e'
 color_purple = '#b16286'
 color_red = '#cc241d'
 color_yellow = '#d79921'
-
-# [username]
-# show_always = true
-# style_user = "bg:color_orange fg:color_fg0"
-# style_root = "bg:color_orange fg:color_fg0"
-# format = '[ $user ]($style)'
 
 [directory]
 style = "fg:color_fg0 bg:color_yellow"
@@ -53,49 +47,10 @@ truncation_symbol = "…/"
 "music" = "󰝚 "
 "pictures" = " "
 
-# [git_branch]
-# symbol = ""
-# style = "bg:color_aqua"
-# format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
-
-# [git_status]
-# style = "bg:color_aqua"
-# format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[c]
-symbol = " "
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
 [rust]
-symbol = ""
+# # symbol = ""
 style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[golang]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[java]
-symbol = " "
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[kotlin]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[python]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+format = '[[ $symbol($version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [time]
 disabled = false
@@ -115,20 +70,18 @@ vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
 vimcmd_replace_symbol = '[](bold fg:color_purple)'
 vimcmd_visual_symbol = '[](bold fg:color_yellow)'
 
-# [[battery.display]]
-# threshold = 42
-
 # custom module for jj status
 [custom.jj]
 ignore_timeout = true
 description = "current jj status"
-symbol = ""
-when = true
+symbol = " 🥋 "
+when = "exit ((jj root | complete).exit_code)"
+style = "bg:color_aqua"
 command = '''
-if ((jj root | complete).exit_code == 0) {jj log --no-pager --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
-  separate(" ",
-    "🥋",
-    change_id.shortest(4),
+jj log --no-pager --revisions @ --no-graph --ignore-working-copy --template '
+  separate(
+    " ",
+    change_id.shortest(),
     bookmarks,
     "|",
     concat(
@@ -137,18 +90,20 @@ if ((jj root | complete).exit_code == 0) {jj log --no-pager --revisions @ --no-g
       if(hidden, "👻"),
       if(immutable, "🔒"),
     ),
-    raw_escape_sequence("\x1b[1;32m") ++ if(empty, "(empty)"),
-    raw_escape_sequence("\x1b[1;32m") ++ if(description.first_line().len() == 0,
+    if(empty,
+      "(empty)"
+    ),
+    if(description.first_line().len() == 0,
       "(no description set)",
       if(description.first_line().substr(0, 29) == description.first_line(),
         description.first_line(),
         description.first_line().substr(0, 29) ++ "...",
       )
-    ) ++ raw_escape_sequence("\x1b[0m"),
+    ),
   )
-'}
+'
 '''
-shell = ["nu", "-c"]
+
 
 # disable git modules
 [git_state]
@@ -162,9 +117,3 @@ disabled = true
 
 [git_branch]
 disabled = true
-
-# re-enable git_branch as long as we're not in a jj repo
-[custom.git_branch]
-when = true
-command = "jj root >/dev/null 2>&1 || starship module git_branch"
-description = "Only show git_branch if we're not in a jj repo"

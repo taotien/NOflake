@@ -31,7 +31,7 @@ alias jp = jj git push
 alias js = jj status
 alias jw = jj workspace update-stale
 
-def jm [] {
-  jj bookmark set main
+def jm [...rest] {
+  jj bookmark set main ...$rest
   jj git push
 }
