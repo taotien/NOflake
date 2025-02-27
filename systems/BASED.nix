@@ -68,10 +68,10 @@
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = lib.mkDefault true;
   environment.plasma6.excludePackages = with pkgs; [
-    elisa
-    konsole
-    gwenview
-    kate
+    kdePackages.elisa
+    kdePackages.konsole
+    kdePackages.gwenview
+    kdePackages.kate
     xterm
   ];
 
