@@ -6,6 +6,7 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    gocryptfs
     # calibre
     # davinci-resolve
     # fractal

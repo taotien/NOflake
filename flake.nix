@@ -21,10 +21,10 @@
     #   url = "github:pjones/plasma-manager";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    helix = {
-      url = "github:mattwparas/helix/steel-event-system";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # helix = {
+    #   url = "github:mattwparas/helix/steel-event-system";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
