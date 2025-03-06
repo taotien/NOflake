@@ -1,11 +1,18 @@
+# see if others see us connecting from a mullvad exit node
 def check-mullvad [] {
-  loop {
-    print "checking connection status"
-    http get https://am.i.mullvad.net/json 
-      | if $in.mullvad_exit_ip == true {break} else {print $in}
-    sleep 1sec
+  print -n "checking mullvad status"
+  mut check = false
+  mut j = null
+  while not $check {
+    print -n "."
+    $j = (http get https://am.i.mullvad.net/json)
+    $check = $j.mullvad_exit_ip
   }
+  print ""
+  print $"connected to ($j.city), ($j.country)"
 }
+
+# switch to a specific exit node, or none
 def tse [exit_node: string = ""] {
   if ($exit_node | is-empty) and (ps | find deluge | is-not-empty) {
     return "stop summoning first!"
@@ -17,49 +24,52 @@ def tse [exit_node: string = ""] {
   }
   return "exit node set"
 }
-def tsp [] {
-  tailscale exit-node list
-    | split row "\n"
-    | each {str trim}
-    | filter {is-not-empty}
-    | skip 1
-    | last 19
-    | first 17
-    | split column -r '\s{2,}'
-    | reject column5 column3
-    | rename ip addr city
-    | par-each {
-      insert ping {
-        |row| $row.addr
-          | str replace "mullvad.ts.net" "relays.mullvad.net"
-          | ping -c5 -q $in
-          | split row "\n"
-          | last
-          | split column "/"
-          | get column6?
-          | get 0
-        }
-      }
-    | sort-by ping -n -r
- }
-def tsr [] {
-  tailscale status --json
-    | from json
-    | get Peer
-    | transpose nodekey node
-    | get node
-    | filter {$in.Location?.Country == USA}
-    | get TailscaleIPs
-    | each {get 0}
-    | select (random int 0..($in | length))
-    | tse $in.0
-  # tailscale status
-  check-mullvad
+
+# list all mullvad exit nodes
+def tsx [] {
+tailscale exit-node list
+  | detect columns --guess
+  | drop 3
+  | skip 1
+  | where HOSTNAME =~ mullvad
+  | reject STATUS
 }
+
+# sort mullvad exit nodes by fastest ping
+def tsp [] {
+tsx
+  | where COUNTRY == USA
+  | par-each {
+    insert ping {
+      $in.HOSTNAME
+        | str replace "mullvad.ts.net" "relays.mullvad.net"
+        | try {
+          print $"pinging ($in)"
+          ping -c5 -q $in
+            | lines
+            | last
+            | split row ' '
+            | get 3
+            | split row '/'
+            | get 1
+            | into float
+          }
+      }
+    }
+  | sort-by ping
+}
+
+
+
+# switch to a random mullvad exit node
+def tsr [] {
+tsx
+  | get (random int 0..($in | length))
+  | tse $in.IP
+}
+
 alias ts = tailscale
 alias tss = tailscale status
 alias tsu = tailscale up
 alias tsd = tailscale down
-alias tsx = tailscale exit-node list
 alias tsa = tailscale exit-node suggest
-
