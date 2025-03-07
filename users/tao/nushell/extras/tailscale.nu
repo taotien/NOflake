@@ -28,9 +28,11 @@ def tse [exit_node: string = ""] {
 # list all mullvad exit nodes
 def tsx [] {
 tailscale exit-node list
-  | detect columns --guess
-  | drop 3
+  | lines
+  | drop 4
   | skip 1
+  | to text
+  | detect columns --guess
   | where HOSTNAME =~ mullvad
   | reject STATUS
 }

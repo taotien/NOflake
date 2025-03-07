@@ -85,4 +85,4 @@ $env.GOPATH = '/home/tao/.go'
 
 # $env.CARAPACE_BRIDGES
 mkdir ~/.cache/carapace
-carapace _carapace nushell | save -f ~/.cache/carapace/init.nu
+# carapace _carapace nushell | save -f ~/.cache/carapace/init.nu

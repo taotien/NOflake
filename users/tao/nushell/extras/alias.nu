@@ -32,6 +32,10 @@ alias js = jj status
 alias jw = jj workspace update-stale
 
 def jm [-r: string = "@"] {
+  mut r = $r
+  if (jj log -r @ --no-pager --no-graph --template 'if(empty,"empty")' | $in == "empty") {
+    $r = "@-"
+  }
   jj bookmark set main -r $r
   jj git push
 }
