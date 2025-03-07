@@ -9,8 +9,13 @@ def nr [package] {
 }
 
 def rebuild --wrapped [subcommand, --builders: string, ...rest] {
+  mut builders = $builders;
   if (open /etc/hostname --raw) == "NOlaptop\n" and ($builders != "") {
-    sudo nix store info --store ssh://nocomputer
+    if (ping -c1 -W1 nocomputer | complete | $in.exit_code == 0) {
+       sudo nix store info --store ssh://nocomputer
+    } else {
+      $builders = ""
+    }
   }
   if ($builders == "") {
     sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --impure --verbose --builders ""

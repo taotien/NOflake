@@ -6,13 +6,13 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    inputs.zen-browser.packages."${system}".default
     # inputs.helix.packages.${pkgs.system}.default
+    # screen
     bat
     bottom
     cifs-utils
-    dumbpipe
     du-dust
+    dumbpipe
     exfatprogs
     fastfetch
     ffmpeg
@@ -20,14 +20,14 @@
     git
     helix
     inputs.agenix.packages.${pkgs.system}.default
-    sendme
+    inputs.zen-browser.packages."${system}".default
     mesa
     mpv
     ouch
     pueue
     ripgrep
     rustdesk
-    # screen
+    sendme
     skim
     tree
     wezterm

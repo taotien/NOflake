@@ -1,41 +1,41 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    devenv
-    act
-    aichat
     # (llm.withPlugins (ps: with ps; [llm-openrouter]))
-    # llm
-    aider-chat
-    # digital
-    asm-lsp
-    gh
     # bash-language-server
-    qemu
-    # quickemu
-    # lychee # link checker
+    # digital
     # etcher
-    # freecad
-    # vulkan-loader
     # fontforge
+    # freecad
+    # llm
+    # lychee # link checker
+    # quickemu
     # radicle-node
-    hyperfine # benchmarking
-    markdown-oxide
-    git-cliff
+    # vulkan-loader
+    # act
+    # aichat
+    # aider-chat
+    # asm-lsp
     b3sum
+    devenv
     direnv
+    gh
+    git-cliff
+    hyperfine
     jujutsu
     just
     lldb
     lua-language-server
+    markdown-oxide
     qFlipper
+    qemu
     sd
     sshfs
     taplo # toml lsp
     tio
-    tokei
+    tokei # repo code stats
     typos
 
-    # databases
+    # # databases
     # sqlite
     # sqls
     # sqlx-cli
@@ -72,11 +72,6 @@
     uv
     ruff
     ruff-lsp
-
-    # go
-    # go
-    # gopls
-    # delve
 
     # rust
     cargo-binstall

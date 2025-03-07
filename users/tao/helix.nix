@@ -63,6 +63,7 @@
       };
       keys.normal.space.t = {
         r = "@mip:reflow<ret>";
+        s = "@|lines | sort | to text<ret>";
       };
     };
     languages = {

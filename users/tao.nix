@@ -6,7 +6,6 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
-    gocryptfs
     # calibre
     # davinci-resolve
     # fractal
@@ -22,14 +21,15 @@
     aspell
     aspellDicts.en
     bottles
-    boxxy
-    carapace
-    cloud-hypervisor
+    # boxxy
+    # carapace
+    # cloud-hypervisor
     darktable
     deluge
     discord
     freecad-wayland
-    freerdp
+    # freerdp
+    gocryptfs
     gurk-rs
     jellyfin-media-player
     kdePackages.plasma-vault
@@ -47,7 +47,7 @@
     onlyoffice-bin
     pandoc
     pipe-rename
-    piper
+    # piper
     prusa-slicer
     qmk
     qmk-udev-rules
@@ -58,7 +58,7 @@
     starship
     syncthingtray
     taskwarrior3
-    thunderbird
+    # thunderbird
     tinymist
     toastify
     typst
