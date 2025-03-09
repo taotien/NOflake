@@ -61,13 +61,12 @@ tsx
   | sort-by ping
 }
 
-
-
 # switch to a random mullvad exit node
 def tsr [] {
 tsx
   | get (random int 0..($in | length))
   | tse $in.IP
+  | return $in
 }
 
 alias ts = tailscale
