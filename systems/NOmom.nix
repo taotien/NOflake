@@ -10,6 +10,8 @@
     ifuse
   ];
 
+  services.tailscale.useRoutingFeatures = "client";
+
   powerManagement.powertop.enable = true;
   services.fwupd.enable = true;
   services.fprintd.enable = true;
