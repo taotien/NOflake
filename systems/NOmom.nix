@@ -75,5 +75,34 @@
   # boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
   # boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = "1";
 
+  nix.buildMachines = [
+    {
+      hostName = "nocomputer";
+      systems = ["x86_64-linux" "i686-linux"];
+      supportedFeatures = [
+        "benchmark"
+        "big-parallel"
+        "gccarch-znver4"
+        "kvm"
+        "nixos-test"
+      ];
+    }
+    {
+      hostName = "nolaptop";
+      systems = ["x86_64-linux" "i686-linux"];
+      supportedFeatures = [
+        "benchmark"
+        "big-parallel"
+        "gccarch-znver4"
+        "kvm"
+        "nixos-test"
+      ];
+    }
+  ];
+  nix.extraOptions = ''
+    builders-use-substitutes = true
+  '';
+  nix.distributedBuilds = true;
+
   networking.hostName = "NOmom";
 }
