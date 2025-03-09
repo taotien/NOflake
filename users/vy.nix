@@ -41,4 +41,9 @@
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJKLOGhoTauV+yBide0qYQzZ/0rRw7ImfrOTvuZxjIFl"
   ];
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.verbose = true;
+  home-manager.backupFileExtension = ".hm-bak";
+  home-manager.users.vy = import ./vy/HOME.nix {inherit inputs pkgs lib config;};
 }
