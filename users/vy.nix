@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, lib, inputs, config, ...}: {
   users.users.vy.packages = with pkgs; [
     audacity
     cosmic-store
@@ -36,6 +36,7 @@
   users.users.vy = {
     isNormalUser = true;
     extraGroups = ["wheel" "audio" "video"];
+    shell = pkgs.nushell;
   };
 
   users.users.root.openssh.authorizedKeys.keys = [

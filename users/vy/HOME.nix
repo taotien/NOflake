@@ -4,7 +4,7 @@
   inputs,
   lib,
   ...
-}: let
+}: {
   programs = {
     bat = {
       enable = true;
