@@ -1,5 +1,6 @@
 {pkgs, lib, inputs, config, ...}: {
   users.users.vy.packages = with pkgs; [
+    rnote
     audacity
     cosmic-store
     jellyfin-media-player
