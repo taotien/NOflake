@@ -3,7 +3,7 @@
   systemd.mounts = let
     opts = {
       type = "cifs";
-      mountConfig = {Options = "x-systemd.automount,users,noauto,credentials=${config.age.secrets.uwuraid.path},noatime,gid=100";};
+      mountConfig = {Options = "noauto,noatime,async,users,rw,x-systemd.automount,credentials=${config.age.secrets.uwuraid.path},gid=users,file_mode=0770,dir_mode=0770";};
     };
   in [
     (opts
@@ -75,7 +75,10 @@
   systemd.automounts = let
     opts = {
       wantedBy = ["multi-user.target"];
-      automountConfig = {TimeoutIdleSec = "60";};
+      automountConfig = {
+        TimeoutIdleSec = "60";
+        # DirectoryMode
+      };
     };
   in [
     (opts // {where = "/mnt/uwuraid/anime";})
