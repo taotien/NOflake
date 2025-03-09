@@ -21,8 +21,10 @@ def tse [exit_node: string = ""] {
   }
   if ($exit_node | is-not-empty) {
     check-mullvad
+      | return $in
+  } else {
+    return "exit node unset"
   }
-  return "exit node set"
 }
 
 # list all mullvad exit nodes

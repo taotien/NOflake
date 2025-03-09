@@ -10,6 +10,7 @@
     syncthingtray
     yt-dlp
     zoom-us
+    toastify
   ];
   programs.kdeconnect.enable = true;
 
