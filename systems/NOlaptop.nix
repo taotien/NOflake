@@ -4,6 +4,16 @@
   pkgs,
   ...
 }: {
+  services.rsyslogd = {
+    enable = true;
+    extraConfig = ''
+      module(load="imudp")
+      input(type="imudp" port="514")
+
+      THENAS.*  -/var/log/THENAS
+    '';
+  };
+
   # boot.kernelPatches = [
   #   (lib.mkIf (lib.versionOlder config.boot.kernelPackages.kernel.version "6.11")
   #     {
