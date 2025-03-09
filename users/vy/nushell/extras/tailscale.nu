@@ -9,7 +9,7 @@ def check-mullvad [] {
     $check = $j.mullvad_exit_ip
   }
   print ""
-  print $"connected to ($j.city), ($j.country)"
+  return $"connected to ($j.city), ($j.country)"
 }
 
 # switch to a specific exit node, or none
@@ -20,9 +20,10 @@ def tse [exit_node: string = ""] {
     tailscale set --exit-node $exit_node
   }
   if ($exit_node | is-not-empty) {
-    check-mullvad
+    check-mullvad | return $in
+  } else {
+    return "exit node set"
   }
-  return "exit node set"
 }
 
 # list all mullvad exit nodes
