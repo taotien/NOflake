@@ -1,5 +1,6 @@
 {pkgs, lib, inputs, config, ...}: {
   users.users.vy.packages = with pkgs; [
+    oculante
     rnote
     audacity
     cosmic-store
