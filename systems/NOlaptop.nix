@@ -4,6 +4,12 @@
   pkgs,
   ...
 }: {
+  # services.pipewire.wireplumber.extraConfig = {
+  #   "wireplumber.settings" = {
+  #     "device.routes.default-source-volume" = 0.42;
+  #   };
+  # };
+
   services.rsyslogd = {
     enable = true;
     extraConfig = ''
