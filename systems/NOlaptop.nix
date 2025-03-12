@@ -93,6 +93,7 @@
   boot.kernelParams = [
     "amdgpu.abmlevel=1"
     "amdgpu.dcdebugmask=0x400"
+    "mem_sleep_default=deep"
   ];
   # boot.kernelModules = ["kvm-amd"];
   powerManagement.cpuFreqGovernor = "powersave";
