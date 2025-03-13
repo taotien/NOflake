@@ -6,6 +6,8 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    nix-output-monitor
+    nvd
     # calibre
     # davinci-resolve
     # fractal

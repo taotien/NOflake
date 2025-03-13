@@ -168,7 +168,8 @@
   nix.settings = {
     experimental-features = "nix-command flakes";
     auto-optimise-store = true;
-    trusted-users = ["root" "@wheel"];
+    # adding logged in users allows for passwordless root
+    # trusted-users = ["root"];
     system-features = [
       "benchmark"
       "big-parallel"
