@@ -2,9 +2,11 @@
   description = "we say NO to shitty OSes";
 
   inputs = {
+    nixos.url = "nixpkgs/nixos-24.05";
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
     nixos-hardware.url = "nixos-hardware/master";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
     agenix = {
       url = "github:ryantm/agenix";
       inputs.darwin.follows = "";
@@ -17,10 +19,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # plasma-manager = {
-    #   url = "github:pjones/plasma-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     # helix = {
     #   url = "github:mattwparas/helix/steel-event-system";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -29,14 +27,10 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # prescurve.url = "github:taotien/prescurve";
-    # prescurve.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
-    nixos.url = "nixpkgs/nixos-24.05";
   };
 
   nixConfig = {
@@ -53,18 +47,17 @@
   };
 
   outputs = {
+    nixos,
     self,
     nixpkgs,
     nixos-facter-modules,
     nixos-hardware,
+    determinate,
     agenix,
     disko,
     home-manager,
-    # plasma-manager,
     nixos-cosmic,
     zen-browser,
-    determinate,
-    nixos,
     ...
   } @ inputs: {
     nixosConfigurations = {

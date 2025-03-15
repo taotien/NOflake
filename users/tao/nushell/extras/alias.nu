@@ -13,6 +13,7 @@ alias la = ls -a
 
 alias quiet = sudo ectool fanduty 42
 alias loud = sudo ectool autofanctrl
+alias louder = sude ectool fanduty 100
 
 alias cp-full = cp
 alias cp = cp -prv

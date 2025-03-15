@@ -26,7 +26,7 @@
     ouch
     pueue
     ripgrep
-    rustdesk
+    # rustdesk
     sendme
     skim
     tree
