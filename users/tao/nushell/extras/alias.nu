@@ -15,10 +15,10 @@ alias quiet = sudo ectool fanduty 42
 alias loud = sudo ectool autofanctrl
 alias louder = sude ectool fanduty 100
 
-alias cp-full = cp
-alias cp = cp -prv
-alias mv-full = mv
-alias mv = mv -pv
+# alias cp-full = cp
+alias ccp = cp -prv
+# alias mv-full = mv
+alias mvp = mv-full -pv
 
 alias j = jj
 alias ja = jj log -r 'all()'
