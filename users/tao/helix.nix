@@ -206,6 +206,7 @@
       ];
       language-servers = {
         rust-analyzer.config = {
+          server.path = "/home/tao/.cargo/bin/rust-analyzer";
           procMacro = {
             ignored = {
               leptos_macro = [
