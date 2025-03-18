@@ -52,6 +52,6 @@ def --env c [path: path = "~"] {
   l
 }
 
-def l --wrapped [...rest] {
-  ls ...$rest | sort-by type name -i -n
+def l --wrapped [path: path = ".", ...rest] {
+  ls ...$rest $path | sort-by type name -i -n
 }
