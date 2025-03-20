@@ -6,6 +6,7 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    gocryptfs
     nix-output-monitor
     nvd
     # calibre

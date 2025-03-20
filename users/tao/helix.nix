@@ -241,6 +241,9 @@
         };
         tinymist = {
           command = "tinymist";
+          config = {
+            exportPdf = "onSave";
+          };
         };
         steel-language-server = {
           command = "steel-language-server";
