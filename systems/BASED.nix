@@ -81,7 +81,7 @@
   programs.ssh.startAgent = true;
 
   services.printing.enable = lib.mkDefault true;
-  services.printing.drivers = with pkgs; [hplip hplipWithPlugin gutenprint gutenprintBin];
+  services.printing.drivers = with pkgs; [gutenprint gutenprintBin];
   services.avahi = {
     enable = true;
     nssmdns4 = true;
