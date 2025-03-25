@@ -242,7 +242,8 @@
         tinymist = {
           command = "tinymist";
           config = {
-            exportPdf = "onSave";
+            exportPdf = "onType";
+            outputPath = "$root/$dir/$name";
           };
         };
         steel-language-server = {
