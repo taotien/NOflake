@@ -33,7 +33,11 @@ def post-rebuild [] {
 
 def bump [...rest] {
   cd /home/tao/projects/NOflake/
-  jj new -m "bump"
+  mut r = "@"
+  if (jj log -r @ --no-pager --no-graph --template 'if(empty,"empty")' | $in == "empty") {
+    $r = "@-"
+  }
+  jj new -m "bump" -r $r
   nix flake update
   # rc2nix | save -f /home/tao/projects/NOflake/users/tao/plasma.nix;
   # sudo nix store ping --store ssh://nocomputer
