@@ -32,7 +32,7 @@ def "snapper clear" [] {
   snapper delete $"($first.number)-($last.number)"
 }
 
-const mode_path: path = "/sys/devices/platform/nct6775.656/hwmon/hwmon9/pwm2_enable"
+const mode_path: path = "/sys/devices/platform/nct6775.656/hwmon/hwmon3/pwm2_enable"
 
 def quiet [] {
   match (hostname) {

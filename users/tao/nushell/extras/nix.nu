@@ -1,7 +1,8 @@
 alias nd = nix develop
 
-def ns [package] {
-  nix shell $"nixpkgs#($package)"
+def ns [...packages: string] {
+  let packages = $packages | each {$"nixpkgs#($in)"}
+  nix shell ...$packages
 }
 
 # def nr [package] {
