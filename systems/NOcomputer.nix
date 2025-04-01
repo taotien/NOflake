@@ -49,7 +49,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
-  boot.kernelModules = ["i2c-dev" "kvm-amd"];
+  boot.kernelModules = ["i2c-dev" "kvm-amd" "nct6675"];
   boot.kernelParams = ["nvidia-drm.modeset=1"];
   # boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
   # boot.blacklistedKernelModules = with config.boot.kernelPackages; [ k10temp ];

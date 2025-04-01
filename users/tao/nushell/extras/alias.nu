@@ -19,10 +19,6 @@ def srg [] {
   sk --ansi -i -c 'rg --color=always --line-number "{}"'
 }
 
-alias quiet = sudo ectool fanduty 42
-alias loud = sudo ectool autofanctrl
-alias louder = sude ectool fanduty 100
-
 alias j = jj
 alias ja = jj log -r 'all()'
 alias jc = jj desc
