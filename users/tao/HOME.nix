@@ -139,7 +139,7 @@ in {
           user = "tltien";
           forwardAgent = true;
           identityFile = "/home/tao/.ssh/id_ed25519";
-          proxyCommand = "ssh stargate -W %h:%p";
+          proxyCommand = "ssh griffin.cs.usfca.edu";
         };
         "github" = {
           hostname = "github.com";
