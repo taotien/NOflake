@@ -1,11 +1,18 @@
 alias b = btm
-alias d = sudo dmesg -w
-alias p = pueue
-alias zl = zellij
+alias d = dirs
+alias da = dirs add
+alias dg = dirs goto
+alias dn = dirs next
+alias dp = dirs prev
+alias dr = dirs drop
 alias fetch = fastfetch
-alias snapper = snapper -c home
 alias follow = readlink -f
-# alias cringe = sudo bootctl set-oneshot auto-windows
+alias p = pueue
+alias snapper = snapper -c home
+alias zl = zellij
+
+
+alias cringe = sudo bootctl set-oneshot auto-windows
 
 def h [query?: path] {
   (if ($query != null) {sk -1 -q ($query | path basename)} else {sk -1}) 
