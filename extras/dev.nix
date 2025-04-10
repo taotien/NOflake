@@ -1,4 +1,13 @@
 {pkgs, ...}: {
+  # services.globalprotect = {
+  #   enable = true;
+  # settings = {
+  #   "vpn1.usfca.edu" = {
+  #     openconnect-args = "";
+  #   };
+  # };
+  # };
+
   environment.systemPackages = with pkgs; [
     # (llm.withPlugins (ps: with ps; [llm-openrouter]))
     # bash-language-server
