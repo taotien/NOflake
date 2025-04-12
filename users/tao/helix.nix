@@ -12,8 +12,8 @@
           cursor-line = "warning";
         };
         auto-save = {
-          focus-lost = false;
-          after-delay.enable = false;
+          focus-lost = true;
+          after-delay.enable = true;
           after-delay.timeout = 1000;
         };
         shell = ["nu" "--stdin" "-c"];
