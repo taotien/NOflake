@@ -26,11 +26,6 @@
         what = "//100.97.47.81/everything";
         where = "/mnt/uwuraid/everything";
       })
-    (opts
-      // {
-        what = "//100.97.47.81/games";
-        where = "/mnt/uwuraid/games";
-      })
     # (opts
     #   // {
     #     what = "//100.97.47.81/isos";
@@ -38,33 +33,8 @@
     #   })
     (opts
       // {
-        what = "//100.97.47.81/jellyfin";
-        where = "/mnt/uwuraid/jellyfin";
-      })
-    (opts
-      // {
-        what = "//100.97.47.81/movies";
-        where = "/mnt/uwuraid/movies";
-      })
-    (opts
-      // {
-        what = "//100.97.47.81/music";
-        where = "/mnt/uwuraid/music";
-      })
-    (opts
-      // {
         what = "//100.97.47.81/photos";
         where = "/mnt/uwuraid/photos";
-      })
-    (opts
-      // {
-        what = "//100.97.47.81/syncthing";
-        where = "/mnt/uwuraid/syncthing";
-      })
-    (opts
-      // {
-        what = "//100.97.47.81/television";
-        where = "/mnt/uwuraid/television";
       })
     (opts
       // {
@@ -85,14 +55,8 @@
     (opts // {where = "/mnt/uwuraid/appdata";})
     (opts // {where = "/mnt/uwuraid/backup";})
     (opts // {where = "/mnt/uwuraid/everything";})
-    (opts // {where = "/mnt/uwuraid/games";})
     # (opts // {where = "/mnt/uwuraid/isos";})
-    (opts // {where = "/mnt/uwuraid/jellyfin";})
-    (opts // {where = "/mnt/uwuraid/movies";})
-    (opts // {where = "/mnt/uwuraid/music";})
     (opts // {where = "/mnt/uwuraid/photos";})
-    (opts // {where = "/mnt/uwuraid/syncthing";})
     (opts // {where = "/mnt/uwuraid/virginia";})
-    (opts // {where = "/mnt/uwuraid/television";})
   ];
 }
