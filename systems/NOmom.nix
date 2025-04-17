@@ -17,6 +17,7 @@
   services.fprintd.enable = true;
   hardware.sensor.iio.enable = true;
   services.usbmuxd.enable = true;
+  services.usbmuxd.package = pkgs.usbmuxd2;
 
   services.displayManager.sddm.wayland.enable = true;
 

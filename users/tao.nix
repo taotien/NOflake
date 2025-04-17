@@ -6,6 +6,7 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
+    slack
     gocryptfs
     nix-output-monitor
     nvd
