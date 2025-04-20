@@ -26,6 +26,11 @@
         what = "//100.97.47.81/everything";
         where = "/mnt/uwuraid/everything";
       })
+    (opts
+      // {
+        what = "//100.97.47.81/media";
+        where = "/mnt/uwuraid/media";
+      })
     # (opts
     #   // {
     #     what = "//100.97.47.81/isos";
@@ -55,6 +60,7 @@
     (opts // {where = "/mnt/uwuraid/appdata";})
     (opts // {where = "/mnt/uwuraid/backup";})
     (opts // {where = "/mnt/uwuraid/everything";})
+    (opts // {where = "/mnt/uwuraid/media";})
     # (opts // {where = "/mnt/uwuraid/isos";})
     (opts // {where = "/mnt/uwuraid/photos";})
     (opts // {where = "/mnt/uwuraid/virginia";})
