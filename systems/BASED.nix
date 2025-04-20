@@ -60,6 +60,12 @@
   };
 
   hardware.graphics.enable = true;
+  # hardware.opengl = {
+  #   enable = true;
+  #   extraPackaged = with pkgs; [
+  #     libvdpau-va-gl
+  #   ];
+  # };
   services.xserver.enable = lib.mkDefault true;
   services.xserver.excludePackages = [pkgs.xterm];
   services.xserver.xkb.layout = "us";
