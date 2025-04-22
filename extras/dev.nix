@@ -28,13 +28,13 @@
     devenv
     direnv
     gh
-    git-cliff
+    # git-cliff
     hyperfine
     jujutsu
     just
     lldb
-    lua-language-server
-    markdown-oxide
+    # lua-language-server
+    # markdown-oxide # markdown lsp
     qFlipper
     qemu
     sd
@@ -71,16 +71,15 @@
 
     # python
     # pypy3
-    # python3
-    (python3.withPackages (ps:
-      with ps; [
-        llm
-        # llm-openrouter
-      ]))
+    python3
+    # (python3.withPackages (ps:
+    #   with ps; [
+    #     llm
+    #     # llm-openrouter
+    #   ]))
     # python310Packages.python-lsp-server
     uv
     ruff
-    ruff-lsp
 
     # rust
     cargo-binstall

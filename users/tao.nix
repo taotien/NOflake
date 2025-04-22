@@ -6,63 +6,62 @@
   ...
 }: {
   users.users.tao.packages = with pkgs; [
-    slack
-    gocryptfs
-    nix-output-monitor
-    nvd
-    # calibre
+    # boxxy
+    calibre
+    # carapace
+    # cloud-hypervisor
     # davinci-resolve
     # fractal
+    # freerdp
     # inputs.plasma-manager.packages.${pkgs.system}.default
     # jellyfin-mpv-shim
     # libsForQt5.kcharselect
     # mendeley
+    # piper
     # slack
     # tectonic
     # texlab
+    # thunderbird
     # wkhtmltopdf
     appimage-run
     aspell
     aspellDicts.en
     bottles
-    # boxxy
-    # carapace
-    # cloud-hypervisor
     darktable
     deluge
     discord
     freecad-wayland
-    # freerdp
     gocryptfs
     gurk-rs
     jellyfin-media-player
-    kdePackages.plasma-vault
+    # kdePackages.plasma-vault
     keepassxc
-    leetcode-cli
+    # leetcode-cli
     man-pages
     man-pages-posix
     miniserve
     mousai
+    nix-output-monitor
     nixos-anywhere
     nufmt
     nushell
+    nvd
     obs-studio
     oculante
     onlyoffice-bin
     pandoc
     pipe-rename
-    # piper
     prusa-slicer
     qmk
     qmk-udev-rules
     qmk_hid
     ripgrep-all
     signal-desktop
+    slack
     snapper
     starship
     syncthingtray
     taskwarrior3
-    # thunderbird
     tinymist
     toastify
     typst
@@ -80,10 +79,10 @@
   programs.kdeconnect.enable = true;
   environment.shells = with pkgs; [nushell];
 
-  virtualisation.libvirtd.enable = true;
-  virtualisation.libvirtd.qemu.swtpm.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
-  programs.virt-manager.enable = true;
+  # virtualisation.libvirtd.enable = true;
+  # virtualisation.libvirtd.qemu.swtpm.enable = true;
+  # virtualisation.spiceUSBRedirection.enable = true;
+  # programs.virt-manager.enable = true;
 
   # virtualisation.virtualbox.host = {
   #   enable = true;
@@ -123,7 +122,7 @@
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
   '';
-  services.ratbagd.enable = true;
+  # services.ratbagd.enable = true;
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback

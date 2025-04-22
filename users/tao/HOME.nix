@@ -155,11 +155,11 @@ in {
       settings = builtins.fromTOML (builtins.readFile ./starship.toml);
     };
 
-    taskwarrior = {
-      enable = true;
-      package = pkgs.taskwarrior3;
-      dataLocation = "/home/tao/sync";
-    };
+    # taskwarrior = {
+    #   enable = true;
+    #   package = pkgs.taskwarrior3;
+    #   dataLocation = "/home/tao/sync";
+    # };
 
     wezterm = {
       enable = true;

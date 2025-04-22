@@ -36,9 +36,9 @@
   ];
   programs.partition-manager.enable = lib.mkDefault true;
 
-  programs.nh = {
-    enable = true;
-  };
+  # programs.nh = {
+  #   enable = true;
+  # };
 
   programs.firefox.enable = true;
   programs.firefox.policies = {
