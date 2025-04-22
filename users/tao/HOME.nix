@@ -135,11 +135,11 @@ in {
           identityFile = "/home/tao/.ssh/id_ed25519";
         };
         "griffin" = {
-          hostname = "griffin";
+          hostname = "griffin.cs.usfca.edu";
           user = "tltien";
           forwardAgent = true;
           identityFile = "/home/tao/.ssh/id_ed25519";
-          proxyCommand = "ssh griffin.cs.usfca.edu";
+          # proxyCommand = "ssh griffin.cs.usfca.edu";
         };
         "github" = {
           hostname = "github.com";
