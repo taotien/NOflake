@@ -3,19 +3,26 @@ def "config stuff" [] {
 }
 
 def fixme [] {
-  rg FIXME --json
+  let items = rg "FIXME|TODO" --json
     | lines
     | each {from json}
     | where type == "match"
     | get data
     | flatten
-    | each {$"($in.text):($in.line_number)"}
-    | hx ...$in
+    | reject absolute_offset submatches
+    | each {
+      mut row = $in
+      $row.lines_text = ($row.lines_text | str trim)
+      $row
+    }
+    | sort
+  let sel = $items.lines_text | input list -fi
+  hx ($items | get $sel | $"($in.text):($in.line_number)")
 }
 
 source ~/.zoxide.nu
-def --env z [path: string = "~"] {
-  zo $path
+def --wrapped --env z [...rest] {
+  zo ...$rest
   l
 }
 
@@ -55,4 +62,10 @@ def louder [] {
     "NOcomputer" => {sudo -- nu -c $"0 o> ($mode_path)"}
     "NOlaptop" => {sudo ectool fanduty 100}
   }
+}
+
+
+def asciicam [] {
+  $env.DISPLAY = null
+  mpv -vo caca av://v4l2:/dev/video0 --demuxer-lavf-o=input_format=mjpeg --profile=low-latency e>| /dev/null
 }
