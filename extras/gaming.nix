@@ -32,7 +32,7 @@
   programs.steam = {
     enable = true;
     # remotePlay.openFirewall = true;
-    gamescopeSession.enable = false;
+    # gamescopeSession.enable = false;
   };
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;

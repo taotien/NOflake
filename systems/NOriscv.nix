@@ -1,3 +1,3 @@
 {lib, ...}: {
-  nixpkgs.hostPlatform = "riscv64";
+    nixpkgs.hostPlatform = "riscv64";
 }
