@@ -2,10 +2,10 @@
     description = "we say NO to shitty OSes";
 
     inputs = {
-        nixos.url = "nixpkgs/nixos-24.05";
-        nixpkgs.url = "nixpkgs/nixos-unstable";
+        nixos.url = "github:NixOS/nixpkgs/nixos-24.05";
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
         nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
-        nixos-hardware.url = "nixos-hardware/master";
+        nixos-hardware.url = "github:NixOS/nixos-hardware/master";
         determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
         agenix = {
             url = "github:ryantm/agenix";
@@ -23,10 +23,10 @@
         #   url = "github:mattwparas/helix/steel-event-system";
         #   inputs.nixpkgs.follows = "nixpkgs";
         # };
-        # nixos-cosmic = {
-        #   url = "github:lilyinstarlight/nixos-cosmic";
-        #   inputs.nixpkgs.follows = "nixpkgs";
-        # };
+        nixos-cosmic = {
+            url = "github:lilyinstarlight/nixos-cosmic";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
         zen-browser = {
             url = "github:0xc000022070/zen-browser-flake";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -35,12 +35,12 @@
 
     nixConfig = {
         extra-substituters = [
-            # "https://cosmic.cachix.org/"
+            "https://cosmic.cachix.org/"
             # "https://helix.cachix.org/"
             "https://devenv.cachix.org"
         ];
         extra-trusted-public-keys = [
-            # "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+            "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
             # "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
             "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
         ];
@@ -56,7 +56,7 @@
         agenix,
         disko,
         home-manager,
-        # nixos-cosmic,
+        nixos-cosmic,
         zen-browser,
         ...
     } @ inputs: {
@@ -79,7 +79,7 @@
                     ./extras/dev.nix
                     ./extras/gaming.nix
                     ./extras/folding.nix
-                    # nixos-cosmic.nixosModules.default
+                    nixos-cosmic.nixosModules.default
                     ./extras/cosmic.nix
                 ];
             };
@@ -106,7 +106,7 @@
                     ./extras/uwuraid.nix
                     ./extras/dev.nix
                     ./extras/gaming.nix
-                    # nixos-cosmic.nixosModules.default
+                    nixos-cosmic.nixosModules.default
                     ./extras/cosmic.nix
                 ];
             };
