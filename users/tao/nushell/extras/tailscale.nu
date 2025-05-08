@@ -15,14 +15,17 @@ def check-mullvad [] {
 # switch to a specific exit node, or none
 def tse [exit_node: string = ""] {
   if ($exit_node | is-empty) and (ps | find deluge | is-not-empty) {
-    return "stop summoning first!"
-  } else {
-    tailscale set --exit-node $exit_node
+    print "stop summoning first!"
+    return false
   }
+
+  tailscale set --exit-node $exit_node
+
   if ($exit_node | is-not-empty) {
-    check-mullvad | return $in
+    return check-mullvad()
   } else {
-    return "exit node set"
+    print "exit node set"
+    return true 
   }
 }
 
