@@ -12,8 +12,13 @@
         # foldingathome
         # gwe
         # openrgb
+        openrgb-plugin-effects
+        openrgb-plugin-hardwaresync
     ];
-    services.hardware.openrgb.enable = true;
+    services.hardware.openrgb = {
+        enable = true;
+        package = pkgs.openrgb-with-all-plugins;
+    };
 
     services.tailscale.useRoutingFeatures = "both";
     boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
