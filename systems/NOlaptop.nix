@@ -4,6 +4,16 @@
   pkgs,
   ...
 }: {
+  hardware.opengl.extraPackages = with pkgs; [
+    amdvlk
+  ];
+  hardware.opengl.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
+  ];
+  services.xserver.videoDrivers = [
+    "amdgpu"
+  ];
+
   # services.pipewire.wireplumber.extraConfig = {
   #   "wireplumber.settings" = {
   #     "device.routes.default-source-volume" = 0.42;
@@ -46,7 +56,10 @@
     fw-ectool
     framework-tool
     nvtopPackages.amd
+    lact
   ];
+
+  systemd.services.lactd.wantedBy = ["multi-user.target"];
 
   services.fwupd.enable = true;
   services.tailscale.useRoutingFeatures = "client";
@@ -100,6 +113,7 @@
     # "mem_sleep_default=deep"
   ];
   # boot.kernelModules = ["kvm-amd"];
+  boot.kernelModules = ["amdgpu"];
   powerManagement.cpuFreqGovernor = "powersave";
   systemd.sleep.extraConfig = "HibernateDelaySec=360m";
 
