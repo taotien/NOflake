@@ -125,6 +125,15 @@
                     ./extras/uwuraid.nix
                 ];
             };
+            NObangers = nixpkgs.lib.nixosSystem {
+                system = "aarch64-linux";
+                specialArgs = {inherit inputs;};
+                modules = [
+                    nixos-hardware.nixosModules.raspberry-pi-4
+                    ./systems/BASED.nix
+                    ./systems/NObangers.nix
+                ];
+            };
             NOserver-minecraft = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
                 specialArgs = {inherit inputs;};

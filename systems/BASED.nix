@@ -21,6 +21,7 @@
         helix
         inputs.agenix.packages.${pkgs.system}.default
         inputs.zen-browser.packages."${system}".default
+        jujutsu
         mesa
         mpv
         ouch
@@ -87,7 +88,7 @@
     programs.ssh.startAgent = true;
 
     services.printing.enable = lib.mkDefault true;
-    services.printing.drivers = with pkgs; [gutenprint gutenprintBin];
+    services.printing.drivers = with pkgs; lib.mkDefault [gutenprint gutenprintBin];
     services.avahi = {
         enable = true;
         nssmdns4 = true;
@@ -120,7 +121,7 @@
     security.sudo-rs.enable = true;
     security.sudo.enable = false;
 
-    i18n.inputMethod = {
+    i18n.inputMethod = lib.mkDefault {
         enable = true;
         type = "fcitx5";
         fcitx5.addons = with pkgs; [
