@@ -132,6 +132,9 @@
                     nixos-hardware.nixosModules.raspberry-pi-4
                     ./systems/BASED.nix
                     ./systems/NObangers.nix
+                    nixos-cosmic.nixosModules.default
+                    ./extras/cosmic.nix
+                    ./extras/uwuraid.nix
                 ];
             };
             NOserver-minecraft = nixpkgs.lib.nixosSystem {
