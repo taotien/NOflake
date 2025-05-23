@@ -134,6 +134,7 @@
                     ./systems/NObangers.nix
                     nixos-cosmic.nixosModules.default
                     ./extras/cosmic.nix
+                    agenix.nixosModules.default
                     ./extras/uwuraid.nix
                 ];
             };
