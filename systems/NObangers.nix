@@ -15,13 +15,14 @@
   services.xserver.enable = false;
   services.desktopManager.plasma6.enable = false;
 
-  services.pipewire.enable = false;
-  services.pulseaudio.enable = true;
-  config.hardware.raspberry-pi."4" = {
+  # services.pipewire.enable = false;
+  # services.pulseaudio.enable = true;
+  hardware.raspberry-pi."4" = {
     bluetooth.enable = true;
-    # fkms-3d.enable = true;
+    fkms-3d.enable = true;
   };
 
+  age.secrets.password-tao.file = ../secrets/syncthing-uwuraid.age;
   users.users.tao = {
     isNormalUser = true;
     hashedPasswordFile = config.age.secrets.password-tao.path;
