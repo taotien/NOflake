@@ -60,6 +60,8 @@
     "browser.bookmarks.restore_default_bookmarks" = false;
   };
 
+  services.flatpak.enable = true;
+
   hardware.graphics.enable = true;
   # hardware.opengl = {
   #   enable = true;

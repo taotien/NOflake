@@ -22,7 +22,7 @@ def tse [exit_node: string = ""] {
   tailscale set --exit-node $exit_node
 
   if ($exit_node | is-not-empty) {
-    return check-mullvad()
+    check-mullvad
   } else {
     print "exit node set"
     return true 
@@ -67,10 +67,10 @@ tsx
 
 # switch to a random mullvad exit node
 def tsr [] {
-tsx
-  | get (random int 0..($in | length))
-  | tse $in.IP
-  | return $in
+  tsx
+    | get (random int 0..($in | length))
+    | tse $in.IP
+    | return $in
 }
 
 alias ts = tailscale
