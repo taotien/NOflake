@@ -7,7 +7,7 @@ d = "doc --no-deps --open"
 target = "x86_64-unknown-linux-gnu"
 # rustc-wrapper = "${pkgs.sccache}/bin/sccache"
 rustc-wrapper = "/path/to/sccache"
-rustflags = ["-Z", "threads=8"]
+rustflags = ["-Zthreads=0"]
 
 [unstable]
 codegen-backend = true
@@ -36,7 +36,7 @@ lto = "fat"
 [target.x86_64-unknown-linux-gnu]
 # linker = "musl-gcc"
 linker = "clang"
-rustflags = ["-Ctarget-cpu=native", "-Clink-arg=-fuse-ld=mold"]
+rustflags = ["-Ctarget-cpu=native", "-Clink-arg=-fuse-ld=wild"]
 
 # jonhoo
 # https://benw.is/posts/how-i-improved-my-rust-compile-times-by-seventy-five-percent

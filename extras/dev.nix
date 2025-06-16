@@ -1,36 +1,32 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    nomachine-client
-    delta
-    mask
-    mprocs
-    presenterm
-    # (llm.withPlugins (ps: with ps; [llm-openrouter]))
+    # act
+    # asm-lsp
     # bash-language-server
     # digital
     # etcher
     # fontforge
     # freecad
-    # llm
+    # git-cliff
+    # lua-language-server
     # lychee # link checker
+    # markdown-oxide # markdown lsp
     # quickemu
     # radicle-node
     # vulkan-loader
-    # act
-    # aichat
-    # aider-chat
-    # asm-lsp
     b3sum
+    delta
     devenv
     direnv
     gh
-    # git-cliff
     hyperfine
     jujutsu
     just
     lldb
-    # lua-language-server
-    # markdown-oxide # markdown lsp
+    mask
+    mprocs
+    nomachine-client
+    presenterm
     qFlipper
     qemu
     sd
@@ -68,12 +64,6 @@
     # python
     # pypy3
     python3
-    # (python3.withPackages (ps:
-    #   with ps; [
-    #     llm
-    #     # llm-openrouter
-    #   ]))
-    # python310Packages.python-lsp-server
     uv
     ruff
 
@@ -103,13 +93,13 @@
     SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic UART Port",  SYMLINK+="ttyBmpTarg"
   '';
 
-  # virtualisation.docker = {
-  #   enable = true;
-  #   storageDriver = "btrfs";
-  # };
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
+  };
   # virtualisation.docker.rootless = {
   #   enable = true;
   #   setSocketVariable = true;
   # };
-  # users.extraGroups.docker.members = ["tao"];
+  users.extraGroups.docker.members = ["tao"];
 }
