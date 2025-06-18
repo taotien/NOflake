@@ -10,24 +10,24 @@
 #     else false;
 # in
 {
-  # programs.noisetorch.enable = true;
-  # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
-  # aagl.inputs.nixpkgs.follows = "nixpkgs";
+    # programs.noisetorch.enable = true;
+    # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
+    # aagl.inputs.nixpkgs.follows = "nixpkgs";
 
-  environment.systemPackages = with pkgs; [
-    # parsec-bin
-    # yuzu # nintendo can suck the shit out of my asshole
-    gamemode
-    heroic
-    lutris
-    mangohud
-    prismlauncher
-    protonup-qt
-    r2modman
-    wine
-    temurin-jre-bin-17
-    graalvm-ce
-  ];
+    environment.systemPackages = with pkgs; [
+        # parsec-bin
+        # yuzu # nintendo can suck the shit out of my asshole
+        gamemode
+        heroic
+        lutris
+        mangohud
+        prismlauncher
+        protonup-qt
+        r2modman
+        wine
+        temurin-jre-bin-17
+        graalvm-ce
+    ];
 
     networking.firewall.allowedTCPPorts = [25565];
 

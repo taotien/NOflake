@@ -23,6 +23,11 @@
         })
         (opts
         // {
+            what = "//100.97.47.81/downloads";
+            where = "/mnt/uwuraid/downloads";
+        })
+        (opts
+        // {
             what = "//100.97.47.81/media";
             where = "/mnt/uwuraid/media";
         })
@@ -54,6 +59,7 @@
         (opts // {where = "/mnt/uwuraid/anime";})
         (opts // {where = "/mnt/uwuraid/backup";})
         (opts // {where = "/mnt/uwuraid/everything";})
+        (opts // {where = "/mnt/uwuraid/downloads";})
         (opts // {where = "/mnt/uwuraid/media";})
         # (opts // {where = "/mnt/uwuraid/isos";})
         (opts // {where = "/mnt/uwuraid/photos";})

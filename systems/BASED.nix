@@ -88,6 +88,7 @@
   users.users.root.openssh.authorizedKeys.keys = [
   ];
   programs.ssh.startAgent = true;
+  services.gnome.gcr-ssh-agent.enable = false;
 
   services.printing.enable = lib.mkDefault true;
   services.printing.drivers = with pkgs; lib.mkDefault [gutenprint gutenprintBin];
