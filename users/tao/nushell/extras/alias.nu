@@ -47,6 +47,8 @@ def jm --wrapped [-r: string = "@", ...rest] {
 }
 
 alias la = ls -a
+alias ll = ls -l
+alias lal = ls -la
 alias ccp = cp -prv
 alias mvp = mv-full -pv
 
@@ -57,4 +59,13 @@ def --env c [path: path = "~"] {
 
 def l --wrapped [path: path = ".", ...rest] {
   ls ...$rest $path | sort-by type name -i -n
+}
+
+alias list-automounts = systemctl list-units --type=automount
+
+def remount [] {
+  let reload = list-automounts | detect columns -n | get column0 | input list --multi
+  for mount in $reload {
+    systemctl resart $mount
+  }
 }

@@ -189,7 +189,9 @@
                 {
                     name = "nix";
                     auto-format = true;
-                    formatter = {command = "alejandra";};
+                    formatter = {
+                        command = "alejandra";
+                    };
                 }
                 {
                     name = "toml";
