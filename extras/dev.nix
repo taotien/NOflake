@@ -1,105 +1,109 @@
 {pkgs, ...}: {
-    environment.systemPackages = with pkgs; [
-        # act
-        # asm-lsp
-        # bash-language-server
-        # digital
-        # etcher
-        # fontforge
-        # freecad
-        # git-cliff
-        # lua-language-server
-        # lychee # link checker
-        # markdown-oxide # markdown lsp
-        # quickemu
-        # radicle-node
-        # vulkan-loader
-        b3sum
-        delta
-        devenv
-        direnv
-        gh
-        hyperfine
-        jujutsu
-        just
-        lldb
-        mask
-        mprocs
-        nomachine-client
-        presenterm
-        qFlipper
-        qemu
-        sd
-        sshfs
-        taplo # toml lsp
-        tio
-        tokei # repo code stats
-        typos
+  services.scx.enable = true;
+  services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
-        # # databases
-        # sqlite
-        # sqls
-        # sqlx-cli
-        # sea-orm-cli
-        # rainfrog
+  environment.systemPackages = with pkgs; [
+    # act
+    # asm-lsp
+    # bash-language-server
+    # digital
+    # etcher
+    # fontforge
+    # freecad
+    # git-cliff
+    # lua-language-server
+    # lychee # link checker
+    # markdown-oxide # markdown lsp
+    # quickemu
+    # radicle-node
+    # vulkan-loader
+    b3sum
+    delta
+    devenv
+    direnv
+    gh
+    hyperfine
+    jujutsu
+    just
+    lldb
+    mask
+    mprocs
+    nomachine-client
+    presenterm
+    qFlipper
+    qemu
+    sd
+    sshfs
+    taplo # toml lsp
+    tio
+    tokei # repo code stats
+    typos
 
-        # # arduino
-        # arduino-language-server
-        # arduino-cli
-        # pkgsCross.avr.buildPackages.gcc
-        # avrdude
-        # ravedude
+    # # databases
+    # sqlite
+    # sqls
+    # sqlx-cli
+    # sea-orm-cli
+    # rainfrog
 
-        # c
-        clang
-        clang-tools
-        gcc
-        gdb
-        gnumake
+    # # arduino
+    # arduino-language-server
+    # arduino-cli
+    # pkgsCross.avr.buildPackages.gcc
+    # avrdude
+    # ravedude
 
-        # nix
-        nil
-        alejandra
+    # c
+    clang
+    clang-tools
+    gcc
+    gdb
+    gnumake
 
-        # python
-        # pypy3
-        python3
-        uv
-        ruff
+    # nix
+    nil
+    alejandra
 
-        # rust
-        cargo-binstall
-        bacon
-        cargo-expand
-        cargo-feature
-        cargo-generate
-        cargo-watch
-        elf2uf2-rs
-        flip-link
-        mdbook
-        mold-wrapped
-        probe-rs
-        rustup
-        rusty-man
-        sccache
-        trunk
-        wasm-bindgen-cli
-    ];
+    # python
+    # pypy3
+    python3
+    uv
+    ruff
 
-    hardware.flipperzero.enable = true;
+    # rust
+    cargo-binstall
+    bacon
+    cargo-expand
+    cargo-feature
+    cargo-generate
+    cargo-watch
+    elf2uf2-rs
+    flip-link
+    mdbook
+    mold-wrapped
+    probe-rs
+    rustup
+    rusty-man
+    sccache
+    trunk
+    wasm-bindgen-cli
+  ];
 
-    services.udev.extraRules = ''
-        SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic GDB Server", SYMLINK+="ttyBmpGdb"
-        SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic UART Port",  SYMLINK+="ttyBmpTarg"
-    '';
+  hardware.flipperzero.enable = true;
 
-    virtualisation.docker = {
-        enable = true;
-        storageDriver = "btrfs";
-    };
-    # virtualisation.docker.rootless = {
-    #   enable = true;
-    #   setSocketVariable = true;
-    # };
-    users.extraGroups.docker.members = ["tao"];
+  services.udev.extraRules = ''
+    SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic GDB Server", SYMLINK+="ttyBmpGdb"
+    SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic UART Port",  SYMLINK+="ttyBmpTarg"
+  '';
+
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
+  };
+  # virtualisation.docker.rootless = {
+  #   enable = true;
+  #   setSocketVariable = true;
+  # };
+  users.extraGroups.docker.members = ["tao"];
 }
