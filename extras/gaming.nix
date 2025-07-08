@@ -3,6 +3,7 @@
     # aagl.inputs.nixpkgs.follows = "nixpkgs";
 
     environment.systemPackages = with pkgs; [
+        osu-lazer-bin
         easyeffects
         # parsec-bin
         # yuzu # nintendo can suck the shit out of my asshole

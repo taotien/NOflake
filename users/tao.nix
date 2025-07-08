@@ -5,7 +5,13 @@
     lib,
     ...
 }: {
+    services.syncplay = {
+        enable = true;
+        motd = "we only watch kino here";
+    };
+
     users.users.tao.packages = with pkgs; [
+        syncplay
         # boxxy
         calibre
         # carapace

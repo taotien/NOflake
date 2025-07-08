@@ -35,8 +35,8 @@ lto = "fat"
 
 [target.x86_64-unknown-linux-gnu]
 # linker = "musl-gcc"
-linker = "clang"
-rustflags = ["-Ctarget-cpu=native", "-Clink-arg=-fuse-ld=wild"]
+# linker = "clang"
+# rustflags = ["-Ctarget-cpu=native", "-Clink-arg=--ld-path=wild"]
 
 # jonhoo
 # https://benw.is/posts/how-i-improved-my-rust-compile-times-by-seventy-five-percent
