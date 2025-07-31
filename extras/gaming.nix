@@ -2,6 +2,11 @@
     # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     # aagl.inputs.nixpkgs.follows = "nixpkgs";
 
+    services.lsfg-vk = {
+        enable = true;
+        ui.enable = true;
+    };
+
     environment.systemPackages = with pkgs; [
         osu-lazer-bin
         easyeffects

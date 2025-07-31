@@ -227,6 +227,27 @@
         "type": "github"
       }
     },
+    "lsfg-vk-flake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753906499,
+        "narHash": "sha256-9J/lWQcE3+wCQFBlujQ4t52AC1xa+wHBdP0Z+dk7sJA=",
+        "owner": "pabloaul",
+        "repo": "lsfg-vk-flake",
+        "rev": "754f64f7e489ba16ebc3e77ad8f480c50b5a428c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pabloaul",
+        "ref": "main",
+        "repo": "lsfg-vk-flake",
+        "type": "github"
+      }
+    },
     "nix": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -393,6 +414,7 @@
         "determinate": "determinate",
         "disko": "disko",
         "home-manager": "home-manager_2",
+        "lsfg-vk-flake": "lsfg-vk-flake",
         "nixos": "nixos",
         "nixos-facter-modules": "nixos-facter-modules",
         "nixos-hardware": "nixos-hardware",

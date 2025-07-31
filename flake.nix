@@ -27,6 +27,8 @@
             url = "github:0xc000022070/zen-browser-flake";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        lsfg-vk-flake.url = "github:pabloaul/lsfg-vk-flake/main";
+        lsfg-vk-flake.inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixConfig = {
@@ -51,6 +53,7 @@
         disko,
         home-manager,
         zen-browser,
+        lsfg-vk-flake,
         ...
     } @ inputs: {
         nixosConfigurations = {
@@ -71,6 +74,7 @@
                     ./extras/uwuraid.nix
                     ./extras/dev.nix
                     ./extras/gaming.nix
+                    lsfg-vk-flake.nixosModules.default
                     ./extras/folding.nix
                 ];
             };
@@ -97,6 +101,7 @@
                     ./extras/uwuraid.nix
                     ./extras/dev.nix
                     ./extras/gaming.nix
+                    lsfg-vk-flake.nixosModules.default
                 ];
             };
             NOmom = nixpkgs.lib.nixosSystem {
