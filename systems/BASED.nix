@@ -154,9 +154,10 @@
     #   LC_ALL = "en_US.UTF-8";
     # };
 
-    # systemd.extraConfig = ''
-    #     DefaultTimeoutStopSec=15s
+    # systemd.settings.Manager = ''
+    #   DefaultTimeoutStopSec=15s
     # '';
+    # systemd.settings.Manager = "";
 
     zramSwap = {
         enable = true;
