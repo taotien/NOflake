@@ -12,14 +12,24 @@
 
     services.tailscale.useRoutingFeatures = "client";
 
+    services.displayManager.sddm.enable = true;
+    services.displayManager.sddm.wayland.enable = true;
+    services.desktopManager.plasma6.enable = true;
+    environment.plasma6.excludePackages = with pkgs; [
+        kdePackages.elisa
+        kdePackages.konsole
+        kdePackages.gwenview
+        kdePackages.kate
+        kdePackages.xwaylandvideobridge
+        xterm
+    ];
+
     powerManagement.powertop.enable = true;
     services.fwupd.enable = true;
     services.fprintd.enable = true;
     hardware.sensor.iio.enable = true;
     services.usbmuxd.enable = true;
     services.usbmuxd.package = pkgs.usbmuxd2;
-
-    services.displayManager.sddm.wayland.enable = true;
 
     # systemd.user.services.backlight = {
     #   # description = "";
