@@ -3,6 +3,11 @@
     services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"
 
     environment.systemPackages = with pkgs; [
+        # cringelang
+        go
+        delve
+        gotools
+
         # act
         # asm-lsp
         # bash-language-server

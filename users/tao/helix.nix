@@ -1,8 +1,4 @@
-{
-    inputs,
-    pkgs,
-    ...
-}: {
+{...}: {
     programs.helix = {
         settings = {
             theme = "gruvbox_dark_hard";
@@ -191,6 +187,7 @@
                     auto-format = true;
                     formatter = {
                         command = "alejandra";
+                        args = ["--experimental-config" "alejandra.toml"];
                     };
                 }
                 {

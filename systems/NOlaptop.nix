@@ -111,7 +111,7 @@
     boot.kernelParams = [
         "amdgpu.abmlevel=1"
         # "amdgpu.dcdebugmask=0x400"
-        # "mem_sleep_default=deep"
+        "mem_sleep_default=deep"
     ];
     boot.kernelModules = ["amdgpu"];
     powerManagement.cpuFreqGovernor = "powersave";
