@@ -99,6 +99,10 @@ in {
                 ui = {
                     default-command = "log";
                 };
+                fix.tools.alejandra = {
+                    command = ["alejandra"];
+                    patterns = ["glob:'**/*.nix'"];
+                };
             };
             # package = inputs.jujutsu.packages.${pkgs.system}.default;
         };
