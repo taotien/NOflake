@@ -107,6 +107,12 @@ in {
             # package = inputs.jujutsu.packages.${pkgs.system}.default;
         };
 
+        mpv = {
+            config = {
+                demuxer-max-bytes = "10GiB";
+            };
+        };
+
         git = {
             enable = true;
             userName = "Tao Tien";

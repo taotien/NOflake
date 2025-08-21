@@ -8,6 +8,7 @@
         go
         delve
         gotools
+        gopls
 
         # act
         # asm-lsp
