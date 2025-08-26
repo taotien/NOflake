@@ -39,7 +39,7 @@ def "config stuff" [] {
   hx ~/projects/NOflake/users/tao/nushell/stuff.nu
 }
 def deluge-gtk [] {
-  tsr
+  tr
   deluge-gtk
 }
 alias deluge = deluge-gtk

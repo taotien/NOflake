@@ -13,7 +13,7 @@ def check-mullvad [] {
 }
 
 # switch to a specific exit node, or none
-def tse [exit_node: string = ""] {
+def te [exit_node: string = ""] {
   if ($exit_node | is-empty) and (ps | find deluge | is-not-empty) {
     print "stop summoning first!"
     return false
@@ -30,7 +30,7 @@ def tse [exit_node: string = ""] {
 }
 
 # list all mullvad exit nodes
-def tsx [] {
+def tx [] {
 tailscale exit-node list
   | lines
   | drop 4
@@ -43,7 +43,7 @@ tailscale exit-node list
 
 # sort mullvad exit nodes by fastest ping
 def tsp [] {
-tsx
+tx
   | where COUNTRY == USA
   | par-each {
     insert ping {
@@ -66,15 +66,15 @@ tsx
 }
 
 # switch to a random mullvad exit node
-def tsr [] {
-  tsx
+def tr [] {
+  tx
     | get (random int 0..($in | length))
-    | tse $in.IP
+    | te $in.IP
     | return $in
 }
 
-alias ts = tailscale
-alias tss = tailscale status
-alias tsu = tailscale up
-alias tsd = tailscale down
-alias tsa = tailscale exit-node suggest
+alias t = tailscale
+alias ts = tailscale status
+alias tu = tailscale up
+alias td = tailscale down
+alias ta = tailscale exit-node suggest
