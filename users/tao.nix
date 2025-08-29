@@ -11,6 +11,8 @@
     };
 
     users.users.tao.packages = with pkgs; [
+        zotero
+        openscad
         syncplay
         # boxxy
         calibre

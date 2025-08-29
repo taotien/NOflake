@@ -11,7 +11,6 @@ alias p = pueue
 alias snapper = snapper -c home
 alias zl = zellij
 
-
 alias cringe = sudo bootctl set-oneshot auto-windows
 
 def h [query?: path] {

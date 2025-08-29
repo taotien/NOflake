@@ -78,3 +78,5 @@ alias ts = tailscale status
 alias tu = tailscale up
 alias td = tailscale down
 alias ta = tailscale exit-node suggest
+
+alias wno = ssh root@whyfi "etherwake -i br-lan 04:42:1A:E7:62:C3"

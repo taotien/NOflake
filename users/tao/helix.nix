@@ -3,6 +3,7 @@
         settings = {
             theme = "gruvbox_dark_hard";
             editor = {
+                rainbow-brackets = true;
                 end-of-line-diagnostics = "hint";
                 inline-diagnostics = {
                     cursor-line = "warning";
