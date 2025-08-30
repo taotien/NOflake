@@ -41,7 +41,7 @@
         freecad-wayland
         gocryptfs
         gurk-rs
-        jellyfin-media-player
+        # jellyfin-media-player
         # kdePackages.plasma-vault
         keepassxc
         # leetcode-cli
