@@ -90,7 +90,7 @@
     services.gnome.gcr-ssh-agent.enable = false;
 
     services.printing.enable = lib.mkDefault true;
-    services.printing.drivers = with pkgs; lib.mkDefault [gutenprint gutenprintBin];
+    services.printing.drivers = with pkgs; lib.mkDefault [gutenprint gutenprintBin hplip];
     services.avahi = {
         enable = true;
         nssmdns4 = true;

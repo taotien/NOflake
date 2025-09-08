@@ -76,8 +76,9 @@
         # python
         # pypy3
         python3
-        uv
         ruff
+        ty
+        uv
         python312
 
         # rust

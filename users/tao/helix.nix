@@ -81,6 +81,14 @@
             ];
             language = [
                 {
+                    name = "python";
+                    auto-format = true;
+                    # formatter = {
+                    #     command = "ruff";
+                    #     args = ["format"];
+                    # };
+                }
+                {
                     name = "typst";
                     text-width = 100;
                 }
