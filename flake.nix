@@ -19,10 +19,10 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        # helix = {
-        #   url = "github:mattwparas/helix/steel-event-system";
-        #   inputs.nixpkgs.follows = "nixpkgs";
-        # };
+        helix = {
+            url = "github:helix-editor/helix";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
         zen-browser = {
             url = "github:0xc000022070/zen-browser-flake";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -33,11 +33,11 @@
 
     nixConfig = {
         extra-substituters = [
-            # "https://helix.cachix.org/"
+            "https://helix.cachix.org/"
             "https://devenv.cachix.org"
         ];
         extra-trusted-public-keys = [
-            # "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+            "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
             "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
         ];
     };
@@ -54,6 +54,7 @@
         home-manager,
         zen-browser,
         lsfg-vk-flake,
+        helix,
         ...
     } @ inputs: {
         nixosConfigurations = {

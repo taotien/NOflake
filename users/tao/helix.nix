@@ -1,4 +1,4 @@
-{...}: {
+{inputs, pkgs, ...}: {
     programs.helix = {
         settings = {
             theme = "gruvbox_dark_hard";
@@ -262,6 +262,6 @@
         };
         enable = true;
         defaultEditor = true;
-        # package = inputs.helix.packages.${pkgs.system}.default;
+        package = inputs.helix.packages.${pkgs.system}.default;
     };
 }
