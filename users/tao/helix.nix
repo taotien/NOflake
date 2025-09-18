@@ -83,6 +83,7 @@
                 {
                     name = "python";
                     auto-format = true;
+                    language-servers = [ "basedpyright" "ty" "ruff" ];
                     # formatter = {
                     #     command = "ruff";
                     #     args = ["format"];
@@ -227,6 +228,10 @@
                 };
             };
             language-server = {
+                basedpyright = {
+                    command = "basedpyright-langserver";
+                    args = ["--stdio"];
+                };
                 rust-analyzer.config.check.command = "clippy";
                 # gas = {
                 #   command = "asm-lsp";
