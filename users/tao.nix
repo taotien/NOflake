@@ -11,6 +11,7 @@
     };
 
     users.users.tao.packages = with pkgs; [
+        printrun
         zotero
         openscad
         syncplay
