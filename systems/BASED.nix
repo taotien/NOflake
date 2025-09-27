@@ -6,6 +6,7 @@
     ...
 }: {
     environment.systemPackages = with pkgs; [
+        waypipe
         # inputs.helix.packages.${pkgs.system}.default
         # screen
         bat

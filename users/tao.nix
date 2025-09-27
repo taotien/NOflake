@@ -5,6 +5,7 @@
     lib,
     ...
 }: {
+    # environment.sessionVariables.XDG_RUNTIME_DIR = "/run/user/${toString config.users.tao.uid}";
     services.syncplay = {
         enable = true;
         motd = "we only watch kino here";
@@ -23,7 +24,7 @@
         # fractal
         # freerdp
         # inputs.plasma-manager.packages.${pkgs.system}.default
-        # jellyfin-mpv-shim
+        jellyfin-mpv-shim
         # libsForQt5.kcharselect
         # mendeley
         # piper
