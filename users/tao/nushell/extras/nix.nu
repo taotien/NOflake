@@ -19,9 +19,9 @@ def rebuild [subcommand, --builders: string] {
     }
   }
   if ($builders == "") {
-    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --impure --verbose --builders "" --log-format internal-json o+e>| nom --json
+    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --accept-flake-config --impure --verbose --builders "" --log-format internal-json o+e>| nom --json
   } else {
-    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --impure --verbose --log-format internal-json o+e>| nom --json
+    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --accept-flake-config --impure --verbose --log-format internal-json o+e>| nom --json
   }
   toastify send rebuild done!
 }

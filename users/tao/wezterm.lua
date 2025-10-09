@@ -1,6 +1,6 @@
 local wezterm = require 'wezterm';
 local config = {
-	font = wezterm.font 'FiraCode Nerd Font',
+	font = wezterm.font 'IBM Plex Mono',
 	color_scheme = 'GruvboxDarkHard',
 	window_decorations = "NONE",
 

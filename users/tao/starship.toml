@@ -20,7 +20,7 @@ $battery\
 $time\
 
 [ ](fg:color_bg1)\
-$line_break$character"""
+$line_break$status$character"""
 
 palette = 'gruvbox_dark'
 [palettes.gruvbox_dark]
@@ -79,7 +79,7 @@ symbol = " 🥋 "
 when = "exit ((jj root | complete).exit_code)"
 style = "bg:color_aqua"
 command = '''
-jj log --no-pager --revisions @ --no-graph --ignore-working-copy --template '
+jj log --no-pager --revisions @ --no-graph --template '
   separate(
     " ",
     change_id.shortest(),

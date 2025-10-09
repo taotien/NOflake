@@ -48,6 +48,7 @@
         script = "/run/current-system/sw/bin/nvidia-smi -pl=400";
         wantedBy = ["multi-user.target"];
     };
+    services.lact.enable = true;
 
     services.udev.packages = [pkgs.openrgb];
     services.udev.extraRules = ''

@@ -56,15 +56,17 @@
                 k = "extend_line_down";
                 j = "extend_line_up";
             };
-            keys.normal.space.w = {
-                k = "jump_view_down";
-                j = "jump_view_up";
-                K = "swap_view_down";
-                J = "swap_view_up";
-            };
-            keys.normal.space.t = {
-                r = "@mip:reflow<ret>";
-                s = "@|lines | sort | to text<ret>";
+            keys.normal.space = {
+                w = {
+                    k = "jump_view_down";
+                    j = "jump_view_up";
+                    K = "swap_view_down";
+                    J = "swap_view_up";
+                };
+                t = {
+                    r = "@mip:reflow<ret>";
+                    s = "@|lines | sort | to text<ret>";
+                };
             };
         };
         languages = {
@@ -201,7 +203,7 @@
                     auto-format = true;
                     formatter = {
                         command = "alejandra";
-                        args = ["--experimental-config" "alejandra.toml"];
+                        args = ["--experimental-config" "%{workspace_directory}/alejandra.toml"];
                     };
                 }
                 {

@@ -24,7 +24,7 @@
         lact
     ];
 
-    systemd.services.lactd.wantedBy = ["multi-user.target"];
+    services.lact.enable = true;
 
     services.fwupd.enable = true;
     services.tailscale.useRoutingFeatures = "client";

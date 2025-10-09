@@ -39,7 +39,9 @@ def "snapper clear" [] {
   snapper delete $"($first.number)-($last.number)"
 }
 
-const mode_path: path = "/sys/devices/platform/nct6775.656/hwmon/hwmon*/pwm2_enable"
+let mode_path: path = (
+  glob "/sys/devices/platform/nct6775.656/hwmon/hwmon*/pwm2_enable" | get 0
+)
 
 def quiet [] {
   match (hostname) {
@@ -68,4 +70,8 @@ def louder [] {
 def asciicam [] {
   $env.DISPLAY = null
   mpv -vo caca av://v4l2:/dev/video0 --demuxer-lavf-o=input_format=mjpeg --profile=low-latency e>| /dev/null
+}
+
+def sunu [command] {
+  sudo nu --stdin --commands $command
 }

@@ -65,6 +65,12 @@ alias list-automounts = systemctl list-units --type=automount
 def remount [] {
   let reload = list-automounts | detect columns -n | get column0 | input list --multi
   for mount in $reload {
-    systemctl resart $mount
+    systemctl restart $mount
   }
 }
+
+def cpedit [file: path] {
+  mv $file $"($file).sym"; cp $"($file).sym" $file; chmod +w $file
+}
+
+alias job = job list

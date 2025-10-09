@@ -3,9 +3,10 @@
     services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"
 
     environment.systemPackages = with pkgs; [
+        mergiraf
+        lazyjj
         egglog
         z3
-        jupyter
         # cringelang
         go
         delve
@@ -79,7 +80,7 @@
         ruff
         ty
         uv
-        python312
+        pyright
 
         # rust
         cargo-binstall

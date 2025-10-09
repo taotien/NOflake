@@ -98,11 +98,15 @@ in {
                 };
                 ui = {
                     default-command = "log";
+                    pager = "delta --syntax-theme gruvbox-dark";
+                    diff-formatter = ":git";
                 };
                 fix.tools.alejandra = {
                     command = ["alejandra"];
                     patterns = ["glob:'**/*.nix'"];
                 };
+                # merge.tools.mergiraf = {
+                # }
             };
             # package = inputs.jujutsu.packages.${pkgs.system}.default;
         };
