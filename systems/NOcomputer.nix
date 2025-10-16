@@ -4,6 +4,8 @@
     lib,
     ...
 }: {
+    services.displayManager.cosmic-greeter.enable = false;
+
     environment.systemPackages = with pkgs; [
         nvtopPackages.nvidia
         # egl-wayland
@@ -15,10 +17,6 @@
         openrgb-plugin-effects
         openrgb-plugin-hardwaresync
     ];
-    services.hardware.openrgb = {
-        enable = true;
-        package = pkgs.openrgb-with-all-plugins;
-    };
 
     services.tailscale.useRoutingFeatures = "both";
     boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
@@ -50,6 +48,10 @@
     services.udev.extraRules = ''
         KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a3c5", MODE="0666"
     '';
+    services.hardware.openrgb = {
+        enable = true;
+        package = pkgs.openrgb-with-all-plugins;
+    };
 
     boot.kernelPackages = pkgs.linuxPackages_latest;
     # boot.kernelPackages = pkgs.linuxPackages_zen;

@@ -1,4 +1,8 @@
-{inputs, pkgs, ...}: {
+{
+    inputs,
+    pkgs,
+    ...
+}: {
     programs.helix = {
         settings = {
             theme = "gruvbox_dark_hard";
@@ -83,7 +87,7 @@
                 {
                     name = "python";
                     auto-format = true;
-                    language-servers = [ "basedpyright" "ty" "ruff" ];
+                    language-servers = ["basedpyright" "ty" "ruff"];
                     # formatter = {
                     #     command = "ruff";
                     #     args = ["format"];
