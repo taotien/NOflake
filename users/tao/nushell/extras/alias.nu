@@ -73,4 +73,5 @@ def cpedit [file: path] {
   mv $file $"($file).sym"; cp $"($file).sym" $file; chmod +w $file
 }
 
+alias core-job = job
 alias job = job list

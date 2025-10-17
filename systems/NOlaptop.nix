@@ -3,8 +3,7 @@
     config,
     pkgs,
     ...
-}:
-{
+}: {
     # nixpkgs.overlays = [
     #   (final: prev: {
     #     libinput = prev.libinput.overrideAttrs (old: {
@@ -47,12 +46,6 @@
     services.xserver.videoDrivers = [
         "amdgpu"
     ];
-    hardware.graphics.extraPackages = with pkgs; [
-        amdvlk
-    ];
-    hardware.graphics.extraPackages32 = with pkgs; [
-        driversi686Linux.amdvlk
-    ];
 
     boot.kernelPackages = pkgs.linuxPackages_latest;
     boot.kernelParams = [
@@ -66,6 +59,17 @@
     nix.buildMachines = [
         {
             hostName = "nocomputer";
+            systems = ["x86_64-linux" "i686-linux"];
+            supportedFeatures = [
+                "benchmark"
+                "big-parallel"
+                "gccarch-znver4"
+                "kvm"
+                "nixos-test"
+            ];
+        }
+        {
+            hostName = "localhost";
             systems = ["x86_64-linux" "i686-linux"];
             supportedFeatures = [
                 "benchmark"

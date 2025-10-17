@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+    lib,
+    pkgs,
+    ...
+}: {
+    programs.qgroundcontrol.enable = true;
     environment.systemPackages = with pkgs; [
         # keep-sorted start
         # act
@@ -133,7 +138,14 @@
 
     virtualisation.docker = {
         enable = true;
-        storageDriver = "btrfs";
+        # storageDriver =
+        #     if lib.strings.hasPrefix "NOlaptop" (builtins.readFile /etc/hostname)
+        #     then "bcachefs"
+        #     else "btrfs";
+        storageDriver =
+            if lib.strings.hasPrefix "NOcomputer" (builtins.readFile /etc/hostname)
+            then "btrfs"
+            else null;
     };
     # virtualisation.docker.rootless = {
     #   enable = true;

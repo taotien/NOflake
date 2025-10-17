@@ -50,7 +50,7 @@ def "fans" [duty?: int] {
     }
     "NOlaptop" => {
       match $duty {
-        null => { sudo ectool autofanctl }
+        null => { sudo ectool autofanctrl }
         _ => { sudo ectool fanduty $duty }
       }
     }

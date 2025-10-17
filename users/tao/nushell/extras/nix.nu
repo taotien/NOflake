@@ -10,6 +10,13 @@ def ns [...packages: string] {
 # }
 
 def rebuild [subcommand, --builders: string] {
+  if (
+    df -h | detect columns --guess | where "Mounted on" == "/" or "Mounted on" == "/boot" | get Use% | each {parse "{usage}%" | get usage | into int} | flatten | all {$in < 99}
+  ) {
+    print "not enough disk space!"
+    return false
+  }
+  
   mut builders = $builders;
   if (open /etc/hostname --raw) == "NOlaptop\n" and ($builders != "") {
     if (ping -c1 -W1 nocomputer | complete | $in.exit_code == 0) {
