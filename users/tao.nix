@@ -5,30 +5,17 @@
     lib,
     ...
 }: {
-    # environment.sessionVariables.XDG_RUNTIME_DIR = "/run/user/${toString config.users.tao.uid}";
-    services.syncplay = {
-        enable = true;
-        motd = "we only watch kino here";
-    };
-
     users.users.tao.packages = with pkgs; [
-        printrun
-        zotero
-        openscad
-        syncplay
         # boxxy
-        calibre
         # carapace
         # cloud-hypervisor
         # davinci-resolve
         # fractal
         # freerdp
         # inputs.plasma-manager.packages.${pkgs.system}.default
-        jellyfin-mpv-shim
+        # jellyfin-media-player
         # libsForQt5.kcharselect
-        # mendeley
         # piper
-        # slack
         # tectonic
         # texlab
         # thunderbird
@@ -37,16 +24,15 @@
         aspell
         aspellDicts.en
         bottles
-        # darktable
+        calibre
+        darktable
         deluge
         discord
         freecad-wayland
         gocryptfs
         gurk-rs
-        # jellyfin-media-player
-        # kdePackages.plasma-vault
+        jellyfin-mpv-shim
         keepassxc
-        # leetcode-cli
         man-pages
         man-pages-posix
         miniserve
@@ -59,8 +45,10 @@
         obs-studio
         oculante
         onlyoffice-bin
+        openscad
         pandoc
         pipe-rename
+        printrun
         prusa-slicer
         qmk
         qmk-udev-rules
@@ -70,6 +58,7 @@
         slack
         snapper
         starship
+        syncplay
         syncthingtray
         taskwarrior3
         tinymist
@@ -81,13 +70,25 @@
         wl-clipboard-rs
         yt-dlp
         zathura
-        zellij
         zoom-us
+        zotero
         zoxide
     ];
     programs.adb.enable = true;
     programs.kdeconnect.enable = true;
     environment.shells = with pkgs; [nushell];
+
+    fonts.packages = with pkgs; [
+        # (nerdfonts.override {fonts = ["FiraCode"];})
+        nerd-fonts.fira-code
+        noto-fonts-cjk-sans
+        noto-fonts-cjk-serif
+        noto-fonts-color-emoji
+        ibm-plex
+        cooper-hewitt
+    ];
+
+    documentation.enable = true;
 
     # virtualisation.libvirtd.enable = true;
     # virtualisation.libvirtd.qemu.swtpm.enable = true;
@@ -99,22 +100,11 @@
     #   enableExtensionPack = true;
     # };
 
-    # nixpkgs.overlays = [
-    #   (final: prev: {
-    #     options.services.snapper.configs = prev.options.services.snapper.configs.overrideAttrs (old: {
-    #       configOptions.FSTYPE = lib.mkOption {
-    #         type = lib.types.enum ["btrfs" "bcachefs"];
-    #       };
-    #     });
-    #   })
-    # ];
-
-    disabledModules = ["services/misc/snapper.nix"];
+   disabledModules = ["services/misc/snapper.nix"];
     imports = [../extras/snapper.nix];
     services.snapper.configs = {
         home = {
             SUBVOLUME = "/home";
-            # FSTYPE = "bcachefs";
             FSTYPE =
                 if lib.strings.hasPrefix "NOlaptop" (builtins.readFile /etc/hostname)
                 then "bcachefs"
@@ -140,18 +130,6 @@
     boot.extraModprobeConfig = ''
         options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
     '';
-
-    fonts.packages = with pkgs; [
-        # (nerdfonts.override {fonts = ["FiraCode"];})
-        nerd-fonts.fira-code
-        noto-fonts-cjk-sans
-        noto-fonts-cjk-serif
-        noto-fonts-color-emoji
-        ibm-plex
-        cooper-hewitt
-    ];
-
-    documentation.enable = true;
 
     # age.secrets.password-tao.file = ../secrets/syncthing-uwuraid.age;
     users.users.tao = {

@@ -6,9 +6,7 @@
     ...
 }: {
     environment.systemPackages = with pkgs; [
-        waypipe
         # inputs.helix.packages.${pkgs.system}.default
-        # screen
         bat
         bottom
         cifs-utils
@@ -28,40 +26,18 @@
         ouch
         pueue
         ripgrep
-        # rustdesk
+        rustdesk
         sendme
         skim
         tree
+        waypipe
         wezterm
         wget
+        zellij
         zstd
     ];
     programs.partition-manager.enable = lib.mkDefault true;
 
-    # programs.nh = {
-    #   enable = true;
-    # };
-
-    programs.firefox.enable = true;
-    programs.firefox.policies = {
-        DisablePocket = true;
-        PasswordManagerEnabled = false;
-        NoDefaultBookmarks = false;
-    };
-    programs.firefox.preferences = {
-        "media.ffmpeg.vaapi.enabled" = true;
-
-        "widget.use-xdg-desktop-portal.file-picker" = 1;
-        "widget.use-xdg-desktop-portal.location" = 1;
-        "widget.use-xdg-desktop-portal.mime-handler" = 1;
-        "widget.use-xdg-desktop-portal.open-uri" = 1;
-        "widget.use-xdg-desktop-portal.settings" = 1;
-
-        "accessibility.browsewithcaret_shortcut.enabled" = false;
-        "browser.bookmarks.restore_default_bookmarks" = false;
-    };
-
-    services.flatpak.enable = true;
 
     hardware.graphics.enable = true;
     # hardware.opengl = {
@@ -84,6 +60,7 @@
         cosmic-wallpapers
     ];
 
+    services.flatpak.enable = true;
     services.openssh.enable = true;
     users.users.root.openssh.authorizedKeys.keys = [
     ];
