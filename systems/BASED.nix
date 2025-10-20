@@ -38,7 +38,6 @@
     ];
     programs.partition-manager.enable = lib.mkDefault true;
 
-
     hardware.graphics.enable = true;
     # hardware.opengl = {
     #   enable = true;
@@ -59,6 +58,7 @@
         cosmic-term
         cosmic-wallpapers
     ];
+    xdg.portal.enable = true;
 
     services.flatpak.enable = true;
     services.openssh.enable = true;

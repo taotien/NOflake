@@ -104,7 +104,7 @@
     #   enableExtensionPack = true;
     # };
 
-   disabledModules = ["services/misc/snapper.nix"];
+    disabledModules = ["services/misc/snapper.nix"];
     imports = [../extras/snapper.nix];
     services.snapper.configs = {
         home = {
@@ -134,18 +134,6 @@
     boot.extraModprobeConfig = ''
         options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
     '';
-
-    fonts.packages = with pkgs; [
-        # (nerdfonts.override {fonts = ["FiraCode"];})
-        nerd-fonts.fira-code
-        noto-fonts-cjk-sans
-        noto-fonts-cjk-serif
-        noto-fonts-color-emoji
-        ibm-plex
-        cooper-hewitt
-    ];
-
-    documentation.enable = true;
 
     # age.secrets.password-tao.file = ../secrets/syncthing-uwuraid.age;
     users.users.tao = {

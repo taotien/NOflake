@@ -9,8 +9,6 @@
         motd = "we only watch kino here";
     };
 
-    services.displayManager.cosmic-greeter.enable = false;
-
     environment.systemPackages = with pkgs; [
         nvtopPackages.nvidia
         # egl-wayland
