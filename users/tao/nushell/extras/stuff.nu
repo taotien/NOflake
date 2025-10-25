@@ -43,7 +43,7 @@ def "snapper clear" [] {
 def quiet [] {
   match (hostname) {
     "NOcomputer" => {
-      const mode_path: path = "/sys/devices/platform/nct6775.656/hwmon/hwmon*/pwm2_enable"
+      let mode_path: path = (glob "/sys/devices/platform/nct6775.656/hwmon/hwmon*/pwm2_enable" | get 0)
       sudo -- nu -c $"5 o> ($mode_path)"
     }
     "NOlaptop" => {
@@ -55,7 +55,7 @@ def quiet [] {
 def loud [] {
   match (hostname) {
     "NOcomputer" => {
-      const mode_path: path = "/sys/devices/platform/nct6775.656/hwmon/hwmon*/pwm2_enable"
+      let mode_path: path = (glob "/sys/devices/platform/nct6775.656/hwmon/hwmon*/pwm2_enable" | get 0)
       sudo -- nu -c $"5 o> ($mode_path)"
     }
     "NOlaptop" => {
@@ -67,7 +67,7 @@ def loud [] {
 def louder [] {
   match (hostname) {
     "NOcomputer" => {
-      const mode_path: path = "/sys/devices/platform/nct6775.656/hwmon/hwmon*/pwm2_enable"
+      let mode_path: path = (glob "/sys/devices/platform/nct6775.656/hwmon/hwmon*/pwm2_enable" | get 0)
       sudo -- nu -c $"0 o> ($mode_path)"
     }
     "NOlaptop" => {

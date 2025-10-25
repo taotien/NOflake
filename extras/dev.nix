@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+    services.lorri.enable = true;
+
     services.scx.enable = true;
     services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"
 

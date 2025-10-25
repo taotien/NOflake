@@ -6,7 +6,7 @@ d = "doc --no-deps --open"
 [build]
 target = "x86_64-unknown-linux-gnu"
 # rustc-wrapper = "${pkgs.sccache}/bin/sccache"
-rustc-wrapper = "/path/to/sccache"
+# rustc-wrapper = "/path/to/sccache"
 rustflags = ["-Zthreads=0"]
 
 [unstable]
