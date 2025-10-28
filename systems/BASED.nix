@@ -6,6 +6,7 @@
     ...
 }: {
     environment.systemPackages = with pkgs; [
+        smartmontools
         # inputs.helix.packages.${pkgs.system}.default
         bat
         bottom
@@ -84,9 +85,17 @@
         settings.IPv6.Enabled = true;
         settings.Settings.AutoConnect = true;
     };
+    services.smartd = {
+        enable = true;
+        notifications.systembus-notify.enable = true;
+    };
 
-    services.smartd.enable = true;
     # services.btrfs.autoScrub.enable = lib.mkDefault true;
+    services.btrfs.autoScrub = {
+        enable = true;
+        interval = "weekly";
+        fileSystems = ["/"];
+    };
 
     security.rtkit.enable = true;
     services.pipewire = {
