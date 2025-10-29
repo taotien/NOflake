@@ -169,7 +169,7 @@
         experimental-features = "nix-command flakes";
         auto-optimise-store = true;
         # adding logged in users allows for passwordless root
-        # trusted-users = ["root"];
+        trusted-users = ["root" "@wheel"];
         system-features = [
             "benchmark"
             "big-parallel"
