@@ -31,17 +31,6 @@
         lsfg-vk-flake.inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixConfig = {
-        extra-substituters = [
-            "https://helix.cachix.org/"
-            "https://devenv.cachix.org"
-        ];
-        extra-trusted-public-keys = [
-            "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
-            "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-        ];
-    };
-
     outputs = {
         nixos,
         self,

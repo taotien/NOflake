@@ -1,8 +1,12 @@
 {pkgs, ...}: {
-    nix.extraOptions = ''
-        extra-substituters = https://devenv.cachix.org
-        extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
-    '';
+    nix.settings.substituters = [
+        "https://helix.cachix.org/"
+        "https://devenv.cachix.org"
+    ];
+    nix.settings.trusted-public-keys = [
+        "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+        "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+    ];
     services.lorri.enable = true;
 
     services.scx.enable = true;
