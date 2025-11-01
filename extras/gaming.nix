@@ -21,7 +21,7 @@
         r2modman
         wine
         temurin-jre-bin-17
-        graalvm-ce
+        graalvmPackages.graalvm-ce
     ];
 
     networking.firewall.allowedTCPPorts = [25565];

@@ -105,7 +105,7 @@
         flip-link
         mdbook
         mold-wrapped
-        probe-rs
+        probe-rs-tools
         rustup
         rusty-man
         sccache

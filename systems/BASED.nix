@@ -11,7 +11,7 @@
         bat
         bottom
         cifs-utils
-        du-dust
+        dust
         dumbpipe
         exfatprogs
         fastfetch

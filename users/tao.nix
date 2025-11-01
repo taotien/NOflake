@@ -48,7 +48,7 @@
         nvd
         obs-studio
         oculante
-        onlyoffice-bin
+        onlyoffice-desktopeditors
         openscad
         pandoc
         pipe-rename
