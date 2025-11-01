@@ -45,15 +45,19 @@ def bump [...rest] {
       jj desc -m "bump (unbuilt)"
     }
     "bump (unbuilt)" | "bump (failed)" => {}
+    _ => {
+      print "where to put bump?"
+      return
+    }
   }
+  let r = jj log -r @ --no-pager --no-graph --template 'change_id'
   sudo nix flake update
   # rc2nix | save -f /home/tao/projects/NOflake/users/tao/plasma.nix;
   if (rebuild boot) {
-    jj desc -m $"bump (date now | format date "%Y-%m-%d")"
+    jj desc -r $r -m $"bump (date now | format date "%Y-%m-%d")"
   } else {
-    jj desc -m "bump (failed)"
+    jj desc -r $r -m "bump (failed)"
   }
-  jj new
 }
 
 alias rb = rebuild boot
