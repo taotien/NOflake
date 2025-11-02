@@ -13,6 +13,7 @@
     services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"
 
     environment.systemPackages = with pkgs; [
+        basedpyright
         mergiraf
         lazyjj
         egglog

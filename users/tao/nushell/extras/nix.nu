@@ -19,11 +19,17 @@ def rebuild [subcommand, --builders: string] {
     }
   }
   if ($builders == "") {
-    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --accept-flake-config --impure --verbose --builders "" --log-format internal-json o+e>| nom --json
+    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --accept-flake-config --impure --verbose --builders "" o+e>| nom
   } else {
-    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --accept-flake-config --impure --verbose --log-format internal-json o+e>| nom --json
+    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --accept-flake-config --impure --verbose o+e>| nom
   }
-  toastify send rebuild done!
+  if $env.LAST_EXIT_CODE == 0 {
+    toastify send "rebuild" "done!"
+    return true
+  } else {
+    toastify send "rebuild" "failed!"
+    return false
+  }
 }
 
 def post-rebuild [] {
@@ -34,15 +40,19 @@ def post-rebuild [] {
 
 def bump [...rest] {
   cd /home/tao/projects/NOflake/
-  mut r = "@"
-  if (jj log -r @ --no-pager --no-graph --template 'if(empty,"empty")' | $in == "empty") {
-    $r = "@-"
+  match (jj log -r @ --no-pager --no-graph --template 'if(empty, "empty", self.description())') {
+    "empty" => {
+      jj desc -m "bump (unbuilt)"
+    }
+    "bump (unbuilt)" | "bump (failed)" => {}
   }
-  jj new -m "bump" -r $r
-  nix flake update
+  sudo nix flake update
   # rc2nix | save -f /home/tao/projects/NOflake/users/tao/plasma.nix;
-  # sudo nix store ping --store ssh://nocomputer
-  rebuild boot
+  if (rebuild boot) {
+    jj desc -m $"bump (date now | format date "%Y-%m-%d")"
+  } else {
+    jj desc -m "bump (failed)"
+  }
   jj new
 }
 
