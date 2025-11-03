@@ -148,26 +148,18 @@ in {
                     forwardAgent = true;
                     identityFile = "/home/tao/.ssh/id_ed25519";
                 };
-                "griffin" = {
-                    hostname = "griffin.cs.usfca.edu";
-                    user = "tltien";
-                    forwardAgent = true;
-                    identityFile = "/home/tao/.ssh/id_ed25519";
-                    # proxyCommand = "ssh griffin.cs.usfca.edu";
-                };
+                # "chupacabra" = {
+                #     hostname = "stargate.cs.usfca.edu";
+                #     user = "tltien";
+                #     forwardAgent = true;
+                #     identityFile = "/home/tao/.ssh/id_ed25519";
+                #     proxyCommand = "ssh chupacabra.cs.usfca.edu";
+                # };
                 "github" = {
                     hostname = "github.com";
                     forwardAgent = true;
                     identityFile = "/home/tao/.ssh/id_ed25519";
                 };
-                # "uwuraid" = {
-                #   hostname = "uwuraid";
-                #   user = "root";
-                #   # extraOptions = ["-t" "cd /mnt/user; exet \$SHELL -l"];
-                #   # requesttty = true;
-                #   # identityFile = "/home/tao/.ssh/id_ed25519";
-                #   proxyCommand = "ssh -t root@uwuraid cd /mnt/user; exec \\$SHELL -l";
-                # };
             };
         };
 
