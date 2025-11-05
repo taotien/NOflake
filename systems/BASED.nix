@@ -53,14 +53,14 @@
     systemd.services.display-manager.restartIfChanged = false;
     services.desktopManager.cosmic.enable = lib.mkDefault true;
     services.displayManager.cosmic-greeter.enable = lib.mkDefault true;
-    environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
+    # environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
     environment.cosmic.excludePackages = with pkgs; [
         cosmic-edit
         cosmic-player
         cosmic-term
         cosmic-wallpapers
     ];
-    xdg.portal.enable = true;
+    xdg.portal.enable = lib.mkForce true;
 
     services.flatpak.enable = true;
     services.openssh.enable = true;

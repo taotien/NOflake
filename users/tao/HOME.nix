@@ -136,7 +136,6 @@ in {
             # extraConfig = builtins.readFile ./nushell/stuff.nu;
             extraConfig = lib.concatStrings (map builtins.readFile (map (x: ./nushell/extras/. + x) (map (x: "/" + x) (builtins.attrNames (builtins.readDir ./nushell/extras)))));
             plugins = with pkgs.nushellPlugins; [
-                
             ];
         };
 

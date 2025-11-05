@@ -64,6 +64,8 @@
     boot.kernelParams = ["nvidia-drm.modeset=1"];
     # boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
     # boot.blacklistedKernelModules = with config.boot.kernelPackages; [ k10temp ];
+    # boot.initrd.kernelModules = ["nvidia"];
+    # boot.extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
 
     fileSystems."/home" = {
         device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";

@@ -64,7 +64,7 @@
                     };
                     t = {
                         r = "@mip:reflow<ret>";
-                        s = "<A-s>:sort<ret>";
+                        s = "@<A-s>:sort<ret>";
                     };
                 };
                 select = {
