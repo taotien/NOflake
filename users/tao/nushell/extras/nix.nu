@@ -40,15 +40,21 @@ def post-rebuild [] {
 
 def bump [...rest] {
   cd /home/tao/projects/NOflake/
-  match (jj log -r @ --no-pager --no-graph --template 'if(empty, "empty", self.description())') {
-    "empty" => {
-      jj desc -m "bump (unbuilt)"
+  mut r = "@"
+  loop {
+    match (jj log -r $r --no-pager --no-graph --template 'if(empty, "empty", self.description())') {
+      "empty" => {
+        $r = $r + "-"
+        continue 
+      }
+      "bump (unbuilt)" | "bump (failed)" => {
+        jj desc -m "bump (unbuilt)"
+      }
+      _ => {
+        jj new -m "bump (unbuilt)"
+      }
     }
-    "bump (unbuilt)" | "bump (failed)" => {}
-    _ => {
-      print "where to put bump?"
-      return
-    }
+    break
   }
   let r = jj log -r @ --no-pager --no-graph --template 'change_id'
   sudo nix flake update
@@ -58,6 +64,7 @@ def bump [...rest] {
   } else {
     jj desc -r $r -m "bump (failed)"
   }
+  jj new
 }
 
 alias rb = rebuild boot

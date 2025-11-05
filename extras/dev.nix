@@ -13,17 +13,6 @@
     services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"
 
     environment.systemPackages = with pkgs; [
-        basedpyright
-        mergiraf
-        lazyjj
-        egglog
-        z3
-        # cringelang
-        go
-        delve
-        gotools
-        gopls
-
         # act
         # asm-lsp
         # bash-language-server
@@ -39,16 +28,21 @@
         # radicle-node
         # vulkan-loader
         b3sum
+        basedpyright
         delta
         devenv
         direnv
+        egglog
         gh
+        gpclient
         hyperfine
         jujutsu
         just
         just-lsp
+        lazyjj
         lldb
         mask
+        mergiraf
         mprocs
         nomachine-client
         presenterm
@@ -60,6 +54,7 @@
         tio
         tokei # repo code stats
         typos
+        z3
 
         # # databases
         # sqlite
@@ -82,6 +77,12 @@
         gdb
         gnumake
 
+        # cringelang
+        go
+        delve
+        gotools
+        gopls
+
         # nix
         nil
         alejandra
@@ -95,8 +96,9 @@
         pyright
 
         # rust
-        cargo-binstall
         bacon
+        cargo-binstall
+        cargo-edit
         cargo-expand
         cargo-feature
         cargo-generate
