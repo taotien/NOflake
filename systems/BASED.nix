@@ -6,13 +6,12 @@
     ...
 }: {
     environment.systemPackages = with pkgs; [
-        smartmontools
-        # inputs.helix.packages.${pkgs.system}.default
+        # keep-sorted start
         bat
         bottom
         cifs-utils
-        dust
         dumbpipe
+        dust
         exfatprogs
         fastfetch
         ffmpeg
@@ -30,12 +29,14 @@
         rustdesk
         sendme
         skim
+        smartmontools
         tree
         waypipe
         wezterm
         wget
         zellij
         zstd
+        # keep-sorted end
     ];
     programs.partition-manager.enable = lib.mkDefault true;
 

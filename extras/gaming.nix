@@ -8,20 +8,22 @@
     };
 
     environment.systemPackages = with pkgs; [
-        osu-lazer-bin
-        easyeffects
+        # keep-sorted start
         # parsec-bin
         # yuzu # nintendo can suck the shit out of my asshole
+        easyeffects
         gamemode
+        graalvmPackages.graalvm-ce
         heroic
         lutris
         mangohud
+        osu-lazer-bin
         prismlauncher
         protonup-qt
         r2modman
-        wine
         temurin-jre-bin-17
-        graalvmPackages.graalvm-ce
+        wine
+        # keep-sorted end
     ];
 
     networking.firewall.allowedTCPPorts = [25565];

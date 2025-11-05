@@ -6,10 +6,7 @@
     ...
 }: {
     users.users.tao.packages = with pkgs; [
-        printrun
-        zotero
-        openscad
-        syncplay
+        # keep-sorted start
         # boxxy
         # carapace
         # cloud-hypervisor
@@ -77,19 +74,24 @@
         zoom-us
         zotero
         zoxide
+        # keep-sorted end
     ];
-    programs.adb.enable = true;
-    programs.kdeconnect.enable = true;
+    programs = {
+        adb.enable = true;
+        kdeconnect.enable = true;
+    };
+
     environment.shells = with pkgs; [nushell];
 
     fonts.packages = with pkgs; [
-        # (nerdfonts.override {fonts = ["FiraCode"];})
+        # keep-sorted start
+        cooper-hewitt
+        ibm-plex
         nerd-fonts.fira-code
         noto-fonts-cjk-sans
         noto-fonts-cjk-serif
         noto-fonts-color-emoji
-        ibm-plex
-        cooper-hewitt
+        # keep-sorted end
     ];
 
     documentation.enable = true;
@@ -128,27 +130,31 @@
     '';
     # services.ratbagd.enable = true;
 
-    boot.extraModulePackages = with config.boot.kernelPackages; [
-        v4l2loopback
-    ];
-    boot.extraModprobeConfig = ''
-        options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
-    '';
+    boot = {
+        extraModulePackages = with config.boot.kernelPackages; [
+            v4l2loopback
+        ];
+        extraModprobeConfig = ''
+            options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+        '';
+    };
 
-    # age.secrets.password-tao.file = ../secrets/syncthing-uwuraid.age;
     users.users.tao = {
         isNormalUser = true;
         # hashedPasswordFile = config.age.secrets.password-tao.path;
         extraGroups = ["audio" "video" "wheel" "libvirtd" "dialout" "game"];
         shell = pkgs.nushell;
     };
-
-    age.secrets.syncthing-NOcomputer.file = ../secrets/syncthing-NOcomputer.age;
-    age.secrets.syncthing-NOlaptop.file = ../secrets/syncthing-NOlaptop.age;
-    age.secrets.syncthing-uwuraid.file = ../secrets/syncthing-uwuraid.age;
-    home-manager.useGlobalPkgs = true;
-    home-manager.useUserPackages = true;
-    home-manager.verbose = true;
-    home-manager.backupFileExtension = ".hm-bak";
-    home-manager.users.tao = import ./tao/HOME.nix {inherit inputs pkgs lib config;};
+    age.secrets = {
+        syncthing-NOcomputer.file = ../secrets/syncthing-NOcomputer.age;
+        syncthing-NOlaptop.file = ../secrets/syncthing-NOlaptop.age;
+        syncthing-uwuraid.file = ../secrets/syncthing-uwuraid.age;
+    };
+    home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        verbose = true;
+        backupFileExtension = ".hm-bak";
+        users.tao = import ./tao/HOME.nix {inherit inputs pkgs lib config;};
+    };
 }

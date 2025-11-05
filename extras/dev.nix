@@ -1,19 +1,6 @@
 {pkgs, ...}: {
-    nix.settings.substituters = [
-        "https://helix.cachix.org/"
-        "https://devenv.cachix.org"
-    ];
-    nix.settings.trusted-public-keys = [
-        "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
-        "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-    ];
-    services.lorri.enable = true;
-
-    services.scx.enable = true;
-    services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"
-
     environment.systemPackages = with pkgs; [
-        keep-sorted
+        # keep-sorted start
         # act
         # asm-lsp
         # bash-language-server
@@ -34,12 +21,14 @@
         devenv
         direnv
         egglog
+        flip-link
         gh
         gpclient
         hyperfine
         jujutsu
         just
         just-lsp
+        keep-sorted
         lazyjj
         lldb
         mask
@@ -56,6 +45,7 @@
         tokei # repo code stats
         typos
         z3
+        # keep-sorted end
 
         # # databases
         # sqlite
@@ -90,19 +80,22 @@
 
         # python
         # pypy3
+        pyright
         python3
         ruff
         ty
         uv
-        pyright
 
         # rust
+        # keep-sorted start
+        # leptosfmt
         bacon
         cargo-binstall
         cargo-edit
         cargo-expand
         cargo-feature
         cargo-generate
+        cargo-update
         cargo-watch
         elf2uf2-rs
         flip-link
@@ -114,7 +107,21 @@
         sccache
         trunk
         wasm-bindgen-cli
+        # keep-sorted end
     ];
+
+    nix.settings.substituters = [
+        "https://helix.cachix.org/"
+        "https://devenv.cachix.org"
+    ];
+    nix.settings.trusted-public-keys = [
+        "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+        "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+    ];
+    services.lorri.enable = true;
+
+    services.scx.enable = true;
+    services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"
 
     hardware.flipperzero.enable = true;
 

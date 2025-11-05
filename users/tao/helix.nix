@@ -5,108 +5,90 @@
 }: {
     programs.helix = {
         settings = {
-            theme = "gruvbox_dark_hard";
+            # keep-sorted start block=yes
             editor = {
-                rainbow-brackets = true;
-                end-of-line-diagnostics = "hint";
-                inline-diagnostics = {
-                    cursor-line = "warning";
-                };
+                # keep-sorted start block=yes
                 auto-save = {
-                    focus-lost = true;
                     after-delay.enable = true;
                     after-delay.timeout = 1000;
+                    focus-lost = true;
                 };
-                shell = ["nu" "--stdin" "-c"];
-                # rainbow-brackets = true;
-                line-number = "relative";
-                cursorline = true;
                 completion-replace = false;
-                preview-completion-insert = false;
-                indent-guides = {
-                    render = true;
-                    skip-levels = 2;
-                };
                 cursor-shape = {
                     insert = "bar";
                     select = "underline";
                 };
+                cursorline = true;
+                end-of-line-diagnostics = "hint";
+                indent-guides = {
+                    render = true;
+                    skip-levels = 2;
+                };
+                inline-diagnostics = {
+                    cursor-line = "warning";
+                };
+                line-number = "relative";
+                lsp = {
+                    display-inlay-hints = true;
+                    display-messages = true;
+                    display-progress-messages = true;
+                };
+                preview-completion-insert = false;
+                rainbow-brackets = true;
+                shell = ["nu" "--stdin" "-c"];
+                smart-tab.supersede-menu = false;
+                soft-wrap.enable = true;
                 statusline = {
                     left = ["mode" "spinner" "spacer" "version-control"];
                     center = ["file-name" "file-modification-indicator"];
                     right = ["diagnostics" "primary-selection-length" "total-line-numbers" "selections" "position"];
                 };
-                lsp = {
-                    display-messages = true;
-                    display-inlay-hints = true;
-                    display-progress-messages = true;
+                # keep-sorted end
+            };
+            keys = {
+                # keep-sorted start block=yes
+                insert = {
+                    C-space = "completion";
+                    k = {k = "normal_mode";};
                 };
-                soft-wrap.enable = true;
-                smart-tab.supersede-menu = false;
-            };
-            keys.insert = {
-                C-space = "completion";
-                k = {k = "normal_mode";};
-            };
-            keys.normal = {
-                k = "move_line_down";
-                j = "move_line_up";
-            };
-            keys.select = {
-                k = "extend_line_down";
-                j = "extend_line_up";
-            };
-            keys.normal.space = {
-                w = {
-                    k = "jump_view_down";
-                    j = "jump_view_up";
-                    K = "swap_view_down";
-                    J = "swap_view_up";
+                normal = {
+                    k = "move_line_down";
+                    j = "move_line_up";
                 };
-                t = {
-                    r = "@mip:reflow<ret>";
-                    s = "@|lines | sort | to text<ret>";
+                normal.space = {
+                    w = {
+                        k = "jump_view_down";
+                        j = "jump_view_up";
+                        K = "swap_view_down";
+                        J = "swap_view_up";
+                    };
+                    t = {
+                        r = "@mip:reflow<ret>";
+                        s = "<A-s>:sort<ret>";
+                    };
                 };
+                select = {
+                    k = "extend_line_down";
+                    j = "extend_line_up";
+                };
+                # keep-sorted end
             };
+            theme = "gruvbox_dark_hard";
+            # keep-sorted end
         };
         languages = {
-            use-grammars.only = [
-                "bash"
-                "c"
-                "cpp"
-                "gas"
-                "html"
-                "just"
-                "markdown"
-                "nix"
-                "rust"
-                "scheme"
-                "sql"
-                "toml"
-                "typst"
+            # keep-sorted start block=yes
+            grammar = [
+                {
+                    name = "arduino";
+                    source = {
+                        git = "https://github.com/tree-sitter-grammars/tree-sitter-arduino";
+                        rev = "8518c3fa6b8562af545a496d55c9abd78f53e732";
+                    };
+                }
             ];
             language = [
-                {
-                    name = "python";
-                    auto-format = true;
-                    language-servers = ["basedpyright" "ty" "ruff"];
-                    # formatter = {
-                    #     command = "ruff";
-                    #     args = ["format"];
-                    # };
-                }
-                {
-                    name = "typst";
-                    text-width = 100;
-                }
-                {
-                    name = "sql";
-                    language-servers = ["sqls"];
-                }
-                {
-                    name = "go";
-                    formatter.command = "goimports";
-                }
+                # keep-sorted start block=yes
                 {
                     name = "arduino";
                     grammar = "arduino";
@@ -175,6 +157,10 @@
                     ];
                 }
                 {
+                    name = "go";
+                    formatter.command = "goimports";
+                }
+                {
                     name = "html";
                     auto-format = false;
                     indent = {
@@ -202,9 +188,29 @@
                     name = "nix";
                     auto-format = true;
                     formatter = {
-                        command = "alejandra";
-                        args = ["--experimental-config" "%{workspace_directory}/alejandra.toml"];
+                        # command = "alejandra";
+                        # args = ["--experimental-config" "%{workspace_directory}/alejandra.toml"];
+                        command = "nu";
+                        args = ["--stdin" "-c" "alejandra --quiet --experimental-config '%{workspace_directory}/alejandra.toml' | keep-sorted -"];
                     };
+                    language-servers = ["nil"];
+                }
+                {
+                    name = "python";
+                    auto-format = true;
+                    language-servers = ["basedpyright" "ty" "ruff"];
+                    # formatter = {
+                    #     command = "ruff";
+                    #     args = ["format"];
+                    # };
+                }
+                {
+                    name = "scheme";
+                    language-servers = ["steel"];
+                }
+                {
+                    name = "sql";
+                    language-servers = ["sqls"];
                 }
                 {
                     name = "toml";
@@ -215,24 +221,11 @@
                     language-servers = ["tinymist"];
                 }
                 {
-                    name = "scheme";
-                    language-servers = ["steel"];
+                    name = "typst";
+                    text-width = 100;
                 }
+                # keep-sorted end
             ];
-            language-servers = {
-                rust-analyzer.config = {
-                    server.path = "/home/tao/.cargo/bin/rust-analyzer";
-                    procMacro = {
-                        ignored = {
-                            leptos_macro = [
-                                # Optional:
-                                # "component",
-                                "server"
-                            ];
-                        };
-                    };
-                };
-            };
             language-server = {
                 basedpyright = {
                     command = "basedpyright-langserver";
@@ -269,16 +262,39 @@
                     command = "steel-language-server";
                 };
             };
-            grammar = [
-                {
-                    name = "arduino";
-                    source = {
-                        git = "https://github.com/tree-sitter-grammars/tree-sitter-arduino";
-                        rev = "8518c3fa6b8562af545a496d55c9abd78f53e732";
+            language-servers = {
+                rust-analyzer.config = {
+                    server.path = "/home/tao/.cargo/bin/rust-analyzer";
+                    procMacro = {
+                        ignored = {
+                            leptos_macro = [
+                                # Optional:
+                                # "component",
+                                "server"
+                            ];
+                        };
                     };
-                }
+                };
+            };
+            use-grammars.only = [
+                # keep-sorted start
+                "bash"
+                "c"
+                "cpp"
+                "gas"
+                "html"
+                "just"
+                "markdown"
+                "nix"
+                "rust"
+                "scheme"
+                "sql"
+                "toml"
+                "typst"
+                # keep-sorted end
             ];
         };
+        # keep-sorted end
         enable = true;
         defaultEditor = true;
         package = inputs.helix.packages.${pkgs.system}.default;
