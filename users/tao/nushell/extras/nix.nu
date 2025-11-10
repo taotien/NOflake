@@ -51,7 +51,7 @@ def bump [...rest] {
         continue 
       }
       _ => {
-        jj new -m "bump (unbuilt)"
+        jj new -r $r -m "bump (unbuilt)"
       }
     }
     break
