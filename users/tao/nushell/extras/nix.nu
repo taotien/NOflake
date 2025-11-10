@@ -43,12 +43,12 @@ def bump [...rest] {
   mut r = "@"
   loop {
     match (jj log -r $r --no-pager --no-graph --template 'if(empty, "empty", self.description())') {
+      "bump (unbuilt)" | "bump (failed)" => {
+        jj desc -m "bump (unbuilt)"
+      }
       "empty" => {
         $r = $r + "-"
         continue 
-      }
-      "bump (unbuilt)" | "bump (failed)" => {
-        jj desc -m "bump (unbuilt)"
       }
       _ => {
         jj new -m "bump (unbuilt)"
