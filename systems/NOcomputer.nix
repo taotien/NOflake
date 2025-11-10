@@ -4,11 +4,6 @@
     lib,
     ...
 }: {
-    services.syncplay = {
-        enable = true;
-        motd = "we only watch kino here";
-    };
-
     environment.systemPackages = with pkgs; [
         # nvtopPackages.nvidia
         # egl-wayland
@@ -21,10 +16,6 @@
         openrgb-plugin-hardwaresync
     ];
 
-    services.tailscale.useRoutingFeatures = "both";
-    boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
-    boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = "1";
-
     environment.sessionVariables = {
         # wayland chromium workaround
         NIXOS_OZONE_WL = "1";
@@ -36,11 +27,12 @@
 
     hardware.nvidia = {
         powerManagement.enable = true;
-        # options: production, beta, vulkan_beta, latest
-        package = config.boot.kernelPackages.nvidiaPackages.latest;
         open = true;
-        nvidiaSettings = true;
     };
+    services.tailscale.useRoutingFeatures = "both";
+    boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
+    boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = "1";
+
     systemd.services.nvpl = {
         description = "Increase GPU power limit to 400w";
         script = "/run/current-system/sw/bin/nvidia-smi -pl=400";
@@ -48,8 +40,13 @@
     };
     services.lact.enable = true;
 
-    services.udev.packages = [pkgs.openrgb];
+    services.syncplay = {
+        enable = true;
+        motd = "we only watch kino here";
+    };
+
     services.udev.extraRules = ''
+        # pcpanel
         KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a3c5", MODE="0666"
     '';
     services.hardware.openrgb = {
@@ -62,8 +59,6 @@
     boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
     boot.kernelModules = ["i2c-dev" "kvm-amd" "nct6775"];
     boot.kernelParams = ["nvidia-drm.modeset=1"];
-    # boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
-    # boot.blacklistedKernelModules = with config.boot.kernelPackages; [ k10temp ];
     # boot.initrd.kernelModules = ["nvidia"];
     # boot.extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
 

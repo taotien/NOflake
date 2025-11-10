@@ -65,6 +65,7 @@ def bump [...rest] {
     jj desc -r $r -m "bump (failed)"
   }
   jj new
+  nvd history
 }
 
 alias rb = rebuild boot
