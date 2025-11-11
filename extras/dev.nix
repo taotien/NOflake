@@ -44,6 +44,7 @@
         tio
         tokei # repo code stats
         typos
+        wild
         z3
         # keep-sorted end
 
