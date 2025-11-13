@@ -58,7 +58,6 @@ def bump [...rest] {
   }
   let r = jj log -r @ --no-pager --no-graph --template 'change_id'
   sudo nix flake update
-  # rc2nix | save -f /home/tao/projects/NOflake/users/tao/plasma.nix;
   if (rebuild boot) {
     jj desc -r $r -m $"bump (date now | format date "%Y-%m-%d")"
   } else {

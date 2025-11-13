@@ -39,43 +39,26 @@ def "snapper clear" [] {
   snapper delete $"($first.number)-($last.number)"
 }
 
-
-def quiet [] {
+def "fans" [duty?: int] {
   match (hostname) {
     "NOcomputer" => {
       let mode_path: path = (glob "/sys/devices/platform/nct6775.656/hwmon/hwmon*/pwm2_enable" | get 0)
-      sudo -- nu -c $"5 o> ($mode_path)"
+      match $duty {
+        100 => { sudo -- nu -c $"0 o> ($mode_path)" }
+        _ => { sudo -- nu -c $"5 o> ($mode_path)" }
+      }
     }
     "NOlaptop" => {
-      sudo ectool fanduty 42      
+      match $duty {
+        null => { sudo ectool autofanctl }
+        _ => { sudo ectool fanduty $duty }
+      }
     }
   }
 }
 
-def loud [] {
-  match (hostname) {
-    "NOcomputer" => {
-      let mode_path: path = (glob "/sys/devices/platform/nct6775.656/hwmon/hwmon*/pwm2_enable" | get 0)
-      sudo -- nu -c $"5 o> ($mode_path)"
-    }
-    "NOlaptop" => {
-      sudo ectool autofanctrl
-    }
-  }
-}
-
-def louder [] {
-  match (hostname) {
-    "NOcomputer" => {
-      let mode_path: path = (glob "/sys/devices/platform/nct6775.656/hwmon/hwmon*/pwm2_enable" | get 0)
-      sudo -- nu -c $"0 o> ($mode_path)"
-    }
-    "NOlaptop" => {
-      sudo ectool fanduty 100
-    }
-  }
-}
-
+alias "fans max" = fans 100
+alias "fans quiet" = fans 42
 
 def asciicam [] {
   $env.DISPLAY = null
