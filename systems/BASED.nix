@@ -182,6 +182,10 @@
     };
     nixpkgs.config = {allowUnfree = true;};
     nix.nixPath = ["nixpkgs=${pkgs.path}"];
+    nix.gc = {
+        automatic = true;
+        options = "--delete-older-than 7d";
+    };
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     system.stateVersion = lib.mkDefault "23.05";
