@@ -34,7 +34,7 @@
         mask
         mergiraf
         mprocs
-        nomachine-client
+        # nomachine-client
         presenterm
         qFlipper
         qemu
