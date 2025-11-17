@@ -3,7 +3,7 @@
     systemd.mounts = let
         opts = {
             type = "cifs";
-            mountConfig = {Options = "noauto,noatime,async,users,rw,x-systemd.automount,credentials=${config.age.secrets.uwuraid.path},gid=users,file_mode=0770,dir_mode=0770";};
+            mountConfig = {Options = "noauto,noatime,async,users,rw,x-systemd.automount,credentials=${config.age.secrets.uwuraid.path},gid=users,file_mode=0777,dir_mode=0777";};
         };
     in [
         (opts

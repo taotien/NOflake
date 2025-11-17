@@ -8,7 +8,7 @@
         # nvtopPackages.nvidia
         # egl-wayland
         # gpt4all-chat
-        # nvidia-vaapi-driver
+        nvidia-vaapi-driver
         # foldingathome
         # gwe
         # openrgb
@@ -21,8 +21,8 @@
         NIXOS_OZONE_WL = "1";
 
         # firefox nvidia-vaapi-driver
-        # MOZ_DISABLE_RDD_SANDBOX = "1";
-        # LIBVA_DRIVER_NAME = "nvidia";
+        MOZ_DISABLE_RDD_SANDBOX = "1";
+        LIBVA_DRIVER_NAME = "nvidia";
     };
 
     hardware.nvidia = {
