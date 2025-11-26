@@ -60,7 +60,7 @@
         snapper
         starship
         syncplay
-        syncthingtray
+        # syncthingtray
         taskwarrior3
         tinymist
         toastify

@@ -57,8 +57,9 @@ def "fans" [duty?: int] {
   }
 }
 
-alias "fans max" = fans 100
-alias "fans quiet" = fans 42
+alias louder = fans 100
+alias loud = fans
+alias quiet = fans 42
 
 def asciicam [] {
   $env.DISPLAY = null

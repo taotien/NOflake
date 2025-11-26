@@ -9,7 +9,7 @@ def ns [...packages: string] {
 #   nix search nixpkgs $package
 # }
 
-def rebuild [subcommand, --builders: string] {
+def --wrapped rebuild [subcommand,  ...rest] {
   if not (
     df -h | detect columns --guess | where "Mounted on" == "/" or "Mounted on" == "/boot" | get Use% | each {parse "{usage}%" | get usage | into int} | flatten | all {$in < 99}
   ) {
@@ -17,7 +17,7 @@ def rebuild [subcommand, --builders: string] {
     return false
   }
   
-  mut builders = $builders;
+  mut builders = ""
   if (open /etc/hostname --raw) == "NOlaptop\n" and ($builders != "") {
     if (ping -c1 -W1 nocomputer | complete | $in.exit_code == 0) {
        sudo nix store info --store ssh://nocomputer
@@ -25,11 +25,9 @@ def rebuild [subcommand, --builders: string] {
       $builders = ""
     }
   }
-  if ($builders == "") {
-    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --accept-flake-config --impure --verbose --builders "" o+e>| nom
-  } else {
-    sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --accept-flake-config --impure --verbose o+e>| nom
-  }
+
+  sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --accept-flake-config --impure --verbose ...$rest o+e>| nom
+
   if $env.LAST_EXIT_CODE == 0 {
     toastify send "rebuild" "done!"
     return true

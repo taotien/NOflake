@@ -92,6 +92,9 @@ in {
         jujutsu = {
             enable = true;
             settings = {
+                git = {
+                    push-new-bookmarks = true;
+                };
                 user = {
                     name = "Tao Tien";
                     email = "29749622+taotien@users.noreply.github.com";
