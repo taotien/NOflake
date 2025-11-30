@@ -10,7 +10,7 @@ def ns [...packages: string] {
 # }
 
 def rebuild [subcommand, --builders: string] {
-  if (
+  if not (
     df -h | detect columns --guess | where "Mounted on" == "/" or "Mounted on" == "/boot" | get Use% | each {parse "{usage}%" | get usage | into int} | flatten | all {$in < 99}
   ) {
     print "not enough disk space!"
