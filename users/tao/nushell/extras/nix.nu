@@ -65,6 +65,8 @@ def bump [...rest] {
   sudo nix flake update
   if (rebuild boot) {
     jj desc -r $r -m $"bump (date now | format date "%Y-%m-%d")"
+    jj bookmark set main -r $r
+    jj git push
   } else {
     jj desc -r $r -m "bump (failed)"
   }
