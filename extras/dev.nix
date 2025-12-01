@@ -6,6 +6,7 @@
     programs.qgroundcontrol.enable = true;
     environment.systemPackages = with pkgs; [
         maturin
+        mission-planner
         # keep-sorted start
         # act
         # asm-lsp
