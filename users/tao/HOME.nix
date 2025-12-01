@@ -122,8 +122,10 @@ in {
 
         git = {
             enable = true;
-            userName = "Tao Tien";
-            userEmail = "29749622+taotien@users.noreply.github.com";
+            settings.user = {
+                name = "Tao Tien";
+                email = "29749622+taotien@users.noreply.github.com";
+            };
             # extraConfig = {
             # };
             ignores = [
@@ -144,9 +146,11 @@ in {
 
         ssh = {
             enable = true;
-            addKeysToAgent = "yes";
-            compression = true;
             matchBlocks = {
+                "*" = {
+                    addKeysToAgent = "yes";
+                    compression = true;
+                };
                 "stargate" = {
                     hostname = "stargate.cs.usfca.edu";
                     user = "tltien";

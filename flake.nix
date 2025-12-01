@@ -48,7 +48,7 @@
     } @ inputs: {
         nixosConfigurations = {
             NOcomputer = nixpkgs.lib.nixosSystem {
-                system = "x86_64-linux";
+                # system = "x86_64-linux";
                 specialArgs = {inherit inputs;};
                 modules = [
                     disko.nixosModules.disko
@@ -69,7 +69,7 @@
                 ];
             };
             NOlaptop = nixpkgs.lib.nixosSystem {
-                system = "x86_64-linux";
+                # system = "x86_64-linux";
                 specialArgs = {inherit inputs;};
                 modules = [
                     disko.nixosModules.disko
@@ -95,7 +95,7 @@
                 ];
             };
             NOmom = nixpkgs.lib.nixosSystem {
-                system = "x86_64-linux";
+                # system = "x86_64-linux";
                 specialArgs = {inherit inputs;};
                 modules = [
                     nixos-hardware.nixosModules.common-cpu-intel
