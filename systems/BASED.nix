@@ -173,7 +173,14 @@
     boot.loader.timeout = lib.mkForce 1;
     # boot.supportedFilesystems = ["ntfs" "btrfs"];
     hardware.enableAllFirmware = true;
-    hardware.bluetooth.enable = lib.mkDefault true;
+    hardware.bluetooth = {
+        enable = lib.mkDefault true;
+        settings.General = {
+            # ControllerMode = "bredr"; # Fix frequent Bluetooth audio dropouts
+            Experimental = true;
+            FastConnectable = true;
+        };
+    };
     # hardware.bluetooth.settings.General.Experimental = true;
 
     imports = [(modulesPath + "/installer/scan/not-detected.nix")];
