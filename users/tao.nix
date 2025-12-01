@@ -78,7 +78,7 @@
     ];
     programs = {
         adb.enable = true;
-        kdeconnect.enable = true;
+        # kdeconnect.enable = true;
     };
 
     environment.shells = with pkgs; [nushell];

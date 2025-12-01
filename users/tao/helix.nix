@@ -52,15 +52,16 @@
                     k = {k = "normal_mode";};
                 };
                 normal = {
-                    k = "move_line_down";
                     j = "move_line_up";
+                    k = "move_line_down";
                 };
                 normal.space = {
+                    l = "reload-all";
                     w = {
-                        k = "jump_view_down";
-                        j = "jump_view_up";
-                        K = "swap_view_down";
                         J = "swap_view_up";
+                        K = "swap_view_down";
+                        j = "jump_view_up";
+                        k = "jump_view_down";
                     };
                     t = {
                         r = "@mip:reflow<ret>";
@@ -68,8 +69,8 @@
                     };
                 };
                 select = {
-                    k = "extend_line_down";
                     j = "extend_line_up";
+                    k = "extend_line_down";
                 };
                 # keep-sorted end
             };
