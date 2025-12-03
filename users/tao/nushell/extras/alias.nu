@@ -56,8 +56,8 @@ def --env c [path: path = "~"] {
   l
 }
 
-def l --wrapped [...rest] {
-  ls -t ...$rest | insert ext {|row| $row.name | parse "{name}.{ext}" | get ext | get 0? } | sort-by type ext name | reject type ext
+def l --wrapped [path: path = ".", ...rest] {
+  ls -t $path ...$rest | insert ext {|row| $row.name | parse "{name}.{ext}" | get ext | get 0? } | sort-by type ext name | reject type ext
 }
 
 alias list-automounts = systemctl list-units --type=automount

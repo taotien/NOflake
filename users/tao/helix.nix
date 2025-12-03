@@ -56,7 +56,7 @@
                     k = "move_line_down";
                 };
                 normal.space = {
-                    l = "reload-all";
+                    l = "@:reload-all<ret>";
                     w = {
                         J = "swap_view_up";
                         K = "swap_view_down";
