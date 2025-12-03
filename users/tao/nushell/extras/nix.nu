@@ -9,7 +9,7 @@ def ns [...packages: string] {
 #   nix search nixpkgs $package
 # }
 
-def --wrapped rebuild [--force, subcommand,  ...rest] {
+def --wrapped rebuild [--force (-f), subcommand,  ...rest] {
   if not (
     df -h | detect columns --guess | where "Mounted on" == "/" or "Mounted on" == "/boot" | get Use% | each {parse "{usage}%" | get usage | into int} | flatten | all {$in < 99}
   ) and not $force {

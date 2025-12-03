@@ -5,22 +5,7 @@
             type = "cifs";
             mountConfig = {
                 # Options = "noauto,noatime,async,users,rw,x-systemd.automount,credentials=${config.age.secrets.uwuraid.path},file_mode=0777,dir_mode=0777";
-                Options = [
-                    "_netdev"
-                    "noserverino"
-                    "noauto"
-                    "noatime"
-                    "async"
-                    "users"
-                    "rw"
-                    "x-systemd.automount"
-                    "x-systemd.requires=network-online.target"
-                    "nofail"
-                    "soft"
-                    "credentials=${config.age.secrets.uwuraid.path}"
-                    "file_mode=0777"
-                    "dir_mode=0777"
-                ];
+                Options = "_netdev,noserverino,noauto,noatime,async,users,rw,x-systemd.automount,x-systemd.requires=network-online.target,nofail,soft,credentials=${config.age.secrets.uwuraid.path},file_mode=0777,dir_mode=0777";
             };
         };
     in [

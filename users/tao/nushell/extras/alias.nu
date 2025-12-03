@@ -63,9 +63,9 @@ def l --wrapped [path: path = ".", ...rest] {
 alias list-automounts = systemctl list-units --type=automount
 
 def remount [] {
-  let reload = list-automounts | detect columns -n | get column0 | input list --multi
+  let reload = list-automounts | detect columns --guess  | drop 5 | get DESCRIPTION | input list --multi
   for mount in $reload {
-    systemctl restart $mount
+    sudo systemctl restart $mount
   }
 }
 
