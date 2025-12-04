@@ -5,7 +5,7 @@ d = "doc --no-deps --open"
 
 [build]
 target = "x86_64-unknown-linux-gnu"
-target-dir = "/home/tao/.cache/cargo/target"
+built-dir = "/home/tao/.cache/cargo/target"
 rustflags = ["-Z", "threads=8"]
 rustc-wrapper = "/path/to/sccache"
 

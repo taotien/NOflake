@@ -5,6 +5,7 @@
 }: {
     programs.qgroundcontrol.enable = true;
     environment.systemPackages = with pkgs; [
+        maturin
         # keep-sorted start
         # act
         # asm-lsp

@@ -192,7 +192,7 @@
                         # command = "alejandra";
                         # args = ["--experimental-config" "%{workspace_directory}/alejandra.toml"];
                         command = "nu";
-                        args = ["--stdin" "-c" "alejandra --quiet --experimental-config '%{workspace_directory}/alejandra.toml' | keep-sorted -"];
+                        args = ["--stdin" "-c" "alejandra --quiet --experimental-config '/home/tao/templates/alejandra.toml' | keep-sorted -"];
                     };
                     language-servers = ["nil"];
                 }
