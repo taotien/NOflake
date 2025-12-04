@@ -70,7 +70,6 @@ def bump [...rest] {
   } else {
     jj desc -r $r -m "bump (failed)"
   }
-  jj new
   nvd history
 }
 
