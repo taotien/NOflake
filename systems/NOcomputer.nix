@@ -28,6 +28,7 @@
     hardware.nvidia = {
         powerManagement.enable = true;
         open = true;
+        package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
     services.tailscale.useRoutingFeatures = "both";
     boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
