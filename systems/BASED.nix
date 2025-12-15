@@ -5,6 +5,7 @@
     modulesPath,
     ...
 }: {
+    programs.pmount.enable = true;
     environment.systemPackages = with pkgs; [
         # keep-sorted start
         bat

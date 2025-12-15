@@ -2,7 +2,7 @@
     description = "we say NO to shitty OSes";
 
     inputs = {
-        nixos.url = "github:NixOS/nixpkgs/nixos-24.05";
+        nixos.url = "github:NixOS/nixpkgs/nixos-25.11";
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
         nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
         nixos-hardware.url = "github:NixOS/nixos-hardware/master";
