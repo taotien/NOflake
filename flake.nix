@@ -132,6 +132,7 @@
                     ./extras/minecraft-server.nix
                 ];
             };
+            # nix build .#nixosConfigurations.bcachefs-iso.config.system.build.isoImage
             bcachefs-iso = nixos.lib.nixosSystem {
                 system = "x86_64-linux";
                 modules = [
@@ -146,26 +147,30 @@
                             allowUnfree = true;
                         };
                         environment.systemPackages = with pkgs; [
-                            helix
+                            # keep-sorted start
                             bat
+                            # rustdesk
+                            bcachefs-tools
                             bottom
+                            disko
                             dumbpipe
-                            sendme
-                            git
                             firefox
+                            git
+                            helix
                             ouch
                             pueue
                             ripgrep
-                            # rustdesk
+                            sendme
                             skim
                             tree
                             wezterm
                             wget
                             zstd
-                            # bcachefs-tools
+                            # keep-sorted end
                         ];
                         # boot.supportedFilesystems = ["bcachefs"];
                         boot.supportedFilesystems.btrfs = true;
+                        boot.supportedFilesystems.bcachefs = true;
                         boot.supportedFilesystems.zfs = lib.mkForce false;
                         boot.kernelPackages = pkgs.linuxPackages_latest;
                         isoImage.squashfsCompression = "zstd";
