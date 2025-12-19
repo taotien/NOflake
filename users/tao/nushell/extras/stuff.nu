@@ -1,3 +1,7 @@
+def done [] {
+  toastify send -a "" done
+}
+
 def "config stuff" [] {
   hx ~/projects/NOflake/users/tao/nushell/stuff.nu
 }
