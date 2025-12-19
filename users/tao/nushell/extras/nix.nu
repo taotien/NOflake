@@ -75,5 +75,9 @@ def bump [...rest] {
 
 alias rb = rebuild boot
 alias rs = rebuild switch
-alias gc = nh clean all
+
+def gc [] {
+  sudo nix-collect-garbage -d
+  snapper clear
+}
 
