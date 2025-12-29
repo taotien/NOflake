@@ -12,6 +12,8 @@
 
     services.tailscale.useRoutingFeatures = "client";
 
+    services.desktopManager.cosmic.enable = false;
+    services.displayManager.cosmic-greeter.enable = false;
     services.displayManager.sddm.enable = true;
     services.displayManager.sddm.wayland.enable = true;
     services.desktopManager.plasma6.enable = true;
@@ -20,7 +22,7 @@
         kdePackages.konsole
         kdePackages.gwenview
         kdePackages.kate
-        kdePackages.xwaylandvideobridge
+        # kdePackages.xwaylandvideobridge
         xterm
     ];
 

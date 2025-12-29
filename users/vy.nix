@@ -12,7 +12,7 @@
         cosmic-store
         jellyfin-media-player
         keepassxc
-        onlyoffice-bin
+        onlyoffice-desktopeditors
         signal-desktop
         snapper
         syncthingtray

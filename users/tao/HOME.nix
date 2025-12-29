@@ -11,6 +11,14 @@
     age.secrets.syncthing-NOlaptop.file = ../secrets/syncthing-NOlaptop.age;
     age.secrets.syncthing-uwuraid.file = ../secrets/syncthing-uwuraid.age;
 in {
+    xdg.mimeApps = {
+        defaultApplications = {
+            "application/pdf" = "zathura.desktop";
+            "video/x-matroska" = "mpv.desktop";
+        };
+        enable = true;
+    };
+
     imports = [
         ./boxxy.nix
         (import ./helix.nix {inherit pkgs inputs;})

@@ -95,9 +95,10 @@
         uv
 
         # rust
-        # keep-sorted start
         # leptosfmt
+        # keep-sorted start
         bacon
+        cargo-autoinherit
         cargo-binstall
         cargo-edit
         cargo-expand
