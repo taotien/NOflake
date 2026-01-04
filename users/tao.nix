@@ -31,7 +31,7 @@
         discord
         freecad-wayland
         gocryptfs
-        gurk-rs
+        # gurk-rs
         jellyfin-mpv-shim
         keepassxc
         man-pages
@@ -74,11 +74,12 @@
         zoom-us
         zotero
         zoxide
+        # android-tools
         # keep-sorted end
     ];
-    programs = {
-        adb.enable = true;
-        # kdeconnect.enable = true;
+    virtualisation.waydroid = {
+        enable = true;
+        package = pkgs.waydroid-nftables;
     };
 
     environment.shells = with pkgs; [nushell];

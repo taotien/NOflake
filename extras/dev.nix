@@ -98,6 +98,7 @@
         # leptosfmt
         # keep-sorted start
         bacon
+        dioxus-cli
         cargo-autoinherit
         cargo-binstall
         cargo-edit
@@ -109,7 +110,7 @@
         elf2uf2-rs
         flip-link
         mdbook
-        mold-wrapped
+        mold
         probe-rs-tools
         rustup
         rusty-man

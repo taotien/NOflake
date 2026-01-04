@@ -56,6 +56,9 @@
     powerManagement.cpuFreqGovernor = "powersave";
     systemd.sleep.extraConfig = "HibernateDelaySec=360m";
 
+    nix.settings = {
+        connect-timeout = 5;
+    };
     nix.buildMachines = [
         {
             hostName = "nocomputer";
@@ -68,17 +71,6 @@
                 "nixos-test"
             ];
         }
-        # {
-        #     hostName = "localhost";
-        #     systems = ["x86_64-linux" "i686-linux"];
-        #     supportedFeatures = [
-        #         "benchmark"
-        #         "big-parallel"
-        #         "gccarch-znver4"
-        #         "kvm"
-        #         "nixos-test"
-        #     ];
-        # }
     ];
     nix.extraOptions = ''
         builders-use-substitutes = true
