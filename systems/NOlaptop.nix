@@ -50,7 +50,8 @@
     boot.kernelPackages = pkgs.linuxPackages_latest;
     boot.kernelParams = [
         "amdgpu.abmlevel=1"
-        "mem_sleep_default=deep"
+        # amd doesn't have deep
+        # "mem_sleep_default=deep"
     ];
     boot.kernelModules = ["amdgpu"];
     powerManagement.cpuFreqGovernor = "powersave";

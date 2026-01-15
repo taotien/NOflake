@@ -2,6 +2,8 @@
     # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     # aagl.inputs.nixpkgs.follows = "nixpkgs";
 
+    services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"
+
     services.lsfg-vk = {
         enable = true;
         ui.enable = true;

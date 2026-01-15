@@ -26,6 +26,7 @@ def --wrapped rebuild [--force (-f), subcommand,  ...rest] {
     }
   }
 
+  ulimit -n 65535
   sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --accept-flake-config --impure --verbose ...$rest o+e>| nom
 
   if $env.LAST_EXIT_CODE == 0 {
