@@ -1,14 +1,3 @@
-alias nd = nix develop
-
-def ns [...packages: string] {
-  let packages = $packages | each {$"nixpkgs#($in)"}
-  nix shell ...$packages
-}
-
-# def nr [package] {
-#   nix search nixpkgs $package
-# }
-
 def --wrapped rebuild [--force (-f), subcommand,  ...rest] {
   if not (
     df -h | detect columns --guess | where "Mounted on" == "/" or "Mounted on" == "/boot" | get Use% | each {parse "{usage}%" | get usage | into int} | flatten | all {$in < 99}
@@ -27,7 +16,7 @@ def --wrapped rebuild [--force (-f), subcommand,  ...rest] {
   }
 
   ulimit -n 65535
-  sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --accept-flake-config --impure --verbose ...$rest o+e>| nom
+  sudo systemd-inhibit nice -n19 nixos-rebuild $subcommand --flake . --accept-flake-config --impure --show-trace --verbose ...$rest o+e>| nom
 
   if $env.LAST_EXIT_CODE == 0 {
     toastify send "rebuild" "done!"
@@ -37,6 +26,17 @@ def --wrapped rebuild [--force (-f), subcommand,  ...rest] {
     return false
   }
 }
+
+alias nd = nix develop
+
+def ns [...packages: string] {
+  let packages = $packages | each {$"nixpkgs#($in)"}
+  nix shell ...$packages
+}
+
+# def nr [package] {
+#   nix search nixpkgs $package
+# }
 
 def post-rebuild [] {
     rm -r ~/.config/helix/runtime/grammars/

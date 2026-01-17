@@ -35,6 +35,7 @@ alias jg = jj git clone --colocate
 alias jp = jj git push
 alias js = jj status
 alias jw = jj workspace update-stale
+alias jt = jj log -r @ -T `description`
 
 def jm --wrapped [-r: string = "@", ...rest] {
   mut r = $r

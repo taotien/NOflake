@@ -98,7 +98,6 @@
         # leptosfmt
         # keep-sorted start
         bacon
-        dioxus-cli
         cargo-autoinherit
         cargo-binstall
         cargo-edit
@@ -107,6 +106,7 @@
         cargo-generate
         cargo-update
         cargo-watch
+        dioxus-cli
         elf2uf2-rs
         flip-link
         mdbook
@@ -115,6 +115,7 @@
         rustup
         rusty-man
         sccache
+        spacetimedb
         trunk
         wasm-bindgen-cli
         # keep-sorted end

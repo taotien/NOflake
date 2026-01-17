@@ -22,6 +22,7 @@ codegen-backend = "cranelift"
 [profile.dev.package."*"]
 # slow clean build for faster incrementals
 opt-level = 3
+codegen-backend = "llvm"
 
 [profile.release]
 incremental = true

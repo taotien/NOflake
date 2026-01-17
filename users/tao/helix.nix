@@ -54,6 +54,12 @@
                 normal = {
                     j = "move_line_up";
                     k = "move_line_down";
+                    z = {
+                        j = "scroll_up";
+                        k = "scroll_down";
+                    };
+                    C-j = "scroll_up";
+                    C-k = "scroll_down";
                 };
                 normal.space = {
                     l = "@:reload-all<ret>";
