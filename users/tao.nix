@@ -29,7 +29,7 @@
         darktable
         deluge
         discord
-        freecad-wayland
+        # freecad-wayland
         gocryptfs
         # gurk-rs
         jellyfin-mpv-shim
