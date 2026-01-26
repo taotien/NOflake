@@ -54,7 +54,7 @@
     systemd.services.display-manager.restartIfChanged = false;
     services.desktopManager.cosmic.enable = lib.mkDefault true;
     services.displayManager.cosmic-greeter.enable = lib.mkDefault true;
-    services.system76-scheduler.enable = lib.mkDefault true;
+    services.system76-scheduler.enable = false;
     environment.cosmic.excludePackages = with pkgs; [
         cosmic-edit
         cosmic-player

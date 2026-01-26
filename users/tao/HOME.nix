@@ -16,7 +16,7 @@ in {
             "application/pdf" = "zathura.desktop";
             "video/x-matroska" = "mpv.desktop";
         };
-        enable = true;
+        enable = false;
     };
 
     imports = [
