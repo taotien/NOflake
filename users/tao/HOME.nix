@@ -109,6 +109,7 @@ in {
                     default-command = "log";
                     pager = "delta --syntax-theme gruvbox-dark";
                     diff-formatter = ":git";
+                    merge-editor = "mergiraf";
                 };
                 fix.tools.alejandra = {
                     command = ["alejandra"];

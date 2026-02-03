@@ -7,28 +7,33 @@
     environment.systemPackages = with pkgs; [
         maturin
         mission-planner
-        # keep-sorted start
+        # keep-sorted start sticky_comments=no
         # act
         # asm-lsp
         # bash-language-server
         # digital
+        # egglog
         # etcher
         # fontforge
         # freecad
         # git-cliff
+        # lazyjj
         # lua-language-server
         # lychee # link checker
         # markdown-oxide # markdown lsp
+        # mask
+        # mprocs
+        # nomachine-client
+        # presenterm
         # quickemu
         # radicle-node
         # vulkan-loader
+        # z3
         b3sum
         basedpyright
         delta
         devenv
         direnv
-        egglog
-        flip-link
         gh
         gpclient
         hyperfine
@@ -36,13 +41,8 @@
         just
         just-lsp
         keep-sorted
-        lazyjj
         lldb
-        mask
         mergiraf
-        mprocs
-        # nomachine-client
-        presenterm
         qFlipper
         qemu
         sd
@@ -52,7 +52,6 @@
         tokei # repo code stats
         typos
         wild
-        z3
         # keep-sorted end
 
         # # databases
@@ -76,11 +75,11 @@
         gdb
         gnumake
 
-        # cringelang
-        go
-        delve
-        gotools
-        gopls
+        # # cringelang
+        # go
+        # delve
+        # gotools
+        # gopls
 
         # nix
         nil
@@ -95,8 +94,8 @@
         uv
 
         # rust
+        # keep-sorted start sticky_comments=no
         # leptosfmt
-        # keep-sorted start
         bacon
         cargo-autoinherit
         cargo-binstall

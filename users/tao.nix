@@ -6,17 +6,19 @@
     ...
 }: {
     users.users.tao.packages = with pkgs; [
-        # keep-sorted start
+        # keep-sorted start sticky_comments=no
+        # android-tools
         # boxxy
         # carapace
-        # cloud-hypervisor
         # davinci-resolve
         # fractal
-        # freerdp
-        # inputs.plasma-manager.packages.${pkgs.system}.default
+        # freecad-wayland
+        # gurk-rs
         # jellyfin-media-player
-        # libsForQt5.kcharselect
+        # nixos-anywhere
         # piper
+        # syncthingtray
+        # taskwarrior3
         # tectonic
         # texlab
         # thunderbird
@@ -29,9 +31,7 @@
         darktable
         deluge
         discord
-        # freecad-wayland
         gocryptfs
-        # gurk-rs
         jellyfin-mpv-shim
         keepassxc
         man-pages
@@ -39,7 +39,6 @@
         miniserve
         mousai
         nix-output-monitor
-        nixos-anywhere
         nufmt
         nushell
         nvd
@@ -60,8 +59,6 @@
         snapper
         starship
         syncplay
-        # syncthingtray
-        taskwarrior3
         tinymist
         toastify
         typst
@@ -74,7 +71,6 @@
         zoom-us
         zotero
         zoxide
-        # android-tools
         # keep-sorted end
     ];
     virtualisation.waydroid = {

@@ -5,24 +5,26 @@
     ...
 }: {
     environment.systemPackages = with pkgs; [
-        # nvtopPackages.nvidia
+        # keep-sorted start sticky_comments=no
         # egl-wayland
-        # gpt4all-chat
-        nvidia-vaapi-driver
         # foldingathome
-        # gwe
-        # openrgb
-        openrgb-plugin-effects
-        openrgb-plugin-hardwaresync
+        # openrgb-plugin-effects
+        # openrgb-plugin-hardwaresync
+        gwe
+        nvidia-vaapi-driver
+        nvtopPackages.nvidia
+        openrgb-with-all-plugins
+        # keep-sorted end
     ];
 
     environment.sessionVariables = {
-        # wayland chromium workaround
-        NIXOS_OZONE_WL = "1";
+        # # wayland chromium workaround
+        # NIXOS_OZONE_WL = "1";
 
         # firefox nvidia-vaapi-driver
-        MOZ_DISABLE_RDD_SANDBOX = "1";
-        LIBVA_DRIVER_NAME = "nvidia";
+        # MOZ_DISABLE_RDD_SANDBOX = "1";
+        # LIBVA_DRIVER_NAME = "nvidia";
+        # CUDA_DISABLE_PERF_BOOST = "1";
     };
 
     hardware.nvidia = {
@@ -41,10 +43,10 @@
     };
     services.lact.enable = true;
 
-    services.syncplay = {
-        enable = true;
-        motd = "we only watch kino here";
-    };
+    # services.syncplay = {
+    #     enable = true;
+    #     motd = "we only watch kino here";
+    # };
 
     services.udev.extraRules = ''
         # pcpanel
