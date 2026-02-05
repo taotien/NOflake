@@ -23,6 +23,8 @@
         # texlab
         # thunderbird
         # wkhtmltopdf
+        bitwarden-desktop
+        bitwarden-cli
         appimage-run
         aspell
         aspellDicts.en

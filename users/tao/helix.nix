@@ -69,6 +69,7 @@
                         j = "jump_view_up";
                         k = "jump_view_down";
                     };
+                    i = "@:toggle las.display-inlay-hints";
                     t = {
                         r = "@mip:reflow<ret>";
                         s = "@<A-s>:sort<ret>";

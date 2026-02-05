@@ -64,7 +64,13 @@ def bump [...rest] {
   }
   let r = jj log -r @ --no-pager --no-graph --template 'change_id'
   sudo nix flake update
-  if (rebuild boot) {
+  def get_gen [] {
+    sudo nix-env --profile /nix/var/nix/profiles/system --list-generations | detect columns --guess -n | last | get column0
+  }
+  let curr_gen = get_gen()
+  let build_status = rebuild boot
+  let new_gen = get_gen()
+  if ($build_status and ($curr_gen == $new_gen)) {
     jj desc -r $r -m $"bump (date now | format date "%Y-%m-%d")"
     jj bookmark set main -r $r
     jj git push

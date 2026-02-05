@@ -5,7 +5,8 @@ d = "doc --no-deps --open"
 
 [build]
 target = "x86_64-unknown-linux-gnu"
-build-dir = "/home/tao/.cache/cargo/target"
+# build-dir = "/home/tao/.cache/cargo/target"
+build-dir = "{cargo-cache-home}/build/{workspace-path-hash}"
 rustflags = ["-Z", "threads=8"]
 rustc-wrapper = "/path/to/sccache"
 
