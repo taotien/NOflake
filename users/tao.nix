@@ -23,16 +23,17 @@
         # texlab
         # thunderbird
         # wkhtmltopdf
-        bitwarden-desktop
-        bitwarden-cli
         appimage-run
         aspell
         aspellDicts.en
+        bitwarden-cli
+        bitwarden-desktop
         bottles
         calibre
         darktable
         deluge
         discord
+        element-desktop
         gocryptfs
         jellyfin-mpv-shim
         keepassxc
