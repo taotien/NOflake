@@ -3,10 +3,16 @@
     pkgs,
     ...
 }: {
+    # systemd.user.services.lspmux = {
+    #     enable = true;
+    #     wantedBy = ["default.target"];
+    #     serviceConfig = {
+    #         Type = "simple";
+    #         ExecStart = "${pkgs.lspmux}/bin/lspmux server";
+    #     };
+    # };
     programs.qgroundcontrol.enable = true;
     environment.systemPackages = with pkgs; [
-        maturin
-        mission-planner
         # keep-sorted start sticky_comments=no
         # act
         # asm-lsp
@@ -42,7 +48,10 @@
         just-lsp
         keep-sorted
         lldb
+        lspmux
+        maturin
         mergiraf
+        mission-planner
         qFlipper
         qemu
         sd

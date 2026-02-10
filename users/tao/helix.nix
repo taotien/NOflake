@@ -235,6 +235,10 @@
                 # keep-sorted end
             ];
             language-server = {
+                # lspmux = {
+                #     command = "lspmux";
+                # };
+
                 basedpyright = {
                     command = "basedpyright-langserver";
                     args = ["--stdio"];
@@ -273,6 +277,7 @@
             language-servers = {
                 rust-analyzer.config = {
                     server.path = "/home/tao/.cargo/bin/rust-analyzer";
+                    # server.path = "${pkgs.lspmux}/bin/lspmux";
                     procMacro = {
                         ignored = {
                             leptos_macro = [
