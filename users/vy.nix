@@ -11,7 +11,6 @@
         audacity
         cosmic-store
         jellyfin-media-player
-        keepassxc
         onlyoffice-desktopeditors
         signal-desktop
         snapper

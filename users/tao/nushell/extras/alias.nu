@@ -15,10 +15,13 @@ alias cringe = sudo bootctl set-oneshot auto-windows
 
 def h [query?: path] {
   (if ($query != null) {sk -1 -q ($query | path basename)} else {sk -1}) 
-  | complete
-  | if $in.exit_code == 0 {
-      $in.stdout | str trim | hx $in
-    }
+  | if ($in != "") {
+    hx $in
+  }
+  # | complete
+  # | if $in.exit_code == 0 {
+  #     $in.stdout | str trim | hx $in
+  #   }
 }
 
 def srg [] {
@@ -36,6 +39,7 @@ alias jp = jj git push
 alias js = jj status
 alias jw = jj workspace update-stale
 alias jt = jj log -r @ -T `description`
+alias jn = jj next --edit
 
 def jm --wrapped [-r: string = "@", ...rest] {
   mut r = $r

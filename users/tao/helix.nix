@@ -69,7 +69,7 @@
                         j = "jump_view_up";
                         k = "jump_view_down";
                     };
-                    i = "@:toggle las.display-inlay-hints";
+                    i = "@:toggle lsp.display-inlay-hints<ret>";
                     t = {
                         r = "@mip:reflow<ret>";
                         s = "@<A-s>:sort<ret>";
@@ -193,6 +193,13 @@
                     };
                 }
                 {
+                    name = "microcad";
+                    scope = "source.microcad";
+                    file-types = ["µcad" "mcad" "ucad"];
+                    language-servers = ["microcad-lsp"];
+                    comment-tokens = "//";
+                }
+                {
                     name = "nix";
                     auto-format = true;
                     formatter = {
@@ -238,6 +245,9 @@
                 # lspmux = {
                 #     command = "lspmux";
                 # };
+                microcad-lsp = {
+                    command = "microcad-lsp";
+                };
 
                 basedpyright = {
                     command = "basedpyright-langserver";

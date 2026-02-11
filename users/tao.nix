@@ -6,6 +6,7 @@
     ...
 }: {
     users.users.tao.packages = with pkgs; [
+        grayjay
         # keep-sorted start sticky_comments=no
         # android-tools
         # boxxy
@@ -36,7 +37,6 @@
         element-desktop
         gocryptfs
         jellyfin-mpv-shim
-        keepassxc
         man-pages
         man-pages-posix
         miniserve

@@ -132,6 +132,7 @@
             fcitx5-gtk
             fcitx5-mozc
             fcitx5-rime
+            rime-ice
         ];
     };
 

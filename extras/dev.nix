@@ -112,6 +112,7 @@
         cargo-expand
         cargo-feature
         cargo-generate
+        cargo-nextest
         cargo-update
         cargo-watch
         dioxus-cli
@@ -123,7 +124,7 @@
         rustup
         rusty-man
         sccache
-        spacetimedb
+        # spacetimedb
         trunk
         wasm-bindgen-cli
         # keep-sorted end

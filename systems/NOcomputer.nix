@@ -19,7 +19,7 @@
 
     environment.sessionVariables = {
         # # wayland chromium workaround
-        # NIXOS_OZONE_WL = "1";
+        NIXOS_OZONE_WL = "1";
 
         # firefox nvidia-vaapi-driver
         # MOZ_DISABLE_RDD_SANDBOX = "1";

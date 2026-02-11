@@ -67,9 +67,9 @@ def bump [...rest] {
   }
   let r = jj log -r @ --no-pager --no-graph --template 'change_id'
   sudo nix flake update
-  let curr_gen = get_gen()
+  let curr_gen = get_gen
   let build_status = rebuild boot
-  let new_gen = get_gen()
+  let new_gen = get_gen
   if ($build_status and ($curr_gen == $new_gen)) {
     jj desc -r $r -m $"bump (date now | format date "%Y-%m-%d")"
     jj bookmark set main -r $r
