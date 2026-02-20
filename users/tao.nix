@@ -6,6 +6,7 @@
     ...
 }: {
     users.users.tao.packages = with pkgs; [
+        forgejo-cli
         grayjay
         # keep-sorted start sticky_comments=no
         # android-tools

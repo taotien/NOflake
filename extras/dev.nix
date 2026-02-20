@@ -13,6 +13,10 @@
     # };
     programs.qgroundcontrol.enable = true;
     environment.systemPackages = with pkgs; [
+        docker-compose
+        bun
+        ngrok
+        
         # keep-sorted start sticky_comments=no
         # act
         # asm-lsp
