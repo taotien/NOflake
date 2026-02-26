@@ -95,6 +95,9 @@ in {
             enable = true;
             enableNushellIntegration = true;
             nix-direnv.enable = true;
+            config = {
+                load_dotenv = true;
+            };
         };
 
         jujutsu = {

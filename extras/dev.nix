@@ -3,6 +3,8 @@
     pkgs,
     ...
 }: {
+    boot.kernel.sysctl."vm.overcommit_memory" = "1";
+
     # systemd.user.services.lspmux = {
     #     enable = true;
     #     wantedBy = ["default.target"];
@@ -13,10 +15,6 @@
     # };
     programs.qgroundcontrol.enable = true;
     environment.systemPackages = with pkgs; [
-        docker-compose
-        bun
-        ngrok
-        
         # keep-sorted start sticky_comments=no
         # act
         # asm-lsp
@@ -67,6 +65,11 @@
         wild
         # keep-sorted end
 
+        # alloy
+        bun
+        docker-compose
+        ngrok
+
         # # databases
         # sqlite
         # sqls
@@ -109,6 +112,8 @@
         # rust
         # keep-sorted start sticky_comments=no
         # leptosfmt
+        # spacetimedb
+        # wasm-bindgen-cli
         bacon
         cargo-autoinherit
         cargo-binstall
@@ -128,9 +133,7 @@
         rustup
         rusty-man
         sccache
-        # spacetimedb
         trunk
-        wasm-bindgen-cli
         # keep-sorted end
     ];
 
@@ -155,6 +158,9 @@
     '';
 
     virtualisation.docker = {
+        daemon.settings = {
+            features.buildkit = true;
+        };
         enable = true;
         # storageDriver =
         #     if lib.strings.hasPrefix "NOlaptop" (builtins.readFile /etc/hostname)
