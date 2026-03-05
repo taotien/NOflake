@@ -73,7 +73,7 @@ def bump [...rest] {
   if ($build_status and ($curr_gen == $new_gen)) {
     jj desc -r $r -m $"bump (date now | format date "%Y-%m-%d")"
     jj bookmark set main -r $r
-    jj git push
+    jj git push --allow-empty-description 
   } else {
     jj desc -r $r -m "bump (failed)"
   }
