@@ -191,6 +191,7 @@
                         tab-width = 4;
                         unit = "\t";
                     };
+                    language-servers = ["deno-lsp"];
                 }
                 {
                     name = "microcad";
@@ -232,6 +233,13 @@
                     auto-format = true;
                 }
                 {
+                    name = "typescript";
+                    roots = ["deno.json" "deno.jsonc" "package.json"];
+                    file-types = ["ts" "tsx"];
+                    auto-format = true;
+                    language-servers = ["deno-lsp"];
+                }
+                {
                     name = "typst";
                     language-servers = ["tinymist"];
                 }
@@ -242,6 +250,11 @@
                 # keep-sorted end
             ];
             language-server = {
+                deno-lsp = {
+                    command = "deno";
+                    args = ["lsp"];
+                    config.deno.enable = true;
+                };
                 # lspmux = {
                 #     command = "lspmux";
                 # };

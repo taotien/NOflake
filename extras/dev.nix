@@ -15,6 +15,7 @@
     # };
     programs.qgroundcontrol.enable = true;
     environment.systemPackages = with pkgs; [
+        claude-code
         # keep-sorted start sticky_comments=no
         # act
         # asm-lsp
@@ -69,6 +70,7 @@
         bun
         docker-compose
         ngrok
+        deno
 
         # # databases
         # sqlite
