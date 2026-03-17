@@ -6,8 +6,6 @@
     ...
 }: {
     users.users.tao.packages = with pkgs; [
-        rqbit
-        forgejo-cli
         grayjay
         # keep-sorted start sticky_comments=no
         # android-tools
@@ -15,7 +13,6 @@
         # carapace
         # davinci-resolve
         # fractal
-        # freecad-wayland
         # gurk-rs
         # jellyfin-media-player
         # nixos-anywhere
@@ -37,6 +34,8 @@
         deluge
         discord
         element-desktop
+        forgejo-cli
+        freecad-wayland
         gocryptfs
         jellyfin-mpv-shim
         man-pages
@@ -59,6 +58,7 @@
         qmk-udev-rules
         qmk_hid
         ripgrep-all
+        rqbit
         signal-desktop
         slack
         snapper
