@@ -6,46 +6,46 @@
     ...
 }: {
     programs = {
-        bat = {
-            enable = true;
-            config = {
-                theme = "gruvbox-dark";
-            };
-        };
+        # bat = {
+        #     enable = true;
+        #     config = {
+        #         theme = "gruvbox-dark";
+        #     };
+        # };
 
-        bottom = {
-            enable = true;
-            settings = {
-                color = "gruvbox";
-                flags = {
-                    battery =
-                        # if lib.strings.hasPrefix "NOlaptop" (builtins.readFile /etc/hostname)
-                        # then true
-                        # else false;
-                        true;
-                    hide_time = true;
-                    enable_gpu = true;
-                };
-            };
-        };
+        # bottom = {
+        #     enable = true;
+        #     settings = {
+        #         color = "gruvbox";
+        #         flags = {
+        #             battery =
+        #                 # if lib.strings.hasPrefix "NOlaptop" (builtins.readFile /etc/hostname)
+        #                 # then true
+        #                 # else false;
+        #                 true;
+        #             hide_time = true;
+        #             enable_gpu = true;
+        #         };
+        #     };
+        # };
 
         nushell = {
             enable = true;
-            configFile.source = ./nushell/config.nu;
-            envFile.source = ./nushell/env.nu;
-            # extraConfig = builtins.readFile ./nushell/stuff.nu;
-            extraConfig = lib.concatStrings (map builtins.readFile (map (x: ./nushell/extras/. + x) (map (x: "/" + x) (builtins.attrNames (builtins.readDir ./nushell/extras)))));
+            #     configFile.source = ./nushell/config.nu;
+            #     envFile.source = ./nushell/env.nu;
+            #     # extraConfig = builtins.readFile ./nushell/stuff.nu;
+            #     extraConfig = lib.concatStrings (map builtins.readFile (map (x: ./nushell/extras/. + x) (map (x: "/" + x) (builtins.attrNames (builtins.readDir ./nushell/extras)))));
         };
 
-        starship = {
-            enable = true;
-            enableNushellIntegration = true;
-            settings = builtins.fromTOML (builtins.readFile ./starship.toml);
-        };
+        # starship = {
+        #     enable = true;
+        #     enableNushellIntegration = true;
+        #     settings = builtins.fromTOML (builtins.readFile ./starship.toml);
+        # };
 
         wezterm = {
             enable = true;
-            extraConfig = builtins.readFile ./wezterm.lua;
+            # extraConfig = builtins.readFile ./wezterm.lua;
         };
 
         zellij = {
@@ -53,10 +53,10 @@
             settings = {};
         };
 
-        zoxide = {
-            enable = true;
-            enableNushellIntegration = true;
-        };
+        # zoxide = {
+        #     enable = true;
+        #     enableNushellIntegration = true;
+        # };
     };
 
     # services.syncthing = {
