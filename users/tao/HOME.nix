@@ -173,6 +173,7 @@ in {
         };
 
         ssh = {
+            enableDefaultConfig = false;
             enable = true;
             matchBlocks = {
                 "*" = {
@@ -307,5 +308,5 @@ in {
 
     home.username = "tao";
     home.homeDirectory = "/home/tao";
-    home.stateVersion = "23.11";
+    home.stateVersion = "26.05";
 }

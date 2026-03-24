@@ -55,7 +55,7 @@
     ];
     boot.kernelModules = ["amdgpu"];
     powerManagement.cpuFreqGovernor = "powersave";
-    systemd.sleep.extraConfig = "HibernateDelaySec=360m";
+    # systemd.sleep.extraConfig = "HibernateDelaySec=360m";
 
     nix.settings = {
         connect-timeout = 5;

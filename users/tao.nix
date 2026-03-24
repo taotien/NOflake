@@ -4,80 +4,85 @@
     pkgs,
     lib,
     ...
-}: {
-    users.users.tao.packages = with pkgs; [
-        grayjay
-        # keep-sorted start sticky_comments=no
-        # android-tools
-        # boxxy
-        # carapace
-        # davinci-resolve
-        # fractal
-        # gurk-rs
-        # jellyfin-media-player
-        # nixos-anywhere
-        # piper
-        # syncthingtray
-        # taskwarrior3
-        # tectonic
-        # texlab
-        # thunderbird
-        # wkhtmltopdf
-        appimage-run
-        aspell
-        aspellDicts.en
-        bitwarden-cli
-        bitwarden-desktop
-        bottles
-        calibre
-        darktable
-        deluge
-        discord
-        element-desktop
-        forgejo-cli
-        freecad-wayland
-        gocryptfs
-        jellyfin-mpv-shim
-        man-pages
-        man-pages-posix
-        miniserve
-        mousai
-        nix-output-monitor
-        nufmt
-        nushell
-        nvd
-        obs-studio
-        oculante
-        onlyoffice-desktopeditors
-        openscad
-        pandoc
-        pipe-rename
-        printrun
-        prusa-slicer
-        qmk
-        qmk-udev-rules
-        qmk_hid
-        ripgrep-all
-        rqbit
-        signal-desktop
-        slack
-        snapper
-        starship
-        syncplay
-        tinymist
-        toastify
-        typst
-        usbutils
-        vial
-        wezterm
-        wl-clipboard-rs
-        yt-dlp
-        zathura
-        zoom-us
-        zotero
-        zoxide
-        # keep-sorted end
-    ];
+}: let
+    pkgs-last-building = inputs.nixpkgs-last-building.legacyPackages.${pkgs.system};
+in {
+    users.users.tao.packages =
+        (with pkgs-last-building; [
+            oculante # https://nixpk.gs/pr-tracker.html?pr=502921
+        ])
+        ++ (with pkgs; [
+            # keep-sorted start sticky_comments=no
+            # android-tools
+            # boxxy
+            # carapace
+            # davinci-resolve
+            # fractal
+            # gurk-rs
+            # jellyfin-media-player
+            # nixos-anywhere
+            # piper
+            # syncthingtray
+            # taskwarrior3
+            # tectonic
+            # texlab
+            # thunderbird
+            # wkhtmltopdf
+            appimage-run
+            aspell
+            aspellDicts.en
+            bitwarden-cli
+            bitwarden-desktop
+            bottles
+            calibre
+            darktable
+            deluge
+            discord
+            element-desktop
+            forgejo-cli
+            freecad-wayland
+            gocryptfs
+            grayjay
+            jellyfin-mpv-shim
+            man-pages
+            man-pages-posix
+            miniserve
+            mousai
+            nix-output-monitor
+            nufmt
+            nushell
+            nvd
+            obs-studio
+            onlyoffice-desktopeditors
+            openscad
+            pandoc
+            pipe-rename
+            printrun
+            prusa-slicer
+            qmk
+            qmk-udev-rules
+            qmk_hid
+            ripgrep-all
+            rqbit
+            signal-desktop
+            slack
+            snapper
+            starship
+            syncplay
+            tinymist
+            toastify
+            typst
+            usbutils
+            vial
+            wezterm
+            wl-clipboard-rs
+            yt-dlp
+            zathura
+            zoom-us
+            zotero
+            zoxide
+            # keep-sorted end
+        ]);
     virtualisation.waydroid = {
         enable = true;
         package = pkgs.waydroid-nftables;

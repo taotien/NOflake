@@ -1,4 +1,5 @@
 {
+    config,
     inputs,
     lib,
     pkgs,
@@ -17,7 +18,7 @@
         })
     ];
 
-    nix.package = pkgs.lixPackageSets.stable.lix;
+    nix.package = lib.mkIf (config.networking.hostName == "NOcomputer") pkgs.lixPackageSets.stable.lix;
 
     programs.pmount.enable = true;
     environment.systemPackages = with pkgs; [

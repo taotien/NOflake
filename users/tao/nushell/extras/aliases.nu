@@ -11,6 +11,8 @@ export alias p = pueue
 export alias snapper = snapper -c home
 export alias zl = zellij
 
+export def today-iso [] { date now | format date %F }
+
 export alias cringe = sudo bootctl set-oneshot auto-windows
 
 export alias la = ls -a

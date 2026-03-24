@@ -4,6 +4,7 @@
     inputs = {
         nixos.url = "github:NixOS/nixpkgs/nixos-25.11";
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+        nixpkgs-last-building.url = "github:NixOS/nixpkgs/59e69648d345d6e8fef86158c555730fa12af9de";
         nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
         nixos-hardware.url = "github:NixOS/nixos-hardware/master";
         determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
@@ -40,6 +41,7 @@
         nixos,
         self,
         nixpkgs,
+        nixpkgs-last-building,
         nixos-facter-modules,
         nixos-hardware,
         determinate,
