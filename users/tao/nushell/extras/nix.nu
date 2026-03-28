@@ -1,11 +1,11 @@
-def --wrapped rebuild [--force (-f), subcommand,  ...rest] {
+export def --wrapped rebuild [--force (-f), subcommand,  ...rest] {
   if not (
     df -h | detect columns --guess | where "Mounted on" == "/" or "Mounted on" == "/boot" | get Use% | each {parse "{usage}%" | get usage | into int} | flatten | all {$in < 99}
   ) and not $force {
     print "not enough disk space!"
     return false
   }
-  
+
   mut builders = ""
   if (open /etc/hostname --raw) == "NOlaptop\n" and ($builders != "") {
     if (ping -c1 -W1 nocomputer | complete | $in.exit_code == 0) {
@@ -27,9 +27,9 @@ def --wrapped rebuild [--force (-f), subcommand,  ...rest] {
   }
 }
 
-alias nd = nix develop
+export alias nd = nix develop
 
-def ns [...packages: string] {
+export def ns [...packages: string] {
   let packages = $packages | each {$"nixpkgs#($in)"}
   nix shell ...$packages
 }
@@ -38,16 +38,17 @@ def ns [...packages: string] {
 #   nix search nixpkgs $package
 # }
 
-def post-rebuild [] {
+export def post-rebuild [] {
     rm -r ~/.config/helix/runtime/grammars/
     hx --grammar fetch; hx --grammar build
     rustup update
 }
 
-def get_gen [] {
+export def get_gen [] {
   sudo nix-env --profile /nix/var/nix/profiles/system --list-generations | detect columns --guess -n | last | get column0
 }
-def bump [...rest] {
+
+export def bump [...rest] {
   cd /home/tao/projects/NOflake/
   mut r = "@"
   loop {
@@ -57,7 +58,7 @@ def bump [...rest] {
       }
       "empty" => {
         $r = $r + "-"
-        continue 
+        continue
       }
       _ => {
         jj new -r $r -m "bump (unbuilt)"
@@ -73,18 +74,17 @@ def bump [...rest] {
   if ($build_status and ($curr_gen == $new_gen)) {
     jj desc -r $r -m $"bump (date now | format date "%Y-%m-%d")"
     jj bookmark set main -r $r
-    jj git push --allow-empty-description 
+    jj git push --allow-empty-description
   } else {
     jj desc -r $r -m "bump (failed)"
   }
   nvd history
 }
 
-alias rb = rebuild boot
-alias rs = rebuild switch
+export alias rb = rebuild boot
+export alias rs = rebuild switch
 
-def gc [] {
+export def gc [] {
   sudo nix-collect-garbage -d
   snapper clear
 }
-

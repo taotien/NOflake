@@ -1,12 +1,12 @@
-def done [] {
+export def done [] {
   toastify send -a "" done
 }
 
-def "config stuff" [] {
+export def "config stuff" [] {
   hx ~/projects/NOflake/users/tao/nushell/stuff.nu
 }
 
-def fixme [] {
+export def fixme [] {
   let items = rg "FIXME|TODO" --json
     | lines
     | each {from json}
@@ -24,26 +24,24 @@ def fixme [] {
   hx ($items | get $sel | $"($in.text):($in.line_number)")
 }
 
-source ~/.zoxide.nu
-def --wrapped --env z [...rest] {
-  zo ...$rest
-  l
+export def "snapper list" [] {
+  snapper --csvout list | from csv | reject config subvolume default user used-space userdata active
 }
 
-def "snapper list" [] {
-  snapper --csvout list | from csv | reject config subvolume default user used-space userdata active
-} 
-
-def "snapper clear" [] {
+export def "snapper clear" [] {
   let list = snapper --csvout list | from csv | reject config subvolume default user used-space userdata active | skip 1
 
   let first = $list | first
   let last = $list | last
 
-  snapper delete $"($first.number)-($last.number)"
+  if $first != $last {
+    snapper delete $"($first.number)-($last.number)"
+  } else {
+    snapper delete $first
+  }
 }
 
-def "fans" [duty?: int] {
+export def "fans" [duty?: int] {
   match (hostname) {
     "NOcomputer" => {
       let mode_path: path = (glob "/sys/devices/platform/nct6775.656/hwmon/hwmon*/pwm2_enable" | get 0)
@@ -61,15 +59,15 @@ def "fans" [duty?: int] {
   }
 }
 
-alias louder = fans 100
-alias loud = fans
-alias quiet = fans 42
+export alias louder = fans 100
+export alias loud = fans
+export alias quiet = fans 42
 
-def asciicam [] {
+export def asciicam [] {
   $env.DISPLAY = null
   mpv -vo caca av://v4l2:/dev/video0 --demuxer-lavf-o=input_format=mjpeg --profile=low-latency e>| /dev/null
 }
 
-def sunu [command] {
+export def sunu [command] {
   sudo nu --stdin --commands $command
 }

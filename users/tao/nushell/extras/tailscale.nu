@@ -1,5 +1,5 @@
 # see if others see us connecting from a mullvad exit node
-def check-mullvad [] {
+export def check-mullvad [] {
   print -n "checking mullvad status"
   mut check = false
   mut j = null
@@ -13,7 +13,7 @@ def check-mullvad [] {
 }
 
 # switch to a specific exit node, or none
-def te [exit_node: string = ""] {
+export def te [exit_node: string = ""] {
   if ($exit_node | is-empty) and (ps | find deluge | is-not-empty) {
     print "stop summoning first!"
     return false
@@ -25,12 +25,12 @@ def te [exit_node: string = ""] {
     check-mullvad
   } else {
     print "exit node set"
-    return true 
+    return true
   }
 }
 
 # list all mullvad exit nodes
-def tx [] {
+export def tx [] {
 tailscale exit-node list
   | lines
   | drop 4
@@ -42,7 +42,7 @@ tailscale exit-node list
 }
 
 # sort mullvad exit nodes by fastest ping
-def tsp [] {
+export def tsp [] {
 tx
   | where COUNTRY == USA
   | par-each {
@@ -66,18 +66,18 @@ tx
 }
 
 # switch to a random mullvad exit node
-def tr [] {
+export def tr [] {
   tx
     | get (random int 0..($in | length))
     | te $in.IP
     | return $in
 }
 
-alias t = tailscale
-alias ts = tailscale status
-alias tu = tailscale up
-alias td = tailscale down
-alias ta = tailscale exit-node suggest
-alias tt = tailscale switch --list | detect columns | input list -d Tailnet | get ID | t switch $in
+export alias t = tailscale
+export alias ts = tailscale status
+export alias tu = tailscale up
+export alias td = tailscale down
+export alias ta = tailscale exit-node suggest
+export alias tt = tailscale switch --list | detect columns | input list -d Tailnet | get ID | t switch $in
 
-alias wno = ssh root@whyfi "etherwake -i br-lan 04:42:1A:E7:62:C3"
+export alias wno = ssh root@whyfi "etherwake -i br-lan 04:42:1A:E7:62:C3"

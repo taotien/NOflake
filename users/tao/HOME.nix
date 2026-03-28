@@ -22,8 +22,6 @@ in {
     imports = [
         ./boxxy.nix
         (import ./helix.nix {inherit pkgs inputs;})
-        # ./plasma.nix
-        # ./firefox.nix
     ];
 
     # home.sessionPath = [
@@ -34,8 +32,18 @@ in {
         source = ./autostart;
         recursive = true;
     };
-    home.file.".config/direnv/lib/".source = ./direnv;
-    home.file.".config/direnv/lib/".recursive = true;
+    home.file.".config/direnv/lib/" = {
+        source = ./direnv;
+        recursive = true;
+    };
+    home.file.".config/nushell/scripts" = {
+        source = ./nushell/extras;
+        recursive = true;
+    };
+    home.file.".local/nushell/completions" = {
+        source = ./nushell/completions;
+        recursive = true;
+    };
 
     programs = {
         bacon = {
@@ -80,11 +88,7 @@ in {
             settings = {
                 color = "gruvbox";
                 flags = {
-                    battery =
-                        # if lib.strings.hasPrefix "NOlaptop" (builtins.readFile /etc/hostname)
-                        # then true
-                        # else false;
-                        true;
+                    battery = true;
                     hide_time = true;
                     enable_gpu = true;
                 };
@@ -93,7 +97,6 @@ in {
 
         direnv = {
             enable = true;
-            enableNushellIntegration = true;
             nix-direnv.enable = true;
             config = {
                 load_dotenv = true;
@@ -127,6 +130,17 @@ in {
         mpv = {
             config = {
                 demuxer-max-bytes = "10GiB";
+
+                alang = "ja,jp,jpn,en,eng";
+                slang = "en,eng";
+                sub-scale = 0.5;
+
+                hr-seek = "yes";
+
+                hwdec = "auto";
+                vo = "gpu-next";
+
+                target-colorspace-hint = "auto";
             };
         };
 
@@ -149,8 +163,12 @@ in {
             configFile.source = ./nushell/config.nu;
             envFile.source = ./nushell/env.nu;
             # extraConfig = builtins.readFile ./nushell/stuff.nu;
-            extraConfig = lib.concatStrings (map builtins.readFile (map (x: ./nushell/extras/. + x) (map (x: "/" + x) (builtins.attrNames (builtins.readDir ./nushell/extras)))));
+            # extraConfig = lib.concatStrings (map builtins.readFile (map (x: ./nushell/extras/. + x) (map (x: "/" + x) (builtins.attrNames (builtins.readDir ./nushell/extras)))));
             plugins = with pkgs.nushellPlugins; [
+                # skim
+                desktop_notifications
+                # highlight
+                # units
             ];
         };
 
@@ -184,7 +202,6 @@ in {
 
         starship = {
             enable = true;
-            enableNushellIntegration = true;
             settings = builtins.fromTOML (builtins.readFile ./starship.toml);
         };
 
@@ -213,7 +230,6 @@ in {
 
         zoxide = {
             enable = true;
-            enableNushellIntegration = true;
         };
     };
 
