@@ -40,7 +40,7 @@ in {
         source = ./nushell/extras;
         recursive = true;
     };
-    home.file.".local/nushell/completions" = {
+    home.file.".local/share/nushell/completions" = {
         source = ./nushell/completions;
         recursive = true;
     };

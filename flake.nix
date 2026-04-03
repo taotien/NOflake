@@ -73,6 +73,7 @@
                     ./extras/gaming.nix
                     lsfg-vk-flake.nixosModules.default
                     ./extras/folding.nix
+                    ./users/builder.nix
                 ];
             };
             NOlaptop = nixpkgs.lib.nixosSystem {
