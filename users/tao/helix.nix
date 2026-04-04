@@ -242,10 +242,11 @@
                 {
                     name = "typst";
                     language-servers = ["tinymist"];
-                }
-                {
-                    name = "typst";
                     text-width = 100;
+                    auto-format = true;
+                    formatter = {
+                        command = "typstyle";
+                    };
                 }
                 # keep-sorted end
             ];
@@ -311,6 +312,9 @@
                         };
                     };
                 };
+                # niv.config = {
+                #     autoArchive = true;
+                # };
             };
             use-grammars.only = [
                 # keep-sorted start

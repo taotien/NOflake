@@ -107,6 +107,9 @@ in {
             enable = true;
             settings = {
                 remotes.origin.auto-track-bookmarks = "glob:*";
+                aliases = {
+                    "init" = ["git" "init"];
+                };
                 user = {
                     name = "Tao Tien";
                     email = "29749622+taotien@users.noreply.github.com";

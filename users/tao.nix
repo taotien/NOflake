@@ -72,6 +72,7 @@ in {
             tinymist
             toastify
             typst
+            typstyle
             usbutils
             vial
             wezterm
