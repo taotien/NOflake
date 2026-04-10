@@ -92,6 +92,9 @@ in {
     environment.shells = with pkgs; [nushell];
 
     fonts.packages = with pkgs; [
+        libertine
+        inconsolata
+        linux-libertine-g
         # keep-sorted start
         cooper-hewitt
         ibm-plex
