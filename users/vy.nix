@@ -29,9 +29,18 @@ in {
     programs.kdeconnect.enable = true;
 
     fonts.packages = with pkgs; [
+        libertine
+        inconsolata
+        linux-libertine-g
+        adwaita-fonts
+        # keep-sorted start
+        cooper-hewitt
+        ibm-plex
+        nerd-fonts.fira-code
         noto-fonts-cjk-sans
         noto-fonts-cjk-serif
         noto-fonts-color-emoji
+        # keep-sorted end
     ];
 
     services.flatpak.enable = true;

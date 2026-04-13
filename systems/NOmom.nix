@@ -20,7 +20,7 @@
     environment.plasma6.excludePackages = with pkgs; [
         kdePackages.elisa
         kdePackages.konsole
-        kdePackages.gwenview
+        # kdePackages.gwenview
         kdePackages.kate
         # kdePackages.xwaylandvideobridge
         xterm
