@@ -9,9 +9,11 @@
 in {
     users.users.tao.packages =
         (with pkgs-last-building; [
-            oculante # https://nixpk.gs/pr-tracker.html?pr=502921
+            # oculante # https://nixpk.gs/pr-tracker.html?pr=502921
         ])
         ++ (with pkgs; [
+            sniffnet
+            oculante
             # keep-sorted start sticky_comments=no
             # android-tools
             # boxxy

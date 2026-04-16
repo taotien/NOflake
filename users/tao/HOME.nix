@@ -169,7 +169,7 @@ in {
             # extraConfig = lib.concatStrings (map builtins.readFile (map (x: ./nushell/extras/. + x) (map (x: "/" + x) (builtins.attrNames (builtins.readDir ./nushell/extras)))));
             plugins = with pkgs.nushellPlugins; [
                 # skim
-                desktop_notifications
+                # desktop_notifications
                 # highlight
                 # units
             ];
