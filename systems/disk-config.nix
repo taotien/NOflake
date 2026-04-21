@@ -32,11 +32,7 @@
                             format = "bcachefs";
                             mountOptions = [
                                 "noatime"
-                                "compression=zstd"
-                                "background_compression=zstd"
                                 "discard"
-                                # "fsck"
-                                # "fix_errors"
                             ];
                             mountpoint = "/";
                         };
