@@ -251,6 +251,11 @@
                 # keep-sorted end
             ];
             language-server = {
+                nil = {
+                    config = {
+                        autoArchive = true;
+                    };
+                };
                 deno-lsp = {
                     command = "deno";
                     args = ["lsp"];
