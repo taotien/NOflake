@@ -13,7 +13,7 @@ export def check-mullvad [] {
 }
 
 # switch to a specific exit node, or none
-export def te [exit_node: string = ""] {
+export def te [exit_node: string = "", -n] {
   if ($exit_node | is-empty) and (ps | find deluge | is-not-empty) {
     print "stop summoning first!"
     return false
@@ -21,7 +21,7 @@ export def te [exit_node: string = ""] {
 
   tailscale set --exit-node $exit_node
 
-  if ($exit_node | is-not-empty) {
+  if ($exit_node | is-not-empty) or not $n {
     check-mullvad
   } else {
     print "exit node set"
