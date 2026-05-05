@@ -16,6 +16,7 @@ in {
             oculante
             # keep-sorted start sticky_comments=no
             # android-tools
+            # bottles
             # boxxy
             # carapace
             # davinci-resolve
@@ -35,7 +36,6 @@ in {
             aspellDicts.en
             bitwarden-cli
             bitwarden-desktop
-            bottles
             calibre
             darktable
             deluge
