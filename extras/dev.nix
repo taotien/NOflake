@@ -158,7 +158,17 @@
     services.udev.extraRules = ''
         SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic GDB Server", SYMLINK+="ttyBmpGdb"
         SUBSYSTEM == "tty", GROUP="dialout", ATTRS{interface}=="Black Magic UART Port",  SYMLINK+="ttyBmpTarg"
+
+        # mobili
+        KERNEL=="js[0-9]*", MODE="0666"
     '';
+
+    boot.kernel.sysctl = {
+        "net.core.rmem_max" = 67108864;
+        "net.core.wmem_max" = 67108864;
+        "net.core.rmem_max_default" = 67108864;
+        "net.core.wmem_max_default" = 67108864;
+    };
 
     virtualisation.docker = {
         daemon.settings = {
