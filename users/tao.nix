@@ -12,6 +12,7 @@ in {
             # oculante # https://nixpk.gs/pr-tracker.html?pr=502921
         ])
         ++ (with pkgs; [
+            feedr
             sniffnet
             oculante
             # keep-sorted start sticky_comments=no
@@ -94,6 +95,7 @@ in {
     environment.shells = with pkgs; [nushell];
 
     fonts.packages = with pkgs; [
+        iosevka
         libertine
         inconsolata
         linux-libertine-g
