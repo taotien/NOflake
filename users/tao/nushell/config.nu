@@ -767,8 +767,12 @@ $env.config = {
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
+zoxide init nushell --no-cmd | save --force ~/.zoxide.nu
 source ~/.zoxide.nu
 export def --wrapped --env z [...rest] {
-  zo ...$rest
+  __zoxide_z ...$rest
   l
 }
+
+devenv hook nu | save --force ~/.cache/devenv/hook.nu
+source ~/.cache/devenv/hook.nu

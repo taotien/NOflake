@@ -79,10 +79,14 @@ $env.NU_PLUGIN_DIRS = [
 ]
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
-$env.PATH = ($env.PATH | split row (char esep))
+# $env.PATH = ($env.PATH | split row (char esep))
 
 # $env.GOPATH = '/home/tao/.go'
 
 # $env.CARAPACE_BRIDGES
 mkdir ~/.cache/carapace
 # carapace _carapace nushell | save -f ~/.cache/carapace/init.nu
+
+use std/util "path add"
+path add ~/.cargo/bin/
+path add ~/.local/bin/
