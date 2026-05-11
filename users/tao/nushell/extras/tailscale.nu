@@ -73,11 +73,18 @@ export def tr [] {
     | return $in
 }
 
+export def tw [] {
+  tailscale switch --list
+    | detect columns
+    | input list -d Tailnet
+    | get ID
+    | tailscale switch $in
+}
+
 export alias t = tailscale
 export alias ts = tailscale status
 export alias tu = tailscale up
 export alias td = tailscale down
 export alias ta = tailscale exit-node suggest
-export alias tt = tailscale switch --list | detect columns | input list -d Tailnet | get ID | t switch $in
 
 export alias wno = ssh root@whyfi "etherwake -i br-lan 04:42:1A:E7:62:C3"
