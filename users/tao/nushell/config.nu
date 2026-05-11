@@ -12,6 +12,7 @@ use tailscale.nu *
 
 source completions-jj.nu
 source completions-just.nu
+source completions-docker.nu
 
 # External completer example
 # let carapace_completer = {|spans|
