@@ -95,6 +95,7 @@ in {
     environment.shells = with pkgs; [nushell];
 
     fonts.packages = with pkgs; [
+        nerd-fonts.iosevka-term
         iosevka
         libertine
         inconsolata
@@ -176,6 +177,8 @@ in {
         useUserPackages = true;
         verbose = true;
         backupFileExtension = ".hm-bak";
-        users.tao = import ./tao/HOME.nix {inherit inputs pkgs lib config;};
+        overwriteBackup = true;
+        extraSpecialArgs = {inherit inputs;};
+        users.tao = import ./tao/HOME.nix;
     };
 }

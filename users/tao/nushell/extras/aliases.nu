@@ -10,6 +10,7 @@ export alias follow = readlink -f
 export alias p = pueue
 export alias snapper = snapper -c home
 export alias zl = zellij
+export alias wssh = wezterm ssh
 
 export def today-iso [] { date now | format date %F }
 

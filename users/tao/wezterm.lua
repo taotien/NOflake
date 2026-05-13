@@ -1,5 +1,5 @@
 local config = {
-	font = wezterm.font 'Iosevka',
+	font = wezterm.font 'IosevkaTerm Nerd Font',
 	color_scheme = 'GruvboxDarkHard',
 	window_decorations = "NONE",
 

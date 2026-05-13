@@ -170,9 +170,14 @@
         "net.core.wmem_max_default" = 67108864;
     };
 
+    hardware.nvidia-container-toolkit.enable =
+        lib.strings.hasPrefix "NOcomputer" (builtins.readFile /etc/hostname);
     virtualisation.docker = {
         daemon.settings = {
-            features.buildkit = true;
+            features = {
+                buildkit = true;
+                cdi = true;
+            };
         };
         enable = true;
         # storageDriver =

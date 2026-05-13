@@ -32,10 +32,10 @@ in {
         source = ./autostart;
         recursive = true;
     };
-    home.file.".config/direnv/lib/" = {
-        source = ./direnv;
-        recursive = true;
-    };
+    # home.file.".config/direnv/lib/" = {
+    #     source = ./direnv;
+    #     recursive = true;
+    # };
     home.file.".config/nushell/scripts" = {
         source = ./nushell/extras;
         recursive = true;
@@ -139,6 +139,8 @@ in {
                 sub-scale = 0.5;
 
                 hr-seek = "yes";
+
+                audio-device = "alsa";
 
                 hwdec = "auto";
                 vo = "gpu-next";
