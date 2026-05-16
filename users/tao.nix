@@ -94,22 +94,6 @@ in {
 
     environment.shells = with pkgs; [nushell];
 
-    fonts.packages = with pkgs; [
-        nerd-fonts.iosevka-term
-        iosevka
-        libertine
-        inconsolata
-        linux-libertine-g
-        # keep-sorted start
-        cooper-hewitt
-        ibm-plex
-        nerd-fonts.fira-code
-        noto-fonts-cjk-sans
-        noto-fonts-cjk-serif
-        noto-fonts-color-emoji
-        # keep-sorted end
-    ];
-
     documentation.enable = true;
 
     # virtualisation.libvirtd.enable = true;
