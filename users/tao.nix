@@ -12,9 +12,6 @@ in {
             # oculante # https://nixpk.gs/pr-tracker.html?pr=502921
         ])
         ++ (with pkgs; [
-            feedr
-            sniffnet
-            oculante
             # keep-sorted start sticky_comments=no
             # android-tools
             # bottles
@@ -42,6 +39,7 @@ in {
             deluge
             discord
             element-desktop
+            feedr
             forgejo-cli
             freecad-wayland
             gocryptfs
@@ -56,6 +54,7 @@ in {
             nushell
             nvd
             obs-studio
+            oculante
             onlyoffice-desktopeditors
             openscad
             pandoc
@@ -70,6 +69,7 @@ in {
             signal-desktop
             slack
             snapper
+            sniffnet
             starship
             syncplay
             tinymist

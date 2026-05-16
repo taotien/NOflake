@@ -15,7 +15,6 @@
     # };
     programs.qgroundcontrol.enable = true;
     environment.systemPackages = with pkgs; [
-        chromium
         claude-code
         # keep-sorted start sticky_comments=no
         # act
