@@ -74,6 +74,7 @@ in {
             syncplay
             tinymist
             toastify
+            transmission_4-gtk
             typst
             typstyle
             usbutils

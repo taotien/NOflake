@@ -6,6 +6,8 @@
     modulesPath,
     ...
 }: {
+    services.fwupd.enable = true;
+
     nixpkgs.overlays = [
         (final: prev: {
             inherit

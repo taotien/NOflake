@@ -25,7 +25,6 @@
 
     services.lact.enable = true;
 
-    services.fwupd.enable = true;
     services.tailscale.useRoutingFeatures = "client";
     systemd.services."backlight@backlight:amdgpu_bl2".enable = false;
 
