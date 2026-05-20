@@ -25,6 +25,7 @@
         # keep-sorted start
         bat
         bottom
+        cachix
         cifs-utils
         dumbpipe
         dust
