@@ -47,7 +47,8 @@
         "amdgpu"
     ];
 
-    boot.kernelPackages = pkgs.linuxPackages_latest;
+    # boot.kernelPackages = pkgs.linuxPackages_latest;
+    boot.kernelPackages = pkgs.nur.repos.Ev357.linux-patched;
     boot.kernelParams = [
         "amdgpu.abmlevel=1"
         # amd doesn't have deep
