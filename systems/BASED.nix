@@ -21,7 +21,10 @@
     nix.package = lib.mkIf (config.networking.hostName == "NOcomputer") pkgs.lixPackageSets.stable.lix;
 
     programs.pmount.enable = true;
+    services.eternal-terminal.enable = true;
+    programs.mosh.enable = true;
     environment.systemPackages = with pkgs; [
+        eternal-terminal
         # keep-sorted start
         bat
         bottom
