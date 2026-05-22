@@ -214,7 +214,7 @@
                 {
                     name = "python";
                     auto-format = true;
-                    language-servers = ["basedpyright" "ty" "ruff"];
+                    language-servers = [/* "basedpyright" */ "ty" "ruff"];
                     # formatter = {
                     #     command = "ruff";
                     #     args = ["format"];
@@ -268,10 +268,10 @@
                     command = "microcad-lsp";
                 };
 
-                basedpyright = {
-                    command = "basedpyright-langserver";
-                    args = ["--stdio"];
-                };
+                # basedpyright = {
+                #     command = "basedpyright-langserver";
+                #     args = ["--stdio"];
+                # };
                 rust-analyzer.config.check.command = "clippy";
                 # gas = {
                 #   command = "asm-lsp";
