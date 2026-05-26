@@ -13,7 +13,7 @@ rustc-wrapper = "/path/to/sccache"
 [unstable]
 codegen-backend = true
 
-[provile.dev]
+[profile.dev]
 debug = 0
 strip = "debuginfo"
 opt-level = 1

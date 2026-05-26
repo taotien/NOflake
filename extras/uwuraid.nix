@@ -4,8 +4,7 @@
         opts = {
             type = "cifs";
             mountConfig = {
-                # Options = "noauto,noatime,async,users,rw,x-systemd.automount,credentials=${config.age.secrets.uwuraid.path},file_mode=0777,dir_mode=0777";
-                Options = "_netdev,noserverino,nounix,nobrl,noperm,noauto,noatime,async,users,rw,x-systemd.automount,x-systemd.requires=network-online.target,nofail,soft,credentials=${config.age.secrets.uwuraid.path},file_mode=0777,dir_mode=0777";
+                Options = "_netdev,noserverino,nounix,nobrl,noperm,noauto,noatime,async,rw,x-systemd.automount,x-systemd.requires=tailscaled.service,x-systemd.automount-idle-timeout=60,nofail,soft,softrw,credentials=${config.age.secrets.uwuraid.path},file_mode=0777,dir_mode=0777,echo_interval=30,echo_retries=2,closetimeo=0,vers=3.0,iocharset=utf8";
             };
         };
     in [
