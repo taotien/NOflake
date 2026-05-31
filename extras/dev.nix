@@ -15,6 +15,8 @@
     # };
     programs.qgroundcontrol.enable = true;
     environment.systemPackages = with pkgs; [
+        foxglove-studio
+        foxglove-cli
         claude-code
         # keep-sorted start sticky_comments=no
         # act
