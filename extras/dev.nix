@@ -3,6 +3,17 @@
     pkgs,
     ...
 }: {
+    services.dockerRegistry = {
+        enable = true;
+        listenAddress = "0.0.0.0";
+        port = 5000;
+        storagePath = "/var/lob/docker-registry";
+        enableDelete = true;
+        enableGarbageCollect = true;
+        garbageCollectDates = "daily";
+        openFirewall = false;
+    };
+
     boot.kernel.sysctl."vm.overcommit_memory" = "1";
 
     # systemd.user.services.lspmux = {
