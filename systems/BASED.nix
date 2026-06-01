@@ -22,11 +22,7 @@
 
     nix.package = lib.mkIf (config.networking.hostName == "NOcomputer") pkgs.lixPackageSets.stable.lix;
 
-    programs.pmount.enable = true;
-    services.eternal-terminal.enable = true;
-    programs.mosh.enable = true;
     environment.systemPackages = with pkgs; [
-        eternal-terminal
         # keep-sorted start
         bat
         bottom
@@ -61,7 +57,10 @@
         # keep-sorted end
     ];
     programs.partition-manager.enable = lib.mkDefault true;
+    programs.pmount.enable = lib.mkDefault true;
+    programs.mosh.enable = lib.mkDefault true;
 
+    fonts.fontDir.enable = true;
     fonts.packages = with pkgs; [
         # keep-sorted start
         cooper-hewitt
@@ -77,27 +76,43 @@
         noto-fonts-color-emoji
         # keep-sorted end
     ];
-    system.userActivationScripts = {
-        copy-fonts-local-share = {
-            text = ''
-                rm -rf ~/.local/share/fonts
-                mkdir -p ~/.local/share/fonts
-                cp ${pkgs.cooper-hewitt}/share/fonts/truetype/* ~/.local/share/fonts/
-                cp ${pkgs.ibm-plex}/share/fonts/truetype/* ~/.local/share/fonts/
-                cp ${pkgs.inconsolata}/share/fonts/truetype/* ~/.local/share/fonts/
-                cp ${pkgs.iosevka}/share/fonts/truetype/* ~/.local/share/fonts/
-                cp ${pkgs.libertine}/share/fonts/truetype/* ~/.local/share/fonts/
-                cp ${pkgs.linux-libertine-g}/share/fonts/truetype/* ~/.local/share/fonts/
-                cp ${pkgs.nerd-fonts.fira-code}/share/fonts/truetype/* ~/.local/share/fonts/
-                cp ${pkgs.nerd-fonts.iosevka-term}/share/fonts/truetype/* ~/.local/share/fonts/
-                cp ${pkgs.noto-fonts-cjk-sans}/share/fonts/truetype/* ~/.local/share/fonts/
-                cp ${pkgs.noto-fonts-cjk-serif}/share/fonts/truetype/* ~/.local/share/fonts/
-                cp ${pkgs.noto-fonts-color-emoji}/share/fonts/truetype/* ~/.local/share/fonts/
-                chmod 544 ~/.local/share/fonts
-                chmod 444 ~/.local/share/fonts/*
-            '';
-        };
-    };
+    system.userActivationScripts.installFonts = ''
+        mkdir -p ~/.local/share/fonts
+        find ${pkgs.noto-fonts-cjk-sans}/share/fonts \
+          -type f \( -name "*.otf" -o -name "*.ttf" -o -name "*.ttc" \) \
+          -exec cp -f {} ~/.local/share/fonts/ \;
+        find ${pkgs.noto-fonts-cjk-serif}/share/fonts \
+          -type f \( -name "*.otf" -o -name "*.ttf" -o -name "*.ttc" \) \
+          -exec cp -f {} ~/.local/share/fonts/ \;
+        find ${pkgs.cooper-hewitt}/share/fonts \
+          -type f \( -name "*.otf" -o -name "*.ttf" -o -name "*.ttc" \) \
+          -exec cp -f {} ~/.local/share/fonts/ \;
+        find ${pkgs.ibm-plex}/share/fonts \
+          -type f \( -name "*.otf" -o -name "*.ttf" -o -name "*.ttc" \) \
+          -exec cp -f {} ~/.local/share/fonts/ \;
+        find ${pkgs.inconsolata}/share/fonts \
+          -type f \( -name "*.otf" -o -name "*.ttf" -o -name "*.ttc" \) \
+          -exec cp -f {} ~/.local/share/fonts/ \;
+        find ${pkgs.iosevka}/share/fonts \
+          -type f \( -name "*.otf" -o -name "*.ttf" -o -name "*.ttc" \) \
+          -exec cp -f {} ~/.local/share/fonts/ \;
+        find ${pkgs.libertine}/share/fonts \
+          -type f \( -name "*.otf" -o -name "*.ttf" -o -name "*.ttc" \) \
+          -exec cp -f {} ~/.local/share/fonts/ \;
+        find ${pkgs.linux-libertine-g}/share/fonts \
+          -type f \( -name "*.otf" -o -name "*.ttf" -o -name "*.ttc" \) \
+          -exec cp -f {} ~/.local/share/fonts/ \;
+        find ${pkgs.nerd-fonts.fira-code}/share/fonts \
+          -type f \( -name "*.otf" -o -name "*.ttf" -o -name "*.ttc" \) \
+          -exec cp -f {} ~/.local/share/fonts/ \;
+        find ${pkgs.nerd-fonts.iosevka-term}/share/fonts \
+          -type f \( -name "*.otf" -o -name "*.ttf" -o -name "*.ttc" \) \
+          -exec cp -f {} ~/.local/share/fonts/ \;
+        find ${pkgs.noto-fonts-color-emoji}/share/fonts \
+          -type f \( -name "*.otf" -o -name "*.ttf" -o -name "*.ttc" \) \
+          -exec cp -f {} ~/.local/share/fonts/ \;
+        fc-cache -fv
+    '';
 
     hardware.graphics.enable = true;
     # hardware.opengl = {

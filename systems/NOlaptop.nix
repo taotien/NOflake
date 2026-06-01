@@ -17,10 +17,12 @@
     # ];
 
     environment.systemPackages = with pkgs; [
-        fw-ectool
+        # keep-sorted start
         framework-tool
-        nvtopPackages.amd
+        fw-ectool
         lact
+        nvtopPackages.amd
+        # keep-sorted end
     ];
 
     services.lact.enable = true;
@@ -46,12 +48,9 @@
         "amdgpu"
     ];
 
-    # boot.kernelPackages = pkgs.linuxPackages_latest;
-    boot.kernelPackages = pkgs.nur.repos.Ev357.linux-patched;
+    boot.kernelPackages = pkgs.linuxPackages_latest;
     boot.kernelParams = [
         "amdgpu.abmlevel=1"
-        # amd doesn't have deep
-        # "mem_sleep_default=deep"
     ];
     boot.kernelModules = ["amdgpu"];
     powerManagement.cpuFreqGovernor = "powersave";
