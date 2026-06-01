@@ -79,11 +79,11 @@
         wild
         # keep-sorted end
 
-        # alloy
-        bun
-        docker-compose
-        ngrok
-        deno
+        # # alloy
+        # bun
+        # docker-compose
+        # ngrok
+        # deno
 
         # # databases
         # sqlite
