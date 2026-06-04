@@ -51,6 +51,7 @@
     boot.kernelPackages = pkgs.linuxPackages_latest;
     boot.kernelParams = [
         "amdgpu.abmlevel=1"
+        "amdgpu.dcdebugmask=0x400"
     ];
     boot.kernelModules = ["amdgpu"];
     powerManagement.cpuFreqGovernor = "powersave";

@@ -68,8 +68,8 @@ export def bump [...rest] {
   }
   let r = jj log -r @ --no-pager --no-graph --template 'change_id'
   sudo nix flake update
-  let build_status = rebuild boot
-  if $build_status {
+  let build_success = rebuild boot
+  if $build_success {
     jj desc -r $r -m $"bump (date now | format date "%Y-%m-%d")"
     jj bookmark set main -r $r
     jj git push --allow-empty-description

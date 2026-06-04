@@ -7,13 +7,13 @@
 }: let
     pkgs-last-building = inputs.nixpkgs-last-building.legacyPackages.${pkgs.system};
 in {
+    programs.gphoto2.enable = true;
     users.users.tao.packages =
         (with pkgs-last-building; [
             # oculante # https://nixpk.gs/pr-tracker.html?pr=502921
         ])
         ++ (with pkgs; [
             # keep-sorted start sticky_comments=no
-            # android-tools
             # bottles
             # boxxy
             # carapace
@@ -29,6 +29,7 @@ in {
             # texlab
             # thunderbird
             # wkhtmltopdf
+            android-tools
             appimage-run
             aspell
             aspellDicts.en
@@ -149,7 +150,7 @@ in {
     users.users.tao = {
         isNormalUser = true;
         # hashedPasswordFile = config.age.secrets.password-tao.path;
-        extraGroups = ["audio" "video" "wheel" "libvirtd" "dialout" "game"];
+        extraGroups = ["audio" "video" "wheel" "libvirtd" "dialout" "game" "camera"];
         shell = pkgs.nushell;
     };
     age.secrets = {
