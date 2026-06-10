@@ -8,12 +8,18 @@
     pkgs-last-building = inputs.nixpkgs-last-building.legacyPackages.${pkgs.system};
 in {
     programs.gphoto2.enable = true;
+    nixpkgs.config.permittedInsecurePackages = [
+        # "electron-39.8.10"
+    ];
+
     users.users.tao.packages =
         (with pkgs-last-building; [
             # oculante # https://nixpk.gs/pr-tracker.html?pr=502921
+            # openscad
         ])
         ++ (with pkgs; [
             # keep-sorted start sticky_comments=no
+            # bitwarden-desktop
             # bottles
             # boxxy
             # carapace
@@ -34,7 +40,6 @@ in {
             aspell
             aspellDicts.en
             bitwarden-cli
-            # bitwarden-desktop
             calibre
             darktable
             deluge
