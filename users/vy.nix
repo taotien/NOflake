@@ -8,24 +8,27 @@
     pkgs-last-building = inputs.nixpkgs-last-building.legacyPackages.${pkgs.system};
 in {
     users.users.vy.packages =
-    (with pkgs-last-building; [
-            oculante # https://nixpk.gs/pr-tracker.html?pr=502921
-        ])
-++ (with pkgs; [
-        audacity
-        cosmic-store
-        google-chrome
-        jellyfin-media-player
-        onlyoffice-desktopeditors
-        rnote
-        signal-desktop
-        signal-desktop
-        snapper
-        syncthingtray
-        toastify
-        yt-dlp
-        zoom-us
-    ]);
+        /*
+           (with pkgs-last-building; [
+                oculante # https://nixpk.gs/pr-tracker.html?pr=502921
+            ])
+    ++ (
+    */
+        with pkgs; [
+            audacity
+            cosmic-store
+            google-chrome
+            jellyfin-media-player
+            onlyoffice-desktopeditors
+            rnote
+            signal-desktop
+            signal-desktop
+            snapper
+            syncthingtray
+            toastify
+            yt-dlp
+            zoom-us
+        ];
     programs.kdeconnect.enable = true;
 
     services.flatpak.enable = true;

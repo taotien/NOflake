@@ -16,10 +16,13 @@ in {
     };
 
     environment.systemPackages =
-        (with pkgs-last-building; [
-            # lutris
-        ])
-        ++ (with pkgs; [
+        /*
+       (with pkgs-last-building; [
+        # lutris
+    ])
+    ++
+    */
+        with pkgs; [
             # keep-sorted start
             # parsec-bin
             # yuzu # nintendo can suck the shit out of my asshole
@@ -35,7 +38,7 @@ in {
             temurin-jre-bin-17
             wine
             # keep-sorted end
-        ]);
+        ];
 
     networking.firewall.allowedTCPPorts = [25565];
 

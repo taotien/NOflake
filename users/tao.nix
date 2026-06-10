@@ -5,7 +5,7 @@
     lib,
     ...
 }: let
-    pkgs-last-building = inputs.nixpkgs-last-building.legacyPackages.${pkgs.system};
+    # pkgs-last-building = inputs.nixpkgs-last-building.legacyPackages.${pkgs.system};
 in {
     programs.gphoto2.enable = true;
     nixpkgs.config.permittedInsecurePackages = [
@@ -13,11 +13,14 @@ in {
     ];
 
     users.users.tao.packages =
-        (with pkgs-last-building; [
-            # oculante # https://nixpk.gs/pr-tracker.html?pr=502921
+        /*
+       (with pkgs-last-building; [
+        # oculante # https://nixpk.gs/pr-tracker.html?pr=502921
             # openscad
         ])
-        ++ (with pkgs; [
+    ++ (
+    */
+        with pkgs; [
             # keep-sorted start sticky_comments=no
             # bitwarden-desktop
             # bottles
@@ -93,7 +96,7 @@ in {
             zotero
             zoxide
             # keep-sorted end
-        ]);
+        ];
     virtualisation.waydroid = {
         enable = true;
         package = pkgs.waydroid-nftables;
