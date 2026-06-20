@@ -34,7 +34,7 @@ in {
             aspell
             aspellDicts.en
             bitwarden-cli
-            bitwarden-desktop
+            # bitwarden-desktop
             calibre
             darktable
             deluge
