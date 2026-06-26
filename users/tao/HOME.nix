@@ -203,6 +203,14 @@ in {
                     forwardAgent = true;
                     identityFile = "/home/tao/.ssh/id_ed25519";
                 };
+                "marlin" = {
+                    hostname = "marlin-nx-2";
+                    user = "ubuntu";
+                };
+                "dory" = {
+                    hostname = "dory-nx";
+                    user = "ubuntu";
+                };
             };
         };
 

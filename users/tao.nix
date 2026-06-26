@@ -23,7 +23,6 @@ in {
         with pkgs; [
             # keep-sorted start sticky_comments=no
             # bitwarden-desktop
-            # bottles
             # boxxy
             # carapace
             # davinci-resolve
@@ -43,6 +42,7 @@ in {
             aspell
             aspellDicts.en
             bitwarden-cli
+            bottles
             calibre
             darktable
             deluge

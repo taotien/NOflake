@@ -173,6 +173,9 @@
 
         # mobili
         KERNEL=="js[0-9]*", MODE="0666"
+
+        # u-blox GNSS (F9P/F9R/M9N) - world rw so containerised ros node can open it
+        SUBSYSTEM=="usb", ATTRS{idVendor}=="1546", ATTRS{idProduct}=="01a9", MODE="0666", ENV{ID_MM_DEVICE_IGNORE}="1"
     '';
 
     boot.kernel.sysctl = {
