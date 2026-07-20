@@ -20,7 +20,7 @@
         # keep-sorted start
         framework-tool
         fw-ectool
-        lact
+        # lact
         nvtopPackages.amd
         # keep-sorted end
     ];
