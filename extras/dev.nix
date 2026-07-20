@@ -26,6 +26,7 @@
     # };
     programs.qgroundcontrol.enable = true;
     environment.systemPackages = with pkgs; [
+        eternal-terminal
         foxglove-studio
         foxglove-cli
         claude-code
