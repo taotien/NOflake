@@ -50,6 +50,7 @@
 
     boot.kernelPackages = pkgs.linuxPackages_latest;
     boot.kernelParams = [
+        "amdgpu.gpu_recovery=1"
         "amdgpu.abmlevel=1"
         "amdgpu.dcdebugmask=0x400"
     ];
