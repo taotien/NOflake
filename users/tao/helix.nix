@@ -6,6 +6,19 @@
     programs.helix = {
         settings = {
             # keep-sorted start block=yes
+            keys = {
+                normal.space = {
+                    l = "@:reload-all<ret>";
+                    i = "@:toggle lsp.display-inlay-hints<ret>";
+                };
+                normal.space.t = {
+                    r = "@mip:reflow<ret>";
+                    s = "@<A-s>:sort<ret>";
+                    d = "@!date now | format date %%F";
+                };
+            };
+            # keep-sorted end
+            # keep-sorted start block=yes
             editor = {
                 # keep-sorted start block=yes
                 auto-save = {
@@ -47,6 +60,7 @@
             };
             keys = {
                 # keep-sorted start block=yes
+
                 insert = {
                     C-space = "completion";
                     k = {k = "normal_mode";};
@@ -61,19 +75,11 @@
                     C-j = "scroll_up";
                     C-k = "scroll_down";
                 };
-                normal.space = {
-                    l = "@:reload-all<ret>";
-                    w = {
-                        J = "swap_view_up";
-                        K = "swap_view_down";
-                        j = "jump_view_up";
-                        k = "jump_view_down";
-                    };
-                    i = "@:toggle lsp.display-inlay-hints<ret>";
-                    t = {
-                        r = "@mip:reflow<ret>";
-                        s = "@<A-s>:sort<ret>";
-                    };
+                normal.space.w = {
+                    J = "swap_view_up";
+                    K = "swap_view_down";
+                    j = "jump_view_up";
+                    k = "jump_view_down";
                 };
                 select = {
                     j = "extend_line_up";
@@ -214,7 +220,13 @@
                 {
                     name = "python";
                     auto-format = true;
-                    language-servers = [/* "basedpyright" */ "ty" "ruff"];
+                    language-servers = [
+                        /*
+            "basedpyright"
+            */
+                        "ty"
+                        "ruff"
+                    ];
                     # formatter = {
                     #     command = "ruff";
                     #     args = ["format"];
