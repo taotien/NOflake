@@ -9,6 +9,7 @@ use aliases.nu *
 use nix.nu *
 use stuff.nu *
 use tailscale.nu *
+use jujutsu.nu *
 
 source completions-jj.nu
 source completions-just.nu

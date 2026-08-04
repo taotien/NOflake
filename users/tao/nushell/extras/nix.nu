@@ -1,3 +1,5 @@
+use jujutsu.nu *
+
 export def --wrapped rebuild [--force (-f), subcommand,  ...rest] {
   if not (
     df -h | detect columns --guess | where "Mounted on" == "/" or "Mounted on" == "/boot" | get Use% | each {parse "{usage}%" | get usage | into int} | flatten | all {$in < 99}
@@ -50,23 +52,19 @@ export def get_gen [] {
 
 export def bump [...rest] {
   cd /home/tao/projects/NOflake/
-  mut r = "@"
-  loop {
-    match (jj log -r $r --no-pager --no-graph --template 'if(empty, "empty", self.description())') {
-      "bump (unbuilt)" | "bump (failed)" => {
-        jj desc -m "bump (unbuilt)"
-      }
-      "empty" => {
-        $r = $r + "-"
-        continue
-      }
-      _ => {
-        jj new -r $r -m "bump (unbuilt)"
-      }
+  let working = jj-log | first | get change_id
+
+  let last_bump = jj-log -a | where description starts-with bump | first
+
+  let r = {
+    if ($last_bump | get description | $in ends-with "(failed)" or $in ends-with "(unbuilt)") {
+      $last_bump.change_id
+    } else {
+      
     }
-    break
   }
-  let r = jj log -r @ --no-pager --no-graph --template 'change_id'
+  
+  let r = jj-log -a | where description starts-with bump | first | get change_id
   sudo nix flake update
   let build_success = rebuild boot
   if $build_success {
