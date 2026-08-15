@@ -49,7 +49,7 @@
         skim
         smartmontools
         tree
-        waypipe
+        # waypipe
         wezterm
         wget
         zellij
