@@ -25,7 +25,9 @@
     #     };
     # };
     programs.qgroundcontrol.enable = true;
+    programs.vscode.enable = true;
     environment.systemPackages = with pkgs; [
+        rerun
         eternal-terminal
         foxglove-studio
         foxglove-cli
