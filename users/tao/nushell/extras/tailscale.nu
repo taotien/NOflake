@@ -1,12 +1,10 @@
 # see if others see us connecting from a mullvad exit node
 export def check-mullvad [] {
   print -n "checking mullvad status"
-  mut check = false
-  mut j = null
-  while not $check {
+  mut j = {}
+  while $j.mullvad_exit_ip? != true {
     print -n "."
     $j = (http get https://am.i.mullvad.net/json)
-    $check = $j.mullvad_exit_ip
   }
   print ""
   return $"connected to ($j.city), ($j.country)"
