@@ -23,7 +23,8 @@
     nix.package = lib.mkIf (config.networking.hostName == "NOcomputer") pkgs.lixPackageSets.stable.lix;
 
     environment.systemPackages = with pkgs; [
-        # keep-sorted start
+        # keep-sorted start sticky_comments=no
+        # waypipe
         bat
         bottom
         cachix
@@ -37,7 +38,6 @@
         git
         helix
         inputs.agenix.packages.${pkgs.system}.default
-        inputs.zen-browser.packages."${system}".default
         jujutsu
         mesa
         mpv
@@ -49,7 +49,6 @@
         skim
         smartmontools
         tree
-        # waypipe
         wezterm
         wget
         zellij
@@ -58,7 +57,7 @@
     ];
     programs.partition-manager.enable = lib.mkDefault true;
     programs.pmount.enable = lib.mkDefault true;
-    programs.mosh.enable = lib.mkDefault true;
+    # programs.mosh.enable = lib.mkDefault true;
 
     fonts.fontDir.enable = true;
     fonts.packages = with pkgs; [

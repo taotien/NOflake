@@ -5,7 +5,8 @@
         nixos.url = "github:NixOS/nixpkgs/nixos-26.05";
         nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
         nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+        nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
         # nixpkgs-last-building.url = "github:NixOS/nixpkgs/64c08a7ca051951c8eae34e3e3cb1e202fe36786";
         determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
         nur = {
@@ -21,7 +22,7 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
         home-manager = {
-            url = "github:nix-community/home-manager";
+            url = "github:nix-community/home-manager/release-26.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
         helix = {
@@ -45,7 +46,7 @@
         nixos,
         self,
         nixpkgs,
-        # nixpkgs-last-building,
+        nixpkgs-unstable,
         nur,
         nixos-facter-modules,
         nixos-hardware,

@@ -5,104 +5,109 @@
     lib,
     ...
 }: let
-    # pkgs-last-building = inputs.nixpkgs-last-building.legacyPackages.${pkgs.system};
+    punstable = import inputs.nixpkgs-unstable {
+        inherit (pkgs) system;
+        config.allowUnfree = true;
+    };
 in {
-    programs.gphoto2.enable = true;
     nixpkgs.config.permittedInsecurePackages = [
         # "electron-39.8.10"
     ];
 
     users.users.tao.packages =
-        /*
-       (with pkgs-last-building; [
-        # oculante # https://nixpk.gs/pr-tracker.html?pr=502921
-            # openscad
-        ])
-    ++ (
-    */
-        with pkgs; [
-            # keep-sorted start sticky_comments=no
-            # bitwarden-desktop
-            # boxxy
-            # carapace
-            # davinci-resolve
-            # fractal
-            # gurk-rs
-            # jellyfin-media-player
-            # nixos-anywhere
-            # piper
-            # syncthingtray
-            # taskwarrior3
-            # tectonic
-            # texlab
-            # thunderbird
-            # wkhtmltopdf
-            android-tools
-            appimage-run
-            aspell
-            aspellDicts.en
-            bitwarden-cli
-            bottles
-            calibre
-            darktable
-            deluge
-            discord
-            element-desktop
-            feedr
-            forgejo-cli
-            freecad-wayland
-            gocryptfs
-            grayjay
-            jellyfin-mpv-shim
-            man-pages
-            man-pages-posix
-            miniserve
-            mousai
-            nix-output-monitor
-            nufmt
-            nushell
-            nvd
-            obs-studio
-            oculante
-            onlyoffice-desktopeditors
-            openscad
-            pandoc
-            pipe-rename
-            printrun
-            prusa-slicer
-            qmk
-            qmk-udev-rules
-            qmk_hid
-            ripgrep-all
-            rqbit
-            signal-desktop
-            slack
-            snapper
-            sniffnet
-            starship
-            syncplay
-            tinymist
-            toastify
-            transmission_4-gtk
-            typst
-            typstyle
-            usbutils
-            vial
-            wezterm
-            wl-clipboard-rs
-            yt-dlp
-            zathura
-            zoom-us
-            zotero
-            zoxide
-            # keep-sorted end
-        ];
+        (
+            with punstable; [
+                # keep-sorted start sticky_comments=no
+                bottles
+                discord
+                forgejo-cli
+                freecad-wayland
+                grayjay
+                inputs.zen-browser.packages."${system}".default
+                nufmt
+                nushell
+                prusa-slicer
+                signal-desktop
+                slack
+                typst
+                typstyle
+                wezterm
+                yt-dlp
+                # keep-sorted end
+            ]
+        )
+        ++ (
+            with pkgs; [
+                # keep-sorted start sticky_comments=no
+                # bitwarden-desktop
+                # boxxy
+                # carapace
+                # davinci-resolve
+                # fractal
+                # gurk-rs
+                # jellyfin-media-player
+                # nixos-anywhere
+                # piper
+                # syncthingtray
+                # taskwarrior3
+                # tectonic
+                # texlab
+                # thunderbird
+                # wkhtmltopdf
+                # zoom-us
+                android-tools
+                appimage-run
+                aspell
+                aspellDicts.en
+                bitwarden-cli
+                calibre
+                darktable
+                deluge
+                element-desktop
+                feedr
+                gocryptfs
+                jellyfin-mpv-shim
+                man-pages
+                man-pages-posix
+                miniserve
+                mousai
+                nix-output-monitor
+                nvd
+                obs-studio
+                oculante
+                onlyoffice-desktopeditors
+                openscad
+                pandoc
+                pipe-rename
+                printrun
+                qmk
+                qmk-udev-rules
+                qmk_hid
+                ripgrep-all
+                rqbit
+                snapper
+                sniffnet
+                starship
+                syncplay
+                tinymist
+                toastify
+                transmission_4-gtk
+                usbutils
+                vial
+                wl-clipboard-rs
+                zathura
+                zotero
+                zoxide
+                # keep-sorted end
+            ]
+        );
+    programs.gphoto2.enable = true;
     virtualisation.waydroid = {
         enable = true;
         package = pkgs.waydroid-nftables;
     };
 
-    environment.shells = with pkgs; [nushell];
+    environment.shells = [punstable.nushell];
 
     documentation.enable = true;
 
