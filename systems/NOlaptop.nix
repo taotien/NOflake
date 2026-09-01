@@ -48,7 +48,11 @@
         "amdgpu"
     ];
 
-    boot.kernelPackages = pkgs.linuxPackages_latest;
+    # linuxPackages_latest (7.x) has an unresolved amdgpu regression that hangs
+    # the display when the dGPU wakes from runtime suspend (REG_WAIT timeout in
+    # dcn31_program_compbuf_size). Pinned to last known-good kernel until fixed
+    # upstream: https://github.com/CachyOS/linux-cachyos/issues/810
+    boot.kernelPackages = pkgs.linuxPackages_6_18;
     boot.kernelParams = [
         "amdgpu.gpu_recovery=1"
         "amdgpu.abmlevel=1"

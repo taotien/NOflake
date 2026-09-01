@@ -165,8 +165,11 @@
     ];
     services.lorri.enable = true;
 
-    services.scx.enable = true;
-    services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"
+    # scx_lavd repeatedly stalls the CPU for ~21s under gaming workloads,
+    # triggering RCU-stall self-disable/re-enable cycles (kernel: "sched_ext:
+    # lavd ... RCU CPU stall detected!"). Disabled until upstream is stable.
+    services.scx.enable = false;
+    # services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"
 
     hardware.flipperzero.enable = true;
 

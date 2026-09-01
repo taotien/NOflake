@@ -8,7 +8,8 @@ in {
     # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     # aagl.inputs.nixpkgs.follows = "nixpkgs";
 
-    services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"
+    # scx_lavd causes ~21s RCU-stall freezes under gaming workloads; see extras/dev.nix
+    # services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"
 
     services.lsfg-vk = {
         enable = true;
