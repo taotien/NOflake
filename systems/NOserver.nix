@@ -15,7 +15,7 @@
         fastfetch
         git
         helix
-        inputs.agenix.packages.${pkgs.system}.default
+        inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
         ouch
         pueue
         ripgrep

@@ -61,7 +61,6 @@
     } @ inputs: {
         nixosConfigurations = {
             NOcomputer = nixpkgs.lib.nixosSystem {
-                # system = "x86_64-linux";
                 specialArgs = {inherit inputs;};
                 modules = [
                     disko.nixosModules.disko
@@ -83,7 +82,6 @@
                 ];
             };
             NOlaptop = nixpkgs.lib.nixosSystem {
-                # system = "x86_64-linux";
                 specialArgs = {inherit inputs;};
                 modules = [
                     disko.nixosModules.disko
@@ -110,7 +108,6 @@
                 ];
             };
             NOmom = nixpkgs.lib.nixosSystem {
-                # system = "x86_64-linux";
                 specialArgs = {inherit inputs;};
                 modules = [
                     nixos-hardware.nixosModules.common-cpu-intel
@@ -125,7 +122,6 @@
                 ];
             };
             NObangers = nixpkgs.lib.nixosSystem {
-                system = "aarch64-linux";
                 specialArgs = {inherit inputs;};
                 modules = [
                     nixos-hardware.nixosModules.raspberry-pi-4
@@ -136,7 +132,6 @@
                 ];
             };
             NOserver-minecraft = nixpkgs.lib.nixosSystem {
-                system = "x86_64-linux";
                 specialArgs = {inherit inputs;};
                 modules = [
                     agenix.nixosModules.default
@@ -149,8 +144,8 @@
             };
             # nix build .#nixosConfigurations.bcachefs-iso.config.system.build.isoImage
             bcachefs-iso = nixos.lib.nixosSystem {
-                system = "x86_64-linux";
                 modules = [
+                    {nixpkgs.hostPlatform = "x86_64-linux";}
                     # "${nixos}/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix"
                     "${nixos}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
                     ({
@@ -183,7 +178,6 @@
                             zstd
                             # keep-sorted end
                         ];
-                        # boot.supportedFilesystems = ["bcachefs"];
                         boot.supportedFilesystems.btrfs = true;
                         boot.supportedFilesystems.bcachefs = true;
                         boot.supportedFilesystems.zfs = lib.mkForce false;

@@ -37,7 +37,7 @@
         firefox
         git
         helix
-        inputs.agenix.packages.${pkgs.system}.default
+        inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
         jujutsu
         mesa
         mpv

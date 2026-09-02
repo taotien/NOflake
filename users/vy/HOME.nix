@@ -113,4 +113,8 @@
     home.username = "vy";
     home.homeDirectory = "/home/vy";
     home.stateVersion = "23.11";
+
+    manual.html.enable = false;
+    manual.json.enable = false;
+    manual.manpages.enable = false;
 }

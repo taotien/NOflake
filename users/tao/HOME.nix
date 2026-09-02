@@ -180,36 +180,36 @@ in {
         ssh = {
             enableDefaultConfig = false;
             enable = true;
-            matchBlocks = {
+            settings = {
                 "*" = {
-                    addKeysToAgent = "yes";
-                    compression = true;
+                    AddKeysToAgent = "yes";
+                    Compression = true;
                 };
                 "stargate" = {
-                    hostname = "stargate.cs.usfca.edu";
-                    user = "tltien";
-                    forwardAgent = true;
-                    identityFile = "/home/tao/.ssh/id_ed25519";
+                    HostName = "stargate.cs.usfca.edu";
+                    User = "tltien";
+                    ForwardAgent = true;
+                    IdentityFile = "/home/tao/.ssh/id_ed25519";
                 };
                 # "chupacabra" = {
-                #     hostname = "stargate.cs.usfca.edu";
-                #     user = "tltien";
-                #     forwardAgent = true;
-                #     identityFile = "/home/tao/.ssh/id_ed25519";
-                #     proxyCommand = "ssh chupacabra.cs.usfca.edu";
+                #     HostName = "stargate.cs.usfca.edu";
+                #     User = "tltien";
+                #     ForwardAgent = true;
+                #     IdentityFile = "/home/tao/.ssh/id_ed25519";
+                #     ProxyCommand = "ssh chupacabra.cs.usfca.edu";
                 # };
                 "github" = {
-                    hostname = "github.com";
-                    forwardAgent = true;
-                    identityFile = "/home/tao/.ssh/id_ed25519";
+                    HostName = "github.com";
+                    ForwardAgent = true;
+                    IdentityFile = "/home/tao/.ssh/id_ed25519";
                 };
                 "marlin" = {
-                    hostname = "marlin-nx-2";
-                    user = "ubuntu";
+                    HostName = "marlin-nx-2";
+                    User = "ubuntu";
                 };
                 "dory" = {
-                    hostname = "dory-nx";
-                    user = "ubuntu";
+                    HostName = "dory-nx";
+                    User = "ubuntu";
                 };
             };
         };
@@ -322,4 +322,8 @@ in {
     home.username = "tao";
     home.homeDirectory = "/home/tao";
     home.stateVersion = "26.05";
+
+    manual.html.enable = false;
+    manual.json.enable = false;
+    manual.manpages.enable = false;
 }

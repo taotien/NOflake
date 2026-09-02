@@ -3,7 +3,7 @@
     inputs,
     ...
 }: let
-    pkgs-last-building = inputs.nixpkgs-last-building.legacyPackages.${pkgs.system};
+    pkgs-last-building = inputs.nixpkgs-last-building.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
     # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     # aagl.inputs.nixpkgs.follows = "nixpkgs";

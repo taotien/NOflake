@@ -5,7 +5,7 @@
     config,
     ...
 }: let
-    pkgs-last-building = inputs.nixpkgs-last-building.legacyPackages.${pkgs.system};
+    pkgs-last-building = inputs.nixpkgs-last-building.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
     users.users.vy.packages =
         /*

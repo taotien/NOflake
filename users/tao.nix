@@ -110,6 +110,11 @@ in {
     environment.shells = [punstable.nushell];
 
     documentation.enable = true;
+    # the NixOS manual's options.json build hits a third-party module option
+    # that interpolates a flake input path without proper store context
+    # ("builtins.derivation ... options.json ... without a proper context").
+    # man pages etc. stay on via documentation.enable above.
+    documentation.nixos.enable = false;
 
     # virtualisation.libvirtd.enable = true;
     # virtualisation.libvirtd.qemu.swtpm.enable = true;
