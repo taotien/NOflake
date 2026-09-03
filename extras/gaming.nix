@@ -45,8 +45,9 @@ in {
 
     programs.steam = {
         enable = true;
+        extest.enable = true;
         # remotePlay.openFirewall = true;
-        # gamescopeSession.enable = false;
+        gamescopeSession.enable = true;
     };
     programs.gamemode.enable = true;
     programs.gamescope.enable = true;

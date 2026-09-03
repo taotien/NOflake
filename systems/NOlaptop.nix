@@ -56,7 +56,14 @@
     boot.kernelParams = [
         "amdgpu.gpu_recovery=1"
         "amdgpu.abmlevel=1"
-        "amdgpu.dcdebugmask=0x400"
+        # 0x10 disables PSR (nixos-hardware's framework-16-7040-amd module also
+        # sets 0x10 alone, as the documented fix for PSR hangs on the eDP panel:
+        # https://gitlab.freedesktop.org/drm/amd/-/issues/3647 -- but
+        # boot.kernelParams is a list, so both entries land on the cmdline and
+        # the driver takes the *last* dcdebugmask=, silently discarding
+        # nixos-hardware's 0x10. Merge both bits (0x10 | 0x400) here so our
+        # entry carries the PSR fix too regardless of module ordering.
+        "amdgpu.dcdebugmask=0x410"
     ];
     boot.kernelModules = ["amdgpu"];
     powerManagement.cpuFreqGovernor = "powersave";
