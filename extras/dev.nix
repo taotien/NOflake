@@ -1,8 +1,32 @@
 {
     lib,
     pkgs,
+    inputs,
     ...
-}: {
+}: let
+    punstable = import inputs.nixpkgs-unstable {
+        inherit (pkgs) system;
+        config.allowUnfree = true;
+    };
+in {
+    networking.firewall.allowedUDPPorts = [14550];
+    # CycloneDDS/RTPS discovery+data for ROS_DOMAIN_ID=2 (voxel's shared default --
+    # see ~/voxel/devenv.nix). Port = 7400 + 250*domainId + {0,1,10,11} + 2*participantIdx;
+    # for domain 2 that's a base of 7900, and each additional DDS participant on this
+    # host (a second ros2 node, mavros, etc.) claims 2 more ports up from there. This
+    # range is generous rather than exact -- confirmed via `ss -uap` that a single
+    # participant binds 7910/7911, but exactly how many participants run at once on a
+    # dev box varies too much to pin down individually.
+    # 17900-17999 is the same thing for ROS_DOMAIN_ID=42 (7400 + 250*42 = 17900) --
+    # used to temporarily test on an unused domain, isolated from whatever else on
+    # the fleet's network is sharing domain 2's port range and participant-index
+    # pool. Add another {from=...; to=...;} entry here for any other domain ID
+    # this laptop ends up testing against.
+    networking.firewall.allowedUDPPortRanges = [
+      { from = 7900; to = 7999; }
+      { from = 17900; to = 17999; }
+    ];
+
     services.dockerRegistry = {
         enable = true;
         listenAddress = "0.0.0.0";
@@ -26,134 +50,140 @@
     # };
     programs.qgroundcontrol.enable = true;
     programs.vscode.enable = true;
-    environment.systemPackages = with pkgs; [
-        rerun
-        eternal-terminal
-        foxglove-studio
-        foxglove-cli
-        claude-code
-        # keep-sorted start sticky_comments=no
-        # act
-        # asm-lsp
-        # bash-language-server
-        # digital
-        # egglog
-        # etcher
-        # fontforge
-        # freecad
-        # git-cliff
-        # lazyjj
-        # lua-language-server
-        # lychee # link checker
-        # markdown-oxide # markdown lsp
-        # mask
-        # mprocs
-        # nomachine-client
-        # presenterm
-        # quickemu
-        # radicle-node
-        # vulkan-loader
-        # z3
-        b3sum
-        basedpyright
-        delta
-        devenv
-        direnv
-        gh
-        gpclient
-        hyperfine
-        jujutsu
-        just
-        just-lsp
-        keep-sorted
-        lldb
-        lspmux
-        maturin
-        mergiraf
-        mission-planner
-        qFlipper
-        qemu
-        sd
-        sshfs
-        taplo # toml lsp
-        tio
-        tokei # repo code stats
-        typos
-        wild
-        # keep-sorted end
+    environment.systemPackages =
+        (with punstable; [
+            # keep-sorted start sticky_comments=no
+            claude-code
+            devenv
+            rerun
+            # keep-sorted end
+        ])
+        ++ (with pkgs; [
+            nmap
+            eternal-terminal
+            foxglove-studio
+            foxglove-cli
+            # keep-sorted start sticky_comments=no
+            # act
+            # asm-lsp
+            # bash-language-server
+            # digital
+            # egglog
+            # etcher
+            # fontforge
+            # freecad
+            # git-cliff
+            # lazyjj
+            # lua-language-server
+            # lychee # link checker
+            # markdown-oxide # markdown lsp
+            # mask
+            # mprocs
+            # nomachine-client
+            # presenterm
+            # quickemu
+            # radicle-node
+            # vulkan-loader
+            # z3
+            b3sum
+            basedpyright
+            delta
+            direnv
+            gh
+            gpclient
+            hyperfine
+            jujutsu
+            just
+            just-lsp
+            keep-sorted
+            lldb
+            lspmux
+            maturin
+            mergiraf
+            mission-planner
+            qFlipper
+            qemu
+            sd
+            sshfs
+            taplo # toml lsp
+            tio
+            tokei # repo code stats
+            typos
+            wild
+            # keep-sorted end
 
-        # # alloy
-        # bun
-        # docker-compose
-        # ngrok
-        # deno
+            # # alloy
+            # bun
+            # docker-compose
+            # ngrok
+            # deno
 
-        # # databases
-        # sqlite
-        # sqls
-        # sqlx-cli
-        # sea-orm-cli
-        # rainfrog
+            # # databases
+            # sqlite
+            # sqls
+            # sqlx-cli
+            # sea-orm-cli
+            # rainfrog
 
-        # # arduino
-        # arduino-language-server
-        # arduino-cli
-        # pkgsCross.avr.buildPackages.gcc
-        # avrdude
-        # ravedude
+            # # arduino
+            # arduino-language-server
+            # arduino-cli
+            # pkgsCross.avr.buildPackages.gcc
+            # avrdude
+            # ravedude
 
-        # c
-        clang
-        clang-tools
-        gcc
-        gdb
-        gnumake
+            # c
+            clang
+            clang-tools
+            gcc
+            gdb
+            gnumake
 
-        # # cringelang
-        # go
-        # delve
-        # gotools
-        # gopls
+            # # cringelang
+            # go
+            # delve
+            # gotools
+            # gopls
 
-        # nix
-        nil
-        alejandra
+            # nix
+            nil
+            alejandra
 
-        # python
-        # pypy3
-        pyright
-        python3
-        ruff
-        ty
-        uv
+            # python
+            # pypy3
+            pyright
+            python3
+            ruff
+            ty
+            uv
 
-        # rust
-        # keep-sorted start sticky_comments=no
-        # leptosfmt
-        # spacetimedb
-        # wasm-bindgen-cli
-        bacon
-        cargo-autoinherit
-        cargo-binstall
-        cargo-edit
-        cargo-expand
-        cargo-feature
-        cargo-generate
-        cargo-nextest
-        cargo-update
-        cargo-watch
-        dioxus-cli
-        elf2uf2-rs
-        flip-link
-        mdbook
-        mold
-        probe-rs-tools
-        rustup
-        rusty-man
-        sccache
-        trunk
-        # keep-sorted end
-    ];
+            # rust
+            # keep-sorted start sticky_comments=no
+            # leptosfmt
+            # spacetimedb
+            # wasm-bindgen-cli
+            bacon
+            cargo-autoinherit
+            cargo-binstall
+            cargo-edit
+            cargo-expand
+            cargo-feature
+            cargo-generate
+            cargo-nextest
+            cargo-update
+            cargo-watch
+            dioxus-cli
+            elf2uf2-rs
+            flip-link
+            mdbook
+            mold
+            probe-rs-tools
+            rustup
+            rusty-man
+            sccache
+            trunk
+            # keep-sorted end
+        ]);
 
     nix.settings.substituters = [
         "https://helix.cachix.org/"
@@ -190,6 +220,30 @@
         "net.core.rmem_max_default" = 67108864;
         "net.core.wmem_max_default" = 67108864;
     };
+
+    # ROS2/CycloneDDS discovery is multicast-based, and this machine's Wi-Fi AP
+    # does not reflect multicast back to the sender: pinning CycloneDDS to
+    # wlan0 (which does report the MULTICAST interface flag) still failed to
+    # discover a second process on the same host. lo is the only reliable path
+    # for same-machine discovery here, but Linux does not mark it
+    # multicast-capable by default, and CycloneDDS skips interfaces that
+    # aren't. This flag does not persist across reboots on its own.
+    systemd.services."cyclonedds-lo-multicast" = {
+        description = "Enable multicast on lo for same-host ROS2/CycloneDDS discovery";
+        wantedBy = ["multi-user.target"];
+        after = ["network-pre.target"];
+        serviceConfig = {
+            Type = "oneshot";
+            RemainAfterExit = true;
+            ExecStart = "${pkgs.iproute2}/bin/ip link set lo multicast on";
+        };
+    };
+
+    # Default CycloneDDS onto loopback for interactive sessions, since wlan0
+    # multicast is a dead end on this network. Project devenvs (e.g. voxel's)
+    # can still override this per-shell if they ever need real cross-machine
+    # discovery.
+    environment.sessionVariables.CYCLONEDDS_URI = ''<CycloneDDS><Domain><General><Interfaces><NetworkInterface name="lo" priority="default" multicast="true"/></Interfaces><AllowMulticast>true</AllowMulticast></General></Domain></CycloneDDS>'';
 
     hardware.nvidia-container-toolkit.enable =
         lib.strings.hasPrefix "NOcomputer" (builtins.readFile /etc/hostname);

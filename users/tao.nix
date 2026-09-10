@@ -116,10 +116,10 @@ in {
     # man pages etc. stay on via documentation.enable above.
     documentation.nixos.enable = false;
 
-    # virtualisation.libvirtd.enable = true;
-    # virtualisation.libvirtd.qemu.swtpm.enable = true;
-    # virtualisation.spiceUSBRedirection.enable = true;
-    # programs.virt-manager.enable = true;
+    virtualisation.libvirtd.enable = true;
+    virtualisation.libvirtd.qemu.swtpm.enable = true;
+    virtualisation.spiceUSBRedirection.enable = true;
+    programs.virt-manager.enable = true;
 
     # virtualisation.virtualbox.host = {
     #   enable = true;

@@ -14,6 +14,7 @@ use jujutsu.nu *
 source completions-jj.nu
 source completions-just.nu
 source completions-docker.nu
+source completions-ros2.nu
 
 # External completer example
 # let carapace_completer = {|spans|
@@ -764,6 +765,12 @@ $env.config = {
             event: { edit: selectall }
         }
     ]
+}
+
+# ros2/colcon completions (completions-ros2.nu) via the argcomplete bridge;
+# falls through to nu's default external completion for everything else.
+$env.config.completions.external.completer = {|spans|
+    nu-complete ros2-colcon $spans
 }
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
