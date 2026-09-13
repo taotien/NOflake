@@ -2,10 +2,6 @@ export def done [] {
   toastify send -a "" done
 }
 
-export def "config stuff" [] {
-  hx ~/projects/NOflake/users/tao/nushell/stuff.nu
-}
-
 export def fixme [] {
   let items = rg "FIXME|TODO" --json
     | lines
