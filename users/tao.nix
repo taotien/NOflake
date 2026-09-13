@@ -21,8 +21,7 @@ in {
                 bottles
                 discord
                 forgejo-cli
-                freecad-wayland
-                grayjay
+                # grayjay
                 inputs.zen-browser.packages."${system}".default
                 nufmt
                 nushell
@@ -38,6 +37,7 @@ in {
         )
         ++ (
             with pkgs; [
+                freecad-wayland
                 # keep-sorted start sticky_comments=no
                 # bitwarden-desktop
                 # boxxy
@@ -169,7 +169,7 @@ in {
         isNormalUser = true;
         # hashedPasswordFile = config.age.secrets.password-tao.path;
         extraGroups = ["audio" "video" "wheel" "libvirtd" "dialout" "game" "camera"];
-        shell = pkgs.nushell;
+        shell = punstable.nushell;
     };
     age.secrets = {
         syncthing-NOcomputer.file = ../secrets/syncthing-NOcomputer.age;
