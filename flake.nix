@@ -8,6 +8,12 @@
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
         nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
         # nixpkgs-last-building.url = "github:NixOS/nixpkgs/64c08a7ca051951c8eae34e3e3cb1e202fe36786";
+        # Last nixpkgs commit before linux_6_17 was removed (EOL'd 2025-12-22).
+        # Used only to source boot.kernelPackages for NOlaptop -- bcachefs's
+        # out-of-tree module is broken on every currently-available kernel
+        # branch below 6.16, and 6.17 is the best lead we have against the
+        # amdgpu MES/gfxoff hang on the 780M iGPU that 6.18 doesn't fix.
+        nixpkgs-kernel-pin.url = "github:NixOS/nixpkgs/52a3852da4f7";
         determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
         nur = {
             url = "github:nix-community/NUR";

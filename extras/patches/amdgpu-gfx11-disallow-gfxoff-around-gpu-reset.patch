@@ -1,0 +1,113 @@
+drm/amdgpu/gfx11: disallow gfxoff around GPU reset (hand-adapted)
+
+Original idea and Signed-off-by from Alex Deucher <alexander.deucher@amd.com>,
+posted 2026-07-06 as [PATCH 3/7] on the amd-gfx list (still under review as of
+2026-09-16 -- Lijo Lazar requested the gfxoff-ctrl calls be consolidated into
+shared reset-helper begin/end logic rather than scattered per reset
+function). Thread: https://ratatoskr.run/amd-gfx/2026/07/17221331/t
+
+Deucher's original commit message, unchanged:
+
+  If gfx is hung, we shouldn't need this since gfx won't be powered down,
+  but we could potentially have a case where a queue can be preempted, but
+  due logic errors in the commands, the fence never signals. GFX could
+  potentially go into the off state. Protect against that.
+
+The original diff no longer applies: gfx_v11_0_reset_kgq()/reset_kcq() have
+since been refactored (amdgpu_gfx_mes_reset_queue -> renamed
+amdgpu_mes_reset_legacy_queue, plus a new pipe-reset fallback path added)
+independently of this fix. Confirmed by reading nixpkgs-unstable's actual
+7.2.5 source that neither function -- nor amdgpu_ring_reset_helper_begin/end,
+nor amdgpu_mes_reset_legacy_queue itself -- calls amdgpu_gfx_off_ctrl()
+anywhere, so the race Deucher describes is still open in current code. This
+hand-adapts the same fix (disable gfxoff for the duration of the reset
+attempt including any pipe-reset fallback, goto-based cleanup so it's always
+re-enabled on every exit path) onto the current function bodies, for both
+reset_kgq and reset_kcq (the original patch only touched reset_kgq; reset_kcq
+has the identical gap).
+
+NOT reviewed by AMD -- written and tested locally against the exact "reset
+via MES failed and try pipe reset" / "MES failed to respond" / failed GPU
+reset hangs on Framework 16's 780M (gfx1103) iGPU. See systems/NOlaptop.nix
+for the full trace history that led here.
+
+--- a/drivers/gpu/drm/amd/amdgpu/gfx_v11_0.c
++++ b/drivers/gpu/drm/amd/amdgpu/gfx_v11_0.c
+@@ -6919,30 +6919,36 @@
+
+ 	amdgpu_ring_reset_helper_begin(ring, timedout_fence);
+
++	amdgpu_gfx_off_ctrl(adev, false);
++
+ 	r = amdgpu_mes_reset_legacy_queue(ring->adev, ring, vmid, use_mmio, 0);
+ 	if (r) {
+
+ 		dev_warn(adev->dev, "reset via MES failed and try pipe reset %d\n", r);
+ 		r = gfx_v11_reset_gfx_pipe(ring);
+ 		if (r)
+-			return r;
++			goto fail;
+ 	}
+
+ 	if (use_mmio) {
+ 		r = gfx_v11_0_kgq_init_queue(ring, true);
+ 		if (r) {
+ 			dev_err(adev->dev, "failed to init kgq\n");
+-			return r;
++			goto fail;
+ 		}
+
+ 		r = amdgpu_mes_map_legacy_queue(adev, ring, 0);
+ 		if (r) {
+ 			dev_err(adev->dev, "failed to remap kgq\n");
+-			return r;
++			goto fail;
+ 		}
+ 	}
+
+-	return amdgpu_ring_reset_helper_end(ring, timedout_fence);
++	r = amdgpu_ring_reset_helper_end(ring, timedout_fence);
++
++fail:
++	amdgpu_gfx_off_ctrl(adev, true);
++	return r;
+ }
+
+ static int gfx_v11_0_reset_compute_pipe(struct amdgpu_ring *ring)
+@@ -7084,26 +7090,32 @@
+
+ 	amdgpu_ring_reset_helper_begin(ring, timedout_fence);
+
++	amdgpu_gfx_off_ctrl(adev, false);
++
+ 	r = amdgpu_mes_reset_legacy_queue(ring->adev, ring, vmid, true, 0);
+ 	if (r) {
+ 		dev_warn(adev->dev, "fail(%d) to reset kcq and try pipe reset\n", r);
+ 		r = gfx_v11_0_reset_compute_pipe(ring);
+ 		if (r)
+-			return r;
++			goto fail;
+ 	}
+
+ 	r = gfx_v11_0_kcq_init_queue(ring, true);
+ 	if (r) {
+ 		dev_err(adev->dev, "fail to init kcq\n");
+-		return r;
++		goto fail;
+ 	}
+ 	r = amdgpu_mes_map_legacy_queue(adev, ring, 0);
+ 	if (r) {
+ 		dev_err(adev->dev, "failed to remap kcq\n");
+-		return r;
++		goto fail;
+ 	}
+
+-	return amdgpu_ring_reset_helper_end(ring, timedout_fence);
++	r = amdgpu_ring_reset_helper_end(ring, timedout_fence);
++
++fail:
++	amdgpu_gfx_off_ctrl(adev, true);
++	return r;
+ }
+
+ static void gfx_v11_ip_print(struct amdgpu_ip_block *ip_block, struct drm_printer *p)

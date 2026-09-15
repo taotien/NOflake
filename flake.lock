@@ -386,6 +386,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-kernel-pin": {
+      "locked": {
+        "lastModified": 1766416223,
+        "narHash": "sha256-DersqXRIiUnKXxvCfRvOv7DKvC0FM8o/blyeHGzlbeA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "52a3852da4f73978b3ab18bb1fa4e0f365537e98",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "52a3852da4f7",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-regression": {
       "locked": {
         "lastModified": 1643052045,
@@ -508,6 +524,7 @@
         "nixos-facter-modules": "nixos-facter-modules",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",
+        "nixpkgs-kernel-pin": "nixpkgs-kernel-pin",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
         "zen-browser": "zen-browser"
