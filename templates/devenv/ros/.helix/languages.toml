@@ -1,0 +1,41 @@
+# Project-local Helix config -- merges over ~/.config/helix/languages.toml and
+# Helix's built-in defaults.
+#
+# IMPORTANT: launch Helix from inside `devenv shell` (or `devenv shell -- hx .`).
+# rust-analyzer/clangd are resolved via PATH, and this repo pins a specific nightly
+# rust-analyzer via `languages.rust` in devenv.nix plus AMENT_PREFIX_PATH/
+# LIBCLANG_PATH from ros2_ws/install/setup.sh. See README.md.
+
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer"]
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[language-server.rust-analyzer.config.cargo]
+# Explicit even though it's rust-analyzer's own default: a Rust ROS package's
+# build.rs (bindgen FFI generation, rosidl codegen) has to actually run for
+# generated message/binding types to resolve in the editor at all.
+buildScripts.enable = true
+
+# colcon packages are identified by package.xml/CMakeLists.txt, not necessarily
+# at the top level of their directory (e.g. ros2_ws/src/some_metapackage/
+# some_package/). Rooting cpp/c here instead of falling back to the whole git
+# repo keeps clangd's project scope to the actual ROS package being edited.
+[[language]]
+name = "cpp"
+language-servers = ["clangd"]
+roots = ["package.xml", "CMakeLists.txt", "Cargo.toml", ".git"]
+
+[[language]]
+name = "c"
+language-servers = ["clangd"]
+roots = ["package.xml", "CMakeLists.txt", ".git"]
+
+[language-server.clangd]
+command = "clangd"
+args = ["--background-index", "--clang-tidy", "--header-insertion=iwyu"]

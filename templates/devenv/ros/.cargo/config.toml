@@ -1,0 +1,33 @@
+# Project-shared build-speed tuning for any Rust crate under this repo (Cargo merges
+# .cargo/config.toml from the current directory up to the filesystem root).
+#
+# Deliberately does NOT set a forced target or target-cpu=native: both are
+# workstation-specific and inappropriate if you're cross-compiling or targeting
+# a specific deploy device (e.g. a robot's onboard computer). See README.md.
+#
+# Nightly-only bits (`-Z threads`, the Cranelift codegen backend) are set via
+# `languages.rust` in devenv.nix instead of here, since setting RUSTFLAGS as an env
+# var makes Cargo ignore `[build] rustflags` from this file entirely.
+
+[alias]
+rr = "run --release"
+rb = "run --bin"
+d = "doc --no-deps --open"
+
+[profile.dev]
+debug = 0
+strip = "debuginfo"
+opt-level = 1
+lto = "off"
+
+[profile.dev.package."*"]
+# Dependencies build once and rarely change: pay for full optimization + the slower
+# LLVM backend there. Your own crate rebuilds constantly: keep it fast (opt-level 1,
+# Cranelift, set via devenv.nix).
+opt-level = 3
+codegen-backend = "llvm"
+
+[profile.release]
+incremental = true
+codegen-units = 1
+lto = "fat"

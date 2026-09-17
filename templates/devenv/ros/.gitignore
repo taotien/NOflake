@@ -1,0 +1,20 @@
+# Devenv
+.devenv*
+devenv.local.nix
+devenv.local.yaml
+
+# direnv
+.direnv
+
+# colcon build artifacts
+ros2_ws/build
+ros2_ws/install
+ros2_ws/log
+ros2_ws/.devenv-last-build
+
+# Rust
+target
+
+# Python
+.venv
+__pycache__

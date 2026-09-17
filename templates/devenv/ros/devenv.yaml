@@ -1,0 +1,12 @@
+inputs:
+  nix-ros-overlay:
+    url: github:lopsided98/nix-ros-overlay/master
+  nixpkgs:
+    follows: nix-ros-overlay/nixpkgs
+  # Only needed if languages.rust is enabled in devenv.nix.
+  rust-overlay:
+    url: github:oxalica/rust-overlay
+    inputs:
+      nixpkgs:
+        follows: nixpkgs
+allow_unfree: true

@@ -65,6 +65,14 @@
         helix,
         ...
     } @ inputs: {
+        templates = {
+            devenv-ros = {
+                path = ./templates/devenv/ros;
+                description = "ROS2 + Rust + Python devenv.sh template (nix-ros-overlay based)";
+            };
+            default = self.templates.devenv-ros;
+        };
+
         nixosConfigurations = {
             NOcomputer = nixpkgs.lib.nixosSystem {
                 specialArgs = {inherit inputs;};
