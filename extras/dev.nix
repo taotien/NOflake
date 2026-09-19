@@ -239,11 +239,11 @@ in {
         };
     };
 
-    # Default CycloneDDS onto loopback for interactive sessions, since wlan0
-    # multicast is a dead end on this network. Project devenvs (e.g. voxel's)
-    # can still override this per-shell if they ever need real cross-machine
-    # discovery.
-    environment.sessionVariables.CYCLONEDDS_URI = ''<CycloneDDS><Domain><General><Interfaces><NetworkInterface name="lo" priority="default" multicast="true"/></Interfaces><AllowMulticast>true</AllowMulticast></General></Domain></CycloneDDS>'';
+    # # Default CycloneDDS onto loopback for interactive sessions, since wlan0
+    # # multicast is a dead end on this network. Project devenvs (e.g. voxel's)
+    # # can still override this per-shell if they ever need real cross-machine
+    # # discovery.
+    # environment.sessionVariables.CYCLONEDDS_URI = ''<CycloneDDS><Domain><General><Interfaces><NetworkInterface name="lo" priority="default" multicast="true"/></Interfaces><AllowMulticast>true</AllowMulticast></General></Domain></CycloneDDS>'';
 
     hardware.nvidia-container-toolkit.enable =
         lib.strings.hasPrefix "NOcomputer" (builtins.readFile /etc/hostname);
