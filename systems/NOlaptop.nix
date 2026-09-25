@@ -9,6 +9,38 @@
         inherit (pkgs.stdenv.hostPlatform) system;
         config.allowUnfree = true;
     };
+
+    # The internal mic exposes two ALSA gain stages -- "Capture" (-17.25..+30
+    # dB) and "Mic Boost" (0..+30 dB in 10 dB steps) -- and PipeWire's ACP
+    # mixer path for the active port, analog-input-mic.conf, declares
+    # `volume = merge` on both. That stacks them into one slider, so a source
+    # volume of 100% applies +60 dB and the capture is pure static. Anything
+    # that resets the source to 100% (switching or plugging in another audio
+    # device tends to) lands straight in that range.
+    # https://community.frame.work/t/microphone-extremely-staticy/15533/12
+    #
+    # Patch "Mic Boost" out of the merge, capping the range at Capture's
+    # +30 dB. ACP_PATHS_DIR *replaces* the built-in directory rather than
+    # overlaying it, so the whole tree gets copied -- `-L` because the
+    # .conf.common files are included by the paths that use them.
+    #
+    # Note the element here is plain "Mic Boost", not "Internal Mic Boost":
+    # this codec has no discrete internal-mic control, so ACP picks the
+    # analog-input-mic path and analog-input-internal-mic.conf is never read.
+    #
+    # WirePlumber is the process that actually loads the ALSA SPA device and
+    # reads ACP_PATHS_DIR -- verified by handing the var to wireplumber.service
+    # alone, which is enough on its own. pipewire.service gets it too, purely
+    # so this keeps working if that ever moves into the daemon.
+    #
+    # Verify with `pactl list sources`: the analog source's "Base Volume"
+    # reads -30 dB with this applied and -60 dB without, and Active Port
+    # should still be analog-input-mic.
+    acpPathsNoMicBoost = pkgs.runCommand "acp-mixer-paths-no-mic-boost" {} ''
+        cp -rL ${config.services.pipewire.package}/share/alsa-card-profile/mixer/paths $out
+        chmod -R u+w $out
+        ${pkgs.python3}/bin/python3 ${../extras/acp-no-mic-boost.py} $out/analog-input-mic.conf
+    '';
 in {
     # nixpkgs.overlays = [
     #   (final: prev: {
@@ -32,6 +64,9 @@ in {
     ];
 
     services.lact.enable = true;
+
+    systemd.user.services.pipewire.environment.ACP_PATHS_DIR = "${acpPathsNoMicBoost}";
+    systemd.user.services.wireplumber.environment.ACP_PATHS_DIR = "${acpPathsNoMicBoost}";
 
     services.tailscale.useRoutingFeatures = "client";
     systemd.services."backlight@backlight:amdgpu_bl2".enable = false;
