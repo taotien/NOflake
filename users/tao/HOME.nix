@@ -160,6 +160,7 @@ in {
             ignores = [
                 "/target"
                 ".direnv"
+                ".cache"
             ];
         };
 
