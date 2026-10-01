@@ -22,13 +22,16 @@ source completions-ros2.nu
 
 $env.config = {
     show_banner: false # true or false to enable or disable the welcome banner at startup
+
     ls: {
         use_ls_colors: true # use the LS_COLORS environment variable to colorize output
         clickable_links: true # enable or disable clickable links. Your terminal has to support links.
     }
+
     rm: { always_trash: true }
+
     table: {
-        mode: rounded # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
+        mode: compact # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
         index_mode: always # "always" show indexes, "never" show indexes, "auto" = show indexes when a table has "index" column
         show_empty: true # show 'empty list' and 'empty record' placeholders for command output
         padding: {left: 1, right: 1} # a left right padding of each column in a table
@@ -37,9 +40,10 @@ $env.config = {
             wrapping_try_keep_words: true # A strategy used by the 'wrapping' methodology
             truncating_suffix: "..." # A suffix used by the 'truncating' methodology
         }
-        header_on_separator: false # show header text on separator/border line
+        header_on_separator: true # show header text on separator/border line
         # abbreviated_row_count: 10 # limit data rows from top and bottom after reaching a set point
     }
+
     error_style: "fancy" # "fancy" or "plain" for screen reader-friendly error messages
 
     # datetime_format determines what a datetime rendered in the shell would look like.
@@ -56,12 +60,16 @@ $env.config = {
         }
         selected_cell: {bg: light_blue}
     }
+
     history: {
         max_size: 100_000 # Session has to be reloaded for this to take effect
         sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
         file_format: "sqlite" # "sqlite" or "plaintext"
         isolation: true # only available with sqlite file_format. true enables history isolation, false disables it. true will allow the history to be isolated to the current session using up/down arrows. false will allow the history to be shared across all sessions.
     }
+
+    max_last_result_size: 1MB
+    
     completions: {
         case_sensitive: false # set to true to enable case-sensitive completions
         quick: true # set this to false to prevent auto-selecting completions when only one remains
@@ -74,14 +82,16 @@ $env.config = {
         }
         use_ls_colors: true # set this to true to enable file/path/directory completions using LS_COLORS
     }
+
     filesize: {unit: metric}
+
     cursor_shape: {
         # emacs: underscore
         helix_insert: line
         helix_normal: block
     }
+
     color_config: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
-    # use_grid_icons: true
     footer_mode: 25 # always, never, number_of_rows, auto
     float_precision: 2 # the precision for displaying floats in tables
     use_ansi_coloring: true
@@ -119,6 +129,7 @@ $env.config = {
     use_kitty_protocol: true
     highlight_resolved_externals: false # true enables highlighting of external commands in the repl resolved by which.
     recursion_limit: 50 # the maximum number of times nushell allows recursion before stopping it
+
     plugins: {} # Per-plugin configuration. See https://www.nushell.sh/contributor-book/plugins.html#configuration.
     plugin_gc: {
         default: {
@@ -127,6 +138,7 @@ $env.config = {
         }
         plugins: {}
     }
+
     hooks: {
         pre_prompt: [
             { null }
@@ -142,6 +154,7 @@ $env.config = {
         display_output: "if (term size).columns >= 100 { table -e } else { table }" # run to display the output of a pipeline
         command_not_found: { null } # return an error message when a command is not found
     }
+
     menus: [
         # Configuration for default nushell menus
         # Note the lack of source parameter
@@ -218,6 +231,7 @@ $env.config = {
             style: {text: green, selected_text: green_reverse, description_text: yellow}
         }
     ]
+
     keybindings: [
         {
             name: completion_menu
