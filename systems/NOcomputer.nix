@@ -2,6 +2,7 @@
     config,
     pkgs,
     lib,
+    inputs,
     ...
 }: {
     environment.systemPackages = with pkgs; [
@@ -30,7 +31,12 @@
     hardware.nvidia = {
         powerManagement.enable = true;
         open = true;
-        package = config.boot.kernelPackages.nvidiaPackages.latest;
+        # # nixos-26.05's nvidia (595.71.05) doesn't build against kernel 7.2.8;
+        # # pull the newer 615.x driver from unstable, built against our kernel.
+        # package =
+        #     (inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.linuxPackagesFor
+        #         config.boot.kernelPackages.kernel)
+        #     .nvidiaPackages.latest;
     };
     services.tailscale.useRoutingFeatures = "both";
     boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
@@ -57,7 +63,7 @@
         package = pkgs.openrgb-with-all-plugins;
     };
 
-    boot.kernelPackages = pkgs.linuxPackages_latest;
+    # boot.kernelPackages = pkgs.linuxPackages_latest;
     # boot.kernelPackages = pkgs.linuxPackages_zen;
     boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
     boot.kernelModules = ["i2c-dev" "kvm-amd" "nct6775"];
@@ -83,6 +89,7 @@
     fileSystems."/boot" = {
         device = "/dev/disk/by-uuid/2B28-151D";
         fsType = "vfat";
+        options = ["fmask=0077" "dmask=0077"];
     };
     fileSystems."/" = {
         device = "/dev/disk/by-uuid/eb9fcce2-e9f3-438a-b5ce-8f72f32f0e09";

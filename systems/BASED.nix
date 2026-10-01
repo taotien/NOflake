@@ -18,6 +18,19 @@
                 colmena
                 ;
         })
+        # # zenpower doesn't build on kernels >= 6.15: cpuid_ecx moved to
+        # # <asm/cpuid/api.h> and is no longer pulled in transitively.
+        # (final: prev: {
+        #     linuxPackages_latest = prev.linuxPackages_latest.extend (lfinal: lprev: {
+        #         zenpower = lprev.zenpower.overrideAttrs (old: {
+        #             postPatch =
+        #                 (old.postPatch or "")
+        #                 + ''
+        #                     sed -i '/#include <linux\/version.h>/a #if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0)\n#include <asm/cpuid/api.h>\n#endif' zenpower.c
+        #                 '';
+        #         });
+        #     });
+        # })
     ];
 
     nix.package = lib.mkIf (config.networking.hostName == "NOcomputer") pkgs.lixPackageSets.stable.lix;

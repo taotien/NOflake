@@ -15,7 +15,7 @@
         };
         agenix = {
             url = "github:ryantm/agenix";
-            inputs.darwin.follows = "";
+            # inputs.darwin.follows = "";
         };
         disko = {
             url = "github:nix-community/disko";
@@ -85,7 +85,7 @@
                     ./extras/dev.nix
                     ./extras/gaming.nix
                     lsfg-vk-flake.nixosModules.default
-                    ./extras/folding.nix
+                    # ./extras/folding.nix
                     ./users/builder.nix
                 ];
             };
@@ -112,7 +112,7 @@
                     ./extras/dev.nix
                     ./extras/gaming.nix
                     lsfg-vk-flake.nixosModules.default
-                    nur.modules.nixos.default
+                    # nur.modules.nixos.default
                 ];
             };
             NOmom = nixpkgs.lib.nixosSystem {

@@ -6,17 +6,6 @@
     programs.helix = {
         settings = {
             # keep-sorted start block=yes
-            keys = {
-                normal.space = {
-                    l = "@:reload-all<ret>";
-                    i = "@:toggle lsp.display-inlay-hints<ret>";
-                };
-                normal.space.t = {
-                    r = "@mip:reflow<ret>";
-                    s = "@<A-s>:sort<ret>";
-                    d = "@!date now | format date %%F";
-                };
-            };
             # keep-sorted end
             # keep-sorted start block=yes
             editor = {
@@ -74,6 +63,15 @@
                     };
                     C-j = "scroll_up";
                     C-k = "scroll_down";
+                };
+                normal.space = {
+                    l = "@:reload-all<ret>";
+                    i = "@:toggle lsp.display-inlay-hints<ret>";
+                };
+                normal.space.t = {
+                    r = "@mip:reflow<ret>";
+                    s = "@<A-s>:sort<ret>";
+                    d = "@!date now | format date %%F";
                 };
                 normal.space.w = {
                     J = "swap_view_up";
