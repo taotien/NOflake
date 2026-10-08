@@ -41,11 +41,14 @@ in {
             # keep-sorted end
         ];
 
-    # ~/.config/pipewire/pipewire.conf pins the graph to 96kHz for the FiiO. THE FINALS
-    # (proton, reports application.name "THE FINALS") renders 48kHz and winepulse asks for a tiny buffer,
-    # so it gets resampled at a ~0.3ms quantum and crackles. While its stream is
-    # active, force the graph (and so the DAC) to 48kHz with a sane quantum; pipewire
-    # drops back to 96kHz once the stream goes away.
+    # THE FINALS (proton, reports application.name "THE FINALS") mixes at 48kHz and
+    # winepulse asks for a tiny buffer. If the graph is already running at a higher
+    # rate (e.g. hi-res music on the FiiO), the game gets resampled at a tiny quantum
+    # and the high end turns scratchy. While its stream is active, force the graph
+    # (and so the DAC) to 48kHz with a sane quantum.
+    # Note winepulse opens its streams at pipewire-pulse's *default* rate, so
+    # default.clock.rate must stay 48000 (see extras/fiio.nix), or wine resamples
+    # 48k->96k itself before pipewire ever sees it.
     services.pipewire.extraConfig.pipewire-pulse."92-games" = let
         games = [
             {"application.name" = "THE FINALS";}

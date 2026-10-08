@@ -84,6 +84,7 @@
                     ./extras/uwuraid.nix
                     ./extras/dev.nix
                     ./extras/gaming.nix
+                    ./extras/fiio.nix
                     lsfg-vk-flake.nixosModules.default
                     # ./extras/folding.nix
                     ./users/builder.nix

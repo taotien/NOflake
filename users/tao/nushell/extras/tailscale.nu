@@ -19,11 +19,10 @@ export def te [exit_node: string = "", -n] {
 
   tailscale set --exit-node $exit_node
 
-  if ($exit_node | is-not-empty) or not $n {
-    check-mullvad
-  } else {
+  if $n or ($exit_node | is-empty) {
     print "exit node set"
-    return true
+  } else {
+    check-mullvad
   }
 }
 
@@ -68,7 +67,6 @@ export def tr [] {
   tx
     | get (random int 0..($in | length))
     | te $in.IP
-    | return $in
 }
 
 export def tw [] {
