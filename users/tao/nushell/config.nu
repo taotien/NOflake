@@ -251,8 +251,8 @@ $env.config = {
 
 # ros2/colcon completions (completions-ros2.nu) via the argcomplete bridge;
 # falls through to nu's default external completion for everything else.
-$env.config.completions.external.completer = {|spans|
-    nu-complete ros2-colcon $spans
+$env.config.completions.external.completer = {|place|
+    nu-complete ros2-colcon $place.command
 }
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
